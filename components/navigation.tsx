@@ -1,11 +1,76 @@
 'use client';
-import {useState,useRef,useEffect} from 'react';
-import {ChevronDown,Layers,BriefcaseBusiness} from 'lucide-react';
+
+import {useState, useRef, useEffect} from 'react';
+import {ChevronDown, Layers, BriefcaseBusiness, ArrowUpRight} from 'lucide-react';
 import Link from './site-link';
 import {serviceCategories} from '@/lib/services';
-type Category={slug:string;short:string;name:string;count:number;color:string};
-export function Navigation({categories}:{categories:Category[]}){
- const [menu,setMenu]=useState<'categories'|'services'|null>(null),[service,setService]=useState(serviceCategories[0].slug);const ref=useRef<HTMLDivElement>(null);
- useEffect(()=>{if(!menu)return;const close=(e:PointerEvent)=>{if(!ref.current?.contains(e.target as Node))setMenu(null)};document.addEventListener('pointerdown',close);return()=>document.removeEventListener('pointerdown',close)},[menu]);
- return <div className="navigation-wrap" ref={ref} onKeyDown={e=>{if(e.key==='Escape')setMenu(null)}}><nav aria-label="Main navigation"><Link href="/tools" onClick={()=>setMenu(null)}>Browse tools</Link><button className="nav-capsule" aria-expanded={menu==='categories'} aria-controls="category-mega" onClick={()=>setMenu(menu==='categories'?null:'categories')}>All categories <ChevronDown size={13}/></button><button className="nav-capsule" aria-expanded={menu==='services'} aria-controls="services-mega" onClick={()=>setMenu(menu==='services'?null:'services')}>Services <ChevronDown size={13}/></button><Link href="/compare" onClick={()=>setMenu(null)}>Compare</Link><Link href="/alternatives" onClick={()=>setMenu(null)}>Alternatives</Link><Link href="/guides" onClick={()=>setMenu(null)}>Guides</Link></nav>{menu==='categories'&&<div className="mega-menu" id="category-mega"><div className="mega-heading"><div><Layers size={21}/><strong>Find your next category.</strong></div><Link href="/categories" onClick={()=>setMenu(null)}>Explore all {categories.length} categories</Link></div><div className="mega-categories">{categories.map(c=><Link key={c.slug} href={'/categories/'+c.slug} onClick={()=>setMenu(null)}><span className="mega-dot" style={{background:c.color}}/><span>{c.short}</span><small>{c.count}</small></Link>)}</div></div>}{menu==='services'&&<div className="mega-menu" id="services-mega"><div className="mega-heading"><div><BriefcaseBusiness size={21}/><strong>Expertise for the next step.</strong></div><Link href="/services" onClick={()=>setMenu(null)}>Explore all services</Link></div><div className="services-mega-body"><div className="services-mega-tabs">{serviceCategories.map(c=><button key={c.slug} onMouseEnter={()=>setService(c.slug)} onFocus={()=>setService(c.slug)} onClick={()=>setService(c.slug)} aria-pressed={service===c.slug}>{c.name}</button>)}</div><div className="services-mega-content">{serviceCategories.filter(c=>c.slug===service).map(c=><div key={c.slug}><span className="eyebrow">{c.name}</span><p>{c.description}</p><div>{c.providers.map(([name])=><Link key={name} href={'/services/'+c.slug} onClick={()=>setMenu(null)}>{name}</Link>)}</div><Link className="text-link" href={'/services/'+c.slug} onClick={()=>setMenu(null)}>Compare providers and evaluation questions</Link></div>)}</div></div></div>}</div>
+
+type Category = {slug:string; short:string; name:string; count:number; color:string};
+type Menu = 'categories' | 'services' | null;
+
+export function Navigation({categories}:{categories:Category[]}) {
+  const [menu, setMenu] = useState<Menu>(null);
+  const [service, setService] = useState(serviceCategories[0].slug);
+  const ref = useRef<HTMLDivElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function cancelClose() {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = null;
+  }
+  function openMenu(next:Menu) {
+    cancelClose();
+    setMenu(next);
+  }
+  function leaveMenu() {
+    cancelClose();
+    closeTimer.current = setTimeout(() => {
+      if (!ref.current?.contains(document.activeElement)) setMenu(null);
+    }, 180);
+  }
+  useEffect(() => () => {if (closeTimer.current) clearTimeout(closeTimer.current)}, []);
+  useEffect(() => {
+    if (!menu) return;
+    const close = (e:PointerEvent) => {
+      if (!ref.current?.contains(e.target as Node)) {
+        if (closeTimer.current) clearTimeout(closeTimer.current);
+        setMenu(null);
+      }
+    };
+    document.addEventListener('pointerdown', close);
+    return () => document.removeEventListener('pointerdown', close);
+  }, [menu]);
+
+  return <div className="navigation-wrap" ref={ref}
+    onPointerLeave={leaveMenu}
+    onBlur={e => {if (!e.currentTarget.contains(e.relatedTarget as Node)) openMenu(null)}}
+    onKeyDown={e => {if (e.key === 'Escape') {e.preventDefault(); openMenu(null)}}}>
+    <nav aria-label="Main navigation">
+      <Link href="/tools" onPointerEnter={() => openMenu(null)} onClick={() => openMenu(null)}>Browse tools</Link>
+      <button className="nav-capsule" aria-expanded={menu === 'categories'} aria-controls="category-mega"
+        onPointerEnter={e => {if (e.pointerType === 'mouse') openMenu('categories')}}
+        onClick={() => openMenu(menu === 'categories' ? null : 'categories')}
+        onKeyDown={e => {if (e.key === 'ArrowDown') {e.preventDefault(); openMenu('categories'); requestAnimationFrame(() => document.querySelector<HTMLAnchorElement>('#category-mega a')?.focus())}}}>
+        All categories <ChevronDown size={13}/>
+      </button>
+      <button className="nav-capsule" aria-expanded={menu === 'services'} aria-controls="services-mega"
+        onPointerEnter={e => {if (e.pointerType === 'mouse') openMenu('services')}}
+        onClick={() => openMenu(menu === 'services' ? null : 'services')}
+        onKeyDown={e => {if (e.key === 'ArrowDown') {e.preventDefault(); openMenu('services'); requestAnimationFrame(() => document.querySelector<HTMLAnchorElement>('#services-mega a')?.focus())}}}>
+        Services <ChevronDown size={13}/>
+      </button>
+      {['Compare','Alternatives','Guides'].map(label => <Link key={label} href={'/'+label.toLowerCase()} onPointerEnter={() => openMenu(null)} onClick={() => openMenu(null)}>{label}</Link>)}
+    </nav>
+    {menu === 'categories' && <div className="mega-menu" id="category-mega" onPointerEnter={cancelClose}>
+      <div className="mega-heading"><div><Layers size={21}/><strong>Find your next category.</strong></div><Link href="/categories" onClick={() => openMenu(null)}>Explore all categories <ArrowUpRight size={15}/></Link></div>
+      <div className="mega-categories">{categories.map(c => <Link key={c.slug} href={'/categories/'+c.slug} onClick={() => openMenu(null)}><span className="mega-dot" style={{background:c.color}}/><span>{c.short}</span><ArrowUpRight size={13}/></Link>)}</div>
+    </div>}
+    {menu === 'services' && <div className="mega-menu" id="services-mega" onPointerEnter={cancelClose}>
+      <div className="mega-heading"><div><BriefcaseBusiness size={21}/><strong>Expertise for the next step.</strong></div><Link href="/services" onClick={() => openMenu(null)}>Explore all services <ArrowUpRight size={15}/></Link></div>
+      <div className="services-mega-body">
+        <div className="services-mega-tabs">{serviceCategories.map(c => <button key={c.slug} onMouseEnter={() => setService(c.slug)} onFocus={() => setService(c.slug)} onClick={() => setService(c.slug)} aria-pressed={service === c.slug}>{c.name}</button>)}</div>
+        <div className="services-mega-content">{serviceCategories.filter(c => c.slug === service).map(c => <div key={c.slug}><span className="eyebrow">{c.name}</span><p>{c.description}</p><div>{c.providers.map(([name]) => <Link key={name} href={'/services/'+c.slug} onClick={() => openMenu(null)}>{name}<ArrowUpRight size={14}/></Link>)}</div><Link className="text-link" href={'/services/'+c.slug} onClick={() => openMenu(null)}>Compare providers and evaluation questions</Link></div>)}</div>
+      </div>
+    </div>}
+  </div>;
 }
