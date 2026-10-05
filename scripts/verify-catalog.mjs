@@ -14,6 +14,15 @@ try{
  for(const t of tools){assert.ok(categories.some(c=>c.slug===t.category),t.slug);assert.match(new URL(t.url).protocol,/https?:/);assert.ok(t.summary&&t.fit&&t.caution&&t.features.length,t.slug);assert.equal(searchTools(t.name)[0]?.slug,t.slug,'Name search: '+t.name)}
  for(const c of categories){assert.ok(tools.some(t=>t.category===c.slug),c.slug);const brief={category:c.slug,workflow:workflows[c.slug][0][0],scale:'team',style:'balanced'};assert.ok(validateBrief(brief));assert.equal(pilotPlan(brief).length,3);assert.ok(guideFor(c.slug));assert.ok(matchTools(brief,defaultWeights).length)}
  for(const [q,expected] of [['chagpt','chatgpt'],['remove image backgrounds','remove-bg'],['AI research assistants','perplexity'],['RFP response software','inventive-ai'],['meeting notes','otter'],['password manager','1password'],['create presentations','gamma'],['no-code app builders','bubble']]){const result=searchTools(q).slice(0,20);console.log(q,':',result.slice(0,6).map(t=>t.name).join(', '));assert.ok(result.some(t=>t.slug===expected),'Task search: '+q+' should include '+expected)}
+ fs.symlinkSync(path.resolve('node_modules'),path.join(tmp,'node_modules'),'dir');
+ const reviewSource=fs.readFileSync('app/api/reviews/route.ts','utf8').replace("@/lib/catalog","./catalog");
+ fs.writeFileSync(path.join(tmp,'review-route.js'),ts.transpileModule(reviewSource,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
+ const {POST}=require(path.join(tmp,'review-route.js'));
+ const reviewUrl='https://trutool-directory.vercel.app/api/reviews';
+ const invalidOrigin=await POST(new Request(reviewUrl,{method:'POST',headers:{Origin:'https://example.com'},body:'{}'}));assert.equal(invalidOrigin.status,403);
+ const invalidRating=await POST(new Request(reviewUrl,{method:'POST',headers:{Origin:'https://trutool-directory.vercel.app'},body:JSON.stringify({slug:'chatgpt',rating:8,consent:true,name:'QA check',email:'qa@example.com',message:'Validation check; no review should be stored.'})}));assert.equal(invalidRating.status,400);
+ const missingConsent=await POST(new Request(reviewUrl,{method:'POST',headers:{Origin:'https://trutool-directory.vercel.app'},body:JSON.stringify({slug:'chatgpt',rating:3,name:'QA check',email:'qa@example.com',message:'Validation check; no review should be stored.'})}));assert.equal(missingConsent.status,400);
+ console.log('PASS: review endpoint rejects foreign origins, invalid ratings, and missing consent without writing data.');
  const assets=JSON.parse(fs.readFileSync('lib/catalog-brand-assets.json','utf8'));for(const src of Object.values(assets))assert.ok(fs.existsSync('public'+src),src);
  for(const g of guides)assert.ok(categories.some(c=>c.slug===g.category),g.slug);
  console.log(`PASS: ${tools.length} unique tools, ${categories.length} populated categories, ${guides.length} guides, ${Object.keys(assets).length} local catalogue brand assets; exact-name/task searches and all diagnostic paths.`);

@@ -14,9 +14,9 @@ const questionNames=['The work','The workflow','Your scale','Your approach'];
 const titles=['What are you choosing a tool for?','What should the tool help you do first?','Who will use this workflow?','How do you want to approach the decision?'];
 const keys:Array<keyof DiagnosticBrief>=['category','workflow','scale','style'];
 
-export function VisibilityDiagnostic({initialBrief,initialWeights}:{initialBrief?:DiagnosticBrief;initialWeights?:FitWeights}){
+export function VisibilityDiagnostic({initialBrief,initialWeights,initialCategory}:{initialBrief?:DiagnosticBrief;initialWeights?:FitWeights;initialCategory?:string}){
  const [step,setStep]=useState(initialBrief?4:0);
- const [answers,setAnswers]=useState<Partial<DiagnosticBrief>>(initialBrief||{});
+ const [answers,setAnswers]=useState<Partial<DiagnosticBrief>>(initialBrief||(initialCategory?{category:initialCategory}:{}));
  const [weights,setWeights]=useState<FitWeights>(initialWeights||defaultWeights);
  const [tab,setTab]=useState<'shortlist'|'plan'|'time'>('shortlist');
  const [selected,setSelected]=useState<string[]>([]);

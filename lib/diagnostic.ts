@@ -18,6 +18,9 @@ export const scales:Array<[string,string,string]>=[['small','Just me or a small 
 export const styles:Array<[string,string,string]>=[['lean','Keep the evaluation lightweight','Start with a focused workflow and a small pilot.'],['balanced','Build a repeatable process','Prioritise coordination and consistent ownership.'],['governance','Make controls a priority','Test permissions, review steps, and rollout requirements.']];
 type Tags={workflows:string[];scales:string[];styles:string[]};
 const tags:Record<string,Tags>={
+ consensus:{workflows:['research'],scales:['small','team'],styles:['lean','balanced']},
+ elicit:{workflows:['research'],scales:['small','team'],styles:['lean','balanced']},
+ scite:{workflows:['research'],scales:['small','team'],styles:['lean','balanced']},
  chatgpt:{workflows:['writing','analysis'],scales:['small','team'],styles:['lean','balanced']},
  claude:{workflows:['writing','analysis'],scales:['small','team'],styles:['lean','balanced']},
  perplexity:{workflows:['research'],scales:['small','team'],styles:['lean','balanced']},
