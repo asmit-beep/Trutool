@@ -353,3 +353,8 @@ button[data-slot=button][data-variant=ghost]:hover,button[data-slot=button][data
 .ribbon-categories .job-button:hover,.ribbon-categories .job-button:focus-visible{background:var(--job-bg)}
 @media(min-width:1400px){.guide-grid.guides-index{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:540px){.guide-grid:not(.guides-index){grid-template-columns:1fr}}
+.hero-actions .hero-outline>span{font-weight:650}
+.ribbon-categories .job-button:last-child{justify-content:flex-start}
+.trending-card-head>span.trend-category{font-family:inherit}
+.trending-card>div.trend-card-footer{font-size:13px}
+@media(max-width:760px){.trending-card>div.trend-card-footer{font-size:12px}}
