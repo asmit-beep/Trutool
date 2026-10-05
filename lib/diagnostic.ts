@@ -110,7 +110,7 @@ export function planText(a:DiagnosticBrief,weights:FitWeights,selected:Tool[],sc
  const label=briefLabels(a),matches=matchTools(a,weights),total=weights.workflow+weights.scale+weights.style;
  const lines=['# My TruTool decision plan','','## The brief','- Category: '+label.category,'- Workflow: '+label.workflow,'- Scale: '+label.scale,'- Approach: '+label.style,'','## Shortlist'];
  for(const m of matches.slice(0,3))lines.push('- '+m.tool.name+' — '+m.points+'/'+total+' fit points; '+m.tool.url,'  Check: '+m.tool.caution);
- lines.push('','Points use TruTool editorial tags, not review ratings or verified feature coverage. Commercial relationships do not affect points. Confirm vendor details before committing.','');
+ lines.push('','Points use TruTool editorial tags, not review ratings or verified feature coverage. Confirm vendor details before committing.','');
  if(selected.length)lines.push('Selected for comparison: '+selected.map(t=>t.name).join(', '),'');
  lines.push('## My 14-day pilot');
  for(const [i,p] of pilotPlan(a).entries()){lines.push('','### '+p.timing+' · '+p.label);for(const [j,task] of p.tasks.entries())lines.push('- ['+(checked.includes(i+'-'+j)?'x':' ')+'] '+task);}

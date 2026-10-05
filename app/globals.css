@@ -358,3 +358,26 @@ button[data-slot=button][data-variant=ghost]:hover,button[data-slot=button][data
 .trending-card-head>span.trend-category{font-family:inherit}
 .trending-card>div.trend-card-footer{font-size:13px}
 @media(max-width:760px){.trending-card>div.trend-card-footer{font-size:12px}}
+/* Distinct community brands, saturated menu accents, and a clear editorial frame. */
+.mega-dot{width:10px;height:10px;flex:none;border-radius:50%;box-shadow:0 0 0 3px #ffffff,0 0 0 4px #15253010}
+.community-track{animation-duration:112s}
+.community-window:hover .community-track{animation-play-state:running}
+.community-window:has(.community-card:hover) .community-track,.community-window:focus-within .community-track{animation-play-state:paused}
+.community-card{display:flex;flex-direction:column;width:385px;min-height:294px;transition:border-color .2s,box-shadow .2s}
+.community-card:hover,.community-card:focus-visible{border-color:#b89cff;box-shadow:inset 0 0 0 1px #b89cff55;outline-offset:4px}
+.community-product{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.community-product .community-brand{display:inline-flex;align-items:center;gap:11px;color:#fff;font-size:17px}
+.community-product .community-brand strong{font-weight:650}
+.community-product .tool-icon{width:38px;height:38px;border-radius:10px;padding:6px;flex:none}
+.community-card blockquote{flex:1;font-size:19px;line-height:1.5;margin-bottom:24px}
+.community-person{align-items:center}
+.community-person>div{min-width:0}
+.community-person small{line-height:1.5}
+.editorial-section .manifesto{border-color:#9e86e8;box-shadow:0 0 0 1px #ab8cff30}
+.manifesto>div:last-child{display:flex;flex-direction:column;align-items:flex-end}
+.manifesto>div:last-child p{width:100%}
+.manifesto .editorial-cta{align-self:flex-end}
+.manifesto::before{inset:-2px;background:linear-gradient(105deg,#9676ff 10%,#79e4ff 35%,#e5ceff 50%,#9676ff 65%,#79e4ff 90%);background-size:250% 100%;opacity:.55}
+.manifesto:hover::before,.manifesto:focus-within::before{opacity:1}
+@media(max-width:760px){.community-card{width:310px;padding:21px;min-height:300px}.community-product{gap:8px}.community-product>span:last-child{font-size:10px}.community-product .community-brand{font-size:16px;gap:8px}.community-card blockquote{font-size:18px}.manifesto .editorial-cta{max-width:100%;gap:10px}}
+@media(prefers-reduced-motion:reduce){.community-track{animation:none}.manifesto:hover::before,.manifesto:focus-within::before{animation:none}}
