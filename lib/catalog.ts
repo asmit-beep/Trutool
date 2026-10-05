@@ -1,4 +1,4 @@
-export const SITE = process.env.NEXT_PUBLIC_SITE_URL || 'https://trutool.vercel.app';
+export const SITE = process.env.NEXT_PUBLIC_SITE_URL || 'https://trutool-directory.vercel.app';
 export const categories = [
  {slug:'local-listings',name:'Local listings management',short:'Local marketing',description:'Keep business information accurate across search, maps, and directories.',icon:'MapPin',color:'#e9eaeb',question:'How do I choose local listings management software?',answer:'Start with your locations, priority directories, data ownership, and update workflow. Compare listings distribution, duplicate handling, reviews, reporting, and the work your team still needs to do.'},
  {slug:'rfp-software',name:'RFP & proposal software',short:'RFP & proposals',description:'Find reusable answers, coordinate experts, and build better responses.',icon:'FileText',color:'#e9eaeb',question:'How do I choose RFP response software?',answer:'Test each platform on a real questionnaire with the same source documents. Assess answer traceability, permissions, content freshness, expert review, and export quality before choosing a subscription.'},
