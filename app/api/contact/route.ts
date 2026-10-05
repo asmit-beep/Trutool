@@ -1,3 +1,4 @@
+import {categories} from '@/lib/catalog';
 import {createHash,randomUUID} from 'node:crypto';
 import {list,put} from '@vercel/blob';
 export const runtime='nodejs';
@@ -17,7 +18,7 @@ export async function POST(request:Request){
   const productName=typeof x.product.name==='string'?x.product.name.trim():'';
   const productUrl=typeof x.product.url==='string'?x.product.url.trim():'';
   const category=typeof x.product.category==='string'?x.product.category:'';
-  if(productName.length<2||productName.length>100||productUrl.length>2048||!['local-listings','rfp-software','communication','edtech','other'].includes(category))return Response.json({error:'Check your product name, website, and category.'},{status:400});
+  if(productName.length<2||productName.length>100||productUrl.length>2048||!(category==='other'||categories.some(c=>c.slug===category)))return Response.json({error:'Check your product name, website, and category.'},{status:400});
   let url:URL;try{url=new URL(productUrl);}catch{return Response.json({error:'Enter a valid official website starting with https:// or http://.'},{status:400});}
   if(!['https:','http:'].includes(url.protocol)||!url.hostname||url.username||url.password)return Response.json({error:'Enter a valid official website starting with https:// or http://.'},{status:400});
   product={name:productName,url:url.href,category};

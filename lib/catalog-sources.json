@@ -1,0 +1,4881 @@
+[
+  {
+    "slug": "chatgpt",
+    "url": "https://chatgpt.com",
+    "title": "ChatGPT: Chat, Work, Create & Code with AI (https://chatgpt.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "claude",
+    "url": "https://claude.ai",
+    "title": "Claude (https://claude.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "deepseek",
+    "url": "https://www.deepseek.com",
+    "title": "DeepSeek | \u6df1\u5ea6\u6c42\u7d22 (https://www.deepseek.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "gemini",
+    "url": "https://gemini.google.com",
+    "title": "\u200eGoogle Gemini (https://gemini.google.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "perplexity",
+    "url": "https://www.perplexity.ai",
+    "title": "Perplexity (https://www.perplexity.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "microsoft-copilot",
+    "url": "https://copilot.microsoft.com",
+    "title": "Microsoft Copilot | Sign in (https://copilot.microsoft.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mistral-le-chat",
+    "url": "https://chat.mistral.ai",
+    "title": "Vibe Chat (https://chat.mistral.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "poe",
+    "url": "https://poe.com",
+    "title": "Poe - Fast, Helpful AI Chat (https://poe.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "you-com",
+    "url": "https://you.com",
+    "title": "The Leading Web Search APIs for AI | You.com (https://you.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "grok",
+    "url": "https://grok.com",
+    "title": "Grok (https://grok.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "hugging-face",
+    "url": "https://huggingface.co",
+    "title": "Hugging Face \u2013 The AI community building the future. (https://huggingface.co/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "kagi",
+    "url": "https://kagi.com",
+    "title": "Kagi - Reclaim the Web & Restore Your Privacy (https://kagi.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "notebooklm",
+    "url": "https://notebooklm.google.com",
+    "title": "Sign in - Google Accounts (https://notebooklm.google.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "elicit",
+    "url": "https://elicit.com",
+    "title": "Elicit: AI for research & decision-making (https://elicit.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "consensus",
+    "url": "https://consensus.app",
+    "title": "Consensus: AI for Research (https://consensus.app/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "glean",
+    "url": "https://www.glean.com",
+    "title": "Glean \u2013 Enterprise AI that Works | Agents, Assistant & Search (https://www.glean.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "midjourney",
+    "url": "https://www.midjourney.com",
+    "title": "www.midjourney.com (https://www.midjourney.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "adobe-firefly",
+    "url": "https://www.adobe.com/products/firefly.html",
+    "title": "Adobe Firefly - Free Generative AI for Creatives (https://www.adobe.com/products/firefly.html)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ideogram",
+    "url": "https://ideogram.ai",
+    "title": "Ideogram | AI apps and models in one platform (https://ideogram.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "leonardo-ai",
+    "url": "https://leonardo.ai",
+    "title": "Leonardo.Ai - Generative AI Platform for Images, Art & Video (https://leonardo.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "recraft",
+    "url": "https://www.recraft.ai",
+    "title": "Recraft | AI for designers, creatives, sellers, and teams (https://www.recraft.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "flux",
+    "url": "https://bfl.ai",
+    "title": "Black Forest Labs - Frontier AI Lab (https://bfl.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "stability-ai",
+    "url": "https://stability.ai",
+    "title": "Stability AI (https://stability.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "krea",
+    "url": "https://www.krea.ai",
+    "title": "Krea: AI Creative Suite for Images, Video & 3D (https://www.krea.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "playground",
+    "url": "https://playground.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "photoroom",
+    "url": "https://www.photoroom.com",
+    "title": "AI-Powered Photo Editor and Listing Studio for Product Photography | Photoroom (https://www.photoroom.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "remove-bg",
+    "url": "https://www.remove.bg",
+    "title": "Remove Background from Image for Free \u2013 remove.bg (https://www.remove.bg/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "clipdrop",
+    "url": "https://clipdrop.co",
+    "title": "Create stunning visuals in seconds with AI. (https://clipdrop.co/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "runway",
+    "url": "https://runwayml.com",
+    "title": "Runway | Building Real-World Intelligence (https://runwayml.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pika",
+    "url": "https://pika.art",
+    "title": "Pika (https://pika.art/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "luma-ai",
+    "url": "https://lumalabs.ai",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "synthesia",
+    "url": "https://www.synthesia.io",
+    "title": "Synthesia: #1 AI Video Platform for Business (https://www.synthesia.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "heygen",
+    "url": "https://www.heygen.com",
+    "title": "HeyGen: Create Realistic AI Videos of Yourself in Minutes (https://www.heygen.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "veed",
+    "url": "https://www.veed.io",
+    "title": "VEED \u2013 AI Video Creation Platform | Idea to Video Workflow (https://www.veed.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "invideo",
+    "url": "https://invideo.io",
+    "title": "invideo Editor - Create videos without limits (https://invideo.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "colossyan",
+    "url": "https://www.colossyan.com",
+    "title": "Colossyan Creator - AI Video Generator (https://www.colossyan.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "d-id",
+    "url": "https://www.d-id.com",
+    "title": "D-ID | The #1 Choice for AI Generated Video Creation Platform (https://www.d-id.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "kling-ai",
+    "url": "https://klingai.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "hailuo-ai",
+    "url": "https://hailuoai.video",
+    "title": "Hailuo AI: MiniMax H3 LIVE NOW. Top-Tier Quality, Versatile References (https://hailuoai.video/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "elai",
+    "url": "https://elai.io",
+    "title": "Elai.io - The Most Advanced and Intuitive AI Video Generator (https://elai.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "elevenlabs",
+    "url": "https://elevenlabs.io",
+    "title": "Free AI Voice Generator & Voice Agents Platform | ElevenLabs (https://elevenlabs.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "murf",
+    "url": "https://murf.ai",
+    "title": "Leading AI Voice & Conversational Agent Platform - Murf AI (https://murf.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "speechify",
+    "url": "https://speechify.com",
+    "title": "Speechify: Text to Speech & Voice Typing AI Assistant | 60M+ Users (https://speechify.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "resemble-ai",
+    "url": "https://www.resemble.ai",
+    "title": "Multimodal Deepfake Detection and Watermarking for Enterprise | Resemble AI (https://www.resemble.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "wellsaid",
+    "url": "https://wellsaidlabs.com",
+    "title": "Most Realistic AI Voice Generator | WellSaid (https://wellsaidlabs.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "lovo",
+    "url": "https://lovo.ai",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "deepgram",
+    "url": "https://deepgram.com",
+    "title": "Enterprise Voice AI: STT, TTS & Agent APIs | Deepgram (https://deepgram.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "assemblyai",
+    "url": "https://www.assemblyai.com",
+    "title": "AssemblyAI | AI models to transcribe and understand speech (https://www.assemblyai.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "krisp",
+    "url": "https://krisp.ai",
+    "title": "Voice AI for Meetings: Noise Cancellation & AI Note Taker | Krisp (https://krisp.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "suno",
+    "url": "https://suno.com",
+    "title": "Suno | AI Music Generator (https://suno.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "aiva",
+    "url": "https://www.aiva.ai",
+    "title": "AIVA, the AI Music Generation Assistant (https://www.aiva.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "soundraw",
+    "url": "https://soundraw.io",
+    "title": "soundraw.io (https://soundraw.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "jasper",
+    "url": "https://www.jasper.ai",
+    "title": "Put AI agents to work for marketing | Jasper (https://www.jasper.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "copy-ai",
+    "url": "https://www.copy.ai",
+    "title": "Future proof your business with GTM AI (https://www.copy.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "writer",
+    "url": "https://writer.com",
+    "title": "WRITER - The enterprise AI platform for agentic work (https://writer.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "grammarly",
+    "url": "https://www.grammarly.com",
+    "title": "Grammarly: Free AI Writing Assistance (https://www.grammarly.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "quillbot",
+    "url": "https://quillbot.com",
+    "title": "Quillbot: Write, Design & Create (https://quillbot.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "wordtune",
+    "url": "https://www.wordtune.com",
+    "title": "Wordtune \u2014 Express yourself with confidence (https://www.wordtune.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "writesonic",
+    "url": "https://writesonic.com",
+    "title": "Writesonic | The AI Search Growth Engine. Win Customers. (https://writesonic.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "anyword",
+    "url": "https://anyword.com",
+    "title": "Anyword makes AI content perform 76% better. (https://anyword.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "rytr",
+    "url": "https://rytr.me",
+    "title": "Free AI Writer, Content Generator & Writing Assistant | Rytr (https://rytr.me/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sudowrite",
+    "url": "https://www.sudowrite.com",
+    "title": "Sudowrite - Best AI Writing Partner for Fiction (https://www.sudowrite.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "hyperwrite",
+    "url": "https://www.hyperwriteai.com",
+    "title": "HyperWrite | AI Writing Assistant (https://www.hyperwriteai.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "languagetool",
+    "url": "https://languagetool.org",
+    "title": "Free AI Grammar Checker - LanguageTool (https://languagetool.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "cursor",
+    "url": "https://cursor.com",
+    "title": "AI Coding Agent for Building Ambitious Software | Cursor (https://cursor.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "github-copilot",
+    "url": "https://github.com/features/copilot",
+    "title": "GitHub Copilot \u00b7 Your AI coding agent \u00b7 GitHub \u00b7 GitHub (https://github.com/features/copilot)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "claude-code",
+    "url": "https://www.anthropic.com/claude-code",
+    "title": "Claude Code by Anthropic | AI Coding Agent, Terminal, IDE (https://www.anthropic.com/claude-code)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "openai-codex",
+    "url": "https://openai.com/codex",
+    "title": "Codex | AI Coding Partner from OpenAI | OpenAI (https://openai.com/codex)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "windsurf",
+    "url": "https://windsurf.com",
+    "title": "Devin Desktop | Devin (https://windsurf.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "tabnine",
+    "url": "https://www.tabnine.com",
+    "title": "Agentic Quality Engineering Platform - Tricentis (https://www.tabnine.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "continue",
+    "url": "https://www.continue.dev",
+    "title": "Continue (acquired by Cursor) (https://www.continue.dev/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "aider",
+    "url": "https://aider.chat",
+    "title": "Aider - AI Pair Programming in Your Terminal (https://aider.chat/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "replit",
+    "url": "https://replit.com",
+    "title": "AI App and Website Builder | Replit (https://replit.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "coderabbit",
+    "url": "https://www.coderabbit.ai",
+    "title": "AI Code Reviews | CodeRabbit | Try for Free. (https://www.coderabbit.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sourcegraph",
+    "url": "https://sourcegraph.com",
+    "title": "Code Understanding, Oversight and Evolution | Sourcegraph (https://sourcegraph.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "qodo",
+    "url": "https://www.qodo.ai",
+    "title": "AI Code Review \u2013 Qodo: Deploy with confidence (https://www.qodo.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "zapier",
+    "url": "https://zapier.com",
+    "title": "Zapier: Automate AI Workflows, Agents, and Apps (https://zapier.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "make",
+    "url": "https://www.make.com",
+    "title": "AI Workflow Automation Software & Tools | Make (https://www.make.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "n8n",
+    "url": "https://n8n.io",
+    "title": "AI Workflow Automation Platform - n8n (https://n8n.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "lindy",
+    "url": "https://www.lindy.ai",
+    "title": "Lindy \u2013 The AI Teammate That Lets You Do More (https://www.lindy.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "relevance-ai",
+    "url": "https://relevanceai.com",
+    "title": "Specialist AI Agents for Every Task | Relevance AI (https://relevanceai.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "bardeen",
+    "url": "https://www.bardeen.ai",
+    "title": "Bardeen: Find and reach leads no one else can. (https://www.bardeen.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "relay-app",
+    "url": "https://www.relay.app",
+    "title": "Relay.app has shut down (https://www.relay.app/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "activepieces",
+    "url": "https://www.activepieces.com",
+    "title": "Activepieces: unify your team's AI (https://www.activepieces.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pipedream",
+    "url": "https://pipedream.com",
+    "title": "Pipedream \u2014 The integration layer for AI agents (https://pipedream.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ifttt",
+    "url": "https://ifttt.com",
+    "title": "Automate. Save time. Get more done. - IFTTT (https://ifttt.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "workato",
+    "url": "https://www.workato.com",
+    "title": "Govern & Scale Enterprise AI on the #1 iPaaS | Workato (https://www.workato.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "tray-ai",
+    "url": "https://tray.ai",
+    "title": "Tray.ai \u2014 The AI-ready integration and automation platform (https://tray.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "notion",
+    "url": "https://www.notion.com",
+    "title": "The AI workspace that works for you. | Notion (https://www.notion.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "obsidian",
+    "url": "https://obsidian.md",
+    "title": "Obsidian - Sharpen your thinking (https://obsidian.md/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "todoist",
+    "url": "https://todoist.com",
+    "title": "Todoist | A To-Do List to Organize Your Work & Life (https://todoist.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ticktick",
+    "url": "https://ticktick.com",
+    "title": "TickTick: A To-Do List and Calendar to keep you organized (https://ticktick.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "things",
+    "url": "https://culturedcode.com/things",
+    "title": "Things - To-Do List App for Mac & iOS (https://culturedcode.com/things)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "evernote",
+    "url": "https://evernote.com",
+    "title": "Best Note Taking App - Organize Your Notes with Evernote (https://evernote.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "bear",
+    "url": "https://bear.app",
+    "title": "Bear - Markdown Notes (https://bear.app/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "craft",
+    "url": "https://www.craft.do",
+    "title": "Craft \u2014 Productivity App for Notes, Tasks, and Docs (https://www.craft.do/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "capacities",
+    "url": "https://capacities.io",
+    "title": "A studio for your mind | Capacities (https://capacities.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "raycast",
+    "url": "https://www.raycast.com",
+    "title": "Raycast - Your shortcut to everything (https://www.raycast.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "alfred",
+    "url": "https://www.alfredapp.com",
+    "title": "Alfred - Productivity App for macOS (https://www.alfredapp.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "readwise",
+    "url": "https://readwise.io",
+    "title": "Readwise: Get the most out of what you read (https://readwise.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mem",
+    "url": "https://mem.ai",
+    "title": "Mem (https://mem.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "reflect",
+    "url": "https://reflect.app",
+    "title": "Reflect (https://reflect.app/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "linear",
+    "url": "https://linear.app",
+    "title": "Linear \u2013 The system for product development (https://linear.app/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "asana",
+    "url": "https://asana.com",
+    "title": "Work & Project Management for Human-Agent Teams \u2022 Asana (https://asana.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "trello",
+    "url": "https://trello.com",
+    "title": "Capture, organize, and tackle your to-dos from anywhere (https://trello.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "monday-com",
+    "url": "https://monday.com",
+    "title": "The AI Work Platform for People & Agents | monday.com (https://monday.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "clickup",
+    "url": "https://clickup.com",
+    "title": "ClickUp\u2122 | Maximize productivity \u2022 Software, AI, and humans converge (https://clickup.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "jira",
+    "url": "https://www.atlassian.com/software/jira",
+    "title": "Jira | Project Management for the AI Era | Atlassian (https://www.atlassian.com/software/jira)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "basecamp",
+    "url": "https://basecamp.com",
+    "title": "Basecamp (https://basecamp.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "wrike",
+    "url": "https://www.wrike.com",
+    "title": "AI-powered enterprise work management software | Wrike (https://www.wrike.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "teamwork",
+    "url": "https://www.teamwork.com",
+    "title": "AI-Powered PSA Software Built for Profitability | Teamwork.com (https://www.teamwork.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "openproject",
+    "url": "https://www.openproject.org",
+    "title": "OpenProject - Open Source Project Management Software (https://www.openproject.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "plane",
+    "url": "https://plane.so",
+    "title": "AI-native project management | Plane (https://plane.so/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "figma",
+    "url": "https://www.figma.com",
+    "title": "Figma: The collaborative canvas for design, code, and AI (https://www.figma.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "canva",
+    "url": "https://www.canva.com",
+    "title": "Canva: Visual Suite for Everyone (https://www.canva.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "adobe-photoshop",
+    "url": "https://www.adobe.com/products/photoshop.html",
+    "title": "Official Adobe Photoshop | Free Trial and Online Photo & Design App (https://www.adobe.com/products/photoshop.html)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "adobe-illustrator",
+    "url": "https://www.adobe.com/products/illustrator.html",
+    "title": "Vector Graphics Software | Adobe Illustrator (https://www.adobe.com/products/illustrator.html)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sketch",
+    "url": "https://www.sketch.com",
+    "title": "Sketch \u00b7 Design, prototype, collaborate and handoff (https://www.sketch.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "affinity",
+    "url": "https://www.affinity.studio",
+    "title": "Professional Creative Software | Craft In Affinity, Scale In Canva (https://www.affinity.studio/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "penpot",
+    "url": "https://penpot.app",
+    "title": "Penpot: The open-source design platform for teams. (https://penpot.app/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "miro",
+    "url": "https://miro.com",
+    "title": "AI Innovation Workspace | Miro (https://miro.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mural",
+    "url": "https://www.mural.co",
+    "title": "AI-powered visual workspace for team collaboration | Mural (https://www.mural.co/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "excalidraw",
+    "url": "https://excalidraw.com",
+    "title": "Excalidraw Whiteboard (https://excalidraw.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "inkscape",
+    "url": "https://inkscape.org",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "gimp",
+    "url": "https://www.gimp.org",
+    "title": "GIMP - GNU Image Manipulation Program (https://www.gimp.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "webflow",
+    "url": "https://webflow.com",
+    "title": "Webflow: The agentic web platform for modern businesses (https://webflow.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "framer",
+    "url": "https://www.framer.com",
+    "title": "Framer: AI design agent (https://www.framer.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "wix",
+    "url": "https://www.wix.com",
+    "title": "Website Builder - Create a Free Website In Minutes | Wix.com (https://www.wix.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "squarespace",
+    "url": "https://www.squarespace.com",
+    "title": "Website Builder \u2013 Easily Create Your Own Website \u2014 Squarespace (https://www.squarespace.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "wordpress",
+    "url": "https://wordpress.org",
+    "title": "Blog Tool, Publishing Platform, and CMS \u2013 WordPress.org (https://wordpress.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ghost",
+    "url": "https://ghost.org",
+    "title": "Ghost: The best open source blog & newsletter platform (https://ghost.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "carrd",
+    "url": "https://carrd.co",
+    "title": "Carrd - Simple, free, fully responsive one-page sites for pretty much anything (https://carrd.co/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "duda",
+    "url": "https://www.duda.co",
+    "title": "Duda | The AI Web Presence Platform for Pros (https://www.duda.co/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "dorik",
+    "url": "https://dorik.com",
+    "title": "Dorik - AI Website Building Platform (https://dorik.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "tilda",
+    "url": "https://tilda.cc",
+    "title": "Create a Website for Free. Tilda Website Builder (https://tilda.cc/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "typedream",
+    "url": "https://typedream.com",
+    "title": "Typedream: AI Website Builder (https://typedream.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "readymag",
+    "url": "https://readymag.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "hubspot",
+    "url": "https://www.hubspot.com",
+    "title": "HubSpot | Software & Tools for your Business - Homepage (https://www.hubspot.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "adobe-marketo-engage",
+    "url": "https://business.adobe.com/products/marketo/adobe-marketo.html",
+    "title": "business.adobe.com (https://business.adobe.com/products/marketo/adobe-marketo.html)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "salesforce-marketing-cloud",
+    "url": "https://www.salesforce.com/marketing",
+    "title": "Marketing Software by Marketing Cloud | Salesforce (https://www.salesforce.com/marketing)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "activecampaign",
+    "url": "https://www.activecampaign.com",
+    "title": "Marketing automation for any business | ActiveCampaign (https://www.activecampaign.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "brevo",
+    "url": "https://www.brevo.com",
+    "title": "Brevo: Email & SMS Marketing, CRM & Automation Platform (https://www.brevo.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "klaviyo",
+    "url": "https://www.klaviyo.com",
+    "title": "Klaviyo: AI Email Marketing & SMS | B2C CRM (https://www.klaviyo.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "customer-io",
+    "url": "https://customer.io",
+    "title": "Customer.io: Customer Engagement Platform For Better Outcomes (https://customer.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "braze",
+    "url": "https://www.braze.com",
+    "title": "Braze Customer Engagement Platform (https://www.braze.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "iterable",
+    "url": "https://iterable.com",
+    "title": "AI Customer Engagement Platform for Real-Time, Personalized Experiences (https://iterable.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "moengage",
+    "url": "https://www.moengage.com",
+    "title": "MoEngage - Agentic Customer Engagement Platform (https://www.moengage.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "clevertap",
+    "url": "https://clevertap.com",
+    "title": "Supercharge Your Customer Lifetime Value with CleverTap: The Ultimate All-in-One Customer Engagement Platform (https://clevertap.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ortto",
+    "url": "https://ortto.com",
+    "title": "Ortto: Your customer data, marketing automation & analytics, together (https://ortto.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ahrefs",
+    "url": "https://ahrefs.com",
+    "title": "Ahrefs\u2014AI Marketing Platform Powered by Big Data (https://ahrefs.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "semrush",
+    "url": "https://www.semrush.com",
+    "title": "Semrush: Your Unfair Advantage for Growing Brand Visibility (https://www.semrush.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "moz",
+    "url": "https://moz.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "screaming-frog",
+    "url": "https://www.screamingfrog.co.uk/seo-spider",
+    "title": "Screaming Frog SEO Spider Website Crawler (https://www.screamingfrog.co.uk/seo-spider)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "se-ranking",
+    "url": "https://seranking.com",
+    "title": "SE Ranking \u2014 AI SEO Software That Gets Results (https://seranking.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "similarweb",
+    "url": "https://www.similarweb.com",
+    "title": "Similarweb: AI-Powered Digital Data Intelligence Solutions (https://www.similarweb.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "surfer",
+    "url": "https://surferseo.com",
+    "title": "Positive Surfer - AI Visibility Platform for maximum organic growth (https://surferseo.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "clearscope",
+    "url": "https://www.clearscope.io",
+    "title": "Clearscope | Get Discovered on Google & AI Search (https://www.clearscope.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "frase",
+    "url": "https://www.frase.io",
+    "title": "www.frase.io (https://www.frase.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mangools",
+    "url": "https://mangools.com",
+    "title": "Affordable & Easy-to-Use SEO Tools | Mangools (https://mangools.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sitebulb",
+    "url": "https://sitebulb.com",
+    "title": "Sitebulb Website Crawler for Better SEO Audits - Desktop & Cloud | Sitebulb (https://sitebulb.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "google-search-console",
+    "url": "https://search.google.com/search-console/about",
+    "title": "Google Search Console (https://search.google.com/search-console/about)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "buffer",
+    "url": "https://buffer.com",
+    "title": "Buffer: Social media management for everyone (https://buffer.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "hootsuite",
+    "url": "https://www.hootsuite.com",
+    "title": "Social Media Marketing and Management Tool | Hootsuite (https://www.hootsuite.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sprout-social",
+    "url": "https://sproutsocial.com",
+    "title": "Sprout Social: Social Media Management Tool (https://sproutsocial.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "later",
+    "url": "https://later.com",
+    "title": "Later: Influencer Marketing and Social Media Management (https://later.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "socialpilot",
+    "url": "https://www.socialpilot.co",
+    "title": "Social Media Management and Scheduling Tool | SocialPilot (https://www.socialpilot.co/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "metricool",
+    "url": "https://metricool.com",
+    "title": "METRICOOL \u25b7 Social Media Management Tool (https://metricool.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "planable",
+    "url": "https://planable.io",
+    "title": "Planable: collaboration-first social media management tool (https://planable.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "publer",
+    "url": "https://publer.com",
+    "title": "Powerful Social Media Management & Scheduling Tools | Publer (https://publer.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "agorapulse",
+    "url": "https://www.agorapulse.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sendible",
+    "url": "https://www.sendible.com",
+    "title": "Sendible: Social Media Management Tool with Unlimited Users (https://www.sendible.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "socialbee",
+    "url": "https://socialbee.com",
+    "title": "SocialBee | AI-Powered Social Media Management Tool (https://socialbee.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "brandwatch",
+    "url": "https://www.brandwatch.com",
+    "title": "Social Media Management & Consumer Intelligence | Brandwatch (https://www.brandwatch.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mailchimp",
+    "url": "https://mailchimp.com",
+    "title": "Die E-Mail-Marketing-Plattform, jetzt mit SMS | Mailchimp (https://mailchimp.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "kit",
+    "url": "https://kit.com",
+    "title": "Kit: The Platform for Creators - Email Marketing, Automation & Newsletters to Grow Your Business (https://kit.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mailerlite",
+    "url": "https://www.mailerlite.com",
+    "title": "Create Email Marketing Your Audience Will Love - MailerLite (https://www.mailerlite.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "getresponse",
+    "url": "https://www.getresponse.com",
+    "title": "Automation, Landing Pages and Email Marketing Platform (https://www.getresponse.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "constant-contact",
+    "url": "https://www.constantcontact.com",
+    "title": "Digital and Email Marketing Platform | Constant Contact (https://www.constantcontact.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "campaign-monitor",
+    "url": "https://www.campaignmonitor.com",
+    "title": "Campaign Monitor: Email Marketing Platform & Services (https://www.campaignmonitor.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "aweber",
+    "url": "https://www.aweber.com",
+    "title": "AWeber | Email Marketing & More for Small Businesses (https://www.aweber.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "drip",
+    "url": "https://www.drip.com",
+    "title": "Ecommerce Email Marketing & Automation | Drip (https://www.drip.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "omnisend",
+    "url": "https://www.omnisend.com",
+    "title": "Official Email Marketing Software for Ecommerce | Omnisend (https://www.omnisend.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "beehiiv",
+    "url": "https://www.beehiiv.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "substack",
+    "url": "https://substack.com",
+    "title": "Substack (https://substack.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "buttondown",
+    "url": "https://buttondown.com",
+    "title": "Buttondown \u2014 Newsletter software for people like you (https://buttondown.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "salesforce",
+    "url": "https://www.salesforce.com",
+    "title": "Salesforce: The #1 Agentic AI CRM (https://www.salesforce.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pipedrive",
+    "url": "https://www.pipedrive.com",
+    "title": "Sales CRM & Pipeline Management Software | Pipedrive (https://www.pipedrive.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "zoho-crm",
+    "url": "https://www.zoho.com/crm",
+    "title": "Zoho CRM | Built-in AI Agents (https://www.zoho.com/crm)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "freshsales",
+    "url": "https://www.freshworks.com/crm/sales",
+    "title": "Freshsales: Streamlined Sales CRM Solution | Freshworks (https://www.freshworks.com/crm/sales)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "close",
+    "url": "https://www.close.com",
+    "title": "Close CRM | The CRM That Does the Work (https://www.close.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "copper",
+    "url": "https://www.copper.com",
+    "title": "CRM Software Solutions Company for Service Businesses | Copper CRM (https://www.copper.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "attio",
+    "url": "https://attio.com",
+    "title": "Attio: The CRM for agentic revenue (https://attio.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "folk",
+    "url": "https://www.folk.app",
+    "title": "The AI CRM for your entire sales motion (https://www.folk.app/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "insightly",
+    "url": "https://www.insightly.com",
+    "title": "Insightly CRM: Modern, scalable Customer Relationship Management software platform (https://www.insightly.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "nutshell",
+    "url": "https://www.nutshell.com",
+    "title": "Powerful & Easy-to-Use CRM for Small Businesses | Nutshell (https://www.nutshell.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "capsule",
+    "url": "https://capsulecrm.com",
+    "title": "CRM Made Simple | Capsule CRM (https://capsulecrm.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "less-annoying-crm",
+    "url": "https://www.lessannoyingcrm.com",
+    "title": "Less Annoying CRM | Simple Contact Management for Small Businesses (https://www.lessannoyingcrm.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "apollo",
+    "url": "https://www.apollo.io",
+    "title": "The AI GTM System for Go-to-Market Teams | Apollo (https://www.apollo.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "zoominfo",
+    "url": "https://www.zoominfo.com",
+    "title": "ZoomInfo: The #1 GTM Platform - Sales AI for Lead Generation (https://www.zoominfo.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "clay",
+    "url": "https://www.clay.com",
+    "title": "Clay | Build systems to grow revenue (https://www.clay.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "outreach",
+    "url": "https://www.outreach.io",
+    "title": "Agentic AI Platform for Revenue Teams | Outreach (https://www.outreach.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "salesloft",
+    "url": "https://www.salesloft.com",
+    "title": "The Leading Predictive Revenue System (https://www.salesloft.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "gong",
+    "url": "https://www.gong.io",
+    "title": "Gong - Revenue AI OS (https://www.gong.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "chorus",
+    "url": "https://www.zoominfo.com/products/chorus",
+    "title": "Conversation Intelligence for Sales | ZoomInfo + Chorus (https://www.zoominfo.com/products/chorus)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "hunter",
+    "url": "https://hunter.io",
+    "title": "Find email addresses and send cold emails \u2022 Hunter (https://hunter.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "lemlist",
+    "url": "https://www.lemlist.com",
+    "title": "The only platform you need for outbound | lemlist (https://www.lemlist.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "instantly",
+    "url": "https://instantly.ai",
+    "title": "Sales Engagement and Lead Intelligence | Instantly (https://instantly.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "cognism",
+    "url": "https://www.cognism.com",
+    "title": "Your No. 1 Choice in Premium Sales Intelligence | Cognism (https://www.cognism.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "lusha",
+    "url": "https://www.lusha.com",
+    "title": "Lusha | B2B Data and AI Prospecting for GTM Teams and AI Agents (https://www.lusha.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "intercom",
+    "url": "https://www.intercom.com",
+    "title": "Intercom | A complete system for human and AI customer service (https://www.intercom.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "zendesk",
+    "url": "https://www.zendesk.com",
+    "title": "AI-Powered Customer Service Platform | Zendesk (https://www.zendesk.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "freshdesk",
+    "url": "https://www.freshworks.com/freshdesk",
+    "title": "AI-Powered Customer Service Software | Freshdesk | Freshworks (https://www.freshworks.com/freshdesk)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "help-scout",
+    "url": "https://www.helpscout.com",
+    "title": "Help Scout: The AI-driven support platform for customer-first brands (https://www.helpscout.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "front",
+    "url": "https://front.com",
+    "title": "Front | Customer service platform \u2014 powered by AI, designed for humans (https://front.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "crisp",
+    "url": "https://crisp.chat",
+    "title": "The AI Customer Support Platform for Every Business - Crisp (https://crisp.chat/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "tidio",
+    "url": "https://www.tidio.com",
+    "title": "AI Customer Service That Turns Chats Into Revenue | Tidio (https://www.tidio.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "gorgias",
+    "url": "https://www.gorgias.com",
+    "title": "The Conversational AI platform for Ecommerce | Gorgias (https://www.gorgias.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "livechat",
+    "url": "https://www.livechat.com",
+    "title": "LiveChat\u00ae - The Best AI Live Chat Software for Business | LiveChat.com (https://www.livechat.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "gladly",
+    "url": "https://www.gladly.com",
+    "title": "Agentic commerce platform built for top brands | Gladly (https://www.gladly.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "dixa",
+    "url": "https://www.dixa.com",
+    "title": "The Agentic CS Platform Behind Exceptional Ecommerce Brands | Dixa (https://www.dixa.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "chatwoot",
+    "url": "https://www.chatwoot.com",
+    "title": "Chatwoot: AI-Powered, Open-Source Customer Support Platform (https://www.chatwoot.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "google-analytics",
+    "url": "https://marketingplatform.google.com/about/analytics",
+    "title": "Analytics Tools & Solutions for Your Business - Google Analytics (https://marketingplatform.google.com/about/analytics)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mixpanel",
+    "url": "https://mixpanel.com",
+    "title": "Product Intelligence Platform for the AI Era | Mixpanel (https://mixpanel.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "amplitude",
+    "url": "https://amplitude.com",
+    "title": "Amplitude | A new era for product teams (https://amplitude.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "posthog",
+    "url": "https://posthog.com",
+    "title": "PostHog - your product\u2019s context layer (https://posthog.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "plausible",
+    "url": "https://plausible.io",
+    "title": "Plausible Analytics | Simple, privacy-friendly Google Analytics alternative (https://plausible.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "fathom",
+    "url": "https://usefathom.com",
+    "title": "Fathom Analytics: Privacy-First Google Analytics Alternative (https://usefathom.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "matomo",
+    "url": "https://matomo.org",
+    "title": "Privacy-first analytics you can trust - Analytics Platform - Matomo (https://matomo.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "heap",
+    "url": "https://www.heap.io",
+    "title": "Heap - Better Insights. Faster. | Heap (https://www.heap.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "hotjar",
+    "url": "https://www.hotjar.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "microsoft-clarity",
+    "url": "https://clarity.microsoft.com",
+    "title": "Microsoft Clarity - Free Heatmaps & Session Recordings (https://clarity.microsoft.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "fullstory",
+    "url": "https://www.fullstory.com",
+    "title": "Fullstory | The Intelligent Digital Experience Company (https://www.fullstory.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "smartlook",
+    "url": "https://www.smartlook.com",
+    "title": "The Future of Smartlook | Smartlook (https://www.smartlook.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "github",
+    "url": "https://github.com",
+    "title": "GitHub \u00b7 Change is constant. GitHub keeps you ahead. \u00b7 GitHub (https://github.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "gitlab",
+    "url": "https://about.gitlab.com",
+    "title": "GitLab - Speed with control for agentic software engineering (https://about.gitlab.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "bitbucket",
+    "url": "https://bitbucket.org",
+    "title": "Bitbucket | Git solution for teams using Jira (https://bitbucket.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "visual-studio-code",
+    "url": "https://code.visualstudio.com",
+    "title": "Visual Studio Code - The open source AI code editor | Your home for multi-agent development (https://code.visualstudio.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "jetbrains",
+    "url": "https://www.jetbrains.com",
+    "title": "JetBrains: Essential tools for software developers and teams (https://www.jetbrains.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "postman",
+    "url": "https://www.postman.com",
+    "title": "API engineering for your agents (https://www.postman.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "insomnia",
+    "url": "https://insomnia.rest",
+    "title": "The Collaborative API Development Platform - Insomnia (https://insomnia.rest/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "docker",
+    "url": "https://www.docker.com",
+    "title": "Docker | Secure Sandboxes for AI Agents (https://www.docker.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "stackblitz",
+    "url": "https://stackblitz.com",
+    "title": "StackBlitz | Instant Dev Environments | Click. Code. Done. (https://stackblitz.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "codesandbox",
+    "url": "https://codesandbox.io",
+    "title": "CodeSandbox: Instant Cloud Development Environments (https://codesandbox.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "gitpod",
+    "url": "https://www.gitpod.io",
+    "title": "Ona \u00b7 Run background agents (https://www.gitpod.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "zed",
+    "url": "https://zed.dev",
+    "title": "Zed \u2014 Your last next editor (https://zed.dev/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "amazon-web-services",
+    "url": "https://aws.amazon.com",
+    "title": "Cloud Computing Services - Amazon Web Services (AWS) (https://aws.amazon.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "google-cloud",
+    "url": "https://cloud.google.com",
+    "title": "AI and Cloud Computing Services | Google Cloud (https://cloud.google.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "microsoft-azure",
+    "url": "https://azure.microsoft.com",
+    "title": "Cloud Computing Services | Microsoft Azure (https://azure.microsoft.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "digitalocean",
+    "url": "https://www.digitalocean.com",
+    "title": "AI-Native Cloud | DigitalOcean (https://www.digitalocean.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "vultr",
+    "url": "https://www.vultr.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "linode",
+    "url": "https://www.linode.com",
+    "title": "The World's Most Distributed Cloud Computing Platform | Akamai (https://www.linode.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ovhcloud",
+    "url": "https://www.ovhcloud.com",
+    "title": "Cloud Computing e hosting web | OVHcloud Italia (https://www.ovhcloud.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "hetzner",
+    "url": "https://www.hetzner.com",
+    "title": "G\u00fcnstige Dedicated Server, Cloud & Hosting aus Deutschland (https://www.hetzner.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "oracle-cloud",
+    "url": "https://www.oracle.com/cloud",
+    "title": "Cloud Infrastructure | Oracle (https://www.oracle.com/cloud)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ibm-cloud",
+    "url": "https://www.ibm.com/cloud",
+    "title": "IBM Cloud products (https://www.ibm.com/cloud)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "cloudflare",
+    "url": "https://www.cloudflare.com",
+    "title": "Cloudflare: Build for the agent era (https://www.cloudflare.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "scaleway",
+    "url": "https://www.scaleway.com",
+    "title": "European Cloud & AI. | Scaleway (https://www.scaleway.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "supabase",
+    "url": "https://supabase.com",
+    "title": "Supabase | The Postgres Development Platform (https://supabase.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "neon",
+    "url": "https://neon.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "planetscale",
+    "url": "https://planetscale.com",
+    "title": "PlanetScale - the world\u2019s fastest and most scalable cloud hosting for Vitess, Neki, and Postgres (https://planetscale.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mongodb",
+    "url": "https://www.mongodb.com",
+    "title": "MongoDB | The Intelligent Data Platform for the AI Era | MongoDB (https://www.mongodb.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "redis",
+    "url": "https://redis.io",
+    "title": "Redis - Real-time data for agents & apps (https://redis.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "firebase",
+    "url": "https://firebase.google.com",
+    "title": "Firebase | Google's Mobile and Web App Development Platform (https://firebase.google.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "snowflake",
+    "url": "https://www.snowflake.com",
+    "title": "Die Snowflake AI Data Cloud | Snowflake DE (https://www.snowflake.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "databricks",
+    "url": "https://www.databricks.com",
+    "title": "Databricks: Leading Data and AI Platform for Enterprises (https://www.databricks.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "clickhouse",
+    "url": "https://clickhouse.com",
+    "title": "Fast Open-Source OLAP DBMS | ClickHouse (https://clickhouse.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "duckdb",
+    "url": "https://duckdb.org",
+    "title": "An analytical SQL database management system \u2013 DuckDB (https://duckdb.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "cockroachdb",
+    "url": "https://www.cockroachlabs.com",
+    "title": "Cockroach Labs | Continuum built on CockroachDB the agentic distributed cloud database estate (https://www.cockroachlabs.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "turso",
+    "url": "https://turso.tech",
+    "title": "Turso - Millions of Databases. One Architecture. (https://turso.tech/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "vercel",
+    "url": "https://vercel.com",
+    "title": "Agentic Infrastructure - Vercel (https://vercel.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "netlify",
+    "url": "https://www.netlify.com",
+    "title": "Push your ideas to the web | Netlify (https://www.netlify.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "render",
+    "url": "https://render.com",
+    "title": "Render | The cloud for builders (https://render.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "railway",
+    "url": "https://railway.com",
+    "title": "Railway | The all-in-one intelligent cloud provider (https://railway.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "fly-io",
+    "url": "https://fly.io",
+    "title": "Fly.io | Computers for agents (https://fly.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "heroku",
+    "url": "https://www.heroku.com",
+    "title": "Heroku | The Cloud Application Platform For Developers (https://www.heroku.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "circleci",
+    "url": "https://circleci.com",
+    "title": "Autonomous validation for the AI era - CircleCI (https://circleci.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "jenkins",
+    "url": "https://www.jenkins.io",
+    "title": "Jenkins (https://www.jenkins.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "buildkite",
+    "url": "https://buildkite.com",
+    "title": "You deserve better CI | Buildkite (https://buildkite.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pulumi",
+    "url": "https://www.pulumi.com",
+    "title": "The infrastructure as code platform for the AI era \u2013 Pulumi (https://www.pulumi.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "terraform",
+    "url": "https://www.hashicorp.com/products/terraform",
+    "title": "HashiCorp Terraform | Infrastructure as code provisioning (https://www.hashicorp.com/products/terraform)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ansible",
+    "url": "https://www.ansible.com",
+    "title": "Ansible Collaborative (https://www.ansible.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "crowdstrike",
+    "url": "https://www.crowdstrike.com",
+    "title": "CrowdStrike: We Stop Breaches with AI-native Cybersecurity (https://www.crowdstrike.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sentinelone",
+    "url": "https://www.sentinelone.com",
+    "title": "SentinelOne | AI-Powered Enterprise Cybersecurity Platform (https://www.sentinelone.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "snyk",
+    "url": "https://snyk.io",
+    "title": "Snyk AI Security Platform | Secure Code, Agents & Apps | Snyk (https://snyk.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "wiz",
+    "url": "https://www.wiz.io",
+    "title": "Wiz: AI Cybersecurity for All Your Cloud and AI Applications (https://www.wiz.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "tenable",
+    "url": "https://www.tenable.com",
+    "title": "Vulnerability and exposure management | Cloud and AI security | Tenable\u00ae (https://www.tenable.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "qualys",
+    "url": "https://www.qualys.com",
+    "title": "Enterprise Cyber Risk and Security Platform | Qualys (https://www.qualys.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "cloudflare-zero-trust",
+    "url": "https://www.cloudflare.com/zero-trust",
+    "title": "Cloudflare One | The agile SASE platform | Cloudflare (https://www.cloudflare.com/zero-trust)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "tailscale",
+    "url": "https://tailscale.com",
+    "title": "Tailscale | Secure Connectivity for AI, IoT & Multi-Cloud (https://tailscale.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "twingate",
+    "url": "https://www.twingate.com",
+    "title": "Twingate:\u00a0It's time to ditch your VPN (https://www.twingate.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "proton-vpn",
+    "url": "https://protonvpn.com",
+    "title": "The best VPN for speed and security (https://protonvpn.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mullvad",
+    "url": "https://mullvad.net",
+    "title": "Mullvad VPN - Privacy is for the people (https://mullvad.net/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "nordvpn",
+    "url": "https://nordvpn.com",
+    "title": "The best VPN service online for free, open internet | NordVPN (https://nordvpn.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "1password",
+    "url": "https://1password.com",
+    "title": "Password Manager, Secrets, and Access Management | 1Password (https://1password.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "bitwarden",
+    "url": "https://bitwarden.com",
+    "title": "Best Password Manager for Business, Enterprise & Personal | Bitwarden | Bitwarden (https://bitwarden.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "dashlane",
+    "url": "https://www.dashlane.com",
+    "title": "Dashlane: Password management & credential security platform (https://www.dashlane.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "keeper",
+    "url": "https://www.keepersecurity.com",
+    "title": "Keeper Security | Identity Security for Humans, Machines and AI Agents (https://www.keepersecurity.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "proton-pass",
+    "url": "https://proton.me/pass",
+    "title": "Proton Pass: Free password manager with identity protection | Proton (https://proton.me/pass)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "nordpass",
+    "url": "https://nordpass.com",
+    "title": "Securely Store, Manage & Autofill Passwords | NordPass (https://nordpass.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "keepass",
+    "url": "https://keepass.info",
+    "title": "KeePass Password Safe (https://keepass.info/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "keepassxc",
+    "url": "https://keepassxc.org",
+    "title": "KeePassXC Password Manager (https://keepassxc.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "okta",
+    "url": "https://www.okta.com",
+    "title": "Secure Identity for Employees, Customers, and AI | Okta (https://www.okta.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "auth0",
+    "url": "https://auth0.com",
+    "title": "Secure AI Agent & User Authentication | Auth0 (https://auth0.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "clerk",
+    "url": "https://clerk.com",
+    "title": "Clerk | Authentication and User Management (https://clerk.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "keycloak",
+    "url": "https://www.keycloak.org",
+    "title": "Keycloak (https://www.keycloak.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "bubble",
+    "url": "https://bubble.io",
+    "title": "Bubble: Build web & mobile apps with the only no-code AI app builder (https://bubble.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "glide",
+    "url": "https://www.glideapps.com",
+    "title": "AI app builder for internal business apps | Glide (https://www.glideapps.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "softr",
+    "url": "https://www.softr.io",
+    "title": "Build Secure Custom Portals and Internal Tools | Softr (https://www.softr.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "retool",
+    "url": "https://retool.com",
+    "title": "Build internal software better, with AI. | Retool (https://retool.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "appsmith",
+    "url": "https://www.appsmith.com",
+    "title": "Appsmith | Open-Source Low-Code Application Platform (https://www.appsmith.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "budibase",
+    "url": "https://budibase.com",
+    "title": "Budibase | Agents, Workflows & Internal Tools Made Easy (https://budibase.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "appsheet",
+    "url": "https://about.appsheet.com",
+    "title": "Google AppSheet | Build apps with no code (https://about.appsheet.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "flutterflow",
+    "url": "https://www.flutterflow.io",
+    "title": "FlutterFlow - Build Beautiful, Modern Apps (https://www.flutterflow.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "adalo",
+    "url": "https://www.adalo.com",
+    "title": "Adalo | No-Code App Builder with AI & Visual Canvas (https://www.adalo.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "weweb",
+    "url": "https://www.weweb.io",
+    "title": "WeWeb |\u00a0The AI app builder your IT team will approve (https://www.weweb.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "lovable",
+    "url": "https://lovable.dev",
+    "title": "App & Website Builder | Build Software in Minutes | Lovable (https://lovable.dev/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "bolt",
+    "url": "https://bolt.new",
+    "title": "Bolt AI builder: Websites, apps & prototypes (https://bolt.new/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "typeform",
+    "url": "https://www.typeform.com",
+    "title": "Form Builder with AI Automation | Typeform (https://www.typeform.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "tally",
+    "url": "https://tally.so",
+    "title": "Tally - Create Beautiful Forms for Free | Unlimited Forms & Submissions (https://tally.so/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "jotform",
+    "url": "https://www.jotform.com",
+    "title": "Jotform: Free Online Form Builder | Create Forms in Seconds (https://www.jotform.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "google-forms",
+    "url": "https://www.google.com/forms/about",
+    "title": "Google Forms: Online Form Builder | Google Workspace (https://www.google.com/forms/about)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "fillout",
+    "url": "https://www.fillout.com",
+    "title": "Fillout | Forms that do it all (https://www.fillout.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "paperform",
+    "url": "https://paperform.co",
+    "title": "Free Online Form Builder & Form Creator for SMBs in 2026 | Paperform (https://paperform.co/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "formstack",
+    "url": "https://www.formstack.com",
+    "title": "Secure and Easy-to-use Forms, Docs & eSignatures | Formstack (https://www.formstack.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "wufoo",
+    "url": "https://www.wufoo.com",
+    "title": "Online Form Builder with Cloud Storage Database | Wufoo (https://www.wufoo.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "cognito-forms",
+    "url": "https://www.cognitoforms.com",
+    "title": "Free Online Form Builder With Workflow Automation (https://www.cognitoforms.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "formbricks",
+    "url": "https://formbricks.com",
+    "title": "The Open Source Experience Data Hub (https://formbricks.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "feathery",
+    "url": "https://www.feathery.io",
+    "title": "Feathery | AI Operating & Decisioning Platform for Financial Services (https://www.feathery.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "zoho-forms",
+    "url": "https://www.zoho.com/forms",
+    "title": "Free Form Builder | Create Online Forms For Free (https://www.zoho.com/forms)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "otter",
+    "url": "https://otter.ai",
+    "title": "Otter Meeting Agent - AI Notetaker, Transcription, Insights (https://otter.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "fireflies",
+    "url": "https://fireflies.ai",
+    "title": "Fireflies.ai | #1 AI Teammate for Meetings, Email, Chat & CRM (https://fireflies.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "fathom-ai",
+    "url": "https://fathom.video",
+    "title": "Fathom AI Notetaker - Never Take Notes Again (https://fathom.video/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "granola",
+    "url": "https://www.granola.ai",
+    "title": "www.granola.ai (https://www.granola.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "tl-dv",
+    "url": "https://tldv.io",
+    "title": "tl;dv - AI Meeting Notetaker for Zoom, Google Meet & Teams (https://tldv.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "avoma",
+    "url": "https://www.avoma.com",
+    "title": "Avoma \u2014 AI Platform for Note-taking, Scheduling & Coaching (https://www.avoma.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sembly",
+    "url": "https://www.sembly.ai",
+    "title": "Agentic AI for Professional Services | Sembly AI (https://www.sembly.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "read-ai",
+    "url": "https://www.read.ai",
+    "title": "Meeting Summaries, Transcripts, AI Notetaker & Enterprise Search | read.ai (https://www.read.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "fellow",
+    "url": "https://fellow.ai",
+    "title": "Secure AI Meeting Assistant for Enterprise and Regulated Teams | Fellow (https://fellow.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "supernormal",
+    "url": "https://www.supernormal.com",
+    "title": "AI agent for agencies | Client work in a flash (https://www.supernormal.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "meetgeek",
+    "url": "https://meetgeek.ai",
+    "title": "MeetGeek | AI Meeting Notetaker & Automation Platform (https://meetgeek.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "jamie",
+    "url": "https://www.meetjamie.ai",
+    "title": "Jamie - The Meeting Intelligence Platform You Can Trust (https://www.meetjamie.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "confluence",
+    "url": "https://www.atlassian.com/software/confluence",
+    "title": "Confluence | AI Workspace for Knowledge & Collaboration (https://www.atlassian.com/software/confluence)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "slite",
+    "url": "https://slite.com",
+    "title": "Slite | Self-maintaining AI knowledge base (https://slite.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "slab",
+    "url": "https://slab.com",
+    "title": "Slab - Knowledge Base & Wiki Software (https://slab.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "guru",
+    "url": "https://www.getguru.com",
+    "title": "The Governed Knowledge Layer for Enterprise AI (https://www.getguru.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "nuclino",
+    "url": "https://www.nuclino.com",
+    "title": "Nuclino | Your team\u2019s collective brain (https://www.nuclino.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "gitbook",
+    "url": "https://www.gitbook.com",
+    "title": "The knowledge layer for AI | GitBook (https://www.gitbook.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "document360",
+    "url": "https://document360.com",
+    "title": "Build Intelligent Documentation with AI Knowledge Base Software (https://document360.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "readme",
+    "url": "https://readme.com",
+    "title": "ReadMe \u00b7 Developer-friendly API documentation (https://readme.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "docusaurus",
+    "url": "https://docusaurus.io",
+    "title": "Build optimized websites quickly, focus on your content | Docusaurus (https://docusaurus.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mintlify",
+    "url": "https://www.mintlify.com",
+    "title": "Mintlify - The documentation platform for agents (https://www.mintlify.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "bookstack",
+    "url": "https://www.bookstackapp.com",
+    "title": "BookStack (https://www.bookstackapp.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "outline",
+    "url": "https://www.getoutline.com",
+    "title": "Outline \u2013\u00a0Team knowledge base & wiki (https://www.getoutline.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "google-drive",
+    "url": "https://workspace.google.com/products/drive",
+    "title": "Google Drive: Share Files Online with Secure Cloud Storage | Google Workspace (https://workspace.google.com/products/drive)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "dropbox",
+    "url": "https://www.dropbox.com",
+    "title": "Dropbox: Secure cloud storage, file sharing, and more (https://www.dropbox.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "box",
+    "url": "https://www.box.com",
+    "title": "Box | AI-Powered Content Management, Workflow & Collaboration (https://www.box.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "microsoft-onedrive",
+    "url": "https://www.microsoft.com/microsoft-365/onedrive/online-cloud-storage",
+    "title": "Personal File Sharing & Cloud Storage | Microsoft OneDrive (https://www.microsoft.com/microsoft-365/onedrive/online-cloud-storage)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "proton-drive",
+    "url": "https://proton.me/drive",
+    "title": "Proton Drive: Free secure cloud storage | Proton (https://proton.me/drive)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pcloud",
+    "url": "https://www.pcloud.com",
+    "title": "pCloud - Secure Cloud Storage for Files, Photos & Documents (https://www.pcloud.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mega",
+    "url": "https://mega.io",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sync-com",
+    "url": "https://www.sync.com",
+    "title": "Secure Cloud Storage & Internet Storage Services | Sync (https://www.sync.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "tresorit",
+    "url": "https://tresorit.com",
+    "title": "End-to-End Encrypted Cloud Storage for Businesses | Tresorit (https://tresorit.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "nextcloud",
+    "url": "https://nextcloud.com",
+    "title": "Nextcloud - Open source content collaboration platform (https://nextcloud.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "seafile",
+    "url": "https://www.seafile.com",
+    "title": "Seafile - Open Source File Sync and Share Software (https://www.seafile.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "wetransfer",
+    "url": "https://wetransfer.com",
+    "title": "WeTransfer | Send Large Files Fast (https://wetransfer.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "calendly",
+    "url": "https://calendly.com",
+    "title": "Meeting Scheduling Software and AI Meeting Tools | Calendly (https://calendly.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "cal-com",
+    "url": "https://cal.com",
+    "title": "Cal.com | Scheduling Software for Online Bookings (https://cal.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "savvycal",
+    "url": "https://savvycal.com",
+    "title": "Scheduling Software Everyone Will Love \u00b7 SavvyCal (https://savvycal.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "acuity-scheduling",
+    "url": "https://acuityscheduling.com",
+    "title": "Acuity Scheduling: Online Booking & Appointment Scheduling Software (https://acuityscheduling.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "youcanbookme",
+    "url": "https://youcanbook.me",
+    "title": "Free Online Scheduling Tool - YouCanBookMe (https://youcanbook.me/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "doodle",
+    "url": "https://doodle.com",
+    "title": "Free online meeting scheduling tool | Doodle (https://doodle.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "reclaim",
+    "url": "https://reclaim.ai",
+    "title": "Reclaim \u2013 AI Calendar for Work & Life (https://reclaim.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "motion",
+    "url": "https://www.usemotion.com",
+    "title": "The AI Powered SuperApp for Work | Motion (https://www.usemotion.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sunsama",
+    "url": "https://www.sunsama.com",
+    "title": "Sunsama - Make work-life balance a reality. (https://www.sunsama.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "akiflow",
+    "url": "https://akiflow.com",
+    "title": "Akiflow | Time-Blocking Digital Planner & Calendar (https://akiflow.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "cronofy",
+    "url": "https://www.cronofy.com",
+    "title": "See, schedule and transcribe every conversation inside your product | Cronofy Scheduling (https://www.cronofy.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "toggl-track",
+    "url": "https://toggl.com/track",
+    "title": "Toggl: Time Tracking Software & Capacity Planning Tool (https://toggl.com/track)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "clockify",
+    "url": "https://clockify.me",
+    "title": "Clockify\u2122 - Time Tracking Software (https://clockify.me/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "harvest",
+    "url": "https://www.getharvest.com",
+    "title": "Time Tracking Software With Invoicing | Harvest (https://www.getharvest.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "timely",
+    "url": "https://timelyapp.com",
+    "title": "Timely, automatic time tracking for consultancies, agencies and SaaS businesses (https://timelyapp.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "rescuetime",
+    "url": "https://www.rescuetime.com",
+    "title": "Take Control of Your Time: Automatic time tracking with RescueTime! (https://www.rescuetime.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "trackingtime",
+    "url": "https://trackingtime.co",
+    "title": "Time Tracking, Retainers & Billing for Agencies | TrackingTime (https://trackingtime.co/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "everhour",
+    "url": "https://everhour.com",
+    "title": "Time Tracking with Billing & Budget Management | Everhour (https://everhour.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "hubstaff",
+    "url": "https://hubstaff.com",
+    "title": "Time Tracking Software with Productivity Insights | Hubstaff (https://hubstaff.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "time-doctor",
+    "url": "https://www.timedoctor.com",
+    "title": "Time Doctor Workforce Visibility for Distributed Teams (https://www.timedoctor.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "float",
+    "url": "https://www.float.com",
+    "title": "Float.com Resource Management Software, Scheduling & Planning (https://www.float.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "runn",
+    "url": "https://www.runn.io",
+    "title": "Runn | Resource management and capacity planning software (https://www.runn.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "resource-guru",
+    "url": "https://resourceguruapp.com",
+    "title": "Resource Guru | Resource management & scheduling software (https://resourceguruapp.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ramp",
+    "url": "https://ramp.com",
+    "title": "Spend Management, Corporate Cards & Accounts Payable Solutions | Ramp (https://ramp.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "brex",
+    "url": "https://www.brex.com",
+    "title": "Brex: The Modern Finance Software Platform | Spend Smarter (https://www.brex.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mercury",
+    "url": "https://mercury.com",
+    "title": "Online Business Banking For Startups, Small Businesses & Scaling Companies (https://mercury.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "airwallex",
+    "url": "https://www.airwallex.com",
+    "title": "Airwallex EU: Trusted Global Payments & Financial Platform (https://www.airwallex.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "wise-business",
+    "url": "https://wise.com/business",
+    "title": "Wise Business: Grow with the international business account (https://wise.com/business)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "revolut-business",
+    "url": "https://www.revolut.com/business",
+    "title": "Business Account | Manage Your Finances | Revolut Business (https://www.revolut.com/business)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pleo",
+    "url": "https://www.pleo.io",
+    "title": "Smarter spending for your business - Pleo (https://www.pleo.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "spendesk",
+    "url": "https://www.spendesk.com",
+    "title": "Spend Smarter, Work Better | Spendesk Spend Management Platform (https://www.spendesk.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "expensify",
+    "url": "https://www.expensify.com",
+    "title": "Spend Management Software for Receipts & Expenses | Expensify (https://www.expensify.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "navan",
+    "url": "https://navan.com",
+    "title": "Navan: The #1 Corporate Travel Management Platform (https://navan.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "bill",
+    "url": "https://www.bill.com",
+    "title": "BILL | Financial Operations Platform for Businesses & Firms (https://www.bill.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "tipalti",
+    "url": "https://tipalti.com",
+    "title": "Tipalti | Finance Automation Software for Modern Finance (https://tipalti.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "quickbooks",
+    "url": "https://quickbooks.intuit.com",
+    "title": "QuickBooks\u00ae: Official Site | Smart Tools. Better Business. (https://quickbooks.intuit.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "xero",
+    "url": "https://www.xero.com",
+    "title": "Accounting Software for Small Businesses | Xero US (https://www.xero.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "freshbooks",
+    "url": "https://www.freshbooks.com",
+    "title": "Invoice and Accounting Software for Small Businesses - FreshBooks (https://www.freshbooks.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "wave",
+    "url": "https://www.waveapps.com",
+    "title": "Wave: Small Business Software - Wave Financial (https://www.waveapps.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "zoho-books",
+    "url": "https://www.zoho.com/books",
+    "title": "Best Online Accounting Software for Small Businesses | Zoho Books (https://www.zoho.com/books)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sage",
+    "url": "https://www.sage.com",
+    "title": "Sage Business Management Software and Solutions (https://www.sage.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "freeagent",
+    "url": "https://www.freeagent.com",
+    "title": "Accounting software for every small business - FreeAgent (https://www.freeagent.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "kashoo",
+    "url": "https://kashoo.com",
+    "title": "Kashoo (https://kashoo.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "akaunting",
+    "url": "https://akaunting.com",
+    "title": "Free Accounting Software for Small Businesses - Akaunting (https://akaunting.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "invoice-ninja",
+    "url": "https://invoiceninja.com",
+    "title": "Free Invoicing Software for Small Business - Invoice Ninja (https://invoiceninja.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "invoiceplane",
+    "url": "https://invoiceplane.com",
+    "title": "InvoicePlane - An Open Source Invoicing Application - InvoicePlane - An Open Source Invoicing Application (https://invoiceplane.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "zoho-invoice",
+    "url": "https://www.zoho.com/invoice",
+    "title": "Free tax invoice software for small businesses | Zoho Invoice (https://www.zoho.com/invoice)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "stripe",
+    "url": "https://stripe.com",
+    "title": "Stripe | Financial Infrastructure to Grow Your Revenue (https://stripe.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "paypal",
+    "url": "https://www.paypal.com",
+    "title": "Pay, Send and Save Money with PayPal | PayPal US (https://www.paypal.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "square",
+    "url": "https://squareup.com",
+    "title": "Power your entire business | Square (https://squareup.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "adyen",
+    "url": "https://www.adyen.com",
+    "title": "Adyen: Fintech platform for enterprises - Adyen (https://www.adyen.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "paddle",
+    "url": "https://www.paddle.com",
+    "title": "Paddle - Subscriptions, Payments & Tax Compliance for SaaS & Mobile Apps (https://www.paddle.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "chargebee",
+    "url": "https://www.chargebee.com",
+    "title": "Chargebee: Billing & Monetization for SaaS and AI Companies (https://www.chargebee.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "recurly",
+    "url": "https://recurly.com",
+    "title": "Subscription Management Software & Recurring Billing Platform | Recurly (https://recurly.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "razorpay",
+    "url": "https://razorpay.com",
+    "title": "Razorpay - Best Payment Solution for Online Payments India (https://razorpay.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "cashfree",
+    "url": "https://www.cashfree.com",
+    "title": "Cashfree Payments - Complete Payment and Banking Platform for India (https://www.cashfree.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mollie",
+    "url": "https://www.mollie.com",
+    "title": "Mollie \u2013 the platform for online and in-person payments (https://www.mollie.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "gocardless",
+    "url": "https://gocardless.com",
+    "title": "Online Payment Processing Solution | GoCardless (https://gocardless.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "lemon-squeezy",
+    "url": "https://www.lemonsqueezy.com",
+    "title": "Payments, tax & subscriptions for software companies \u2022 Lemon Squeezy (https://www.lemonsqueezy.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "shopify",
+    "url": "https://www.shopify.com",
+    "title": "Shopify: The All-in-One Commerce Platform for Businesses - Shopify (https://www.shopify.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "woocommerce",
+    "url": "https://woocommerce.com",
+    "title": "WooCommerce (https://woocommerce.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "bigcommerce",
+    "url": "https://www.bigcommerce.com",
+    "title": "Commerce built for momentum. | BigCommerce (https://www.bigcommerce.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "adobe-commerce",
+    "url": "https://business.adobe.com/products/magento/magento-commerce.html",
+    "title": "business.adobe.com (https://business.adobe.com/products/magento/magento-commerce.html)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "prestashop",
+    "url": "https://prestashop.com",
+    "title": "Create an online shop easily - Ecommerce | PrestaShop (https://prestashop.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "opencart",
+    "url": "https://www.opencart.com",
+    "title": "OpenCart - Open Source Shopping Cart Solution (https://www.opencart.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "medusa",
+    "url": "https://medusajs.com",
+    "title": "Medusa - Open-Source Agentic Commerce (https://medusajs.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "saleor",
+    "url": "https://saleor.io",
+    "title": "Saleor - Composable, Open Source, Headless Ecommerce Platform (https://saleor.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "shopware",
+    "url": "https://www.shopware.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ecwid",
+    "url": "https://www.ecwid.com",
+    "title": "#1 Ecommerce Shopping Cart & Online Store - Try Ecwid! (https://www.ecwid.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "gumroad",
+    "url": "https://gumroad.com",
+    "title": "Earn your first dollar online with Gumroad (https://gumroad.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "vendure",
+    "url": "https://www.vendure.io",
+    "title": "B2B ecommerce platform for complex commerce | Vendure (https://www.vendure.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "bamboohr",
+    "url": "https://www.bamboohr.com",
+    "title": "BambooHR: The Complete HR Software for People, Payroll & Benefits (https://www.bamboohr.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "rippling",
+    "url": "https://www.rippling.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "deel",
+    "url": "https://www.deel.com",
+    "title": "Deel | Global Payroll, Compliance, HR Solutions | HRIS (https://www.deel.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "remote",
+    "url": "https://remote.com",
+    "title": "Global Employment Infrastructure | EOR, Payroll & Compliance, Worldwide | Remote (https://remote.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "gusto",
+    "url": "https://gusto.com",
+    "title": "Gusto | Online HR Services: Payroll, Benefits and everything else (https://gusto.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "personio",
+    "url": "https://www.personio.com",
+    "title": "Championing every side of HR's evolution | Personio (https://www.personio.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "hibob",
+    "url": "https://www.hibob.com",
+    "title": "All-in-one HR software for people, payroll & finance | HiBob (https://www.hibob.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "workday",
+    "url": "https://www.workday.com",
+    "title": "The Enterprise AI Platform for HR, Finance, and IT | Workday (https://www.workday.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "adp",
+    "url": "https://www.adp.com",
+    "title": "Payroll, HR and Tax Services | ADP Official Site (https://www.adp.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "paylocity",
+    "url": "https://www.paylocity.com",
+    "title": "Unify HR, Finance, & IT | HR & Payroll Simplified | Paylocity (https://www.paylocity.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "lattice",
+    "url": "https://lattice.com",
+    "title": "Lattice |\u00a0The HR platform that people love (https://lattice.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "culture-amp",
+    "url": "https://www.cultureamp.com",
+    "title": "The market-leading employee experience platform | Culture Amp (https://www.cultureamp.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "greenhouse",
+    "url": "https://www.greenhouse.com",
+    "title": "Greenhouse | Applicant tracking software & hiring platform (https://www.greenhouse.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "lever",
+    "url": "https://www.lever.co",
+    "title": "Lever | Modern Recruiting Software & ATS (https://www.lever.co/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ashby",
+    "url": "https://www.ashbyhq.com",
+    "title": "All-in-one Recruiting Software for Ambitious Teams | Ashby (https://www.ashbyhq.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "workable",
+    "url": "https://www.workable.com",
+    "title": "Workable | All-in-one HR software (https://www.workable.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "smartrecruiters",
+    "url": "https://www.smartrecruiters.com",
+    "title": "Talent Acquisition and Hiring Platform - AI-Powered (https://www.smartrecruiters.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "breezy-hr",
+    "url": "https://breezy.hr",
+    "title": "Modern Hiring Software & Applicant Tracking System | Breezy HR (https://breezy.hr/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "recruitee",
+    "url": "https://recruitee.com",
+    "title": "Customizable ATS & hiring software | Tellent Recruitee (https://recruitee.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "jazzhr",
+    "url": "https://www.jazzhr.com",
+    "title": "JazzHR | Easy-to-Use Recruiting Software for Small Business (https://www.jazzhr.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "teamtailor",
+    "url": "https://www.teamtailor.com",
+    "title": "Teamtailor \u2122 - Next Generation ATS & Employer Branding (https://www.teamtailor.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "testgorilla",
+    "url": "https://www.testgorilla.com",
+    "title": "TestGorilla: AI-Powered Talent Sourcing & Skills Assessments (https://www.testgorilla.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "hackerrank",
+    "url": "https://www.hackerrank.com",
+    "title": "HackerRank - Online Coding Tests and Technical Interviews (https://www.hackerrank.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "codility",
+    "url": "https://www.codility.com",
+    "title": "Codility: Online Coding Tests & Technical Interviews (https://www.codility.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "docusign",
+    "url": "https://www.docusign.com",
+    "title": "Docusign | #1 in Electronic Signature and Intelligent Agreement Management (https://www.docusign.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "dropbox-sign",
+    "url": "https://sign.dropbox.com",
+    "title": "Dropbox Sign eSignature Agreements \u2014 Work Smarter (https://sign.dropbox.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "adobe-acrobat-sign",
+    "url": "https://www.adobe.com/sign.html",
+    "title": "e-Sign software: Electronic and digital signatures | Adobe Acrobat for business (https://www.adobe.com/sign.html)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pandadoc",
+    "url": "https://www.pandadoc.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "juro",
+    "url": "https://juro.com",
+    "title": "Juro | Intelligent contracting (https://juro.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ironclad",
+    "url": "https://ironcladapp.com",
+    "title": "Ironclad: AI Contract Lifecycle Management Software (https://ironcladapp.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "icertis",
+    "url": "https://www.icertis.com",
+    "title": "Icertis: AI-Native Contract Management Software | Icertis (https://www.icertis.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "onetrust",
+    "url": "https://www.onetrust.com",
+    "title": "Responsible AI Governance & Compliance Solutions | OneTrust (https://www.onetrust.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "vanta",
+    "url": "https://www.vanta.com",
+    "title": "SOC 2, HIPAA, ISO 27001, PCI, and GDPR Compliance (https://www.vanta.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "drata",
+    "url": "https://drata.com",
+    "title": "The Agentic Trust Management Platform | Drata (https://drata.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "secureframe",
+    "url": "https://secureframe.com",
+    "title": "Secureframe: Build trust. Unlock growth. (https://secureframe.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "termly",
+    "url": "https://termly.io",
+    "title": "All-in-One Data Privacy Compliance Solution for Websites & Apps - Termly (https://termly.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "zotero",
+    "url": "https://www.zotero.org",
+    "title": "Zotero | Your personal research assistant (https://www.zotero.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mendeley",
+    "url": "https://www.mendeley.com",
+    "title": "www.mendeley.com (https://www.mendeley.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "paperpile",
+    "url": "https://paperpile.com",
+    "title": "Paperpile Reference Manager (https://paperpile.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "researchrabbit",
+    "url": "https://www.researchrabbit.ai",
+    "title": "ResearchRabbit: AI Tool for Smarter, Faster Literature Reviews (https://www.researchrabbit.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "connected-papers",
+    "url": "https://www.connectedpapers.com",
+    "title": "Connected Papers | Find and explore academic papers (https://www.connectedpapers.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "semantic-scholar",
+    "url": "https://www.semanticscholar.org",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "scite",
+    "url": "https://scite.ai",
+    "title": "AI for Research | Scite (https://scite.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "overleaf",
+    "url": "https://www.overleaf.com",
+    "title": "Overleaf, Online LaTeX Editor (https://www.overleaf.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "jupyter",
+    "url": "https://jupyter.org",
+    "title": "Project Jupyter | Home (https://jupyter.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "wolfram-alpha",
+    "url": "https://www.wolframalpha.com",
+    "title": "Wolfram|Alpha: Computational Intelligence (https://www.wolframalpha.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "datawrapper",
+    "url": "https://www.datawrapper.de",
+    "title": "Datawrapper: Create charts, maps, and tables (https://www.datawrapper.de/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "observable",
+    "url": "https://observablehq.com",
+    "title": "Observable (https://observablehq.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "whitespark",
+    "url": "https://whitespark.ca",
+    "title": "Local SEO Tools, Software, & Citation Services - Drive More Local Business with Whitespark (https://whitespark.ca/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "local-falcon",
+    "url": "https://www.localfalcon.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "local-viking",
+    "url": "https://localviking.com",
+    "title": "Manage Your Google My Business Properties | LocalViking (https://localviking.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "soci",
+    "url": "https://www.meetsoci.com",
+    "title": "Agentic Workforce for Multi-Location Visibility | SOCi (https://www.meetsoci.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "reputation",
+    "url": "https://reputation.com",
+    "title": "Reputation: The #1 AI-Powered Reputation Management Software (https://reputation.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "advice-local",
+    "url": "https://www.advicelocal.com",
+    "title": "Advice Local | White-Label Listings Management for Agencies (https://www.advicelocal.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "proposify",
+    "url": "https://www.proposify.com",
+    "title": "Proposify - Proposal Software to Streamline Your Sales Process (https://www.proposify.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "qwilr",
+    "url": "https://qwilr.com",
+    "title": "Interactive Proposals & Analytics | Qwilr (https://qwilr.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "better-proposals",
+    "url": "https://betterproposals.io",
+    "title": "Better Proposals | Online Proposal Software (https://betterproposals.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "rocketdocs",
+    "url": "https://rocketdocs.com",
+    "title": "RFP and DDQ Software for Regulated Industries | RocketDocs (https://rocketdocs.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "upland-qvidian",
+    "url": "https://uplandsoftware.com/qvidian",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "linkedin-learning",
+    "url": "https://www.linkedin.com/learning",
+    "title": "www.linkedin.com (https://www.linkedin.com/learning)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pluralsight",
+    "url": "https://www.pluralsight.com",
+    "title": "Build team skills in AI, data, cloud, and security | Pluralsight (https://www.pluralsight.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "udacity",
+    "url": "https://www.udacity.com",
+    "title": "Learn the Latest Tech Skills; Advance Your Career | Udacity (https://www.udacity.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "datacamp",
+    "url": "https://www.datacamp.com",
+    "title": "Learn Data Science and AI Online | DataCamp (https://www.datacamp.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "codecademy",
+    "url": "https://www.codecademy.com",
+    "title": "Learn to Code - for Free | Codecademy (https://www.codecademy.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "brilliant",
+    "url": "https://brilliant.org",
+    "title": "Brilliant | Your Personal Tutor for Math and Coding (https://brilliant.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "khan-academy",
+    "url": "https://www.khanacademy.org",
+    "title": "Khan Academy (https://www.khanacademy.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "skillshare",
+    "url": "https://www.skillshare.com",
+    "title": "Online Classes for Creatives | Skillshare (https://www.skillshare.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "moodle",
+    "url": "https://moodle.org",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "thinkific",
+    "url": "https://www.thinkific.com",
+    "title": "Online Course Platform to Sell Courses and Communities | Thinkific (https://www.thinkific.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "adobe-premiere",
+    "url": "https://www.adobe.com/products/premiere.html",
+    "title": "Professional video editing software | Adobe Premiere (https://www.adobe.com/products/premiere.html)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "davinci-resolve",
+    "url": "https://www.blackmagicdesign.com/products/davinciresolve",
+    "title": "DaVinci Resolve | Blackmagic Design (https://www.blackmagicdesign.com/products/davinciresolve)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "final-cut-pro",
+    "url": "https://www.apple.com/final-cut-pro",
+    "title": "Final Cut Pro - Apple (https://www.apple.com/final-cut-pro)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "capcut",
+    "url": "https://www.capcut.com",
+    "title": "CapCut AI Video Editor: Smart Online Video Editing with Advanced AI Tools (https://www.capcut.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "descript",
+    "url": "https://www.descript.com",
+    "title": "Descript: AI Video & Audio Text-based Editor \u2014 Try Free (https://www.descript.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "filmora",
+    "url": "https://filmora.wondershare.com",
+    "title": "Filmora Video Editor | Professional AI Video Editing Software (https://filmora.wondershare.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "camtasia",
+    "url": "https://www.techsmith.com/camtasia",
+    "title": "Camtasia \u2013 Free Screen Recorder & Video Editor (https://www.techsmith.com/camtasia)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "screen-studio",
+    "url": "https://screen.studio",
+    "title": "Screen Studio \u2014 Professional screen recorder for macOS (https://screen.studio/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "riverside",
+    "url": "https://riverside.com",
+    "title": "Riverside: HD Podcast & Video Software | Free Recording & Editing (https://riverside.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "obs-studio",
+    "url": "https://obsproject.com",
+    "title": "Open Broadcaster Software | OBS (https://obsproject.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "shotcut",
+    "url": "https://shotcut.org",
+    "title": "Shotcut - Home (https://shotcut.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "kdenlive",
+    "url": "https://kdenlive.org",
+    "title": "Kdenlive - Free and Open Source Video Editor (https://kdenlive.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "audacity",
+    "url": "https://www.audacityteam.org",
+    "title": "Audacity | Free, Open Source Audio Editor and Recorder (https://www.audacityteam.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ableton-live",
+    "url": "https://www.ableton.com",
+    "title": "Creative tools for music makers | Ableton (https://www.ableton.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "fl-studio",
+    "url": "https://www.image-line.com",
+    "title": "FL Studio \u2013 Music Production Software (https://www.image-line.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "logic-pro",
+    "url": "https://www.apple.com/logic-pro",
+    "title": "Logic Pro - Apple (https://www.apple.com/logic-pro)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "reaper",
+    "url": "https://www.reaper.fm",
+    "title": "REAPER | Audio Production Without Limits (https://www.reaper.fm/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "garageband",
+    "url": "https://www.apple.com/mac/garageband",
+    "title": "GarageBand for Mac - Apple (https://www.apple.com/mac/garageband)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pro-tools",
+    "url": "https://www.avid.com/pro-tools",
+    "title": "Pro Tools | Professional DAW for Recording, Editing, and Mixing\u2028 (https://www.avid.com/pro-tools)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "cubase",
+    "url": "https://www.steinberg.net/cubase",
+    "title": "www.steinberg.net (https://www.steinberg.net/cubase)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ardour",
+    "url": "https://ardour.org",
+    "title": "Ardour, free and open-source digital audio workstation | Ardour DAW (https://ardour.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "lmms",
+    "url": "https://lmms.io",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "bandlab",
+    "url": "https://www.bandlab.com",
+    "title": "BandLab (https://www.bandlab.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "soundtrap",
+    "url": "https://www.soundtrap.com",
+    "title": "Free Online Music & Beat Maker | Soundtrap (https://www.soundtrap.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "gamma",
+    "url": "https://gamma.app",
+    "title": "Gamma | Best AI Presentation Maker & Website Builder (https://gamma.app/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "beautiful-ai",
+    "url": "https://www.beautiful.ai",
+    "title": "AI Presentation Software for Teams (https://www.beautiful.ai/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pitch",
+    "url": "https://pitch.com",
+    "title": "The AI presentation workspace (https://pitch.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "prezi",
+    "url": "https://prezi.com",
+    "title": "Prezi: the presentation platform built for what happens after you present (https://prezi.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "microsoft-powerpoint",
+    "url": "https://www.microsoft.com/microsoft-365/powerpoint",
+    "title": "PowerPoint | Presentations and Slides Online | Microsoft 365 (https://www.microsoft.com/microsoft-365/powerpoint)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "google-slides",
+    "url": "https://workspace.google.com/products/slides",
+    "title": "Google Slides: Presentation Slideshow Maker | Google Workspace (https://workspace.google.com/products/slides)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "keynote",
+    "url": "https://www.apple.com/keynote",
+    "title": "Keynote - Official Apple Support (https://www.apple.com/keynote)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "visme",
+    "url": "https://www.visme.co",
+    "title": "Visme: AI Presentation maker, Infographics, and One pager templates (https://www.visme.co/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "genially",
+    "url": "https://genially.com",
+    "title": "Genially: Create interactive content, presentations, and much more (https://genially.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "slidebean",
+    "url": "https://slidebean.com",
+    "title": "Slidebean: AI Pitch Deck Creator + Pitch Deck Design Agency (https://slidebean.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mentimeter",
+    "url": "https://www.mentimeter.com",
+    "title": "Interactive presentation & audience engagement tool - Mentimeter (https://www.mentimeter.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ahaslides",
+    "url": "https://ahaslides.com",
+    "title": "AhaSlides: Interactive Presentation Software | Live Quizzes and Polls (https://ahaslides.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "surveymonkey",
+    "url": "https://www.surveymonkey.com",
+    "title": "SurveyMonkey: The World\u2019s Most Popular Survey Platform (https://www.surveymonkey.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "qualtrics",
+    "url": "https://www.qualtrics.com",
+    "title": "Qualtrics XM AI: The Future of Experience Management - Qualtrics (https://www.qualtrics.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "surveysparrow",
+    "url": "https://surveysparrow.com",
+    "title": "SurveySparrow: AI-Powered Customer Feedback Platform (https://surveysparrow.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "alchemer",
+    "url": "https://www.alchemer.com",
+    "title": "Alchemer | Online Survey Software & Tools (https://www.alchemer.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "zoho-survey",
+    "url": "https://www.zoho.com/survey",
+    "title": "Online survey forms maker for all | Zoho Survey (https://www.zoho.com/survey)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "limesurvey",
+    "url": "https://www.limesurvey.org",
+    "title": "LimeSurvey \u2014 Free Online Survey Tool (https://www.limesurvey.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "maze",
+    "url": "https://maze.co",
+    "title": "Maze | User Research and Testing Platform (https://maze.co/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "usertesting",
+    "url": "https://www.usertesting.com",
+    "title": "UserTesting Human Insight Platform | Customer Experience Insights (https://www.usertesting.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "dovetail",
+    "url": "https://dovetail.com",
+    "title": "Dovetail | Customer Intelligence Platform (https://dovetail.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "lyssna",
+    "url": "https://www.lyssna.com",
+    "title": "User Research & Usability Testing Platform | Lyssna (https://www.lyssna.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "user-interviews",
+    "url": "https://www.userinterviews.com",
+    "title": "User Interviews | The User Research Recruiting Platform for Teams (https://www.userinterviews.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "lookback",
+    "url": "https://lookback.com",
+    "title": "Lookback (https://lookback.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "datadog",
+    "url": "https://www.datadoghq.com",
+    "title": "www.datadoghq.com (https://www.datadoghq.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "new-relic",
+    "url": "https://newrelic.com",
+    "title": "AI-powered Observability (https://newrelic.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sentry",
+    "url": "https://sentry.io",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "grafana",
+    "url": "https://grafana.com",
+    "title": "Full-stack observability for the agentic era | Grafana Labs (https://grafana.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "prometheus",
+    "url": "https://prometheus.io",
+    "title": "Prometheus - Monitoring system & time series database (https://prometheus.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "better-stack",
+    "url": "https://betterstack.com",
+    "title": "Better Stack - 30x cheaper than Datadog, Exceptional support (https://betterstack.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "uptimerobot",
+    "url": "https://uptimerobot.com",
+    "title": "UptimeRobot: Free Website Monitoring Service (https://uptimerobot.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pingdom",
+    "url": "https://www.pingdom.com",
+    "title": "Website Monitoring Service - Availability and Performance | Pingdom (https://www.pingdom.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "honeycomb",
+    "url": "https://www.honeycomb.io",
+    "title": "Honeycomb: AI-Ready Observability Platform (https://www.honeycomb.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "logrocket",
+    "url": "https://logrocket.com",
+    "title": "Session Replay | Product Analytics | Error Tracking | LogRocket (https://logrocket.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "axiom",
+    "url": "https://axiom.co",
+    "title": "Axiom - The modern machine data platform (https://axiom.co/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "highlight",
+    "url": "https://www.highlight.io",
+    "title": "Runtime Control for AI-Era Software | Feature Flags & AI Agent Control | LaunchDarkly (https://www.highlight.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "gmail",
+    "url": "https://workspace.google.com/products/gmail",
+    "title": "Gmail: Private & Secure Email for Personal or Business | Google Workspace (https://workspace.google.com/products/gmail)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "microsoft-outlook",
+    "url": "https://www.microsoft.com/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook",
+    "title": "Microsoft Outlook Personal Email and Calendar | Microsoft 365 (https://www.microsoft.com/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "proton-mail",
+    "url": "https://proton.me/mail",
+    "title": "Proton Mail: Get a free email account with privacy and encryption | Proton (https://proton.me/mail)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "fastmail",
+    "url": "https://www.fastmail.com",
+    "title": "Email and calendar made better | Fastmail (https://www.fastmail.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "superhuman",
+    "url": "https://superhuman.com",
+    "title": "Superhuman: Docs, Mail, and AI That Work Everywhere (https://superhuman.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "spark",
+    "url": "https://sparkmailapp.com",
+    "title": "Spark Mail \u2014 Smart. Focused. Email. (https://sparkmailapp.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "thunderbird",
+    "url": "https://www.thunderbird.net",
+    "title": "Thunderbird \u2014 Free Your Inbox. \u2014 Thunderbird (https://www.thunderbird.net/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "hey",
+    "url": "https://www.hey.com",
+    "title": "HEY \u2014 A delightfully fresh take on email + calendar, from 37signals (https://www.hey.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "zoho-mail",
+    "url": "https://www.zoho.com/mail",
+    "title": "Secure & Professional Business Email for your Organization | Zoho Mail (https://www.zoho.com/mail)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "resend",
+    "url": "https://resend.com",
+    "title": "Resend \u00b7 Email for developers (https://resend.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "postmark",
+    "url": "https://postmarkapp.com",
+    "title": "Postmark: Fast, Reliable Email Delivery Service | SMTP | API (https://postmarkapp.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mailgun",
+    "url": "https://www.mailgun.com",
+    "title": "Transactional Email API Service For Developers - Transactional Email API Service For Developers | Mailgun (https://www.mailgun.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "microsoft-power-bi",
+    "url": "https://www.microsoft.com/power-platform/products/power-bi",
+    "title": "Power BI \u2013 Datavisualisering | Microsoft Power Platform (https://www.microsoft.com/power-platform/products/power-bi)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "tableau",
+    "url": "https://www.tableau.com",
+    "title": "Business Intelligence and Analytics Software | Tableau (https://www.tableau.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "looker",
+    "url": "https://cloud.google.com/looker",
+    "title": "Looker business intelligence platform embedded analytics | Google Cloud (https://cloud.google.com/looker)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "metabase",
+    "url": "https://www.metabase.com",
+    "title": "Open source AI analytics you can verify | Metabase (https://www.metabase.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "apache-superset",
+    "url": "https://superset.apache.org",
+    "title": "Welcome | Superset (https://superset.apache.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "redash",
+    "url": "https://redash.io",
+    "title": "Redash helps you make sense of your data (https://redash.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mode",
+    "url": "https://mode.com",
+    "title": "Modern Business Intelligence | Better data, better decisions (https://mode.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sigma",
+    "url": "https://www.sigmacomputing.com",
+    "title": "The AI runtime for business | Sigma (https://www.sigmacomputing.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "thoughtspot",
+    "url": "https://www.thoughtspot.com",
+    "title": "ThoughtSpot Agentic Analytics Platform (https://www.thoughtspot.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "qlik",
+    "url": "https://www.qlik.com",
+    "title": "Qlik Data Integration, Data Quality, and Analytics Solutions (https://www.qlik.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "domo",
+    "url": "https://www.domo.com",
+    "title": "Governed Data for AI Agents | Domo (https://www.domo.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "gooddata",
+    "url": "https://www.gooddata.com",
+    "title": "GoodData.AI | Analytics, AI, and agents on one data serving plane (https://www.gooddata.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "contentful",
+    "url": "https://www.contentful.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sanity",
+    "url": "https://www.sanity.io",
+    "title": "The Content Operating System for the AI era | Sanity (https://www.sanity.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "strapi",
+    "url": "https://strapi.io",
+    "title": "Strapi - Open-Source TypeScript Headless CMS (https://strapi.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "directus",
+    "url": "https://directus.io",
+    "title": "Directus | Collaborative Backend & Headless CMS (https://directus.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "storyblok",
+    "url": "https://www.storyblok.com",
+    "title": "Storyblok \u2014 Headless CMS with Visual Editor | Storyblok (https://www.storyblok.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "prismic",
+    "url": "https://prismic.io",
+    "title": "Prismic: The agentic web platform for marketers and AI (https://prismic.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "payload",
+    "url": "https://payloadcms.com",
+    "title": "Payload: The Next.js Headless CMS and App Framework (https://payloadcms.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "hygraph",
+    "url": "https://hygraph.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "drupal",
+    "url": "https://www.drupal.org",
+    "title": "Drupal.org | The Open Source CMS for Digital Innovation (https://www.drupal.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "umbraco",
+    "url": "https://umbraco.com",
+    "title": "Umbraco CMS - the flexible open-source .NET CMS (https://umbraco.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "craft-cms",
+    "url": "https://craftcms.com",
+    "title": "Craft CMS (https://craftcms.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "datocms",
+    "url": "https://www.datocms.com",
+    "title": "The headless CMS that your team will love \u2014 DatoCMS (https://www.datocms.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "airtable",
+    "url": "https://www.airtable.com",
+    "title": "www.airtable.com (https://www.airtable.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "coda",
+    "url": "https://coda.io",
+    "title": "Coda: Your all-in-one collaborative workspace. (https://coda.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "microsoft-excel",
+    "url": "https://www.microsoft.com/microsoft-365/excel",
+    "title": "Microsoft Excel | Software de planilhas online e gratuito (https://www.microsoft.com/microsoft-365/excel)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "google-sheets",
+    "url": "https://workspace.google.com/products/sheets",
+    "title": "Collaborative, AI-powered spreadsheets | Google Workspace (https://workspace.google.com/products/sheets)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "rows",
+    "url": "https://rows.com",
+    "title": "Rows - Your new AI Data Analyst (https://rows.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "baserow",
+    "url": "https://baserow.io",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "nocodb",
+    "url": "https://nocodb.com",
+    "title": "NocoDB Cloud (https://nocodb.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "grist",
+    "url": "https://www.getgrist.com",
+    "title": "Spreadsheet Software to End Data Chaos | Grist (https://www.getgrist.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "seatable",
+    "url": "https://seatable.com",
+    "title": "AI-supported No-Code Platform | Custom Solutions Without Coding (https://seatable.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "smartsheet",
+    "url": "https://www.smartsheet.com",
+    "title": "Work Management Platform | Smartsheet (https://www.smartsheet.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "libreoffice",
+    "url": "https://www.libreoffice.org",
+    "title": "Free and private office suite, no forced AI \u2014 LibreOffice (https://www.libreoffice.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "onlyoffice",
+    "url": "https://www.onlyoffice.com",
+    "title": "ONLYOFFICE - Secure Online Office | ONLYOFFICE (https://www.onlyoffice.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "blender",
+    "url": "https://www.blender.org",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "unity",
+    "url": "https://unity.com",
+    "title": "Unity: Develop, Deploy, and Grow | The World's Leading Game Engine (https://unity.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "unreal-engine",
+    "url": "https://www.unrealengine.com",
+    "title": "The most powerful real-time 3D creation tool - Unreal Engine (https://www.unrealengine.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "godot",
+    "url": "https://godotengine.org",
+    "title": "Godot Engine - Free and open source 2D and 3D game engine (https://godotengine.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "cinema-4d",
+    "url": "https://www.maxon.net/cinema-4d",
+    "title": "Cinema 4D | 3D Animation & Modeling Software (https://www.maxon.net/cinema-4d)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "autodesk-maya",
+    "url": "https://www.autodesk.com/products/maya/overview",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "autodesk-3ds-max",
+    "url": "https://www.autodesk.com/products/3ds-max/overview",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "zbrush",
+    "url": "https://www.maxon.net/zbrush",
+    "title": "ZBrush | Digital Sculpting Software. Sculpt & Create (https://www.maxon.net/zbrush)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "spline",
+    "url": "https://spline.design",
+    "title": "Spline - 3D Design tool in the browser with real-time collaboration (https://spline.design/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "rive",
+    "url": "https://rive.app",
+    "title": "Rive \u2014 the interactive experience engine (https://rive.app/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "aseprite",
+    "url": "https://www.aseprite.org",
+    "title": "Aseprite - Animated sprite editor & pixel art tool (https://www.aseprite.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "construct",
+    "url": "https://www.construct.net",
+    "title": "Game Making Software - Construct 3 (https://www.construct.net/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "circle",
+    "url": "https://circle.so",
+    "title": "Circle | A new era for digital businesses (https://circle.so/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "mighty-networks",
+    "url": "https://www.mightynetworks.com",
+    "title": "Mighty Networks | Community Platform, Courses & Memberships (https://www.mightynetworks.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "discourse",
+    "url": "https://www.discourse.org",
+    "title": "Discourse | One platform. Any community. (https://www.discourse.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "bettermode",
+    "url": "https://bettermode.com",
+    "title": "Bettermode: All-in-One Customer Community Platform | Engage, Support & Grow (https://bettermode.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "disqus",
+    "url": "https://disqus.com",
+    "title": "#1 in audience engagement and community growth | Disqus (https://disqus.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "patreon",
+    "url": "https://www.patreon.com",
+    "title": "Where Creator Communities Thrive \u2014 Patreon (https://www.patreon.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ko-fi",
+    "url": "https://ko-fi.com",
+    "title": "Ko-fi | Make money doing what you love (https://ko-fi.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "buy-me-a-coffee",
+    "url": "https://www.buymeacoffee.com",
+    "title": "Buy Me a Coffee (https://www.buymeacoffee.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "heartbeat",
+    "url": "https://www.heartbeat.chat",
+    "title": "Community Platform for Creators and Coaches | Heartbeat (https://www.heartbeat.chat/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "geneva",
+    "url": "https://www.geneva.com",
+    "title": "Geneva | The online place to find your offline people (https://www.geneva.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "flarum",
+    "url": "https://flarum.org",
+    "title": "The extensible community framework - Flarum (https://flarum.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "nodebb",
+    "url": "https://nodebb.org",
+    "title": "NodeBB - Modern Forum Software (https://nodebb.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "eventbrite",
+    "url": "https://www.eventbrite.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "cvent",
+    "url": "https://www.cvent.com",
+    "title": "Cvent | Event Platform for In-person, Virtual, and Hybrid Events & Webinars (https://www.cvent.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "bizzabo",
+    "url": "https://www.bizzabo.com",
+    "title": "#1 Event Management Software for B2B Conferences | Bizzabo (https://www.bizzabo.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "whova",
+    "url": "https://whova.com",
+    "title": "Whova: Award-winning Event Apps & Event Management (https://whova.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "livestorm",
+    "url": "https://livestorm.co",
+    "title": "All-in-one Webinar Software for Marketing Teams | Livestorm (https://livestorm.co/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "demio",
+    "url": "https://www.demio.com",
+    "title": "Demio - Hassle-free Webinar Software for Marketers (https://www.demio.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "bigmarker",
+    "url": "https://www.bigmarker.com",
+    "title": "BigMarker - Modern, No-Download Webinar Software (https://www.bigmarker.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "airmeet",
+    "url": "https://www.airmeet.com",
+    "title": "Airmeet | AI Powered Webinar platform with deep insights | G2 Rating: 4.6/5 (750+ reviews) (https://www.airmeet.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sessionlab",
+    "url": "https://www.sessionlab.com",
+    "title": "One platform for designing and managing facilitation | SessionLab (https://www.sessionlab.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "luma-events",
+    "url": "https://lu.ma",
+    "title": "Luma (https://lu.ma/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ticket-tailor",
+    "url": "https://www.tickettailor.com",
+    "title": "Sell Tickets Online | Ticket Tailor (https://www.tickettailor.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pretix",
+    "url": "https://pretix.eu",
+    "title": "pretix \u2013 Reinventing ticket sales for conferences, exhibitions, museums, ... (https://pretix.eu/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "adobe-acrobat",
+    "url": "https://www.adobe.com/acrobat.html",
+    "title": "Adobe Acrobat | Manage all your documents with trusted PDF tools (https://www.adobe.com/acrobat.html)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "foxit",
+    "url": "https://www.foxit.com",
+    "title": "PDF Software & Tools Tailored to Your Business | Foxit (https://www.foxit.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "smallpdf",
+    "url": "https://smallpdf.com",
+    "title": "Smallpdf - A Free Solution to all your PDF Problems (https://smallpdf.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "ilovepdf",
+    "url": "https://www.ilovepdf.com",
+    "title": "iLovePDF | Online PDF tools for PDF lovers (https://www.ilovepdf.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pdf24",
+    "url": "https://tools.pdf24.org",
+    "title": "PDF24 Tools: Free PDF solutions for all PDF problems (https://tools.pdf24.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pdfgear",
+    "url": "https://www.pdfgear.com",
+    "title": "PDFgear - Free PDF Editor Software & Online tools (https://www.pdfgear.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "nitro",
+    "url": "https://www.gonitro.com",
+    "title": "PDF & eSign Software | Smart Document Solutions | Nitro Software (https://www.gonitro.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "updf",
+    "url": "https://updf.com",
+    "title": "UPDF: AI-Powered PDF Editor | Official Site (https://updf.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "pdf-expert",
+    "url": "https://pdfexpert.com",
+    "title": "PDF Editor and Reader for Mac | Free Trial | PDF Expert (https://pdfexpert.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sejda",
+    "url": "https://www.sejda.com",
+    "title": "Sejda helps with your PDF tasks (https://www.sejda.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "stirling-pdf",
+    "url": "https://www.stirlingpdf.com",
+    "title": "Stirling PDF - 30M+ Downloads (https://www.stirlingpdf.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "dochub",
+    "url": "https://www.dochub.com",
+    "title": "Sign PDF Documents | DocHub (https://www.dochub.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "canny",
+    "url": "https://canny.io",
+    "title": "Canny: AI Customer Feedback Management Software and Tools (https://canny.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "productboard",
+    "url": "https://www.productboard.com",
+    "title": "The Agentic Product Management System | Productboard (https://www.productboard.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "aha",
+    "url": "https://www.aha.io",
+    "title": "The World's #1 Product Management Software (https://www.aha.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "uservoice",
+    "url": "https://www.uservoice.com",
+    "title": "Customer Intelligence Platform | UserVoice (https://www.uservoice.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "featurebase",
+    "url": "https://www.featurebase.app",
+    "title": "Featurebase \u2013 Modern Support & Feedback Platform (https://www.featurebase.app/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "nolt",
+    "url": "https://nolt.io",
+    "title": "Nolt \u00b7 Manage feedback from idea to release (https://nolt.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "savio",
+    "url": "https://www.savio.io",
+    "title": "Centralize customer feedback | Prioritize Feature Requests | Savio (https://www.savio.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "prodpad",
+    "url": "https://www.prodpad.com",
+    "title": "ProdPad \u2013 The platform for product management (https://www.prodpad.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "roadmunk",
+    "url": "https://roadmunk.com",
+    "title": "Roadmapping Software | Formerly Roadmunk | Tempo (https://roadmunk.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "upvoty",
+    "url": "https://www.upvoty.com",
+    "title": "Upvoty: Turn user feedback into product growth (https://www.upvoty.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "fider",
+    "url": "https://fider.io",
+    "title": "Fider - #1 Product Feedback & Feature Request Tool (https://fider.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "beamer",
+    "url": "https://www.getbeamer.com",
+    "title": "Customer Communication Platform for Product Releases | Beamer (https://www.getbeamer.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "browserstack",
+    "url": "https://www.browserstack.com",
+    "title": "Most Reliable App & Cross Browser Testing Platform | BrowserStack (https://www.browserstack.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "lambdatest",
+    "url": "https://www.lambdatest.com",
+    "title": "TestMu AI (formerly LambdaTest) | Agentic AI Testing Cloud (https://www.lambdatest.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "sauce-labs",
+    "url": "https://saucelabs.com",
+    "title": "Sauce Labs: AI-Unified Release Assurance Platform (https://saucelabs.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "playwright",
+    "url": "https://playwright.dev",
+    "title": "Fast and reliable end-to-end testing for modern web apps | Playwright (https://playwright.dev/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "cypress",
+    "url": "https://www.cypress.io",
+    "title": "JavaScript E2E and component testing framework | Cypress (https://www.cypress.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "selenium",
+    "url": "https://www.selenium.dev",
+    "title": "Selenium (https://www.selenium.dev/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "testrail",
+    "url": "https://www.testrail.com",
+    "title": "AI-Driven Test Management Software | TestRail (https://www.testrail.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "qase",
+    "url": "https://qase.io",
+    "title": "Qase \u2014 Shipping velocity meets release quality (https://qase.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "testmo",
+    "url": "https://www.testmo.com",
+    "title": "#1 Unified Test Management Software - Testmo (https://www.testmo.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "applitools",
+    "url": "https://applitools.com",
+    "title": "Internal Error ()",
+    "retrieved": false,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "percy",
+    "url": "https://percy.io",
+    "title": "All-in-one visual testing and review platform | Percy (https://percy.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "k6",
+    "url": "https://k6.io",
+    "title": "Load testing for engineering teams | Grafana k6 (https://k6.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "deepl",
+    "url": "https://www.deepl.com",
+    "title": "DeepL AI Platform: Translation, Voice & API (https://www.deepl.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "google-translate",
+    "url": "https://translate.google.com",
+    "title": "Google Translate (https://translate.google.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "smartling",
+    "url": "https://www.smartling.com",
+    "title": "Smartling | End-to-end localization & translation services for global growth (https://www.smartling.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "phrase",
+    "url": "https://phrase.com",
+    "title": "Phrase: AI-Powered Language Intelligence Platform (https://phrase.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "lokalise",
+    "url": "https://lokalise.com",
+    "title": "World-class AI localization platform | Lokalise (https://lokalise.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "crowdin",
+    "url": "https://crowdin.com",
+    "title": "Crowdin: Localization Platform to Manage Your Translation (https://crowdin.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "transifex",
+    "url": "https://www.transifex.com",
+    "title": "Home Page - Transifex (https://www.transifex.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "weglot",
+    "url": "https://www.weglot.com",
+    "title": "Weglot | Your solution for website translation and multilingual SEO (https://www.weglot.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "localazy",
+    "url": "https://localazy.com",
+    "title": "Software localization on autopilot | Localazy (https://localazy.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "poeditor",
+    "url": "https://poeditor.com",
+    "title": "POEditor - Software Translation Management System (https://poeditor.com/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "weblate",
+    "url": "https://weblate.org",
+    "title": "Weblate \u2014 quality translations, your control (https://weblate.org/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  },
+  {
+    "slug": "tolgee",
+    "url": "https://tolgee.io",
+    "title": "Translate your app | Tolgee (https://tolgee.io/)",
+    "retrieved": true,
+    "checked": "2026-10-05"
+  }
+]

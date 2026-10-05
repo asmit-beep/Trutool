@@ -3,16 +3,45 @@ import {tools, categories, guides, type Tool} from './catalog';
 export type DiagnosticBrief={category:string;workflow:string;scale:string;style:string};
 export type FitWeights={workflow:number;scale:number;style:number};
 export const defaultWeights:FitWeights={workflow:5,scale:3,style:3};
-export const workflows:Record<string,Array<[string,string,string]>>={
+const coreWorkflows:Record<string,Array<[string,string,string]>>={
+ ai:[['writing','Write and revise with an assistant','Drafts, edits, and a human review process.'],['research','Research with traceable sources','Search, sources, and evidence you can inspect.'],['analysis','Work through documents and data','A repeatable task with your own test inputs.']],
+ productivity:[['notes','Keep useful knowledge organised','Notes, search, and reusable context.'],['tasks','Plan and complete work','Tasks, priorities, and a repeatable routine.'],['focus','Reduce distraction and friction','Shortcuts, focused work, and time spent.']],
+ design:[['collaboration','Design with a team','Shared files, feedback, and handoffs.'],['graphics','Create polished visual assets','Graphics, templates, and finished exports.'],['prototype','Test an interface or idea','A prototype you can share and evaluate.']],
+ marketing:[['campaigns','Plan and publish campaigns','Content, channels, and consistent delivery.'],['email','Build email and audience workflows','Contacts, consent, campaigns, and follow-ups.'],['insight','Improve targeting and measurement','Research, attribution questions, and reporting.']],
  'local-listings':[['distribution','Keep location data in sync','Listings, updates, and location information.'],['audit','Find and fix local visibility gaps','Citation audits, local rankings, and reporting.'],['reputation','Connect listings and reviews','A joined-up local presence and reputation workflow.']],
  'rfp-software':[['drafting','Draft answers from company knowledge','Start with source material, then review every response.'],['library','Build a reusable response library','Organise answers, owners, and review cycles.'],['documents','Create proposals and final documents','Templates, collaboration, and buyer-ready exports.']],
  'communication':[['chat','Coordinate everyday work','Persistent conversations and shared team context.'],['meetings','Make live meetings work better','Internal meetings and external conversations.'],['async','Replace some meetings with recordings','Walkthroughs and updates people can watch later.'],['community','Build an ongoing community','Shared spaces for text, voice, and discussion.']],
  'edtech':[['live','Learn with structured live training','Compare schedules, trainers, and support.'],['self','Learn a specific skill at my own pace','Compare syllabuses and instructor quality.'],['credential','Evaluate an institution-backed pathway','Compare assessments, issuing bodies, and entry requirements.']]
 };
+export const workflows:Record<string,Array<[string,string,string]>>=Object.fromEntries(categories.map(c=>[c.slug,coreWorkflows[c.slug]||[['focused','Improve one specific task','Test one repeatable job with a real input.'],['connected','Connect the workflow','Evaluate handoffs, integrations, and ownership.'],['controlled','Build a dependable team process','Compare permissions, review steps, and exports.']]]));
 export const scales:Array<[string,string,string]>=[['small','Just me or a small team','A focused evaluation, with few people involved.'],['team','A team working together','Shared workflows, handoffs, and ownership.'],['large','Several teams or locations','Governance, rollout, and consistent processes.']];
 export const styles:Array<[string,string,string]>=[['lean','Keep the evaluation lightweight','Start with a focused workflow and a small pilot.'],['balanced','Build a repeatable process','Prioritise coordination and consistent ownership.'],['governance','Make controls a priority','Test permissions, review steps, and rollout requirements.']];
 type Tags={workflows:string[];scales:string[];styles:string[]};
 const tags:Record<string,Tags>={
+ chatgpt:{workflows:['writing','analysis'],scales:['small','team'],styles:['lean','balanced']},
+ claude:{workflows:['writing','analysis'],scales:['small','team'],styles:['lean','balanced']},
+ perplexity:{workflows:['research'],scales:['small','team'],styles:['lean','balanced']},
+ deepseek:{workflows:['writing','analysis'],scales:['small','team'],styles:['lean']},
+ gemini:{workflows:['writing','research','analysis'],scales:['small','team'],styles:['balanced']},
+ mistral:{workflows:['writing','analysis'],scales:['team'],styles:['balanced','governance']},
+ notion:{workflows:['notes','tasks'],scales:['small','team'],styles:['balanced']},
+ obsidian:{workflows:['notes'],scales:['small'],styles:['lean','balanced']},
+ todoist:{workflows:['tasks'],scales:['small','team'],styles:['lean','balanced']},
+ ticktick:{workflows:['tasks','focus'],scales:['small'],styles:['lean']},
+ evernote:{workflows:['notes'],scales:['small','team'],styles:['lean','balanced']},
+ raycast:{workflows:['focus'],scales:['small'],styles:['lean']},
+ figma:{workflows:['collaboration','prototype'],scales:['team','large'],styles:['balanced']},
+ canva:{workflows:['graphics','collaboration'],scales:['small','team'],styles:['lean','balanced']},
+ sketch:{workflows:['prototype','collaboration'],scales:['small','team'],styles:['balanced']},
+ penpot:{workflows:['prototype','collaboration'],scales:['team'],styles:['balanced']},
+ 'adobe-photoshop':{workflows:['graphics'],scales:['small','team'],styles:['balanced']},
+ 'adobe-illustrator':{workflows:['graphics'],scales:['small','team'],styles:['balanced']},
+ buffer:{workflows:['campaigns'],scales:['small','team'],styles:['lean','balanced']},
+ hootsuite:{workflows:['campaigns','insight'],scales:['team','large'],styles:['balanced']},
+ mailchimp:{workflows:['email','campaigns'],scales:['small','team'],styles:['lean','balanced']},
+ brevo:{workflows:['email'],scales:['small','team'],styles:['lean','balanced']},
+ klaviyo:{workflows:['email','insight'],scales:['team'],styles:['balanced']},
+ activecampaign:{workflows:['email'],scales:['small','team'],styles:['balanced']},
  synup:{workflows:['distribution','reputation'],scales:['team','large'],styles:['balanced']},
  yext:{workflows:['distribution'],scales:['large'],styles:['governance','balanced']},
  uberall:{workflows:['distribution','reputation'],scales:['large'],styles:['balanced','governance']},
@@ -48,8 +77,9 @@ export function briefLabels(a:DiagnosticBrief){
 export function matchTools(a:DiagnosticBrief,weights:FitWeights){
  return tools.filter(t=>t.category===a.category).map(tool=>{
   const t=tags[tool.slug];
+  if(!t)return {tool,tagged:false,signals:{workflow:false,scale:false,style:false},points:0};
   const signals={workflow:t.workflows.includes(a.workflow),scale:t.scales.includes(a.scale),style:t.styles.includes(a.style)};
-  return {tool,signals,points:(signals.workflow?weights.workflow:0)+(signals.scale?weights.scale:0)+(signals.style?weights.style:0)};
+  return {tool,tagged:true,signals,points:(signals.workflow?weights.workflow:0)+(signals.scale?weights.scale:0)+(signals.style?weights.style:0)};
  }).sort((a,b)=>b.points-a.points||a.tool.name.localeCompare(b.tool.name));
 }
 export function pilotPlan(a:DiagnosticBrief){
@@ -59,14 +89,14 @@ export function pilotPlan(a:DiagnosticBrief){
   communication:['Map one recurring conversation, meeting, or recorded update to test.','Invite an external collaborator and then verify access can be removed.','Compare time spent coordinating work, searching for context, and resolving handoffs.','Confirm retention, export, administration, and any meeting or recording limits.'],
   edtech:['Choose a specific course, learning goal, and current syllabus for each option.','Review a sample lesson or live-session format and the work needed for assessments.','Compare trainer or institution credentials, projects, feedback, and support.','Request total fees, exam inclusion, credential issuer, and cancellation terms in writing.']
  };
- const t=categoryTasks[a.category];
+ const t=categoryTasks[a.category]||['Define one real task, a successful result, and the current time needed to finish it.','Give each shortlisted tool the same inputs; test a normal case and a difficult exception.','Record quality, manual corrections, integration effort, and the time to complete the task.','Confirm access controls, export options, full plan costs, and cancellation terms in writing.'];
  return [
   {label:'Define the test',timing:'Days 1–3',tasks:[t[0],a.scale==='large'?'Choose one team or location first; name a rollout owner and a permissions reviewer.':'Name one pilot owner and capture the current workflow before changing it.']},
   {label:'Run the same pilot',timing:'Days 4–10',tasks:[t[1],t[2]]},
   {label:'Make the decision',timing:'Days 11–14',tasks:[t[3],a.style==='governance'?'Document access boundaries, approval steps, and unresolved control requirements.':'Record the remaining manual work and decide whether the change is worth adopting.']}
  ];
 }
-export const guideFor=(category:string)=>guides.find(g=>g.category===category)!;
+export const guideFor=(category:string)=>guides.find(g=>g.category===category)||guides.find(g=>g.slug==='choosing-a-software-stack')!;
 export function timeScenario(items:number,before:number,after:number,people:number,weeks:number){
  const values=[items,before,after,people,weeks];
  if(values.some(v=>!Number.isFinite(v)||v<0))return {weekly:0,annual:0};

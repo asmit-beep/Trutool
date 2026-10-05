@@ -1,4 +1,5 @@
-export const brandAssets:Record<string,string>={
+import catalogBrands from './catalog-brand-assets.json';
+export const brandAssets:Record<string,string>={...catalogBrands,
   "synup": "/brands/synup.svg",
   "yext": "/brands/yext.svg",
   "uberall": "/brands/uberall.svg",

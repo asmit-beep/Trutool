@@ -1,3 +1,5 @@
-import Link from '@/components/site-link';import {categories,SITE} from '@/lib/catalog';
-export const metadata={title:'Software & Learning Categories',alternates:{canonical:SITE+'/categories'}};
-export default function Page(){return <main id="main" className="shell"><div className="page-intro"><span className="eyebrow">BROWSE BY CATEGORY</span><h1>Start with the work.</h1><p>Four focused categories connecting the tools and learning platforms you need.</p></div><div className="category-grid page-body">{categories.map((c,i)=><Link className="category-card" href={'/categories/'+c.slug} key={c.slug}><span className="category-icon" style={{background:c.color}}>0{i+1}</span><div><h2 style={{fontSize:23}}>{c.name}</h2><p>{c.description}</p><small>6 platforms · Comparisons · Buying guide</small></div></Link>)}</div></main>}
+import {categories,tools,SITE} from '@/lib/catalog';
+import {categoryCounts} from '@/lib/search';
+import {CategoryExplorer} from '@/components/category-explorer';
+export const metadata={title:'All Software Categories — AI, Design, Marketing & More',description:'Explore tools by task across AI, productivity, design, marketing, developer tools, finance, and more.',alternates:{canonical:SITE+'/categories'}};
+export default function Page(){return <main id="main" className="shell"><div className="page-intro"><span className="eyebrow">ONE DIRECTORY. MORE POSSIBILITIES.</span><h1>Start with your world.</h1><p>{tools.length} tools across {categories.length} categories. Find a familiar workflow—or discover a better way to do the work.</p></div><div className="page-body"><CategoryExplorer categories={categories.map(c=>({...c,count:categoryCounts[c.slug]}))}/></div></main>}

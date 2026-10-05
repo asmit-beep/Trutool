@@ -1,0 +1,2 @@
+import Link from './site-link';
+export function AuthorProfile({compact=false}:{compact?:boolean}){return <div className={'author-profile '+(compact?'compact':'')}><span className="avatar author-avatar">Y</span><div><Link href="/authors/yash"><strong>Yash</strong></Link><span>TruTool editorial team</span>{!compact&&<p>Writes practical guides to software evaluation, with an emphasis on real workflows, useful questions, and transparent sources.</p>}</div></div>}

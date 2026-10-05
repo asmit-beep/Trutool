@@ -1,5 +1,6 @@
 'use client';
 
+import {categories} from '@/lib/catalog';
 import {useState} from 'react';
 import Link from '@/components/site-link';
 import {Button} from '@/components/ui/button';
@@ -34,7 +35,7 @@ export function ProductSubmissionForm(){
    <div><label htmlFor="product-name">Product name</label><Input id="product-name" name="productName" required minLength={2} maxLength={100} placeholder="Your product’s name"/></div>
    <div><label htmlFor="product-url">Official website</label><Input id="product-url" name="productUrl" type="url" required maxLength={2048} placeholder="https://yourproduct.com"/></div>
   </div>
-  <div><label htmlFor="product-category">Category</label><select className="product-category-select" id="product-category" name="productCategory" required defaultValue=""><option value="" disabled>Choose the closest fit</option><option value="local-listings">Local marketing</option><option value="rfp-software">RFP & proposals</option><option value="communication">Communication</option><option value="edtech">EdTech & learning</option><option value="other">Another category</option></select></div>
+  <div><label htmlFor="product-category">Category</label><select className="product-category-select" id="product-category" name="productCategory" required defaultValue=""><option value="" disabled>Choose the closest fit</option>{categories.map(c=><option key={c.slug} value={c.slug}>{c.short}</option>)}<option value="other">Another category</option></select></div>
   <div><label htmlFor="product-description">What does your product help people do?</label><Textarea id="product-description" name="message" required minLength={20} maxLength={4000} rows={5} placeholder="Describe the product, who it’s for, and the work it helps them do."/></div>
   <div className="form-row">
    <div><label htmlFor="product-contact-name">Your name</label><Input id="product-contact-name" name="name" autoComplete="name" required minLength={2} maxLength={100}/></div>

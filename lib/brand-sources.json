@@ -1,0 +1,2130 @@
+{
+  "claude": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Claude",
+    "vendor": "https://claude.ai"
+  },
+  "deepseek": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "DeepSeek",
+    "vendor": "https://www.deepseek.com"
+  },
+  "gemini": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Gemini",
+    "vendor": "https://gemini.google.com"
+  },
+  "perplexity": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Perplexity",
+    "vendor": "https://www.perplexity.ai"
+  },
+  "mistral-le-chat": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Mistral Le Chat",
+    "vendor": "https://chat.mistral.ai"
+  },
+  "poe": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Poe",
+    "vendor": "https://poe.com"
+  },
+  "hugging-face": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Hugging Face",
+    "vendor": "https://huggingface.co"
+  },
+  "kagi": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Kagi",
+    "vendor": "https://kagi.com"
+  },
+  "notebooklm": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "NotebookLM",
+    "vendor": "https://notebooklm.google.com"
+  },
+  "flux": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "FLUX",
+    "vendor": "https://bfl.ai"
+  },
+  "veed": {
+    "source": "https://www.veed.io",
+    "collection": "Simple Icons",
+    "title": "VEED",
+    "hex": "B6FF60",
+    "license": null
+  },
+  "elevenlabs": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "ElevenLabs",
+    "vendor": "https://elevenlabs.io"
+  },
+  "deepgram": {
+    "source": "https://deepgram.com/company/newsroom",
+    "collection": "Simple Icons",
+    "title": "Deepgram",
+    "hex": "13EF93",
+    "license": null
+  },
+  "suno": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Suno",
+    "vendor": "https://suno.com"
+  },
+  "grammarly": {
+    "source": "https://www.grammarly.com/media-assets",
+    "collection": "Simple Icons",
+    "title": "Grammarly",
+    "hex": "027E6F",
+    "license": null
+  },
+  "languagetool": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "LanguageTool",
+    "vendor": "https://languagetool.org"
+  },
+  "cursor": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Cursor",
+    "vendor": "https://cursor.com"
+  },
+  "github-copilot": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "GitHub Copilot",
+    "vendor": "https://github.com/features/copilot"
+  },
+  "claude-code": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Claude Code",
+    "vendor": "https://www.anthropic.com/claude-code"
+  },
+  "windsurf": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Windsurf",
+    "vendor": "https://windsurf.com"
+  },
+  "replit": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Replit",
+    "vendor": "https://replit.com"
+  },
+  "coderabbit": {
+    "source": "https://www.coderabbit.ai/brand",
+    "collection": "Simple Icons",
+    "title": "CodeRabbit",
+    "hex": "FF570A",
+    "license": null
+  },
+  "qodo": {
+    "source": "https://www.qodo.ai/media-kit",
+    "collection": "Simple Icons",
+    "title": "Qodo",
+    "hex": "7968FA",
+    "license": null
+  },
+  "zapier": {
+    "source": "https://www.figma.com/file/NQFxTCE5pGR3dHZt0DkOyy/Zapier-Brand-Guidelines-%5BExternal%5D?type=design&node-id=101-9701&mode=design",
+    "collection": "Simple Icons",
+    "title": "Zapier",
+    "hex": "FF4F00",
+    "license": null
+  },
+  "make": {
+    "source": "https://www.make.com/en/press",
+    "collection": "Simple Icons",
+    "title": "Make",
+    "hex": "6D00CC",
+    "license": null
+  },
+  "n8n": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "n8n",
+    "vendor": "https://n8n.io"
+  },
+  "ifttt": {
+    "source": "https://ifttt.com/discover/brand-guidelines",
+    "collection": "Simple Icons",
+    "title": "IFTTT",
+    "hex": "000000",
+    "license": null
+  },
+  "notion": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Notion",
+    "vendor": "https://www.notion.com"
+  },
+  "obsidian": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Obsidian",
+    "vendor": "https://obsidian.md"
+  },
+  "todoist": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Todoist",
+    "vendor": "https://todoist.com"
+  },
+  "ticktick": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "TickTick",
+    "vendor": "https://ticktick.com"
+  },
+  "things": {
+    "source": "https://culturedcode.com/things/",
+    "collection": "Simple Icons",
+    "title": "Things",
+    "hex": "2473E7",
+    "license": null
+  },
+  "evernote": {
+    "source": "https://evernote.com/about-us",
+    "collection": "Simple Icons",
+    "title": "Evernote",
+    "hex": "00A82D",
+    "license": null
+  },
+  "raycast": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Raycast",
+    "vendor": "https://www.raycast.com"
+  },
+  "alfred": {
+    "source": "https://www.alfredapp.com",
+    "collection": "Simple Icons",
+    "title": "Alfred",
+    "hex": "5C1F87",
+    "license": null
+  },
+  "linear": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Linear",
+    "vendor": "https://linear.app"
+  },
+  "asana": {
+    "source": "https://asana.com/brand",
+    "collection": "Simple Icons",
+    "title": "Asana",
+    "hex": "F06A6A",
+    "license": null
+  },
+  "trello": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Trello",
+    "vendor": "https://trello.com"
+  },
+  "clickup": {
+    "source": "https://clickup.com/brand",
+    "collection": "Simple Icons",
+    "title": "ClickUp",
+    "hex": "7B68EE",
+    "license": null
+  },
+  "jira": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Jira",
+    "vendor": "https://www.atlassian.com/software/jira"
+  },
+  "basecamp": {
+    "source": "https://basecamp.com/about/press",
+    "collection": "Simple Icons",
+    "title": "Basecamp",
+    "hex": "1D2D35",
+    "license": null
+  },
+  "openproject": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "OpenProject",
+    "vendor": "https://www.openproject.org"
+  },
+  "plane": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Plane",
+    "vendor": "https://plane.so"
+  },
+  "figma": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Figma",
+    "vendor": "https://www.figma.com"
+  },
+  "sketch": {
+    "source": "https://www.sketch.com/about-us/#press",
+    "collection": "Simple Icons",
+    "title": "Sketch",
+    "hex": "F7B500",
+    "license": null
+  },
+  "penpot": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Penpot",
+    "vendor": "https://penpot.app"
+  },
+  "miro": {
+    "source": "https://miro.com",
+    "collection": "Simple Icons",
+    "title": "Miro",
+    "hex": "050038",
+    "license": null
+  },
+  "mural": {
+    "source": "https://www.mural.co/brand-assets",
+    "collection": "Simple Icons",
+    "title": "Mural",
+    "hex": "FF4B4B",
+    "license": null
+  },
+  "excalidraw": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Excalidraw",
+    "vendor": "https://excalidraw.com"
+  },
+  "inkscape": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Inkscape",
+    "vendor": "https://inkscape.org"
+  },
+  "gimp": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "GIMP",
+    "vendor": "https://www.gimp.org"
+  },
+  "webflow": {
+    "source": "https://brand-at.webflow.io/resources#logos",
+    "collection": "Simple Icons",
+    "title": "Webflow",
+    "hex": "146EF5",
+    "license": null
+  },
+  "framer": {
+    "source": "https://framer.com",
+    "collection": "Simple Icons",
+    "title": "Framer",
+    "hex": "0055FF",
+    "license": null
+  },
+  "wix": {
+    "source": "https://www.wix.com/about/design-assets",
+    "collection": "Simple Icons",
+    "title": "Wix",
+    "hex": "0C6EFC",
+    "license": null
+  },
+  "squarespace": {
+    "source": "https://www.squarespace.com/logo-guidelines",
+    "collection": "Simple Icons",
+    "title": "Squarespace",
+    "hex": "000000",
+    "license": null
+  },
+  "wordpress": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "WordPress",
+    "vendor": "https://wordpress.org"
+  },
+  "ghost": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Ghost",
+    "vendor": "https://ghost.org"
+  },
+  "carrd": {
+    "source": "https://carrd.co/docs/general/brand-assets",
+    "collection": "Simple Icons",
+    "title": "Carrd",
+    "hex": "596CAF",
+    "license": null
+  },
+  "hubspot": {
+    "source": "https://www.hubspot.com/style-guide",
+    "collection": "Simple Icons",
+    "title": "HubSpot",
+    "hex": "FF7A59",
+    "license": null
+  },
+  "brevo": {
+    "source": "https://www.brevo.com",
+    "collection": "Simple Icons",
+    "title": "Brevo",
+    "hex": "0B996E",
+    "license": null
+  },
+  "semrush": {
+    "source": "https://www.semrush.com",
+    "collection": "Simple Icons",
+    "title": "Semrush",
+    "hex": "FF642D",
+    "license": null
+  },
+  "similarweb": {
+    "source": "https://www.similarweb.com",
+    "collection": "Simple Icons",
+    "title": "Similarweb",
+    "hex": "092540",
+    "license": null
+  },
+  "google-search-console": {
+    "source": "https://search.google.com/search-console",
+    "collection": "Simple Icons",
+    "title": "Google Search Console",
+    "hex": "458CF5",
+    "license": null
+  },
+  "buffer": {
+    "source": "https://buffer.com",
+    "collection": "Simple Icons",
+    "title": "Buffer",
+    "hex": "231F20",
+    "license": null
+  },
+  "hootsuite": {
+    "source": "https://hootsuite.widencollective.com/portals/bafpk5oo/bafpk5oo/MediaKitAssets/c/b9e3a7bb-aca7-48d7-90ed-cff5898aafd0",
+    "collection": "Simple Icons",
+    "title": "Hootsuite",
+    "hex": "FF4C46",
+    "license": null
+  },
+  "mailchimp": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Mailchimp",
+    "vendor": "https://mailchimp.com"
+  },
+  "kit": {
+    "source": "https://kit.co",
+    "collection": "Simple Icons",
+    "title": "Kit",
+    "hex": "000000",
+    "license": null
+  },
+  "campaign-monitor": {
+    "source": "https://www.campaignmonitor.com/company/brand/",
+    "collection": "Simple Icons",
+    "title": "Campaign Monitor",
+    "hex": "111324",
+    "license": null
+  },
+  "substack": {
+    "source": "https://on.substack.com",
+    "collection": "Simple Icons",
+    "title": "Substack",
+    "hex": "FF6719",
+    "license": null
+  },
+  "intercom": {
+    "source": "https://www.intercom.com/press",
+    "collection": "Simple Icons",
+    "title": "Intercom",
+    "hex": "6AFDEF",
+    "license": null
+  },
+  "zendesk": {
+    "source": "https://brandland.zendesk.com",
+    "collection": "Simple Icons",
+    "title": "Zendesk",
+    "hex": "03363D",
+    "license": null
+  },
+  "help-scout": {
+    "source": "https://www.helpscout.com",
+    "collection": "Simple Icons",
+    "title": "Help Scout",
+    "hex": "1292EE",
+    "license": null
+  },
+  "livechat": {
+    "source": "https://livechat.design",
+    "collection": "Simple Icons",
+    "title": "LiveChat",
+    "hex": "FF5100",
+    "license": null
+  },
+  "chatwoot": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Chatwoot",
+    "vendor": "https://www.chatwoot.com"
+  },
+  "google-analytics": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Google Analytics",
+    "vendor": "https://marketingplatform.google.com/about/analytics"
+  },
+  "mixpanel": {
+    "source": "https://mixpanel.com",
+    "collection": "Simple Icons",
+    "title": "Mixpanel",
+    "hex": "7856FF",
+    "license": null
+  },
+  "posthog": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "PostHog",
+    "vendor": "https://posthog.com"
+  },
+  "fathom": {
+    "source": "https://usefathom.com/brand",
+    "collection": "Simple Icons",
+    "title": "Fathom",
+    "hex": "9187FF",
+    "license": null
+  },
+  "matomo": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Matomo",
+    "vendor": "https://matomo.org"
+  },
+  "hotjar": {
+    "source": "https://www.hotjar.com",
+    "collection": "Simple Icons",
+    "title": "Hotjar",
+    "hex": "FF3C00",
+    "license": null
+  },
+  "github": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "GitHub",
+    "vendor": "https://github.com"
+  },
+  "gitlab": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "GitLab",
+    "vendor": "https://about.gitlab.com"
+  },
+  "bitbucket": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Bitbucket",
+    "vendor": "https://bitbucket.org"
+  },
+  "jetbrains": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "JetBrains",
+    "vendor": "https://www.jetbrains.com"
+  },
+  "postman": {
+    "source": "https://www.getpostman.com/resources/media-assets/",
+    "collection": "Simple Icons",
+    "title": "Postman",
+    "hex": "FF6C37",
+    "license": null
+  },
+  "insomnia": {
+    "source": "https://insomnia.rest",
+    "collection": "Simple Icons",
+    "title": "Insomnia",
+    "hex": "4000BF",
+    "license": null
+  },
+  "docker": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Docker",
+    "vendor": "https://www.docker.com"
+  },
+  "stackblitz": {
+    "source": "https://stackblitz.com",
+    "collection": "Simple Icons",
+    "title": "StackBlitz",
+    "hex": "1269D3",
+    "license": null
+  },
+  "codesandbox": {
+    "source": "https://codesandbox.io/CodeSandbox-Press-Kit.zip",
+    "collection": "Simple Icons",
+    "title": "CodeSandbox",
+    "hex": "151515",
+    "license": null
+  },
+  "gitpod": {
+    "source": "https://www.gitpod.io",
+    "collection": "Simple Icons",
+    "title": "Gitpod",
+    "hex": "FFAE33",
+    "license": null
+  },
+  "google-cloud": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Google Cloud",
+    "vendor": "https://cloud.google.com"
+  },
+  "digitalocean": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "DigitalOcean",
+    "vendor": "https://www.digitalocean.com"
+  },
+  "vultr": {
+    "source": "https://www.vultr.com/company/brand-assets",
+    "collection": "Simple Icons",
+    "title": "Vultr",
+    "hex": "007BFC",
+    "license": null
+  },
+  "hetzner": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Hetzner",
+    "vendor": "https://www.hetzner.com"
+  },
+  "cloudflare": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Cloudflare",
+    "vendor": "https://www.cloudflare.com"
+  },
+  "scaleway": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Scaleway",
+    "vendor": "https://www.scaleway.com"
+  },
+  "supabase": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Supabase",
+    "vendor": "https://supabase.com"
+  },
+  "neon": {
+    "source": "https://neon.com/brand",
+    "collection": "Simple Icons",
+    "title": "Neon",
+    "hex": "34D59A",
+    "license": null
+  },
+  "planetscale": {
+    "source": "https://planetscale.com",
+    "collection": "Simple Icons",
+    "title": "PlanetScale",
+    "hex": "000000",
+    "license": null
+  },
+  "mongodb": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "MongoDB",
+    "vendor": "https://www.mongodb.com"
+  },
+  "redis": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Redis",
+    "vendor": "https://redis.io"
+  },
+  "firebase": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Firebase",
+    "vendor": "https://firebase.google.com"
+  },
+  "snowflake": {
+    "source": "https://www.snowflake.com/brand-guidelines/",
+    "collection": "Simple Icons",
+    "title": "Snowflake",
+    "hex": "29B5E8",
+    "license": null
+  },
+  "databricks": {
+    "source": "https://www.databricks.com",
+    "collection": "Simple Icons",
+    "title": "Databricks",
+    "hex": "FF3621",
+    "license": null
+  },
+  "clickhouse": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "ClickHouse",
+    "vendor": "https://clickhouse.com"
+  },
+  "duckdb": {
+    "source": "https://duckdb.org",
+    "collection": "Simple Icons",
+    "title": "DuckDB",
+    "hex": "FFF000",
+    "license": null
+  },
+  "turso": {
+    "source": "https://turso.tech",
+    "collection": "Simple Icons",
+    "title": "Turso",
+    "hex": "4FF8D2",
+    "license": null
+  },
+  "vercel": {
+    "source": "https://vercel.com/geist/brands",
+    "collection": "Simple Icons",
+    "title": "Vercel",
+    "hex": "000000",
+    "license": null
+  },
+  "netlify": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Netlify",
+    "vendor": "https://www.netlify.com"
+  },
+  "render": {
+    "source": "https://render.com",
+    "collection": "Simple Icons",
+    "title": "Render",
+    "hex": "000000",
+    "license": null
+  },
+  "railway": {
+    "source": "https://railway.app",
+    "collection": "Simple Icons",
+    "title": "Railway",
+    "hex": "0B0D0E",
+    "license": null
+  },
+  "circleci": {
+    "source": "https://circleci.com/press",
+    "collection": "Simple Icons",
+    "title": "CircleCI",
+    "hex": "343434",
+    "license": null
+  },
+  "jenkins": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Jenkins",
+    "vendor": "https://www.jenkins.io"
+  },
+  "buildkite": {
+    "source": "https://buildkite.com/brand-assets",
+    "collection": "Simple Icons",
+    "title": "Buildkite",
+    "hex": "14CC80",
+    "license": null
+  },
+  "pulumi": {
+    "source": "https://www.pulumi.com",
+    "collection": "Simple Icons",
+    "title": "Pulumi",
+    "hex": "8A3391",
+    "license": null
+  },
+  "terraform": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Terraform",
+    "vendor": "https://www.hashicorp.com/products/terraform"
+  },
+  "ansible": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Ansible",
+    "vendor": "https://www.ansible.com"
+  },
+  "snyk": {
+    "source": "https://snyk.io/press-kit",
+    "collection": "Simple Icons",
+    "title": "Snyk",
+    "hex": "4C4A73",
+    "license": null
+  },
+  "qualys": {
+    "source": "https://www.qualys.com",
+    "collection": "Simple Icons",
+    "title": "Qualys",
+    "hex": "ED2E26",
+    "license": null
+  },
+  "tailscale": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Tailscale",
+    "vendor": "https://tailscale.com"
+  },
+  "proton-vpn": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Proton VPN",
+    "vendor": "https://protonvpn.com"
+  },
+  "mullvad": {
+    "source": "https://mullvad.net/press#logos",
+    "collection": "Simple Icons",
+    "title": "Mullvad",
+    "hex": "294D73",
+    "license": null
+  },
+  "nordvpn": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "NordVPN",
+    "vendor": "https://nordvpn.com"
+  },
+  "1password": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "1Password",
+    "vendor": "https://1password.com"
+  },
+  "bitwarden": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Bitwarden",
+    "vendor": "https://bitwarden.com"
+  },
+  "dashlane": {
+    "source": "https://brandfolder.com/dashlane/brandkitpartners",
+    "collection": "Simple Icons",
+    "title": "Dashlane",
+    "hex": "0E353D",
+    "license": null
+  },
+  "keeper": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Keeper",
+    "vendor": "https://www.keepersecurity.com"
+  },
+  "keepassxc": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "KeePassXC",
+    "vendor": "https://keepassxc.org"
+  },
+  "okta": {
+    "source": "https://www.okta.com/press-room/media-assets/",
+    "collection": "Simple Icons",
+    "title": "Okta",
+    "hex": "007DC1",
+    "license": null
+  },
+  "auth0": {
+    "source": "https://auth0.com",
+    "collection": "Simple Icons",
+    "title": "Auth0",
+    "hex": "EB5424",
+    "license": null
+  },
+  "clerk": {
+    "source": "https://clerk.com",
+    "collection": "Simple Icons",
+    "title": "Clerk",
+    "hex": "6C47FF",
+    "license": null
+  },
+  "keycloak": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Keycloak",
+    "vendor": "https://www.keycloak.org"
+  },
+  "glide": {
+    "source": "https://brand.glide.page/dl/brand-assets",
+    "collection": "Simple Icons",
+    "title": "Glide",
+    "hex": "18BED4",
+    "license": null
+  },
+  "retool": {
+    "source": "https://retool.com",
+    "collection": "Simple Icons",
+    "title": "Retool",
+    "hex": "3D3D3D",
+    "license": null
+  },
+  "appsmith": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Appsmith",
+    "vendor": "https://www.appsmith.com"
+  },
+  "budibase": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Budibase",
+    "vendor": "https://budibase.com"
+  },
+  "typeform": {
+    "source": "https://www.typeform.com",
+    "collection": "Simple Icons",
+    "title": "Typeform",
+    "hex": "262627",
+    "license": null
+  },
+  "google-forms": {
+    "source": "https://about.google/products/#all-products",
+    "collection": "Simple Icons",
+    "title": "Google Forms",
+    "hex": "7248B9",
+    "license": null
+  },
+  "fillout": {
+    "source": "https://www.fillout.com/brand",
+    "collection": "Simple Icons",
+    "title": "Fillout",
+    "hex": "FFC738",
+    "license": null
+  },
+  "formstack": {
+    "source": "https://www.formstack.com/brand/guidelines",
+    "collection": "Simple Icons",
+    "title": "Formstack",
+    "hex": "21B573",
+    "license": null
+  },
+  "formbricks": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Formbricks",
+    "vendor": "https://formbricks.com"
+  },
+  "confluence": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Confluence",
+    "vendor": "https://www.atlassian.com/software/confluence"
+  },
+  "gitbook": {
+    "source": "https://www.gitbook.com",
+    "collection": "Simple Icons",
+    "title": "GitBook",
+    "hex": "BBDDE5",
+    "license": null
+  },
+  "readme": {
+    "source": "https://readme.com",
+    "collection": "Simple Icons",
+    "title": "ReadMe",
+    "hex": "018EF5",
+    "license": null
+  },
+  "docusaurus": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Docusaurus",
+    "vendor": "https://docusaurus.io"
+  },
+  "mintlify": {
+    "source": "https://mintlify.com",
+    "collection": "Simple Icons",
+    "title": "Mintlify",
+    "hex": "18E299",
+    "license": null
+  },
+  "bookstack": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "BookStack",
+    "vendor": "https://www.bookstackapp.com"
+  },
+  "outline": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Outline",
+    "vendor": "https://www.getoutline.com"
+  },
+  "google-drive": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Google Drive",
+    "vendor": "https://workspace.google.com/products/drive"
+  },
+  "dropbox": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Dropbox",
+    "vendor": "https://www.dropbox.com"
+  },
+  "box": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Box",
+    "vendor": "https://www.box.com"
+  },
+  "proton-drive": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Proton Drive",
+    "vendor": "https://proton.me/drive"
+  },
+  "mega": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "MEGA",
+    "vendor": "https://mega.io"
+  },
+  "tresorit": {
+    "source": "https://tresorit.com/press",
+    "collection": "Simple Icons",
+    "title": "Tresorit",
+    "hex": "00A9E2",
+    "license": null
+  },
+  "nextcloud": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Nextcloud",
+    "vendor": "https://nextcloud.com"
+  },
+  "seafile": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Seafile",
+    "vendor": "https://www.seafile.com"
+  },
+  "wetransfer": {
+    "source": "https://wetransfer.com",
+    "collection": "Simple Icons",
+    "title": "WeTransfer",
+    "hex": "409FFF",
+    "license": null
+  },
+  "calendly": {
+    "source": "https://calendly.com/newsroom",
+    "collection": "Simple Icons",
+    "title": "Calendly",
+    "hex": "006BFF",
+    "license": null
+  },
+  "akiflow": {
+    "source": "https://www.akiflow.com",
+    "collection": "Simple Icons",
+    "title": "Akiflow",
+    "hex": "AF38F9",
+    "license": null
+  },
+  "toggl-track": {
+    "source": "https://toggl.com/track/media-toolkit",
+    "collection": "Simple Icons",
+    "title": "Toggl Track",
+    "hex": "E57CD8",
+    "license": null
+  },
+  "clockify": {
+    "source": "https://clockify.me/brand-assets",
+    "collection": "Simple Icons",
+    "title": "Clockify",
+    "hex": "03A9F4",
+    "license": null
+  },
+  "rescuetime": {
+    "source": "https://www.rescuetime.com/press",
+    "collection": "Simple Icons",
+    "title": "RescueTime",
+    "hex": "161A3B",
+    "license": null
+  },
+  "brex": {
+    "source": "https://www.brex.com/journal/press",
+    "collection": "Simple Icons",
+    "title": "Brex",
+    "hex": "212121",
+    "license": null
+  },
+  "expensify": {
+    "source": "https://use.expensify.com/press-kit",
+    "collection": "Simple Icons",
+    "title": "Expensify",
+    "hex": "0185FF",
+    "license": null
+  },
+  "quickbooks": {
+    "source": "https://design.intuit.com/quickbooks/brand",
+    "collection": "Simple Icons",
+    "title": "QuickBooks",
+    "hex": "2CA01C",
+    "license": null
+  },
+  "xero": {
+    "source": "https://www.xero.com/uk/about/media/downloads",
+    "collection": "Simple Icons",
+    "title": "Xero",
+    "hex": "13B5EA",
+    "license": null
+  },
+  "sage": {
+    "source": "https://www.sage.com",
+    "collection": "Simple Icons",
+    "title": "Sage",
+    "hex": "00D639",
+    "license": null
+  },
+  "akaunting": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Akaunting",
+    "vendor": "https://akaunting.com"
+  },
+  "invoice-ninja": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Invoice Ninja",
+    "vendor": "https://invoiceninja.com"
+  },
+  "stripe": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Stripe",
+    "vendor": "https://stripe.com"
+  },
+  "paypal": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "PayPal",
+    "vendor": "https://www.paypal.com"
+  },
+  "square": {
+    "source": "https://squareup.com",
+    "collection": "Simple Icons",
+    "title": "Square",
+    "hex": "3E4348",
+    "license": null
+  },
+  "adyen": {
+    "source": "https://www.adyen.com/press-and-media/presskit",
+    "collection": "Simple Icons",
+    "title": "Adyen",
+    "hex": "0ABF53",
+    "license": null
+  },
+  "paddle": {
+    "source": "https://www.paddle.com",
+    "collection": "Simple Icons",
+    "title": "Paddle",
+    "hex": "FDDD35",
+    "license": null
+  },
+  "razorpay": {
+    "source": "https://razorpay.com/newsroom/brand-assets/",
+    "collection": "Simple Icons",
+    "title": "Razorpay",
+    "hex": "0C2451",
+    "license": null
+  },
+  "lemon-squeezy": {
+    "source": "https://www.lemonsqueezy.com",
+    "collection": "Simple Icons",
+    "title": "Lemon Squeezy",
+    "hex": "FFC233",
+    "license": null
+  },
+  "shopify": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Shopify",
+    "vendor": "https://www.shopify.com"
+  },
+  "woocommerce": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "WooCommerce",
+    "vendor": "https://woocommerce.com"
+  },
+  "bigcommerce": {
+    "source": "https://www.bigcommerce.co.uk/press",
+    "collection": "Simple Icons",
+    "title": "BigCommerce",
+    "hex": "121118",
+    "license": null
+  },
+  "prestashop": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "PrestaShop",
+    "vendor": "https://prestashop.com"
+  },
+  "medusa": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Medusa",
+    "vendor": "https://medusajs.com"
+  },
+  "shopware": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Shopware",
+    "vendor": "https://www.shopware.com"
+  },
+  "gumroad": {
+    "source": "https://gumroad.com",
+    "collection": "Simple Icons",
+    "title": "Gumroad",
+    "hex": "FF90E8",
+    "license": null
+  },
+  "gusto": {
+    "source": "https://gusto.com",
+    "collection": "Simple Icons",
+    "title": "Gusto",
+    "hex": "F45D48",
+    "license": null
+  },
+  "personio": {
+    "source": "https://www.personio.com",
+    "collection": "Simple Icons",
+    "title": "Personio",
+    "hex": "000000",
+    "license": null
+  },
+  "hibob": {
+    "source": "https://www.hibob.com",
+    "collection": "Simple Icons",
+    "title": "Hi Bob",
+    "hex": "E42C51",
+    "license": null
+  },
+  "adp": {
+    "source": "https://www.adp.com",
+    "collection": "Simple Icons",
+    "title": "ADP",
+    "hex": "D0271D",
+    "license": null
+  },
+  "greenhouse": {
+    "source": "https://brand.greenhouse.io/brand-portal/p/6",
+    "collection": "Simple Icons",
+    "title": "Greenhouse",
+    "hex": "24A47F",
+    "license": null
+  },
+  "hackerrank": {
+    "source": "https://www.hackerrank.com/about-us/",
+    "collection": "Simple Icons",
+    "title": "HackerRank",
+    "hex": "00EA64",
+    "license": null
+  },
+  "zotero": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Zotero",
+    "vendor": "https://www.zotero.org"
+  },
+  "mendeley": {
+    "source": "https://www.mendeley.com",
+    "collection": "Simple Icons",
+    "title": "Mendeley",
+    "hex": "9D1620",
+    "license": null
+  },
+  "semantic-scholar": {
+    "source": "https://www.semanticscholar.org/about",
+    "collection": "Simple Icons",
+    "title": "Semantic Scholar",
+    "hex": "1857B6",
+    "license": null
+  },
+  "overleaf": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Overleaf",
+    "vendor": "https://www.overleaf.com"
+  },
+  "jupyter": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Jupyter",
+    "vendor": "https://jupyter.org"
+  },
+  "observable": {
+    "source": "https://observablehq.com",
+    "collection": "Simple Icons",
+    "title": "Observable",
+    "hex": "353E58",
+    "license": null
+  },
+  "pluralsight": {
+    "source": "https://www.pluralsight.com/newsroom/brand-assets",
+    "collection": "Simple Icons",
+    "title": "Pluralsight",
+    "hex": "F15B2A",
+    "license": null
+  },
+  "udacity": {
+    "source": "https://www.udacity.com",
+    "collection": "Simple Icons",
+    "title": "Udacity",
+    "hex": "02B3E4",
+    "license": null
+  },
+  "datacamp": {
+    "source": "https://www.datacamp.com",
+    "collection": "Simple Icons",
+    "title": "DataCamp",
+    "hex": "03EF62",
+    "license": null
+  },
+  "codecademy": {
+    "source": "https://www.codecademy.com",
+    "collection": "Simple Icons",
+    "title": "Codecademy",
+    "hex": "1F4056",
+    "license": null
+  },
+  "khan-academy": {
+    "source": "https://khanacademy.zendesk.com/hc/en-us/articles/202483630-Press-room",
+    "collection": "Simple Icons",
+    "title": "Khan Academy",
+    "hex": "14BF96",
+    "license": null
+  },
+  "skillshare": {
+    "source": "https://www.skillshare.com",
+    "collection": "Simple Icons",
+    "title": "Skillshare",
+    "hex": "00FF84",
+    "license": null
+  },
+  "moodle": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Moodle",
+    "vendor": "https://moodle.org"
+  },
+  "davinci-resolve": {
+    "source": "https://www.blackmagicdesign.com/media/images/davinci-resolve-logo-square",
+    "collection": "Simple Icons",
+    "title": "DaVinci Resolve",
+    "hex": "233A51",
+    "license": null
+  },
+  "obs-studio": {
+    "source": "https://commons.wikimedia.org/wiki/File:OBS.svg",
+    "collection": "Simple Icons",
+    "title": "OBS Studio",
+    "hex": "302E31",
+    "license": null
+  },
+  "kdenlive": {
+    "source": "https://kdenlive.org/trademark-logo/",
+    "collection": "Simple Icons",
+    "title": "Kdenlive",
+    "hex": "527EB2",
+    "license": null
+  },
+  "audacity": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Audacity",
+    "vendor": "https://www.audacityteam.org"
+  },
+  "pro-tools": {
+    "source": "https://cdn-www.avid.com/Content/fonts/avidmoon.ttf",
+    "collection": "Simple Icons",
+    "title": "Pro Tools",
+    "hex": "7ACB10",
+    "license": null
+  },
+  "ardour": {
+    "source": "https://github.com/Ardour/ardour/blob/c5a0c0f6e0fc1ed0b94f94af38d5b55d49882add/tools/misc_resources/ardour_bw.svg",
+    "collection": "Simple Icons",
+    "title": "Ardour",
+    "hex": "C61C3E",
+    "license": null
+  },
+  "lmms": {
+    "source": "https://lmms.io/branding",
+    "collection": "Simple Icons",
+    "title": "LMMS",
+    "hex": "10B146",
+    "license": null
+  },
+  "bandlab": {
+    "source": "https://www.bandlab.com",
+    "collection": "Simple Icons",
+    "title": "BandLab",
+    "hex": "F12C18",
+    "license": null
+  },
+  "prezi": {
+    "source": "https://prezi.com/press/kit/",
+    "collection": "Simple Icons",
+    "title": "Prezi",
+    "hex": "3181FF",
+    "license": null
+  },
+  "google-slides": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Google Slides",
+    "vendor": "https://workspace.google.com/products/slides"
+  },
+  "surveymonkey": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "SurveyMonkey",
+    "vendor": "https://www.surveymonkey.com"
+  },
+  "qualtrics": {
+    "source": "https://www.qualtrics.com/brand-book",
+    "collection": "Simple Icons",
+    "title": "Qualtrics",
+    "hex": "00B4EF",
+    "license": null
+  },
+  "limesurvey": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "LimeSurvey",
+    "vendor": "https://www.limesurvey.org"
+  },
+  "maze": {
+    "source": "https://mazedesign.notion.site/Press-Kit-421d405e76154662a547ce9ef2a3f018",
+    "collection": "Simple Icons",
+    "title": "Maze",
+    "hex": "000000",
+    "license": null
+  },
+  "dovetail": {
+    "source": "https://dovetail.com/help/press-kit",
+    "collection": "Simple Icons",
+    "title": "Dovetail",
+    "hex": "190041",
+    "license": null
+  },
+  "datadog": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Datadog",
+    "vendor": "https://www.datadoghq.com"
+  },
+  "new-relic": {
+    "source": "https://newrelic.com/about/media-assets",
+    "collection": "Simple Icons",
+    "title": "New Relic",
+    "hex": "1CE783",
+    "license": null
+  },
+  "sentry": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Sentry",
+    "vendor": "https://sentry.io"
+  },
+  "grafana": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Grafana",
+    "vendor": "https://grafana.com"
+  },
+  "prometheus": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Prometheus",
+    "vendor": "https://prometheus.io"
+  },
+  "better-stack": {
+    "source": "https://betterstack.com",
+    "collection": "Simple Icons",
+    "title": "Better Stack",
+    "hex": "000000",
+    "license": null
+  },
+  "pingdom": {
+    "source": "https://www.pingdom.com/resources/brand-assets/",
+    "collection": "Simple Icons",
+    "title": "Pingdom",
+    "hex": "FFF000",
+    "license": null
+  },
+  "gmail": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Gmail",
+    "vendor": "https://workspace.google.com/products/gmail"
+  },
+  "proton-mail": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Proton Mail",
+    "vendor": "https://proton.me/mail"
+  },
+  "thunderbird": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Thunderbird",
+    "vendor": "https://www.thunderbird.net"
+  },
+  "hey": {
+    "source": "https://hey.com",
+    "collection": "Simple Icons",
+    "title": "HEY",
+    "hex": "5522FA",
+    "license": null
+  },
+  "resend": {
+    "source": "https://resend.com/brand",
+    "collection": "Simple Icons",
+    "title": "Resend",
+    "hex": "000000",
+    "license": null
+  },
+  "mailgun": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Mailgun",
+    "vendor": "https://www.mailgun.com"
+  },
+  "looker": {
+    "source": "https://looker.com",
+    "collection": "Simple Icons",
+    "title": "Looker",
+    "hex": "4285F4",
+    "license": null
+  },
+  "metabase": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Metabase",
+    "vendor": "https://www.metabase.com"
+  },
+  "apache-superset": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Apache Superset",
+    "vendor": "https://superset.apache.org"
+  },
+  "redash": {
+    "source": "https://github.com/getredash/website/blob/c454b523fdaa60218845313904c5498cda7e7b7a/static/assets/images/elements/redash-logo.svg",
+    "collection": "Simple Icons",
+    "title": "Redash",
+    "hex": "FF7964",
+    "license": null
+  },
+  "qlik": {
+    "source": "https://www.qlik.com",
+    "collection": "Simple Icons",
+    "title": "Qlik",
+    "hex": "009848",
+    "license": null
+  },
+  "contentful": {
+    "source": "https://press.contentful.com/media_kits",
+    "collection": "Simple Icons",
+    "title": "Contentful",
+    "hex": "2478CC",
+    "license": null
+  },
+  "sanity": {
+    "source": "https://github.com/sanity-io/logos/blob/e298a1ac2757c83910fe08b496a115bc9aef06bd/src/sanityMonogram.tsx",
+    "collection": "Simple Icons",
+    "title": "Sanity",
+    "hex": "0D0E12",
+    "license": {
+      "type": "MIT"
+    }
+  },
+  "strapi": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Strapi",
+    "vendor": "https://strapi.io"
+  },
+  "directus": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Directus",
+    "vendor": "https://directus.io"
+  },
+  "storyblok": {
+    "source": "https://www.storyblok.com/press",
+    "collection": "Simple Icons",
+    "title": "Storyblok",
+    "hex": "09B3AF",
+    "license": null
+  },
+  "prismic": {
+    "source": "https://prismic.io",
+    "collection": "Simple Icons",
+    "title": "Prismic",
+    "hex": "5163BA",
+    "license": null
+  },
+  "drupal": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Drupal",
+    "vendor": "https://www.drupal.org"
+  },
+  "umbraco": {
+    "source": "https://umbraco.com",
+    "collection": "Simple Icons",
+    "title": "Umbraco",
+    "hex": "3544B1",
+    "license": null
+  },
+  "craft-cms": {
+    "source": "https://craftcms.com/brand-resources",
+    "collection": "Simple Icons",
+    "title": "Craft CMS",
+    "hex": "E5422B",
+    "license": null
+  },
+  "datocms": {
+    "source": "https://www.datocms.com/company/brand-assets",
+    "collection": "Simple Icons",
+    "title": "DatoCMS",
+    "hex": "FF7751",
+    "license": null
+  },
+  "airtable": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Airtable",
+    "vendor": "https://www.airtable.com"
+  },
+  "coda": {
+    "source": "https://coda.io",
+    "collection": "Simple Icons",
+    "title": "Coda",
+    "hex": "F46A54",
+    "license": null
+  },
+  "google-sheets": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Google Sheets",
+    "vendor": "https://workspace.google.com/products/sheets"
+  },
+  "baserow": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Baserow",
+    "vendor": "https://baserow.io"
+  },
+  "libreoffice": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "LibreOffice",
+    "vendor": "https://www.libreoffice.org"
+  },
+  "onlyoffice": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "OnlyOffice",
+    "vendor": "https://www.onlyoffice.com"
+  },
+  "blender": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Blender",
+    "vendor": "https://www.blender.org"
+  },
+  "unity": {
+    "source": "https://brand.unity.com",
+    "collection": "Simple Icons",
+    "title": "Unity",
+    "hex": "FFFFFF",
+    "license": null
+  },
+  "unreal-engine": {
+    "source": "https://www.unrealengine.com/en-US/branding",
+    "collection": "Simple Icons",
+    "title": "Unreal Engine",
+    "hex": "0E1128",
+    "license": null
+  },
+  "cinema-4d": {
+    "source": "https://www.maxon.net/en/about-maxon/branding",
+    "collection": "Simple Icons",
+    "title": "Cinema 4D",
+    "hex": "011A6A",
+    "license": null
+  },
+  "autodesk-maya": {
+    "source": "https://area.autodesk.com/learn/courses/maya-intro",
+    "collection": "Simple Icons",
+    "title": "Autodesk Maya",
+    "hex": "37A5CC",
+    "license": null
+  },
+  "rive": {
+    "source": "https://rive.app",
+    "collection": "Simple Icons",
+    "title": "Rive",
+    "hex": "1D1D1D",
+    "license": null
+  },
+  "aseprite": {
+    "source": "https://www.aseprite.org",
+    "collection": "Simple Icons",
+    "title": "Aseprite",
+    "hex": "7D929E",
+    "license": null
+  },
+  "circle": {
+    "source": "https://www.circle.com",
+    "collection": "Simple Icons",
+    "title": "Circle",
+    "hex": "8669AE",
+    "license": null
+  },
+  "discourse": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Discourse",
+    "vendor": "https://www.discourse.org"
+  },
+  "disqus": {
+    "source": "https://disqus.com/brand",
+    "collection": "Simple Icons",
+    "title": "Disqus",
+    "hex": "2E9FFF",
+    "license": null
+  },
+  "patreon": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Patreon",
+    "vendor": "https://www.patreon.com"
+  },
+  "ko-fi": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Ko-fi",
+    "vendor": "https://ko-fi.com"
+  },
+  "buy-me-a-coffee": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Buy Me a Coffee",
+    "vendor": "https://www.buymeacoffee.com"
+  },
+  "nodebb": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "NodeBB",
+    "vendor": "https://nodebb.org"
+  },
+  "ticket-tailor": {
+    "source": "https://www.tickettailor.com",
+    "collection": "Simple Icons",
+    "title": "Ticket Tailor",
+    "hex": "222432",
+    "license": null
+  },
+  "ilovepdf": {
+    "source": "https://www.ilovepdf.com/press",
+    "collection": "Simple Icons",
+    "title": "iLovePDF",
+    "hex": "E5322D",
+    "license": null
+  },
+  "uservoice": {
+    "source": "https://www.uservoice.com",
+    "collection": "Simple Icons",
+    "title": "UserVoice",
+    "hex": "FF6720",
+    "license": null
+  },
+  "sauce-labs": {
+    "source": "https://saucelabs.com",
+    "collection": "Simple Icons",
+    "title": "Sauce Labs",
+    "hex": "3DDC91",
+    "license": null
+  },
+  "cypress": {
+    "source": "https://www.cypress.io/press-kit",
+    "collection": "Simple Icons",
+    "title": "Cypress",
+    "hex": "69D3A7",
+    "license": null
+  },
+  "selenium": {
+    "source": "https://github.com/SeleniumHQ/heroku-selenium/blob/2f66891ba030d3aa1f36ab1748c52ba4fb4e057d/selenium-green.svg",
+    "collection": "Simple Icons",
+    "title": "Selenium",
+    "hex": "43B02A",
+    "license": null
+  },
+  "testrail": {
+    "source": "https://www.testrail.com",
+    "collection": "Simple Icons",
+    "title": "TestRail",
+    "hex": "65C179",
+    "license": null
+  },
+  "qase": {
+    "source": "https://qase.io",
+    "collection": "Simple Icons",
+    "title": "Qase",
+    "hex": "4F46DC",
+    "license": {
+      "type": "custom",
+      "url": "https://github.com/simple-icons/simple-icons/pull/9907#issuecomment-1831377594"
+    }
+  },
+  "percy": {
+    "source": "https://percy.io",
+    "collection": "Simple Icons",
+    "title": "Percy",
+    "hex": "9E66BF",
+    "license": null
+  },
+  "k6": {
+    "source": "https://commons.wikimedia.org/wiki/File:K6-logo.svg",
+    "collection": "Simple Icons",
+    "title": "k6",
+    "hex": "7D64FF",
+    "license": null
+  },
+  "deepl": {
+    "source": "https://www.deepl.com/press.html",
+    "collection": "Simple Icons",
+    "title": "DeepL",
+    "hex": "0F2B46",
+    "license": null
+  },
+  "google-translate": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Google Translate",
+    "vendor": "https://translate.google.com"
+  },
+  "crowdin": {
+    "source": "https://support.crowdin.com/using-logo/",
+    "collection": "Simple Icons",
+    "title": "Crowdin",
+    "hex": "2E3340",
+    "license": null
+  },
+  "transifex": {
+    "source": "https://app.transifex.com/contact/",
+    "collection": "Simple Icons",
+    "title": "Transifex",
+    "hex": "0064AB",
+    "license": null
+  },
+  "weblate": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Weblate",
+    "vendor": "https://weblate.org"
+  },
+  "chatgpt": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "ChatGPT",
+    "vendor": "https://chatgpt.com"
+  },
+  "microsoft-copilot": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Microsoft Copilot",
+    "vendor": "https://copilot.microsoft.com"
+  },
+  "grok": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Grok",
+    "vendor": "https://grok.com"
+  },
+  "midjourney": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Midjourney",
+    "vendor": "https://www.midjourney.com"
+  },
+  "adobe-firefly": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Adobe Firefly",
+    "vendor": "https://www.adobe.com/products/firefly.html"
+  },
+  "ideogram": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Ideogram",
+    "vendor": "https://ideogram.ai"
+  },
+  "recraft": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Recraft",
+    "vendor": "https://www.recraft.ai"
+  },
+  "krea": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Krea",
+    "vendor": "https://www.krea.ai"
+  },
+  "runway": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Runway",
+    "vendor": "https://runwayml.com"
+  },
+  "pika": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Pika",
+    "vendor": "https://pika.art"
+  },
+  "luma-ai": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Luma AI",
+    "vendor": "https://lumalabs.ai"
+  },
+  "kling-ai": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Kling AI",
+    "vendor": "https://klingai.com"
+  },
+  "hailuo-ai": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Hailuo AI",
+    "vendor": "https://hailuoai.video"
+  },
+  "openai-codex": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "OpenAI Codex",
+    "vendor": "https://openai.com/codex"
+  },
+  "activepieces": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Activepieces",
+    "vendor": "https://www.activepieces.com"
+  },
+  "adobe-photoshop": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Adobe Photoshop",
+    "vendor": "https://www.adobe.com/products/photoshop.html"
+  },
+  "adobe-illustrator": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Adobe Illustrator",
+    "vendor": "https://www.adobe.com/products/illustrator.html"
+  },
+  "salesforce": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Salesforce",
+    "vendor": "https://www.salesforce.com"
+  },
+  "plausible": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Plausible",
+    "vendor": "https://plausible.io"
+  },
+  "visual-studio-code": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Visual Studio Code",
+    "vendor": "https://code.visualstudio.com"
+  },
+  "zed": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Zed",
+    "vendor": "https://zed.dev"
+  },
+  "amazon-web-services": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Amazon Web Services",
+    "vendor": "https://aws.amazon.com"
+  },
+  "microsoft-azure": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Microsoft Azure",
+    "vendor": "https://azure.microsoft.com"
+  },
+  "heroku": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Heroku",
+    "vendor": "https://www.heroku.com"
+  },
+  "crowdstrike": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "CrowdStrike",
+    "vendor": "https://www.crowdstrike.com"
+  },
+  "cloudflare-zero-trust": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Cloudflare Zero Trust",
+    "vendor": "https://www.cloudflare.com/zero-trust"
+  },
+  "twingate": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Twingate",
+    "vendor": "https://www.twingate.com"
+  },
+  "proton-pass": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Proton Pass",
+    "vendor": "https://proton.me/pass"
+  },
+  "lovable": {
+    "source": "https://github.com/lobehub/lobe-icons",
+    "collection": "Lobe Icons",
+    "title": "Lovable",
+    "vendor": "https://lovable.dev"
+  },
+  "microsoft-onedrive": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Microsoft OneDrive",
+    "vendor": "https://www.microsoft.com/microsoft-365/onedrive/online-cloud-storage"
+  },
+  "cal-com": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Cal.com",
+    "vendor": "https://cal.com"
+  },
+  "invoiceplane": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "InvoicePlane",
+    "vendor": "https://invoiceplane.com"
+  },
+  "capcut": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "CapCut",
+    "vendor": "https://www.capcut.com"
+  },
+  "microsoft-powerpoint": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Microsoft PowerPoint",
+    "vendor": "https://www.microsoft.com/microsoft-365/powerpoint"
+  },
+  "uptimerobot": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "UptimeRobot",
+    "vendor": "https://uptimerobot.com"
+  },
+  "microsoft-outlook": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Microsoft Outlook",
+    "vendor": "https://www.microsoft.com/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook"
+  },
+  "fastmail": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Fastmail",
+    "vendor": "https://www.fastmail.com"
+  },
+  "zoho-mail": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Zoho Mail",
+    "vendor": "https://www.zoho.com/mail"
+  },
+  "tableau": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Tableau",
+    "vendor": "https://www.tableau.com"
+  },
+  "payload": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Payload",
+    "vendor": "https://payloadcms.com"
+  },
+  "microsoft-excel": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Microsoft Excel",
+    "vendor": "https://www.microsoft.com/microsoft-365/excel"
+  },
+  "nocodb": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "NocoDB",
+    "vendor": "https://nocodb.com"
+  },
+  "grist": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Grist",
+    "vendor": "https://www.getgrist.com"
+  },
+  "flarum": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Flarum",
+    "vendor": "https://flarum.org"
+  },
+  "adobe-acrobat": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Adobe Acrobat",
+    "vendor": "https://www.adobe.com/acrobat.html"
+  },
+  "stirling-pdf": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Stirling PDF",
+    "vendor": "https://www.stirlingpdf.com"
+  },
+  "fider": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Fider",
+    "vendor": "https://fider.io"
+  },
+  "tolgee": {
+    "source": "https://github.com/selfhst/icons",
+    "collection": "selfh.st icons",
+    "title": "Tolgee",
+    "vendor": "https://tolgee.io"
+  }
+}
