@@ -381,3 +381,11 @@ button[data-slot=button][data-variant=ghost]:hover,button[data-slot=button][data
 .manifesto:hover::before,.manifesto:focus-within::before{opacity:1}
 @media(max-width:760px){.community-card{width:310px;padding:21px;min-height:300px}.community-product{gap:8px}.community-product>span:last-child{font-size:10px}.community-product .community-brand{font-size:16px;gap:8px}.community-card blockquote{font-size:18px}.manifesto .editorial-cta{max-width:100%;gap:10px}}
 @media(prefers-reduced-motion:reduce){.community-track{animation:none}.manifesto:hover::before,.manifesto:focus-within::before{animation:none}}
+/* Paint long catalogues only as they approach the viewport. */
+@supports(content-visibility:auto){.browse-card,.guides-index .guide-card,.universal-category{content-visibility:auto;contain-intrinsic-size:auto 320px}.guides-index .guide-card{contain-intrinsic-size:auto 430px}}
+.community-section[data-motion="idle"] .community-track,.community-section[data-motion="idle"] .community-window:hover .community-track{animation-play-state:paused;will-change:auto}
+.community-section[data-motion="active"] .community-track{will-change:transform}
+.tools-grid[aria-busy="true"],.select-list[aria-busy="true"]{opacity:.65;transition:opacity .15s}
+.search-error{padding:16px 20px;border:1px solid #d9dfe5;border-radius:12px;margin-bottom:20px;background:#f8fafb}
+@media(hover:none){.tool-card:hover,.guide-card:hover,.category-world:hover,.trending-card:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.community-track{will-change:auto}}

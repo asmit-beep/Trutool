@@ -10,7 +10,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ignore-pattern .next",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prebuild": "node scripts/verify-catalog.mjs",
+    "verify:catalog": "node scripts/verify-catalog.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

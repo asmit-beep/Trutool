@@ -1,6 +1,6 @@
 'use client';
 
-import {useState} from 'react';
+import {useState,useMemo} from 'react';
 import Link from '@/components/site-link';
 import {RadioGroup,RadioGroupItem} from '@/components/ui/radio-group';
 import {Button} from '@/components/ui/button';
@@ -23,7 +23,8 @@ export function VisibilityDiagnostic({initialBrief,initialWeights,initialCategor
  const [checked,setChecked]=useState<string[]>([]);
  const [notice,setNotice]=useState('');
  const [scenario,setScenario]=useState({items:10,before:20,after:20,people:1,weeks:46});
- const brief=validateBrief(answers);
+ const brief=useMemo(()=>validateBrief(answers),[answers]);
+ const matches=useMemo(()=>brief?matchTools(brief,weights).slice(0,6):[],[brief,weights]);
  const done=step===4&&brief;
 
  function startOver(){setStep(0);setAnswers({});setWeights(defaultWeights);setSelected([]);setChecked([]);setTab('shortlist');setNotice('');}
@@ -38,7 +39,6 @@ export function VisibilityDiagnostic({initialBrief,initialWeights,initialCategor
   </section>;
  }
 
- const matches=matchTools(brief,weights).slice(0,6);
  const hasTags=matches.some(m=>m.tagged);
  const label=briefLabels(brief);
  const total=weights.workflow+weights.scale+weights.style;

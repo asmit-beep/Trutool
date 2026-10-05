@@ -7,8 +7,10 @@ const index=tools.map(tool=>({tool,name:normalize(tool.name),compact:normalize(t
 const stop=new Set('a an the for of to with in on by best top software tool tools app apps platform platforms free paid cheap affordable help need want me my our find compare alternative alternatives how can i use'.split(' '));
 function distance(a:string,b:string){if(Math.abs(a.length-b.length)>2)return 3;let row=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){const next=[i];for(let j=1;j<=b.length;j++)next[j]=Math.min(next[j-1]+1,row[j]+1,row[j-1]+(a[i-1]===b[j-1]?0:1));row=next;}return row[b.length];}
 function stem(s:string){return s.length>5?s.replace(/(ing|ers|ies|s)$/,''):s;}
+const resultCache=new Map<string,Tool[]>();
 export function searchTools(query:string,category='',sort='relevance'):Tool[]{
- const q=normalize(query),compact=q.replace(/ /g,''),terms=q.split(' ').filter(x=>x&&!stop.has(x));
+ const q=normalize(query.slice(0,160)),key=JSON.stringify([q,category,sort]),cached=resultCache.get(key);if(cached)return cached;
+ const compact=q.replace(/ /g,''),terms=q.split(' ').filter(x=>x&&!stop.has(x));
  const related=Object.entries(aliases).filter(([key,value])=>terms.some(t=>key===t||value.split(' ').includes(t))).map(([key,value])=>[key,...value.split(' ')]);
  const scores=index.filter(x=>!category||x.tool.category===category).map(x=>{
   if(!q||!terms.length)return {tool:x.tool,score:1};
@@ -20,6 +22,6 @@ export function searchTools(query:string,category='',sort='relevance'):Tool[]{
   return {tool:x.tool,score:matches||score>=55?score:related.length&&score>=3?score:0};
  }).filter(x=>x.score>0);
  scores.sort((a,b)=>sort==='az'?a.tool.name.localeCompare(b.tool.name):b.score-a.score||a.tool.name.localeCompare(b.tool.name));
- return scores.map(x=>x.tool);
+ const result=scores.map(x=>x.tool);if(resultCache.size>=96)resultCache.delete(resultCache.keys().next().value!);resultCache.set(key,result);return result;
 }
-export const categoryCounts=Object.fromEntries(categories.map(c=>[c.slug,tools.filter(t=>t.category===c.slug).length]));
+export {categoryCounts} from './catalog';
