@@ -1,20 +1,87 @@
-export const diagnosticQuestions=[
-{id:'stage',title:'Where is your product today?',options:[['early','Finding the first customers'],['growing','Growing a repeatable customer base'],['established','Expanding an established brand']]},
-{id:'category',title:'Which world does your product belong to?',options:[['local-listings','Local marketing and business listings'],['rfp-software','RFP responses and proposal software'],['communication','Team communication'],['edtech','Professional learning'],['other','Another software category']]},
-{id:'goal',title:'What should improve first?',options:[['discovery','More relevant people discovering us'],['comparison','A clearer case when buyers compare options'],['citations','Visibility in search and AI answers'],['conversion','More enquiries from existing traffic']]},
-{id:'foundation',title:'What does your content foundation look like?',options:[['starting','Mostly a homepage and product pages'],['developing','Some guides, comparisons, and case studies'],['mature','An established library with measurement']]},
-{id:'capacity',title:'How much publishing capacity do you have?',options:[['solo','One person or a small part-time team'],['team','A team that can publish regularly'],['supported','Writers and subject experts working together']]}
-];
-export function diagnosticResult(a:Record<string,string>){
-const paths:Record<string,{title:string;reason:string;steps:string[]}>= {
- discovery:{title:'Build a focused discovery cluster.',reason:'Your priority is reaching relevant buyers. Start with a small connected set of pages around the work your product solves.',steps:['Define the buyer, use case, and category in plain language.','Publish a useful category guide and a complete product profile.','Link supporting answers to the category and product pages.']},
- comparison:{title:'Make comparison research easier.',reason:'Your priority is helping buyers understand the trade-offs. Build fair, evidence-backed comparisons around real purchase decisions.',steps:['Use the same fit, capabilities, limitations, and pricing fields for every option.','Explain which requirements should rule an option in or out.','Support important claims with current official sources and dated evaluation notes.']},
- citations:{title:'Strengthen your retrieval foundation.',reason:'Your priority is discovery in search and AI answers. Make your content accessible, specific, sourced, and easy to interpret.',steps:['Check indexability, canonical URLs, and crawl access for priority pages.','Answer buyer questions directly and use consistent product and category names.','Add visible sources, update dates, authorship, and accurate structured data.']},
- conversion:{title:'Clarify the next decision.',reason:'Your priority is turning existing interest into relevant enquiries. Reduce uncertainty between reading about a product and evaluating it.',steps:['Put buyer fit, limitations, and the next action on the same page.','Make trial, pricing, and enquiry paths clear and easy to use.','Track qualified enquiries by landing page and improve the pages buyers already visit.']}
+import {tools, categories, guides, type Tool} from './catalog';
+
+export type DiagnosticBrief={category:string;workflow:string;scale:string;style:string};
+export type FitWeights={workflow:number;scale:number;style:number};
+export const defaultWeights:FitWeights={workflow:5,scale:3,style:3};
+export const workflows:Record<string,Array<[string,string,string]>>={
+ 'local-listings':[['distribution','Keep location data in sync','Listings, updates, and location information.'],['audit','Find and fix local visibility gaps','Citation audits, local rankings, and reporting.'],['reputation','Connect listings and reviews','A joined-up local presence and reputation workflow.']],
+ 'rfp-software':[['drafting','Draft answers from company knowledge','Start with source material, then review every response.'],['library','Build a reusable response library','Organise answers, owners, and review cycles.'],['documents','Create proposals and final documents','Templates, collaboration, and buyer-ready exports.']],
+ 'communication':[['chat','Coordinate everyday work','Persistent conversations and shared team context.'],['meetings','Make live meetings work better','Internal meetings and external conversations.'],['async','Replace some meetings with recordings','Walkthroughs and updates people can watch later.'],['community','Build an ongoing community','Shared spaces for text, voice, and discussion.']],
+ 'edtech':[['live','Learn with structured live training','Compare schedules, trainers, and support.'],['self','Learn a specific skill at my own pace','Compare syllabuses and instructor quality.'],['credential','Evaluate an institution-backed pathway','Compare assessments, issuing bodies, and entry requirements.']]
 };
-const result=paths[a.goal]||paths.discovery;
-const pace=a.capacity==='solo'?'Start with one priority page and one supporting answer per publishing cycle.':a.capacity==='team'?'Build one category cluster, with a product profile, buying guide, comparison, and supporting answers.':'Combine subject-expert review with a small repeatable publishing and measurement programme.';
-const foundation=a.foundation==='starting'?'First make the main product and category pages accurate and complete.':a.foundation==='developing'?'Audit and connect the content you already have before creating more pages.':'Use search performance and enquiry data to identify gaps and refresh the pages that matter most.';
-const stage=a.stage==='early'?'Prioritise learning which buyers and use cases respond before expanding the content programme.':a.stage==='growing'?'Keep the programme tied to the use cases that already produce qualified interest.':'Separate the needs of new markets or segments, and measure each cluster against its own baseline.';
-return {...result,pace,foundation,stage};
+export const scales:Array<[string,string,string]>=[['small','Just me or a small team','A focused evaluation, with few people involved.'],['team','A team working together','Shared workflows, handoffs, and ownership.'],['large','Several teams or locations','Governance, rollout, and consistent processes.']];
+export const styles:Array<[string,string,string]>=[['lean','Keep the evaluation lightweight','Start with a focused workflow and a small pilot.'],['balanced','Build a repeatable process','Prioritise coordination and consistent ownership.'],['governance','Make controls a priority','Test permissions, review steps, and rollout requirements.']];
+type Tags={workflows:string[];scales:string[];styles:string[]};
+const tags:Record<string,Tags>={
+ synup:{workflows:['distribution','reputation'],scales:['team','large'],styles:['balanced']},
+ yext:{workflows:['distribution'],scales:['large'],styles:['governance','balanced']},
+ uberall:{workflows:['distribution','reputation'],scales:['large'],styles:['balanced','governance']},
+ brightlocal:{workflows:['audit'],scales:['small','team'],styles:['lean','balanced']},
+ birdeye:{workflows:['reputation','distribution'],scales:['large','team'],styles:['balanced','governance']},
+ 'semrush-local':{workflows:['audit','distribution'],scales:['small','team'],styles:['lean','balanced']},
+ 'inventive-ai':{workflows:['drafting','library'],scales:['team','large'],styles:['balanced','governance']},
+ loopio:{workflows:['library','drafting'],scales:['team','large'],styles:['balanced','governance']},
+ responsive:{workflows:['library','drafting'],scales:['large','team'],styles:['governance','balanced']},
+ sifthub:{workflows:['drafting','library'],scales:['team'],styles:['balanced']},
+ 'autorfp-ai':{workflows:['drafting'],scales:['small','team'],styles:['lean','balanced']},
+ qorusdocs:{workflows:['documents','drafting'],scales:['team','large'],styles:['balanced','governance']},
+ slack:{workflows:['chat'],scales:['small','team','large'],styles:['lean','balanced']},
+ 'microsoft-teams':{workflows:['chat','meetings'],scales:['team','large'],styles:['balanced','governance']},
+ zoom:{workflows:['meetings'],scales:['small','team','large'],styles:['lean','balanced']},
+ 'google-meet':{workflows:['meetings'],scales:['small','team'],styles:['lean','balanced']},
+ discord:{workflows:['community','chat'],scales:['small','team'],styles:['lean']},
+ loom:{workflows:['async'],scales:['small','team'],styles:['lean','balanced']},
+ staragile:{workflows:['live'],scales:['small','team'],styles:['balanced']},
+ simplilearn:{workflows:['live','credential'],scales:['small','team'],styles:['balanced']},
+ coursera:{workflows:['self','credential'],scales:['small','team'],styles:['lean','balanced']},
+ udemy:{workflows:['self'],scales:['small','team'],styles:['lean']},
+ upgrad:{workflows:['live','credential'],scales:['small','team'],styles:['balanced']},
+ edx:{workflows:['self','credential'],scales:['small','team'],styles:['lean','balanced']}
+};
+export function validateBrief(a:Partial<DiagnosticBrief>):DiagnosticBrief|undefined{
+ if(!categories.some(c=>c.slug===a.category)||!workflows[a.category!]?.some(w=>w[0]===a.workflow)||!scales.some(s=>s[0]===a.scale)||!styles.some(s=>s[0]===a.style))return;
+ return a as DiagnosticBrief;
+}
+export function briefLabels(a:DiagnosticBrief){
+ return {category:categories.find(c=>c.slug===a.category)!.short,workflow:workflows[a.category].find(w=>w[0]===a.workflow)![1],scale:scales.find(s=>s[0]===a.scale)![1],style:styles.find(s=>s[0]===a.style)![1]};
+}
+export function matchTools(a:DiagnosticBrief,weights:FitWeights){
+ return tools.filter(t=>t.category===a.category).map(tool=>{
+  const t=tags[tool.slug];
+  const signals={workflow:t.workflows.includes(a.workflow),scale:t.scales.includes(a.scale),style:t.styles.includes(a.style)};
+  return {tool,signals,points:(signals.workflow?weights.workflow:0)+(signals.scale?weights.scale:0)+(signals.style?weights.style:0)};
+ }).sort((a,b)=>b.points-a.points||a.tool.name.localeCompare(b.tool.name));
+}
+export function pilotPlan(a:DiagnosticBrief){
+ const categoryTasks:Record<string,string[]>={
+  'local-listings':['List priority publishers and confirm who owns each business profile.','Test one real location change, holiday hours, and a duplicate listing.','Record update time, unresolved exceptions, and ongoing work your team must do.','Request a written breakdown of location fees, onboarding, and cancellation access.'],
+  'rfp-software':['Choose one real questionnaire and a controlled set of current source documents.','Include an outdated or conflicting source and inspect citations and reviewer corrections.','Track reviewer time, unsupported statements, and the quality of the final export.','Confirm source permissions, content ownership, and the exact package in the quote.'],
+  communication:['Map one recurring conversation, meeting, or recorded update to test.','Invite an external collaborator and then verify access can be removed.','Compare time spent coordinating work, searching for context, and resolving handoffs.','Confirm retention, export, administration, and any meeting or recording limits.'],
+  edtech:['Choose a specific course, learning goal, and current syllabus for each option.','Review a sample lesson or live-session format and the work needed for assessments.','Compare trainer or institution credentials, projects, feedback, and support.','Request total fees, exam inclusion, credential issuer, and cancellation terms in writing.']
+ };
+ const t=categoryTasks[a.category];
+ return [
+  {label:'Define the test',timing:'Days 1–3',tasks:[t[0],a.scale==='large'?'Choose one team or location first; name a rollout owner and a permissions reviewer.':'Name one pilot owner and capture the current workflow before changing it.']},
+  {label:'Run the same pilot',timing:'Days 4–10',tasks:[t[1],t[2]]},
+  {label:'Make the decision',timing:'Days 11–14',tasks:[t[3],a.style==='governance'?'Document access boundaries, approval steps, and unresolved control requirements.':'Record the remaining manual work and decide whether the change is worth adopting.']}
+ ];
+}
+export const guideFor=(category:string)=>guides.find(g=>g.category===category)!;
+export function timeScenario(items:number,before:number,after:number,people:number,weeks:number){
+ const values=[items,before,after,people,weeks];
+ if(values.some(v=>!Number.isFinite(v)||v<0))return {weekly:0,annual:0};
+ const weekly=items*(before-after)*people/60;
+ return {weekly,annual:weekly*weeks};
+}
+export function planText(a:DiagnosticBrief,weights:FitWeights,selected:Tool[],scenario:{items:number;before:number;after:number;people:number;weeks:number},checked:string[]=[]){
+ const label=briefLabels(a),matches=matchTools(a,weights),total=weights.workflow+weights.scale+weights.style;
+ const lines=['# My TruTool decision plan','','## The brief','- Category: '+label.category,'- Workflow: '+label.workflow,'- Scale: '+label.scale,'- Approach: '+label.style,'','## Shortlist'];
+ for(const m of matches.slice(0,3))lines.push('- '+m.tool.name+' — '+m.points+'/'+total+' fit points; '+m.tool.url,'  Check: '+m.tool.caution);
+ lines.push('','Points use TruTool editorial tags, not review ratings or verified feature coverage. Commercial relationships do not affect points. Confirm vendor details before committing.','');
+ if(selected.length)lines.push('Selected for comparison: '+selected.map(t=>t.name).join(', '),'');
+ lines.push('## My 14-day pilot');
+ for(const [i,p] of pilotPlan(a).entries()){lines.push('','### '+p.timing+' · '+p.label);for(const [j,task] of p.tasks.entries())lines.push('- ['+(checked.includes(i+'-'+j)?'x':' ')+'] '+task);}
+ const time=timeScenario(scenario.items,scenario.before,scenario.after,scenario.people,scenario.weeks);
+ lines.push('','## Time scenario','Inputs: '+scenario.items+' items per person/week; '+scenario.before+' minutes before; '+scenario.after+' minutes after; '+scenario.people+' people; '+scenario.weeks+' working weeks.','Weekly change: '+time.weekly.toFixed(1)+' hours. Annual change: '+time.annual.toFixed(1)+' hours.','This is a scenario from my inputs, not measured savings or a product forecast.','','## Evaluation guide','https://trutool-directory.vercel.app/guides/'+guideFor(a.category).slug);
+ return lines.join('\n');
 }
