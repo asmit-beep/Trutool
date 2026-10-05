@@ -1,0 +1,5 @@
+import Link from '@/components/site-link';
+import {categoryOf,guides} from '@/lib/catalog';
+export const coverFor=(category:string)=>'/covers/'+category+'.webp';
+export const coverAlt=(category:string)=>({'local-listings':'Location markers and a city map representing local business visibility','rfp-software':'Connected documents representing an RFP knowledge library','communication':'Connected conversations representing team communication','edtech':'Books and a study workspace representing professional learning'}[category]||'TruTool buying guide');
+export function GuideCard({guide:g}:{guide:typeof guides[number]}){return <Link className="guide-card" href={'/guides/'+g.slug}><div className="guide-art"><img src={coverFor(g.category)} alt={coverAlt(g.category)} width={800} height={500} loading="lazy"/></div><div className="guide-card-copy"><span className="eyebrow">{categoryOf(g.category).short}</span><h3>{g.title}</h3><span className="read-label">By Yash · Buying checklist</span><span className="guide-read">Read the guide</span></div></Link>}

@@ -1,0 +1,3 @@
+import {VisibilityDiagnostic} from '@/components/visibility-diagnostic';import {SITE} from '@/lib/catalog';
+export const metadata={title:'Product Visibility Diagnostic',description:'Answer five short questions to find a practical starting point for product discovery, search visibility, and buyer research.',alternates:{canonical:SITE+'/diagnostic'}};
+export default function Page(){return <main id="main" className="shell diagnostic-page"><div className="page-intro"><span className="eyebrow">FIVE QUESTIONS · ABOUT TWO MINUTES</span><h1>Find your next visibility move.</h1><p>Tell us where you are, what you want to improve, and what you have to work with. Leave with a focused set of next steps.</p></div><div className="page-body"><VisibilityDiagnostic/></div></main>}

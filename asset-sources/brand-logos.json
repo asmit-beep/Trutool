@@ -1,0 +1,115 @@
+{
+  "synup": {
+    "path": "synup.svg",
+    "source": "https://synup.com/brand/wordmark-orange.svg"
+  },
+  "yext": {
+    "path": "yext.svg",
+    "source": "https://www.yext.com/",
+    "note": "Original inline logo SVG; currentColor defaults to black"
+  },
+  "uberall": {
+    "path": "uberall.svg",
+    "source": "https://uberall.com/en-us/products/listings",
+    "note": "Original inline header logo SVG; corrected SVG XML namespace https to http for standalone rendering"
+  },
+  "brightlocal": {
+    "path": "brightlocal.svg",
+    "source": "https://www.brightlocal.com/",
+    "note": "Original inline header logo SVG"
+  },
+  "birdeye": {
+    "path": "birdeye.webp",
+    "source": "https://cdn2.birdeye.com/version2/containers/header/birdeye-logo-2025.png",
+    "note": "Actual response is WebP, 97x22"
+  },
+  "semrush-local": {
+    "path": "semrush-local.svg",
+    "source": "https://www.semrush.com/__static__/favicon.37cab19e6995.svg",
+    "note": "Current official favicon mark"
+  },
+  "inventive-ai": {
+    "path": "inventive-ai.png",
+    "source": "https://bookface-images.s3.amazonaws.com/small_logos/9ca8dbe5acb1f1a068aec484d7a9083db2e81f55.png",
+    "source_page": "https://www.ycombinator.com/companies/inventive-ai",
+    "note": "Independent founder supplied company profile logo on YC, linked from official Inventive media page; no blocked asset fetched"
+  },
+  "loopio": {
+    "path": "loopio.svg",
+    "source": "https://loopio.com/",
+    "note": "Original inline header logo SVG"
+  },
+  "responsive": {
+    "path": "responsive.svg",
+    "source": "https://www.responsive.io/",
+    "note": "Original inline header logo SVG"
+  },
+  "sifthub": {
+    "path": "sifthub.png",
+    "source": "https://static.sifthub.io/assets/full-logo.png?v=0.0.2",
+    "note": "Official public app header logo, independent asset on vendor origin"
+  },
+  "autorfp-ai": {
+    "path": "autorfp-ai.svg",
+    "source": "https://autorfp.ai/_astro/symbol-blue.B65Lk8yE.svg"
+  },
+  "qorusdocs": {
+    "path": "qorusdocs.png",
+    "source": "https://www.qorusdocs.com/hs-fs/hub/365252/file-609506322-ico/favicon.ico",
+    "note": "Official favicon converted losslessly to PNG for use on white tiles"
+  },
+  "slack": {
+    "path": "slack.png",
+    "source": "https://a.slack-edge.com/9cc0056/img/icons/favicon-32.png",
+    "note": "Official favicon, actual 35x34"
+  },
+  "microsoft-teams": {
+    "path": "microsoft-teams.svg",
+    "source": "https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/Teams-Icon-FY26?resMode=sharp2&op_usm=1.5,0.65,15,0&qlt=100"
+  },
+  "zoom": {
+    "path": "zoom.png",
+    "source": "https://st1.zoom.us/homepage/20260930-1234/primary/dist/assets/zoommedia/logo-zoom@2x.png"
+  },
+  "google-meet": {
+    "path": "google-meet.svg",
+    "source": "https://www.gstatic.com/images/branding/productlogos/meet_2026/v2/web/192px.svg"
+  },
+  "discord": {
+    "path": "discord.png",
+    "source": "https://docs.discord.com/mintlify-assets/_mintlify/favicons/discord/7K4RgSZ9MXrlU2Yd/_generated/favicon/android-chrome-192x192.png",
+    "source_page": "https://docs.discord.com/developers/intro",
+    "note": "Independent official documentation favicon on Discord origin"
+  },
+  "loom": {
+    "path": "loom.png",
+    "source": "https://cdn.loom.com/assets/favicons-loom/android-chrome-192x192.png",
+    "note": "Official app/favicon mark"
+  },
+  "staragile": {
+    "path": "staragile.webp",
+    "source": "https://d1qnndbrfkpp2h.cloudfront.net/logos/new-logo.webp"
+  },
+  "simplilearn": {
+    "path": "simplilearn.svg",
+    "source": "https://www.simplilearn.com/ice9/new_logo.svgz",
+    "note": "Decoded response is standalone SVG"
+  },
+  "coursera": {
+    "path": "coursera.svg",
+    "source": "https://www.coursera.org/",
+    "note": "Original inline header logo SVG, with original computed fill #0056d2 made explicit for standalone rendering"
+  },
+  "udemy": {
+    "path": "udemy.svg",
+    "source": "https://frontends.udemycdn.com/frontends-homepage/staticx/udemy/images/v7/logo-udemy.svg"
+  },
+  "upgrad": {
+    "path": "upgrad.svg",
+    "source": "https://upgrad-marketing-platform.s3.amazonaws.com/mpc-v2/assets/images/upgrad/upgrad-logo.svg"
+  },
+  "edx": {
+    "path": "edx.svg",
+    "source": "https://www.edx.org/trademark-logos/edx-logo-elm.svg"
+  }
+}
