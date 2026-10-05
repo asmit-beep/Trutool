@@ -50,7 +50,7 @@ export function VisibilityDiagnostic({initialBrief,initialWeights}:{initialBrief
  const conversationUrl='/contact?plan='+encodeURIComponent(conversationMessage);
  const hours=timeScenario(scenario.items,scenario.before,scenario.after,scenario.people,scenario.weeks);
 
- function download(){const blob=new Blob([text],{type:'text/markdown;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='trutool-decision-plan.md';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);setNotice('Your decision plan is downloaded.');}
+ function download(){const exportParams=new URLSearchParams(params);for(const [key,value] of Object.entries(scenario))exportParams.set(key,String(value));exportParams.set('selected',selected.join(','));exportParams.set('checked',checked.join(','));const a=document.createElement('a');a.href='/api/decision-plan?'+exportParams.toString();a.download='trutool-decision-plan.md';document.body.appendChild(a);a.click();a.remove();setNotice('Your plan download has started.');}
  function updateScenario(key:keyof typeof scenario,value:string){const n=Number(value);setScenario(s=>({...s,[key]:Math.min(key==='weeks'?52:10000,Math.max(0,Number.isFinite(n)?n:0))}));}
 
  return <section className="fit-results">
