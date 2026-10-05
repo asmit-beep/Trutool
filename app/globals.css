@@ -168,6 +168,7 @@ a,button{transition:color .2s,border-color .2s,box-shadow .2s,transform .2s}.but
 
 /* Vibrant homepage chapters, grounded in the original navy/lime theme. */
 /* A slimmer, translucent glass ribbon keeps the navigation light. */
+.glass-logo-filter{position:absolute;pointer-events:none}.site-header .brand-image{mix-blend-mode:normal}.site-header .brand-image img{filter:url(#glass-logo-alpha)}
 .site-header{height:64px;min-height:0;background:#f5f7f3;border-bottom:1px solid #ffffffb3;box-shadow:0 4px 20px #101c2b0a,inset 0 1px 0 #fffffff0}
 @supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.site-header{background:linear-gradient(115deg,#ffffffe6,#ffffff99 52%,#ffffffcc);-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%)}}
 .site-header .brand{width:152px;min-height:38px}.site-header .brand-image{width:152px;height:38px}.site-header .brand-image img{width:173px!important;height:73px!important;left:-10.5px;top:-15.2px}
