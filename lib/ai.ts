@@ -15,7 +15,7 @@ export function compactAI(slugs:string[]):AIShelfTool[]{return slugs.map(slug=>a
 export function freshAITools(now=Date.now()){return aiTools.filter(t=>t.launchedAt&&Date.parse(t.launchedAt)<=now&&Date.parse(t.launchedAt)>=now-45*86400000).sort((a,b)=>b.launchedAt!.localeCompare(a.launchedAt!)).slice(0,6)}
 export function getAIShelves(now=Date.now()){return [
  {id:'popular',label:'Familiar favourites',description:'Popular starting points, with a practical job for each.',tools:compactAI(['chatgpt','claude','perplexity','cursor','notebooklm','gamma'])},
- {id:'added',label:'Just added',description:'Recent launches and releases. Dates link back to their official announcements.',tools:compactAI(freshAITools(now).map(t=>t.slug))},
+ {id:'added',label:'Just added',description:'Recent launches and releases, with official announcement dates.',tools:compactAI(freshAITools(now).map(t=>t.slug))},
  {id:'specialist',label:'Under the radar',description:'Small discoveries. Useful outcomes. From research to meetings and everyday writing.',tools:compactAI(['undermind','napkin-ai','wispr-flow','granola','exa','jev-ai'])}
 ]}
 export const aiShelves=getAIShelves();
