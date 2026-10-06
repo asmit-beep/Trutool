@@ -68,3 +68,30 @@ The client presentation starts with modest helpful-count fixtures (7–63). `NEX
 The community page has a dedicated composer. Questions need a display name, topic, question and publication consent; email and extra context are optional. Experiences can be general or tied to a specific answer via `/community?answer=SLUG#ask`. The API stores these privately under `community-submissions/` with `status: pending`; it does not automatically publish unreviewed text or email addresses.
 
 To publish a reviewed question, add the approved answer to the community answer source using the usual topic schema, then deploy. Submissions retain their reference ID in the private inbox. Rate limits, origin checks, field limits, and a honeypot apply.
+
+## Everything AI
+
+`lib/ai-catalog.json` adds the AI-specific categories and reviewed tool profiles.
+The same catalogue pipeline updates profiles, counts, category menus, search,
+comparisons, alternatives, diagnostic choices, and sitemap entries. AI-related
+entries outside these categories can set `ai: true`; recognised existing AI
+products are included by `lib/ai.ts`. Duplicate slugs and exact names are checked
+before building. `addedAt` means added to this directory, not a vendor launch date.
+
+The homepage and `/everything-ai` use compact curated discovery shelves. Update
+`aiShelves` in `lib/ai.ts` to change editorial selections; these are not measured
+popularity rankings. The directory API's `scope=ai` filters before pagination,
+and both suggestions and results use that scope. No full catalogue is sent to
+the browser.
+
+News refreshes hourly from fixed official OpenAI, Hugging Face, and Google AI
+feeds. The parser checks publishers, HTTPS links, dates, topic relevance, payload
+limits, and duplicates. `lib/ai-news.json` stores individually checked fallback
+announcements. Add only a headline, short original summary, official source URL,
+publication date, topic, and optional catalogue tool slug. A slow or unavailable
+feed does not remove the checked stories. `/api/ai-news` exposes the same feed.
+
+The ticker pauses when off-screen, when the browser tab is hidden, or while
+hovered/focused; reduced-motion preferences disable its movement. New category
+and tool metadata reuse the existing share-image generator. The Everything AI
+page has its own canonical title, description, share image, and sitemap entry.

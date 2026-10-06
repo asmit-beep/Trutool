@@ -41,6 +41,19 @@ const canonical = (word: string) => equivalent.get(word) || (word.length > 4 && 
 // Generic buyer-fit descriptions are intentionally excluded from the index.
 const categoryTasks: Record<string, string> = {
  ai: 'ai artificial intelligence assistant llm',
+ 'ai-agents':'ai agent autonomous automation task',
+ 'ai-coworkers':'ai agent coworker teammate assistant work',
+ 'ai-chatbots':'ai chatbot chat conversational assistant llm',
+ 'ai-browser-agents':'ai browser agent web automation',
+ 'ai-agent-frameworks':'ai agent framework sdk developer code orchestration',
+ 'ai-agent-builders':'ai agent builder workflow automation',
+ 'ai-model-platforms':'ai model inference api infrastructure llm',
+ 'ai-search-research':'ai research search evidence paper academic',
+ 'ai-data-analysis':'ai data analysis document extraction',
+ 'ai-sales-support':'ai sales customer support agent',
+ 'ai-voice-agents':'ai voice agent speech audio conversation',
+ 'ai-design':'ai design visual diagram logo interface',
+ 'ai-productivity':'ai productivity email dictation work',
  'ai-image': 'ai image design', 'ai-video': 'ai video', 'ai-audio': 'ai audio',
  'ai-writing': 'ai writing content', 'ai-coding': 'ai code',
  automation: 'automation integration workflow agent', productivity: 'productivity personal work',
@@ -142,6 +155,7 @@ export function searchTools(query: string, category = '', sort = 'relevance'): T
    continue;
   }
   if (!terms.length) continue;
+  if (/\bchat ?bots?\b/.test(q) && ['ai-coworkers','ai-voice-agents'].includes(entry.tool.category)) continue;
   let score = 0, matches = 0;
   for (const term of terms) {
    if (entry.nameTokens.has(term)) {score += 40; matches++;}

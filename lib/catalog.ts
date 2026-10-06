@@ -1,6 +1,7 @@
 import coreSourceDates from './core-source-dates.json';
 import {additionalGuides} from './guides';
 import expanded from './expanded-catalog.json';
+import aiCatalog from './ai-catalog.json';
 export const SITE = process.env.NEXT_PUBLIC_SITE_URL || 'https://trutool-directory.vercel.app';
 const coreCategories = [
  {slug:'local-listings',name:'Local listings management',short:'Local marketing',description:'Keep business information accurate across search, maps, and directories.',icon:'MapPin',color:'#e9eaeb',question:'How do I choose local listings management software?',answer:'Start with your locations, priority directories, data ownership, and update workflow. Compare listings distribution, duplicate handling, reviews, reporting, and the work your team still needs to do.'},
@@ -8,8 +9,8 @@ const coreCategories = [
  {slug:'communication',name:'Communication tools',short:'Communication',description:'Bring teams together through chat, meetings, and asynchronous video.',icon:'MessagesSquare',color:'#e9eaeb',question:'Which communication tool fits my team?',answer:'Choose around how your team works: persistent chat, live meetings, community channels, or asynchronous recordings. Check guest access, retention, admin controls, and compatibility with your existing workspace.'},
  {slug:'edtech',name:'EdTech & learning platforms',short:'EdTech & learning',description:'Explore live training, self-paced courses, and professional credentials.',icon:'GraduationCap',color:'#e9eaeb',question:'How do I compare professional learning platforms?',answer:'Match the course to your goal, then check live versus self-paced delivery, trainer credentials, projects, total fees, and refund terms. A course completion certificate and a professional certification are different outcomes.'}
 ];
-export const categories=[...coreCategories,...expanded.categories.filter(c=>!coreCategories.some(x=>x.slug===c.slug))];
-export type Tool = {slug:string;name:string;category:string;summary:string;fit:string;features:string[];caution:string;url:string;color:string;initial:string;categoryLabel?:string;format:string;pricing:string;pricingUrl?:string;keywords?:string;sourceTitle?:string;sourceStatus?:string;sourceChecked?:string|null;updatedAt?:string;sourceUrl?:string};
+export const categories=[...coreCategories,...expanded.categories.filter(c=>!coreCategories.some(x=>x.slug===c.slug)),...aiCatalog.categories];
+export type Tool = {slug:string;name:string;category:string;summary:string;fit:string;features:string[];caution:string;url:string;color:string;initial:string;categoryLabel?:string;format:string;pricing:string;pricingUrl?:string;keywords?:string;sourceTitle?:string;sourceStatus?:string;sourceChecked?:string|null;updatedAt?:string;sourceUrl?:string;ai?:boolean;addedAt?:string};
 const make=(slug:string,name:string,category:string,summary:string,fit:string,features:string[],caution:string,url:string,color:string,initial:string,format:string):Tool=>({slug,name,category,summary,fit,features,caution,url,color,initial,format,pricing:'Check current vendor pricing'});
 const coreTools:Tool[]=[
 make('synup','Synup','local-listings','Manage local business listings, reviews, and location visibility from one platform.','Agencies and multi-location teams managing local presence.',['Listings distribution','Review management','Location reporting'],'Confirm directory coverage and the services included for your locations.','https://synup.com/','#725bf5','S','Software'),
@@ -39,7 +40,7 @@ make('edx','edX','edtech','Explore online courses, certificates, and degree path
 ];
 const categoryMap=new Map(categories.map(c=>[c.slug,c]));
 export const categoryOf=(slug:string)=>categoryMap.get(slug)!;
-export const tools:Tool[]=[...coreTools.map(t=>({...t,sourceChecked:(coreSourceDates as Record<string,string>)[t.slug]||null,sourceStatus:(coreSourceDates as Record<string,string>)[t.slug]?'Vendor source consulted':'Confirm directly with vendor'})),...expanded.tools].map(t=>({...t,categoryLabel:categoryOf(t.category)?.short||t.category}));
+export const tools:Tool[]=[...coreTools.map(t=>({...t,sourceChecked:(coreSourceDates as Record<string,string>)[t.slug]||null,sourceStatus:(coreSourceDates as Record<string,string>)[t.slug]?'Vendor source consulted':'Confirm directly with vendor'})),...expanded.tools,...aiCatalog.tools].map(t=>({...t,categoryLabel:categoryOf(t.category)?.short||t.category}));
 const toolMap=new Map(tools.map(t=>[t.slug,t]));
 export const getTool=(slug:string)=>toolMap.get(slug);
 export const categoryCounts:Record<string,number>=Object.fromEntries(categories.map(c=>[c.slug,0]));

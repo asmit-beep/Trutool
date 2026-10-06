@@ -8,8 +8,9 @@ import {createRequire} from 'node:module';
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'trutool-catalog-'));
 try{
  fs.writeFileSync(path.join(tmp,'package.json'),'{"type":"commonjs"}');
- for(const file of ['catalog','guides','search','diagnostic','catalog-results','demo','demo-reviews','reviews','pricing','community-answers'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
+ for(const file of ['catalog','guides','search','diagnostic','catalog-results','ai','ai-news','demo','demo-reviews','reviews','pricing','community-answers'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  fs.copyFileSync('lib/expanded-catalog.json',path.join(tmp,'expanded-catalog.json'));
+ for(const name of ['ai-catalog.json','ai-news.json'])fs.copyFileSync('lib/'+name,path.join(tmp,name));
  fs.copyFileSync('lib/core-source-dates.json',path.join(tmp,'core-source-dates.json'));
  fs.copyFileSync('lib/community-reviews.json',path.join(tmp,'community-reviews.json'));
  const require=createRequire(import.meta.url),{tools,categories,guides}=require(path.join(tmp,'catalog.js')),{searchTools}=require(path.join(tmp,'search.js')),{workflows,validateBrief,pilotPlan,guideFor,matchTools,defaultWeights}=require(path.join(tmp,'diagnostic.js'));
@@ -39,15 +40,15 @@ try{
   ['request for proposal',['inventive-ai'],['rfp-software']],
   ['no-code app builders',['bubble','lovable'],['no-code']],
   ['build apps without coding',['bubble'],['no-code']],
-  ['AI image generator',['midjourney','ideogram'],['ai-image','ai-video']],
+  ['AI image generator',['midjourney','ideogram'],['ai-image','ai-video','ai-chatbots','ai-model-platforms']],
   ['video editing',['capcut','davinci-resolve'],['video-editing','ai-video']],
-  ['text to speech',['speechify','elevenlabs'],['ai-audio']],
-  ['speech to text',['assemblyai','deepgram'],['ai-audio','meeting-notes','audio-production','video-editing']],
-  ['logo maker',['canva','adobe-illustrator'],['design','ai-image']],
+  ['text to speech',['speechify','elevenlabs'],['ai-audio','ai-voice-agents']],
+  ['speech to text',['assemblyai','deepgram'],['ai-audio','meeting-notes','audio-production','video-editing','ai-productivity']],
+  ['logo maker',['canva','adobe-illustrator'],['design','ai-image','ai-design']],
   ['email marketing',['mailchimp','brevo'],['email-marketing','marketing']],
-  ['AI chatbot',['chatgpt','claude','deepseek'],['ai']],
-  ['AI research assistants',['perplexity','elicit'],['ai','ai-writing']],
-  ['ChatGPT alternatives',['claude','deepseek'],['ai']],
+  ['AI chatbot',['chatgpt','claude','deepseek'],['ai','ai-chatbots','ai-agent-builders','ai-sales-support']],
+  ['AI research assistants',['perplexity','elicit'],['ai','ai-writing','ai-search-research','ai-chatbots','ai-coworkers']],
+  ['ChatGPT alternatives',['claude','deepseek'],['ai','ai-chatbots']],
   ['Notion alternatives',['obsidian','evernote'],['productivity']],
   ['write marketing content',['jasper','writesonic'],['ai-writing']],
   ['learn coding',['codecademy'],['edtech']],
@@ -147,20 +148,39 @@ try{
  assert.ok(first.items.every(t=>t.categoryLabel&&!('fit' in t)&&!('features' in t)),'Compact search responses');
  assert.equal(toolResults('','','',Infinity,Infinity).limit,24);assert.equal(toolResults('','','',999999).page,first.pages);
  assert.equal(toolResults('','nonexistent-category').total,0);assert.ok(toolResults('chagpt','','',1,6).items.some(t=>t.slug==='chatgpt'));
+ const aiCatalogue=JSON.parse(fs.readFileSync('lib/ai-catalog.json','utf8'));
+ const {aiTools,aiCategories,aiStats,isAITool}=require(path.join(tmp,'ai.js'));
+ assert.ok(aiCatalogue.tools.length>100);assert.ok(aiCategories.length>=19);
+ assert.equal(aiStats.tools,aiTools.length);assert.equal(aiStats.categories,aiCategories.length);
+ assert.ok(aiCatalogue.tools.every(t=>t.ai&&t.sourceChecked&&t.addedAt&&t.sourceStatus==='Vendor source consulted'));
+ const aiFirst=toolResults('','','relevance',1,50,'ai');assert.equal(aiFirst.total,aiTools.length);assert.equal(aiFirst.scope,'ai');assert.ok(aiFirst.items.every(t=>isAITool(tools.find(x=>x.slug===t.slug))));
+ assert.equal(toolResults('Synup','','relevance',1,24,'ai').total,0);
+ for(const [query,slug] of [['Jev AI','jev-ai'],['Grok Bot','grok-bot'],['AI coworker','grok-bot'],['AI agent frameworks','crewai'],['AI browser agents','browser-use'],['voice agents','vapi'],['AI chatbot','kimi']])assert.ok(toolResults(query,'','relevance',1,50,'ai').items.some(t=>t.slug===slug),query+' -> '+slug);
+ assert.ok(!searchTools('AI chatbot').some(t=>['grok-bot','bland-ai','retell-ai'].includes(t.slug)),'Always-on coworkers and phone agents are not text chatbots');
+ assert.equal(toolResults('password manager','','relevance',1,24,'ai').total,0);
+ const {parseOfficialFeed,mergeAINews,officialFeeds}=require(path.join(tmp,'ai-news.js'));
+ const newsNow=Date.parse('2026-10-06T12:00:00Z');
+ const xml='<rss><channel><item><title><![CDATA[New AI agents &amp; tools]]></title><link>https://openai.com/index/check</link><pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate><description><![CDATA[<p>Agent update</p>]]></description></item><item><title>AI outside source</title><link>https://example.com/ai</link><pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate></item><item><title>AI future story</title><link>https://openai.com/future</link><pubDate>Wed, 05 Oct 2027 12:00:00 GMT</pubDate></item><item><title>Cooking tips</title><link>https://openai.com/cooking</link><pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate></item></channel></rss>';
+ const parsedNews=parseOfficialFeed(xml,officialFeeds[0],newsNow);assert.equal(parsedNews.length,1);assert.equal(parsedNews[0].title,'New AI agents & tools');assert.equal(parsedNews[0].summary,'Agent update');
+ assert.equal(parseOfficialFeed('<feed><entry><title>AI model update</title><link href="https://huggingface.co/blog/check"/><updated>2026-10-05T10:00:00Z</updated></entry></feed>',officialFeeds[1],newsNow).length,1);
+ assert.equal(parseOfficialFeed('x'.repeat(2_000_001),officialFeeds[0],newsNow).length,0);
+ const mergedNews=mergeAINews([...parsedNews,...parsedNews],newsNow);assert.equal(mergedNews.filter(n=>n.url===parsedNews[0].url).length,1);assert.ok(mergeAINews([],newsNow).length>=4);assert.equal(mergedNews[0].url,parsedNews[0].url);
+ assert.ok(mergedNews.every(n=>n.url.startsWith('https://')&&n.publishedAt));
+ console.log('PASS: 162 added AI profiles, scoped search, live RSS/Atom parsing, trusted source links, future-date filtering, deduplication and feed fallback.');
  // Simulate publication in an isolated catalogue: never add QA content to the site.
  const fixture=JSON.parse(fs.readFileSync(path.join(tmp,'expanded-catalog.json'),'utf8'));
  fixture.categories.push({...fixture.categories[0],slug:'qa-fixture-category',name:'QA Fixture category'});
  fixture.tools.push({...fixture.tools[0],slug:'qa-catalogue-fixture',name:'QA Catalogue Fixture',category:'qa-fixture-category'});
  fs.writeFileSync(path.join(tmp,'expanded-catalog.json'),JSON.stringify(fixture));
  fs.appendFileSync(path.join(tmp,'guides.js'),"\nexports.additionalGuides.push({...exports.additionalGuides[0],slug:'qa-guide-fixture',category:'qa-fixture-category',publishedAt:'2026-10-06'});\n");
- for(const file of ['catalog.js','expanded-catalog.json','guides.js','search.js','catalog-results.js'])delete require.cache[path.join(tmp,file)];
+ for(const file of ['catalog.js','ai.js','expanded-catalog.json','guides.js','search.js','catalog-results.js'])delete require.cache[path.join(tmp,file)];
  const fresh=require(path.join(tmp,'catalog.js')),results=require(path.join(tmp,'catalog-results.js'));
  assert.equal(fresh.catalogueTotals.tools,tools.length+1);assert.equal(fresh.catalogueTotals.categories,categories.length+1);assert.equal(fresh.catalogueTotals.guides,guides.length+1);assert.equal(fresh.categoryCounts['qa-fixture-category'],1);
  assert.equal(fresh.latestGuides[0].slug,'qa-guide-fixture');assert.equal(results.toolResults('QA Catalogue Fixture').items[0].slug,'qa-catalogue-fixture');assert.ok(results.categoryOptions.some(c=>c.slug==='qa-fixture-category'));
  // The exact sitemap generator must include every newly published entity.
  const sitemapSource=fs.readFileSync('app/sitemap.ts','utf8').replaceAll('@/lib/','./');
  for(const [file,source] of [['services',fs.readFileSync('lib/services.ts','utf8')],['sitemap',sitemapSource]])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
- const entries=require(path.join(tmp,'sitemap.js')).default();for(const a of communityAnswers)assert.ok(entries.some(e=>e.url.endsWith('/community/'+a.slug))); for(const suffix of ['/tools/qa-catalogue-fixture','/alternatives/qa-catalogue-fixture','/categories/qa-fixture-category','/guides/qa-guide-fixture'])assert.ok(entries.some(e=>e.url.endsWith(suffix)),suffix);
+ const entries=require(path.join(tmp,'sitemap.js')).default();for(const a of communityAnswers)assert.ok(entries.some(e=>e.url.endsWith('/community/'+a.slug))); for(const suffix of ['/everything-ai','/tools/qa-catalogue-fixture','/alternatives/qa-catalogue-fixture','/categories/qa-fixture-category','/guides/qa-guide-fixture'])assert.ok(entries.some(e=>e.url.endsWith(suffix)),suffix);
  assert.equal(new Set(entries.map(e=>e.url)).size,entries.length);
  console.log('PASS: publishing a tool/category/guide updates totals, menus, search, newest guides and sitemap; pagination and compact API data verified.');
  console.log(`PASS: ${tools.length} unique tools, ${categories.length} populated categories, ${guides.length} guides, ${Object.keys(assets).length} local catalogue brand assets; exact-name/task searches and all diagnostic paths.`);

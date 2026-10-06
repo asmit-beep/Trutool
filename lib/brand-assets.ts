@@ -1,5 +1,10 @@
 import catalogBrands from './catalog-brand-assets.json';
 export const brandAssets:Record<string,string>={...catalogBrands,
+ "chatgpt-dots":catalogBrands.chatgpt,
+ "grok-bot":catalogBrands.grok,
+ "openai-agents-sdk":catalogBrands.chatgpt,
+ "autogen":"/api/logo?slug=semantic-kernel",
+ "qwen-code":"/api/logo?slug=qwen-chat",
   "synup": "/brands/synup.svg",
   "yext": "/brands/yext.svg",
   "uberall": "/brands/uberall.svg",
