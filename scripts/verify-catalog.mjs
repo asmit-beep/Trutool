@@ -17,6 +17,60 @@ try{
  for(const t of tools){assert.ok(categories.some(c=>c.slug===t.category),t.slug);assert.match(new URL(t.url).protocol,/https?:/);assert.ok(t.summary&&t.fit&&t.caution&&t.features.length,t.slug);assert.equal(searchTools(t.name)[0]?.slug,t.slug,'Name search: '+t.name)}
  for(const c of categories){assert.ok(tools.some(t=>t.category===c.slug),c.slug);const brief={category:c.slug,workflow:workflows[c.slug][0][0],scale:'team',style:'balanced'};assert.ok(validateBrief(brief));assert.equal(pilotPlan(brief).length,3);assert.ok(guideFor(c.slug));assert.ok(matchTools(brief,defaultWeights).length)}
  for(const [q,expected] of [['chagpt','chatgpt'],['remove image backgrounds','remove-bg'],['AI research assistants','perplexity'],['RFP response software','inventive-ai'],['meeting notes','otter'],['password manager','1password'],['create presentations','gamma'],['no-code app builders','bubble']]){const result=searchTools(q).slice(0,20);console.log(q,':',result.slice(0,6).map(t=>t.name).join(', '));assert.ok(result.some(t=>t.slug===expected),'Task search: '+q+' should include '+expected)}
+ const relevanceCases = [
+  ['remove image backgrounds',['remove-bg'],['ai-image']],
+  ['how do I remove backgrounds from photos',['remove-bg'],['ai-image']],
+  ['image background remover',['remove-bg'],['ai-image']],
+  ['meeting notes',['otter','fireflies'],['meeting-notes']],
+  ['meeting note',['otter'],['meeting-notes']],
+  ['password manager',['1password','bitwarden'],['passwords']],
+  ['keyword research',['ahrefs','semrush','mangools'],['seo']],
+  ['search research',['ahrefs','semrush'],['seo']],
+  ['backlinks',['ahrefs'],['seo']],
+  ['cloud storage',['google-drive','dropbox'],['cloud-storage']],
+  ['file sharing',['google-drive'],['cloud-storage']],
+  ['customer relationship management',['hubspot','zoho-crm'],['crm','marketing']],
+  ['CRM',['zoho-crm'],['crm','marketing']],
+  ['Google Business Profile',['synup','yext'],['local-listings']],
+  ['google my business',['synup'],['local-listings']],
+  ['GBP',['synup'],['local-listings']],
+  ['local listings management',['synup','yext'],['local-listings']],
+  ['RFP response software',['inventive-ai','loopio'],['rfp-software']],
+  ['request for proposal',['inventive-ai'],['rfp-software']],
+  ['no-code app builders',['bubble','lovable'],['no-code']],
+  ['build apps without coding',['bubble'],['no-code']],
+  ['AI image generator',['midjourney','ideogram'],['ai-image','ai-video']],
+  ['video editing',['capcut','davinci-resolve'],['video-editing','ai-video']],
+  ['text to speech',['speechify','elevenlabs'],['ai-audio']],
+  ['speech to text',['assemblyai','deepgram'],['ai-audio','meeting-notes','audio-production','video-editing']],
+  ['logo maker',['canva','adobe-illustrator'],['design','ai-image']],
+  ['email marketing',['mailchimp','brevo'],['email-marketing','marketing']],
+  ['AI chatbot',['chatgpt','claude','deepseek'],['ai']],
+  ['AI research assistants',['perplexity','elicit'],['ai','ai-writing']],
+  ['ChatGPT alternatives',['claude','deepseek'],['ai']],
+  ['Notion alternatives',['obsidian','evernote'],['productivity']],
+  ['write marketing content',['jasper','writesonic'],['ai-writing']],
+  ['learn coding',['codecademy'],['edtech']],
+  ['podcast recording',['riverside'],['video-editing','audio-production']],
+ ];
+ for(const [query,expected,allowed] of relevanceCases){
+  const results=searchTools(query);
+  for(const slug of expected)assert.ok(results.some(t=>t.slug===slug),'Relevant result: '+query+' -> '+slug);
+  assert.ok(results.every(t=>allowed.includes(t.category)),'Unrelated category: '+query+' -> '+results.filter(t=>!allowed.includes(t.category)).map(t=>t.name));
+ }
+ for(const query of ['bicycle repair','AI bicycle repair','meeting notes zzzxqv','password manager elephant','best tools','zzzxqv','!!!','quantum banana telescope'])assert.equal(searchTools(query).length,0,'No fallback results for '+query);
+ for(const [query,slug] of [['chagpt','chatgpt'],['microsoft tems','microsoft-teams'],['perplexty','perplexity'],['MíDJoUrNeY','midjourney'],['remove.bg','remove-bg'],['Microsoft T','microsoft-teams'],['chatgp','chatgpt']])assert.equal(searchTools(query)[0]?.slug,slug,'Brand matching: '+query);
+ assert.ok(!searchTools('AI').some(t=>t.slug==='airtable'),'AI is not a substring of Airtable');
+ assert.ok(!searchTools('HR').some(t=>t.slug==='google-chrome'),'HR is not a substring of Chrome');
+ assert.ok(!searchTools('password manager').some(t=>t.slug==='auth0'),'Identity providers are not password managers');
+ assert.ok(!searchTools('text to speech').some(t=>['assemblyai','krisp'].includes(t.slug)),'Transcription and noise reduction are not speech synthesis');
+ assert.ok(!searchTools('Notion alternatives').some(t=>['alfred','raycast','notion'].includes(t.slug)),'Alternatives fit the original task and exclude the original brand');
+ assert.equal(searchTools('meeting notes','seo').length,0,'Category filter must not broaden search');
+ assert.deepEqual(searchTools('meeting notes','','az').map(t=>t.name),searchTools('meeting notes','','az').map(t=>t.name).sort((a,b)=>a.localeCompare(b)));
+ const searchStart=performance.now();for(let i=0;i<200;i++)searchTools(relevanceCases[i%relevanceCases.length][0]);
+ assert.ok(performance.now()-searchStart<1000,'Cached searches stay responsive');
+ assert.ok(!fs.readFileSync('app/page.tsx','utf8').includes('className="hero-stats"'),'Requested hero count strip removed');
+ console.log('PASS: 60+ search relevance, typo, synonym, no-match, filter and performance checks; unrelated results excluded.');
  fs.symlinkSync(path.resolve('node_modules'),path.join(tmp,'node_modules'),'dir');
  const reviewSource=fs.readFileSync('app/api/reviews/route.ts','utf8').replace("@/lib/catalog","./catalog");
  fs.writeFileSync(path.join(tmp,'review-route.js'),ts.transpileModule(reviewSource,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
