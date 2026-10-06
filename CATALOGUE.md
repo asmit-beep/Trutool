@@ -62,3 +62,9 @@ An optional verified `pricingUrl` on a tool overrides the checked pricing destin
 Helpful feedback is stored privately in Vercel Blob under `community-helpful/`. One deterministic object per answer and signed anonymous browser identity prevents duplicate clicks from inflating totals. No name or email is collected. The essential first-party cookie lasts up to one year. The card and article fetch shared counts without blocking the initial page.
 
 The client presentation starts with modest helpful-count fixtures (7–63). `NEXT_PUBLIC_DEMO_MODE=false` removes those starting counts; actual saved votes remain. Helpful presentation counts are not included in structured engagement data.
+
+## Questions and perspectives
+
+The community page has a dedicated composer. Questions need a display name, topic, question and publication consent; email and extra context are optional. Experiences can be general or tied to a specific answer via `/community?answer=SLUG#ask`. The API stores these privately under `community-submissions/` with `status: pending`; it does not automatically publish unreviewed text or email addresses.
+
+To publish a reviewed question, add the approved answer to the community answer source using the usual topic schema, then deploy. Submissions retain their reference ID in the private inbox. Rate limits, origin checks, field limits, and a honeypot apply.

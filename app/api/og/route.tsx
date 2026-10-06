@@ -25,7 +25,7 @@ export async function GET(request:Request){
  if(category){title=category.name;label='EXPLORE THE CATEGORY';subtitle=category.description;imageSrc=coverFor(category.slug)}
  if(service){title=service.name;label='SERVICES DIRECTORY';subtitle=service.description}
  if(pair.length>=2&&new Set(pair.map(t=>t.slug)).size===pair.length){title=pair.map(t=>t.name).join(' vs ');label='YOUR TOOLS. SIDE BY SIDE.';subtitle='Compare fit, capabilities, trade-offs, and pricing.';logos=pair.map(t=>brandAssets[t.slug]).filter(Boolean)}
- if(answer){title=answer.question;label='COMMUNITY · THE PRACTICAL ANSWER';subtitle=answer.answer;imageSrc=coverFor(answer.category);logos=answer.toolSlugs.slice(0,2).map(slug=>brandAssets[slug]).filter(Boolean)}
+ if(answer){title=answer.question;label='COMMUNITY · THE PRACTICAL ANSWER';subtitle=answer.answer;imageSrc=undefined;logos=answer.toolSlugs.slice(0,2).map(slug=>brandAssets[slug]).filter(Boolean)}
  if(!title)return new Response(null,{status:404});
  const previewLimit=answer?130:185,subtitlePreview=subtitle.length>previewLimit?subtitle.slice(0,previewLimit).replace(/\s+\S*$/,'')+'…':subtitle;
  const [brand,cover,...marks]=await Promise.all([artwork('/trutool-logo.png'),imageSrc?artwork(imageSrc):null,...logos.map(artwork)]);
