@@ -1,6 +1,112 @@
 [
- {"id":"chatgpt-dots","title":"ChatGPT dots bring ongoing work to AI agents.","summary":"OpenAI introduces dots: agents with cloud computers and connected apps, designed to keep working on tasks over time.","publisher":"OpenAI","publishedAt":"2026-09-29","url":"https://openai.com/index/introducing-dots/","toolSlug":"chatgpt-dots","topic":"Agents"},
- {"id":"sonnet-5-5","title":"Claude Sonnet 5.5 takes on everyday knowledge work.","summary":"Anthropic introduces a Sonnet update aimed at coding, documents, and well-scoped tasks.","publisher":"Anthropic","publishedAt":"2026-09-28","url":"https://www.anthropic.com/claude-sonnet-5-5","toolSlug":"claude","topic":"Models"},
- {"id":"jev-launch","title":"Jev approaches AI decisions through types and probabilities.","summary":"TypeSafe introduces Jev and System One models for classification, routing, and scoring with calibrated probabilities.","publisher":"TypeSafe","publishedAt":"2026-09-15","url":"https://typesafe.ai/blog/introducing-system-one-models-and-jev","toolSlug":"jev-ai","topic":"Specialist AI"},
- {"id":"grok-bot-launch","title":"Grok Bot joins the AI teammate landscape.","summary":"xAI introduces always-on teammates that work with cloud computers and connected applications.","publisher":"xAI","publishedAt":"2026-08-11","url":"https://x.ai/news/introducing-grok-bot","toolSlug":"grok-bot","topic":"Coworkers"}
+  {
+    "id": "chatgpt-dots",
+    "title": "ChatGPT dots bring ongoing work to AI agents.",
+    "summary": "OpenAI introduces dots: agents with cloud computers and connected apps, designed to keep working on tasks over time.",
+    "publisher": "OpenAI",
+    "publishedAt": "2026-09-29",
+    "url": "https://openai.com/index/introducing-dots/",
+    "toolSlug": "chatgpt-dots",
+    "topic": "Agents"
+  },
+  {
+    "id": "sonnet-5-5",
+    "title": "Claude Sonnet 5.5 takes on everyday knowledge work.",
+    "summary": "Anthropic introduces a Sonnet update aimed at coding, documents, and well-scoped tasks.",
+    "publisher": "Anthropic",
+    "publishedAt": "2026-09-28",
+    "url": "https://www.anthropic.com/claude-sonnet-5-5",
+    "toolSlug": "claude",
+    "topic": "Models"
+  },
+  {
+    "id": "jev-launch",
+    "title": "Jev approaches AI decisions through types and probabilities.",
+    "summary": "TypeSafe introduces Jev and System One models for classification, routing, and scoring with calibrated probabilities.",
+    "publisher": "TypeSafe",
+    "publishedAt": "2026-09-15",
+    "url": "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+    "toolSlug": "jev-ai",
+    "topic": "Specialist AI"
+  },
+  {
+    "id": "grok-bot-launch",
+    "title": "Grok Bot joins the AI teammate landscape.",
+    "summary": "xAI introduces always-on teammates that work with cloud computers and connected applications.",
+    "publisher": "xAI",
+    "publishedAt": "2026-08-11",
+    "url": "https://x.ai/news/introducing-grok-bot",
+    "toolSlug": "grok-bot",
+    "topic": "Coworkers"
+  },
+  {
+    "id": "falcon-emirati",
+    "title": "Falcon-Emirati brings local language and culture into AI.",
+    "summary": "TII introduces a model focused on Emirati Arabic, cultural context, and everyday expressions.",
+    "publisher": "Hugging Face",
+    "publishedAt": "2026-10-06",
+    "url": "https://huggingface.co/blog/tiiuae/falcon-emirati",
+    "topic": "Local-language AI",
+    "image": "https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/MJHJMYW3O4CkLvXvn7DOp.png",
+    "imageSource": "https://huggingface.co/blog/tiiuae/falcon-emirati"
+  },
+  {
+    "id": "reflection-beam",
+    "title": "Reflection introduces Beam for coding and agentic work.",
+    "summary": "An early-access model preview focused on coding, reasoning, and agents. Public weights are planned later this month.",
+    "publisher": "Reflection",
+    "publishedAt": "2026-10-05",
+    "url": "https://reflection.ai/blog/introducing-beam",
+    "toolSlug": "reflection-beam",
+    "topic": "Open models",
+    "image": "https://cdn.sanity.io/images/sp40emik/production/771cfe201a3d24d7a340c3372e6a1654ec1a6e42-1800x1013.png",
+    "imageSource": "https://reflection.ai/blog/introducing-beam"
+  },
+  {
+    "id": "meta-muse-business",
+    "title": "Meta brings Muse into small-business workflows.",
+    "summary": "Meta outlines how its personal agent can help with everyday business tasks and connected applications.",
+    "publisher": "Meta",
+    "publishedAt": "2026-09-29",
+    "url": "https://about.fb.com/news/2026/09/introducing-muse-small-business/",
+    "toolSlug": "meta-muse",
+    "topic": "Work & agents"
+  },
+  {
+    "id": "google-september",
+    "title": "Google rounds up its latest AI launches and updates.",
+    "summary": "Catch up on Google’s September AI announcements across products and research.",
+    "publisher": "Google",
+    "publishedAt": "2026-10-02",
+    "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/",
+    "toolSlug": "gemini",
+    "topic": "Product updates"
+  },
+  {
+    "id": "nvidia-open-models",
+    "title": "NVIDIA explores open models for telecom AI.",
+    "summary": "A look at how telecom operators use open models in their AI infrastructure.",
+    "publisher": "NVIDIA",
+    "publishedAt": "2026-10-06",
+    "url": "https://blogs.nvidia.com/blog/telecom-operators-open-models/",
+    "topic": "AI infrastructure"
+  },
+  {
+    "id": "copilot-autopilot",
+    "title": "Microsoft introduces Copilot Home, Code, and Autopilot.",
+    "summary": "Microsoft outlines new ways to organize work, develop software, and delegate tasks in Copilot.",
+    "publisher": "Microsoft",
+    "publishedAt": "2026-09-25",
+    "url": "https://blogs.microsoft.com/blog/2026/09/25/introducing-the-new-copilot-with-home-code-and-autopilot/",
+    "topic": "Work & agents"
+  },
+  {
+    "id": "mit-instructmesh",
+    "title": "MIT’s InstructMesh helps repair AI-generated 3D models.",
+    "summary": "A research tool lets users adjust generated 3D designs before fabrication.",
+    "publisher": "MIT News",
+    "publishedAt": "2026-10-01",
+    "url": "https://news.mit.edu/2026/instructmesh-tool-lets-users-repair-ai-3d-models-then-fabricate-them-1001",
+    "topic": "Creative research"
+  }
 ]

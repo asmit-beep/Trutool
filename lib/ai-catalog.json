@@ -154,7 +154,9 @@
       "sourceChecked": "2026-10-06",
       "updatedAt": "2026-10-06",
       "addedAt": "2026-10-06",
-      "ai": true
+      "ai": true,
+      "launchedAt": "2026-09-15",
+      "launchStatus": "Model release"
     },
     {
       "slug": "grok-bot",
@@ -200,7 +202,9 @@
       "sourceChecked": "2026-10-06",
       "updatedAt": "2026-10-06",
       "addedAt": "2026-10-06",
-      "ai": true
+      "ai": true,
+      "launchedAt": "2026-09-29",
+      "launchStatus": "Agent launch"
     },
     {
       "slug": "manus",
@@ -3859,6 +3863,118 @@
       "sourceChecked": "2026-10-06",
       "updatedAt": "2026-10-06",
       "addedAt": "2026-10-06",
+      "ai": true
+    },
+    {
+      "slug": "reflection-beam",
+      "name": "Reflection Beam",
+      "category": "ai-model-platforms",
+      "url": "https://reflection.ai/",
+      "summary": "Coding and reasoning model for agentic workloads, currently in early access.",
+      "fit": "Developers evaluating models for coding, reasoning, and tool-using agents.",
+      "features": [
+        "Coding and reasoning",
+        "Agentic tool use",
+        "Early-access model preview"
+      ],
+      "caution": "Early access is not general availability. Check access, release status, licensing, and evaluation results before deployment.",
+      "sourceUrl": "https://reflection.ai/blog/introducing-beam",
+      "sourceTitle": "Reflection Beam — official announcement",
+      "sourceStatus": "Vendor source consulted",
+      "sourceChecked": "2026-10-06",
+      "updatedAt": "2026-10-06",
+      "addedAt": "2026-10-06",
+      "launchedAt": "2026-10-05",
+      "launchStatus": "Early access",
+      "color": "#8c70ff",
+      "initial": "R",
+      "format": "AI software",
+      "pricing": "Check current vendor pricing",
+      "keywords": "Coding and reasoning model for agentic workloads, currently in early access.",
+      "ai": true
+    },
+    {
+      "slug": "meta-muse",
+      "name": "Meta Muse",
+      "category": "ai-coworkers",
+      "url": "https://muse.ai/",
+      "summary": "Personal AI agent that works across connected apps and ongoing tasks.",
+      "fit": "People coordinating personal projects, connected apps, and recurring tasks.",
+      "features": [
+        "Connected-app tasks",
+        "Dedicated cloud computer",
+        "User-controlled app permissions"
+      ],
+      "caution": "Initial rollout is in the US. Review app access, approval settings, regional availability, and subscription limits.",
+      "sourceUrl": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "sourceTitle": "Meta Muse — official announcement",
+      "sourceStatus": "Vendor source consulted",
+      "sourceChecked": "2026-10-06",
+      "updatedAt": "2026-10-06",
+      "addedAt": "2026-10-06",
+      "launchedAt": "2026-09-08",
+      "launchStatus": "US rollout",
+      "color": "#8c70ff",
+      "initial": "M",
+      "format": "AI software",
+      "pricing": "Check current vendor pricing",
+      "keywords": "Personal AI agent that works across connected apps and ongoing tasks.",
+      "ai": true
+    },
+    {
+      "slug": "claude-sonnet-5-5",
+      "name": "Claude Sonnet 5.5",
+      "category": "ai-model-platforms",
+      "url": "https://www.anthropic.com/claude/sonnet",
+      "summary": "Anthropic model for coding, documents, and agent workflows.",
+      "fit": "Developers and teams choosing a model for everyday knowledge work.",
+      "features": [
+        "Coding and document work",
+        "Tool-using agents",
+        "Model API access"
+      ],
+      "caution": "Compare token pricing, latency, context limits, and actual task outcomes in your intended configuration.",
+      "sourceUrl": "https://www.anthropic.com/claude-sonnet-5-5",
+      "sourceTitle": "Claude Sonnet 5.5 — official announcement",
+      "sourceStatus": "Vendor source consulted",
+      "sourceChecked": "2026-10-06",
+      "updatedAt": "2026-10-06",
+      "addedAt": "2026-10-06",
+      "launchedAt": "2026-09-28",
+      "launchStatus": "Model release",
+      "color": "#8c70ff",
+      "initial": "C",
+      "format": "AI software",
+      "pricing": "Check current vendor pricing",
+      "keywords": "Anthropic model for coding, documents, and agent workflows.",
+      "ai": true
+    },
+    {
+      "slug": "falcon-ocr-arabic",
+      "name": "Falcon OCR Arabic",
+      "category": "ai-data-analysis",
+      "url": "https://ocr.arabic.aidrc.tii.ae/",
+      "summary": "Extract Arabic text, tables, and formulas from document images.",
+      "fit": "Teams digitizing Arabic receipts, forms, and scanned documents.",
+      "features": [
+        "Arabic text extraction",
+        "Table structure extraction",
+        "Formula recognition"
+      ],
+      "caution": "Validate accuracy on your document layouts, especially dense pages and handwriting. Check document privacy before uploading.",
+      "sourceUrl": "https://huggingface.co/blog/tiiuae/falcon-ocr-arabic",
+      "sourceTitle": "Falcon OCR Arabic — official announcement",
+      "sourceStatus": "Vendor source consulted",
+      "sourceChecked": "2026-10-06",
+      "updatedAt": "2026-10-06",
+      "addedAt": "2026-10-06",
+      "launchedAt": "2026-10-06",
+      "launchStatus": "Try the playground",
+      "color": "#8c70ff",
+      "initial": "F",
+      "format": "AI software",
+      "pricing": "Check current vendor pricing",
+      "keywords": "Extract Arabic text, tables, and formulas from document images.",
       "ai": true
     }
   ]

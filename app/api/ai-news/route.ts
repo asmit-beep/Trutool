@@ -1,3 +1,3 @@
-import {getAINews} from '@/lib/ai-news';
-export const revalidate=3600;
-export async function GET(){return Response.json({stories:await getAINews()},{headers:{'Cache-Control':'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400'}})}
+import {getAINews,getAIDiscussions,AI_REFRESH_SECONDS} from '@/lib/ai-news';
+export const revalidate=172800;
+export async function GET(){const [stories,discussions]=await Promise.all([getAINews(),getAIDiscussions()]);return Response.json({stories,discussions,refreshSeconds:AI_REFRESH_SECONDS},{headers:{'Cache-Control':'public, max-age=300, s-maxage=172800, stale-while-revalidate=86400'}})}

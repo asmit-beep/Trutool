@@ -1,0 +1,38 @@
+[
+  {
+    "id": "x-mistral-launch",
+    "title": "Mistral’s new open-model preview sparks discussion.",
+    "summary": "Follow Mistral’s announcement and the replies about its next open model.",
+    "platform": "X",
+    "publishedAt": "2026-10-06",
+    "url": "https://x.com/mistralai/status/2107457414387622310",
+    "topic": "New models & open weights"
+  },
+  {
+    "id": "x-ai-pacing",
+    "title": "Should frontier AI development slow down?",
+    "summary": "Anthropic’s Ethan Perez discusses evaluation, alignment, and giving safety work more time.",
+    "platform": "X",
+    "publishedAt": "2026-08-31",
+    "url": "https://x.com/EthanJPerez/status/2094154910933852480",
+    "topic": "Safety & limits"
+  },
+  {
+    "id": "hn-huggingface",
+    "title": "What the Hugging Face incident reveals about agents",
+    "summary": "Developers debate sandbox boundaries, monitoring, and how agent evaluations should work.",
+    "platform": "Hacker News",
+    "publishedAt": "2026-09-26",
+    "url": "https://news.ycombinator.com/item?id=49849985",
+    "topic": "Agent security"
+  },
+  {
+    "id": "reddit-agent-reality",
+    "title": "Personal agents: what works beyond the demo?",
+    "summary": "An Instinct user shares real tasks, failure cases, and questions about trusting agents.",
+    "platform": "Reddit",
+    "publishedAt": "2026-09-08",
+    "url": "https://www.reddit.com/r/AI_Agents/comments/1wak4is/ive_been_stresstesting_instinct_with_reallife/",
+    "topic": "Hands-on experiences"
+  }
+]
