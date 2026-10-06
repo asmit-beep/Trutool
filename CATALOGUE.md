@@ -54,3 +54,11 @@ reviews remain moderated; submitting a form does not publish an unreviewed entry
 Approved tool and guide reviews belong in `lib/community-reviews.json`. Each record needs a unique `id`, `kind` (`tool` or `guide`), a valid catalogue `slug`, `name`, integer `rating` from 1 to 5, `message`, and ISO `publishedAt` date. Publish only the moderated public fields; keep email addresses private. Counts and averages update from these records on the next deployment.
 
 An optional verified `pricingUrl` on a tool overrides the checked pricing destinations in `lib/pricing.ts`. Unconfirmed destinations link to the official vendor website rather than guessing a pricing path.
+
+## Community answers and helpful feedback
+
+`lib/community-answers.ts` supplies the answered question library. Add a topic with a unique slug, category, direct answer, valid tool references, steps, checklist, and one useful caution. Every category also gets a buying question automatically. The cards, total, answer route, related questions, share image, and sitemap follow this source.
+
+Helpful feedback is stored privately in Vercel Blob under `community-helpful/`. One deterministic object per answer and signed anonymous browser identity prevents duplicate clicks from inflating totals. No name or email is collected. The essential first-party cookie lasts up to one year. The card and article fetch shared counts without blocking the initial page.
+
+The client presentation starts with modest helpful-count fixtures (7–63). `NEXT_PUBLIC_DEMO_MODE=false` removes those starting counts; actual saved votes remain. Helpful presentation counts are not included in structured engagement data.

@@ -8,7 +8,7 @@ import {createRequire} from 'node:module';
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'trutool-catalog-'));
 try{
  fs.writeFileSync(path.join(tmp,'package.json'),'{"type":"commonjs"}');
- for(const file of ['catalog','guides','search','diagnostic','catalog-results','demo','demo-reviews','reviews','pricing'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
+ for(const file of ['catalog','guides','search','diagnostic','catalog-results','demo','demo-reviews','reviews','pricing','community-answers'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  fs.copyFileSync('lib/expanded-catalog.json',path.join(tmp,'expanded-catalog.json'));
  fs.copyFileSync('lib/core-source-dates.json',path.join(tmp,'core-source-dates.json'));
  fs.copyFileSync('lib/community-reviews.json',path.join(tmp,'community-reviews.json'));
@@ -32,6 +32,28 @@ try{
  fs.writeFileSync(approvedPath,approvedBackup);assert.equal(launchCheck.status,0,launchCheck.stderr);
  console.log('PASS: organic-launch mode removes placeholders and computes approved review averages correctly.');
 
+ const {communityAnswers,getCommunityAnswer}=require(path.join(tmp,'community-answers.js'));
+ assert.ok(communityAnswers.length>=90);assert.equal(new Set(communityAnswers.map(a=>a.slug)).size,communityAnswers.length);
+ for(const a of communityAnswers){assert.ok(categories.some(c=>c.slug===a.category),a.slug);assert.ok(a.answer.length>100&&a.steps.length>=3&&a.checks.length>=3,a.slug);assert.ok(a.toolSlugs.length>=2,a.slug);for(const slug of a.toolSlugs)assert.ok(tools.some(t=>t.slug===slug),a.slug+' references '+slug);assert.ok(a.helpful>=0&&a.helpful<=70);assert.equal(getCommunityAnswer(a.slug),a);}
+ console.log('PASS: every community question has a complete answer, valid tools, practical steps and bounded helpful counts.');
+ const launchAnswers=spawnSync(process.execPath,['-e',`const a=require('node:assert/strict'),r=require(${JSON.stringify(path.join(tmp,'community-answers.js'))});a.ok(r.communityAnswers.every(x=>x.helpful===0));`],{env:{...process.env,NEXT_PUBLIC_DEMO_MODE:'false'},encoding:'utf8'});assert.equal(launchAnswers.status,0,launchAnswers.stderr);
+ fs.writeFileSync(path.join(tmp,'helpful-blob.js'),`exports.records=new Map();exports.list=async({prefix,cursor})=>({blobs:[...exports.records.keys()].filter(p=>p.startsWith(prefix)).map(pathname=>({pathname})),hasMore:false});exports.put=async(pathname,body,options)=>{if(options.access!=='private')throw Error('private storage required');exports.records.set(pathname,body);};`);
+ const helpfulSource=fs.readFileSync('app/api/helpful/route.ts','utf8').replace('@/lib/community-answers','./community-answers').replace('@vercel/blob','./helpful-blob');
+ fs.writeFileSync(path.join(tmp,'helpful-route.js'),ts.transpileModule(helpfulSource,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
+ const helpful=require(path.join(tmp,'helpful-route.js')),voteStore=require(path.join(tmp,'helpful-blob.js')),helpfulUrl='https://trutool-directory.vercel.app/api/helpful',firstAnswer=communityAnswers[0];
+ const priorToken=process.env.BLOB_READ_WRITE_TOKEN;process.env.BLOB_READ_WRITE_TOKEN='isolated-validation-key';
+ const voteRequest=(slug,cookie='')=>new Request(helpfulUrl,{method:'POST',headers:{Origin:'https://trutool-directory.vercel.app',Cookie:cookie},body:JSON.stringify({slug})});
+ assert.equal((await helpful.POST(new Request(helpfulUrl,{method:'POST',headers:{Origin:'https://other.example'},body:'{}'}))).status,403);
+ assert.equal((await helpful.POST(voteRequest('not-an-answer'))).status,400);assert.equal(voteStore.records.size,0);
+ const vote=await helpful.POST(voteRequest(firstAnswer.slug));assert.equal(vote.status,200);assert.equal((await vote.json()).count,firstAnswer.helpful+1);
+ const cookie=vote.headers.get('Set-Cookie').split(';')[0];assert.match(vote.headers.get('Set-Cookie'),/HttpOnly/);assert.match(vote.headers.get('Set-Cookie'),/Secure/);
+ const repeat=await Promise.all([helpful.POST(voteRequest(firstAnswer.slug,cookie)),helpful.POST(voteRequest(firstAnswer.slug,cookie))]);for(const r of repeat)assert.equal((await r.json()).count,firstAnswer.helpful+1);assert.equal(voteStore.records.size,1);
+ const refreshed=await helpful.GET(new Request(helpfulUrl+'?slugs='+firstAnswer.slug,{headers:{Cookie:cookie}}));assert.deepEqual((await refreshed.json()).counts[firstAnswer.slug],{count:firstAnswer.helpful+1,voted:true});
+ const another=await helpful.POST(voteRequest(firstAnswer.slug));assert.equal((await another.json()).count,firstAnswer.helpful+2);assert.equal(voteStore.records.size,2);
+ const otherSlug=communityAnswers[1].slug;await helpful.POST(voteRequest(otherSlug,cookie));assert.equal(voteStore.records.size,3);
+ delete process.env.BLOB_READ_WRITE_TOKEN;assert.equal((await helpful.POST(voteRequest(otherSlug,cookie))).status,503);
+ if(priorToken===undefined)delete process.env.BLOB_READ_WRITE_TOKEN;else process.env.BLOB_READ_WRITE_TOKEN=priorToken;
+ console.log('PASS: helpful votes persist once per browser/answer, concurrent duplicate clicks do not inflate totals, reload preserves state, and invalid submissions cannot write.');
  const reviewUrl='https://trutool-directory.vercel.app/api/reviews';
  const invalidOrigin=await POST(new Request(reviewUrl,{method:'POST',headers:{Origin:'https://example.com'},body:'{}'}));assert.equal(invalidOrigin.status,403);
  const invalidRating=await POST(new Request(reviewUrl,{method:'POST',headers:{Origin:'https://trutool-directory.vercel.app'},body:JSON.stringify({slug:'chatgpt',rating:8,consent:true,name:'QA check',email:'qa@example.com',message:'Validation check; no review should be stored.'})}));assert.equal(invalidRating.status,400);
@@ -63,7 +85,7 @@ try{
  // The exact sitemap generator must include every newly published entity.
  const sitemapSource=fs.readFileSync('app/sitemap.ts','utf8').replaceAll('@/lib/','./');
  for(const [file,source] of [['services',fs.readFileSync('lib/services.ts','utf8')],['sitemap',sitemapSource]])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
- const entries=require(path.join(tmp,'sitemap.js')).default();for(const suffix of ['/tools/qa-catalogue-fixture','/alternatives/qa-catalogue-fixture','/categories/qa-fixture-category','/guides/qa-guide-fixture'])assert.ok(entries.some(e=>e.url.endsWith(suffix)),suffix);
+ const entries=require(path.join(tmp,'sitemap.js')).default();for(const a of communityAnswers)assert.ok(entries.some(e=>e.url.endsWith('/community/'+a.slug))); for(const suffix of ['/tools/qa-catalogue-fixture','/alternatives/qa-catalogue-fixture','/categories/qa-fixture-category','/guides/qa-guide-fixture'])assert.ok(entries.some(e=>e.url.endsWith(suffix)),suffix);
  assert.equal(new Set(entries.map(e=>e.url)).size,entries.length);
  console.log('PASS: publishing a tool/category/guide updates totals, menus, search, newest guides and sitemap; pagination and compact API data verified.');
  console.log(`PASS: ${tools.length} unique tools, ${categories.length} populated categories, ${guides.length} guides, ${Object.keys(assets).length} local catalogue brand assets; exact-name/task searches and all diagnostic paths.`);
