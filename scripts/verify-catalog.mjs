@@ -3,13 +3,15 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import assert from 'node:assert/strict';
+import {spawnSync} from 'node:child_process';
 import {createRequire} from 'node:module';
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'trutool-catalog-'));
 try{
  fs.writeFileSync(path.join(tmp,'package.json'),'{"type":"commonjs"}');
- for(const file of ['catalog','guides','search','diagnostic','catalog-results'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
+ for(const file of ['catalog','guides','search','diagnostic','catalog-results','demo','demo-reviews','reviews','pricing'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  fs.copyFileSync('lib/expanded-catalog.json',path.join(tmp,'expanded-catalog.json'));
  fs.copyFileSync('lib/core-source-dates.json',path.join(tmp,'core-source-dates.json'));
+ fs.copyFileSync('lib/community-reviews.json',path.join(tmp,'community-reviews.json'));
  const require=createRequire(import.meta.url),{tools,categories,guides}=require(path.join(tmp,'catalog.js')),{searchTools}=require(path.join(tmp,'search.js')),{workflows,validateBrief,pilotPlan,guideFor,matchTools,defaultWeights}=require(path.join(tmp,'diagnostic.js'));
  assert.ok(tools.length>=501);assert.ok(categories.length>40);assert.equal(new Set(tools.map(t=>t.slug)).size,tools.length);assert.equal(new Set(categories.map(c=>c.slug)).size,categories.length);
  for(const t of tools){assert.ok(categories.some(c=>c.slug===t.category),t.slug);assert.match(new URL(t.url).protocol,/https?:/);assert.ok(t.summary&&t.fit&&t.caution&&t.features.length,t.slug);assert.equal(searchTools(t.name)[0]?.slug,t.slug,'Name search: '+t.name)}
@@ -19,6 +21,17 @@ try{
  const reviewSource=fs.readFileSync('app/api/reviews/route.ts','utf8').replace("@/lib/catalog","./catalog");
  fs.writeFileSync(path.join(tmp,'review-route.js'),ts.transpileModule(reviewSource,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  const {POST}=require(path.join(tmp,'review-route.js'));
+ const {demoReviews,demoGuideReviews}=require(path.join(tmp,'demo-reviews.js'));
+ assert.ok(demoReviews.length>=50);assert.equal(new Set(demoReviews.map(r=>r.slug)).size,demoReviews.length);
+ for(const r of [...demoReviews,...demoGuideReviews]){assert.ok(r.demo&&r.rating>=4&&r.rating<5&&r.message.length>20&&r.name.length>2);assert.ok(r.kind==='tool'?tools.some(t=>t.slug===r.slug):guides.some(g=>g.slug===r.slug))}
+ const {ratingFor,reviewsFor}=require(path.join(tmp,'reviews.js'));for(const t of tools){const score=ratingFor('tool',t.slug).average;assert.ok(score===null||(score>=1&&score<=5));assert.equal(ratingFor('tool',t.slug).count,reviewsFor('tool',t.slug).length)}
+ console.log('PASS: presentation reviews use unique tool references, bounded ratings, and a removable data source.');
+ const approvedPath=path.join(tmp,'community-reviews.json'),approvedBackup=fs.readFileSync(approvedPath,'utf8');
+ fs.writeFileSync(approvedPath,JSON.stringify([{id:'test-one',kind:'tool',slug:'chatgpt',name:'Validation fixture',rating:4,message:'Isolated validation fixture; never published.',publishedAt:'2026-10-06'},{id:'test-two',kind:'tool',slug:'chatgpt',name:'Validation fixture',rating:5,message:'Isolated validation fixture; never published.',publishedAt:'2026-10-06'}]));
+ const launchCheck=spawnSync(process.execPath,['-e',`const a=require('node:assert/strict'),r=require(${JSON.stringify(path.join(tmp,'reviews.js'))});a.deepEqual(r.ratingFor('tool','chatgpt'),{count:2,average:4.5});a.equal(r.ratingFor('tool','claude').average,null);a.equal(r.displayReviews.length,2);`],{env:{...process.env,NEXT_PUBLIC_DEMO_MODE:'false'},encoding:'utf8'});
+ fs.writeFileSync(approvedPath,approvedBackup);assert.equal(launchCheck.status,0,launchCheck.stderr);
+ console.log('PASS: organic-launch mode removes placeholders and computes approved review averages correctly.');
+
  const reviewUrl='https://trutool-directory.vercel.app/api/reviews';
  const invalidOrigin=await POST(new Request(reviewUrl,{method:'POST',headers:{Origin:'https://example.com'},body:'{}'}));assert.equal(invalidOrigin.status,403);
  const invalidRating=await POST(new Request(reviewUrl,{method:'POST',headers:{Origin:'https://trutool-directory.vercel.app'},body:JSON.stringify({slug:'chatgpt',rating:8,consent:true,name:'QA check',email:'qa@example.com',message:'Validation check; no review should be stored.'})}));assert.equal(invalidRating.status,400);

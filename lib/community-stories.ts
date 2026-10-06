@@ -1,0 +1,10 @@
+export const stories=[
+ {name:'Jake Clarke',role:'Product Marketing & Ops Lead · Equals',slug:'notion',context:'On keeping product documentation current',quote:'With Custom Agents, it maintains itself.',source:'https://www.notion.com/customers/equals'},
+ {name:'Robert Kim',role:'Engineering Manager · Brex',slug:'linear',context:'On adoption during a pilot',quote:'Engineers picked up Linear quickly with no formal training.',source:'https://linear.app/customers/brex'},
+ {name:'Anoop Narang',role:'Head of Digital Workplace and Solutions · Rivian',slug:'slack',context:'On collaboration at Rivian',quote:'It brings people together to innovate and collaborate',source:'https://slack.com/customer-stories/rivian-story'},
+ {name:'Ajith Sowndararajan',role:'Director of Design, Enterprise · Flipkart',slug:'figma',context:'On design and engineering alignment',quote:'We’re all on the same page now—literally.',source:'https://www.figma.com/customers/how-flipkart-boosts-its-design-vision-for-indian-e-commerce-with-figma/'},
+ {name:'Michelle Fisher',role:'Senior Director, Program Management · Lucid',slug:'asana',context:'On keeping work in one place',quote:'What I love about Asana is that it’s all in one place',source:'https://asana.com/case-study/lucid'},
+ {name:'Mary Kathryn Johnson',role:'Founder & CEO · Messenger Funnels',slug:'zapier',context:'On automating routine reporting',quote:'We get to focus on fulfilling our customer promises.',source:'https://zapier.com/blog/messenger-funnels/'},
+ {name:'Jenny Thai',role:'Head of Content · Vanta',slug:'webflow',context:'On publishing without a developer handoff',quote:'Working with Webflow is so seamless and intuitive',source:'https://webflow.com/customers/vanta'},
+ {name:'Jorge Peña',role:'VP of Digital Solutions · PTC',slug:'miro',context:'On bringing distributed teams together',quote:'Miro is an incredible substitute for the physical presence of in-office collaboration.',source:'https://miro.com/customer-story/ptc-story'}
+];

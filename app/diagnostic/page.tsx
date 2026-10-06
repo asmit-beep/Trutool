@@ -1,7 +1,8 @@
+import {pageMetadata} from '@/lib/seo';
 import {VisibilityDiagnostic} from '@/components/visibility-diagnostic';
 import {SITE,categories} from '@/lib/catalog';
 import {validateBrief,defaultWeights,type FitWeights} from '@/lib/diagnostic';
-export const metadata={title:'Software Fit Diagnostic & Decision Planner',description:'Build a personalised software shortlist, adjust fit priorities, compare tools, plan a 14-day pilot, and calculate a time-saving scenario.',alternates:{canonical:SITE+'/diagnostic'}};
+export const metadata=pageMetadata({title:'Software Fit Diagnostic & Decision Planner',description:'Build a personalised software shortlist, adjust fit priorities, compare tools, plan a 14-day pilot, and calculate a time-saving scenario.',alternates:{canonical:SITE+'/diagnostic'}});
 export default async function Page({searchParams}:{searchParams:Promise<Record<string,string|string[]|undefined>>}){
  const p=await searchParams;
  const text=(key:string)=>typeof p[key]==='string'?p[key] as string:undefined;

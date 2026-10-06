@@ -3,6 +3,7 @@
 import {useState, useRef, useEffect} from 'react';
 import {ChevronDown, Layers, BriefcaseBusiness, ArrowUpRight} from 'lucide-react';
 import Link from './site-link';
+import {ProviderLogo} from './provider-logo';
 import {serviceCategories} from '@/lib/services';
 
 type Category = {slug:string; short:string; name:string; count:number; color:string};
@@ -59,7 +60,7 @@ export function Navigation({categories}:{categories:Category[]}) {
         onKeyDown={e => {if (e.key === 'ArrowDown') {e.preventDefault(); openMenu('services'); requestAnimationFrame(() => document.querySelector<HTMLAnchorElement>('#services-mega a')?.focus())}}}>
         Services <ChevronDown size={13}/>
       </button>
-      {['Compare','Alternatives','Guides'].map(label => <Link key={label} href={'/'+label.toLowerCase()} onPointerEnter={() => openMenu(null)} onClick={() => openMenu(null)}>{label}</Link>)}
+      {['Compare','Alternatives','Guides','Community'].map(label => <Link key={label} href={'/'+label.toLowerCase()} onPointerEnter={() => openMenu(null)} onClick={() => openMenu(null)}>{label}</Link>)}
     </nav>
     {menu === 'categories' && <div className="mega-menu" id="category-mega" onPointerEnter={cancelClose}>
       <div className="mega-heading"><div><Layers size={21}/><strong>Find your next category.</strong></div><Link href="/categories" onClick={() => openMenu(null)}>Explore all categories <ArrowUpRight size={15}/></Link></div>
@@ -69,7 +70,7 @@ export function Navigation({categories}:{categories:Category[]}) {
       <div className="mega-heading"><div><BriefcaseBusiness size={21}/><strong>Expertise for the next step.</strong></div><Link href="/services" onClick={() => openMenu(null)}>Explore all services <ArrowUpRight size={15}/></Link></div>
       <div className="services-mega-body">
         <div className="services-mega-tabs">{serviceCategories.map(c => <button key={c.slug} onMouseEnter={() => setService(c.slug)} onFocus={() => setService(c.slug)} onClick={() => setService(c.slug)} aria-pressed={service === c.slug}>{c.name}</button>)}</div>
-        <div className="services-mega-content">{serviceCategories.filter(c => c.slug === service).map(c => <div key={c.slug}><span className="eyebrow">{c.name}</span><p>{c.description}</p><div>{c.providers.map(([name]) => <Link key={name} href={'/services/'+c.slug} onClick={() => openMenu(null)}>{name}<ArrowUpRight size={14}/></Link>)}</div><Link className="text-link" href={'/services/'+c.slug} onClick={() => openMenu(null)}>Compare providers and evaluation questions</Link></div>)}</div>
+        <div className="services-mega-content">{serviceCategories.filter(c => c.slug === service).map(c => <div key={c.slug}><span className="eyebrow">{c.name}</span><p>{c.description}</p><div>{c.providers.map(([name,url]) => <Link key={name} href={'/services/'+c.slug} onClick={() => openMenu(null)}><ProviderLogo name={name} url={url}/><span>{name}</span><ArrowUpRight size={14}/></Link>)}</div><Link className="text-link" href={'/services/'+c.slug} onClick={() => openMenu(null)}>Compare providers and evaluation questions</Link></div>)}</div>
       </div>
     </div>}
   </div>;

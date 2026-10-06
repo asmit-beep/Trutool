@@ -46,3 +46,11 @@ publishes the new catalogue. Search responses are cached for up to five minutes;
 existing open browser tabs refresh a repeated query after 30 seconds. Reload a
 page to see the newly deployed catalogue immediately. Product submissions and
 reviews remain moderated; submitting a form does not publish an unreviewed entry.
+
+## Client presentation content
+
+`lib/demo.ts` controls the placeholder reviews used for the client presentation. They never enter the moderated inbox or the approved review file. There is no visible presentation banner. Set `NEXT_PUBLIC_DEMO_MODE=false` and redeploy for the organic launch; this removes the placeholder ratings and reviews and permits search indexing. Do not add placeholder ratings to structured review data.
+
+Approved tool and guide reviews belong in `lib/community-reviews.json`. Each record needs a unique `id`, `kind` (`tool` or `guide`), a valid catalogue `slug`, `name`, integer `rating` from 1 to 5, `message`, and ISO `publishedAt` date. Publish only the moderated public fields; keep email addresses private. Counts and averages update from these records on the next deployment.
+
+An optional verified `pricingUrl` on a tool overrides the checked pricing destinations in `lib/pricing.ts`. Unconfirmed destinations link to the official vendor website rather than guessing a pricing path.
