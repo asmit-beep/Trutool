@@ -10,11 +10,11 @@ try{
  fs.writeFileSync(path.join(tmp,'package.json'),'{"type":"commonjs"}');
  for(const file of ['catalog','guides','search','diagnostic','catalog-results','ai','ai-news','demo','demo-reviews','reviews','pricing','community-answers'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  fs.copyFileSync('lib/expanded-catalog.json',path.join(tmp,'expanded-catalog.json'));
- for(const name of ['ai-catalog.json','ai-news.json','ai-discussions.json'])fs.copyFileSync('lib/'+name,path.join(tmp,name));
+ for(const name of ['ai-catalog.json','catalog-additions.json','ai-news.json','ai-discussions.json'])fs.copyFileSync('lib/'+name,path.join(tmp,name));
  fs.copyFileSync('lib/core-source-dates.json',path.join(tmp,'core-source-dates.json'));
  fs.copyFileSync('lib/community-reviews.json',path.join(tmp,'community-reviews.json'));
  const require=createRequire(import.meta.url),{tools,categories,guides}=require(path.join(tmp,'catalog.js')),{searchTools}=require(path.join(tmp,'search.js')),{workflows,validateBrief,pilotPlan,guideFor,matchTools,defaultWeights}=require(path.join(tmp,'diagnostic.js'));
- assert.ok(tools.length>=501);assert.ok(categories.length>40);assert.equal(new Set(tools.map(t=>t.slug)).size,tools.length);assert.equal(new Set(categories.map(c=>c.slug)).size,categories.length);
+ assert.ok(tools.length>1000);assert.ok(categories.length>40);assert.equal(new Set(tools.map(t=>t.slug)).size,tools.length);assert.equal(new Set(categories.map(c=>c.slug)).size,categories.length);
  for(const t of tools){assert.ok(categories.some(c=>c.slug===t.category),t.slug);assert.match(new URL(t.url).protocol,/https?:/);assert.ok(t.summary&&t.fit&&t.caution&&t.features.length,t.slug);assert.equal(searchTools(t.name)[0]?.slug,t.slug,'Name search: '+t.name)}
  for(const c of categories){assert.ok(tools.some(t=>t.category===c.slug),c.slug);const brief={category:c.slug,workflow:workflows[c.slug][0][0],scale:'team',style:'balanced'};assert.ok(validateBrief(brief));assert.equal(pilotPlan(brief).length,3);assert.ok(guideFor(c.slug));assert.ok(matchTools(brief,defaultWeights).length)}
  for(const [q,expected] of [['chagpt','chatgpt'],['remove image backgrounds','remove-bg'],['AI research assistants','perplexity'],['RFP response software','inventive-ai'],['meeting notes','otter'],['password manager','1password'],['create presentations','gamma'],['no-code app builders','bubble']]){const result=searchTools(q).slice(0,20);console.log(q,':',result.slice(0,6).map(t=>t.name).join(', '));assert.ok(result.some(t=>t.slug===expected),'Task search: '+q+' should include '+expected)}
@@ -42,7 +42,7 @@ try{
   ['build apps without coding',['bubble'],['no-code']],
   ['AI image generator',['midjourney','ideogram'],['ai-image','ai-video','ai-chatbots','ai-model-platforms']],
   ['video editing',['capcut','davinci-resolve'],['video-editing','ai-video']],
-  ['text to speech',['speechify','elevenlabs'],['ai-audio','ai-voice-agents']],
+  ['text to speech',['speechify','elevenlabs','revid-ai'],['ai-audio','ai-voice-agents','ai-video']],
   ['speech to text',['assemblyai','deepgram'],['ai-audio','meeting-notes','audio-production','video-editing','ai-productivity']],
   ['logo maker',['canva','adobe-illustrator'],['design','ai-image','ai-design']],
   ['email marketing',['mailchimp','brevo'],['email-marketing','marketing']],

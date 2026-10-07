@@ -1,5 +1,7 @@
 import catalogBrands from './catalog-brand-assets.json';
 export const brandAssets:Record<string,string>={...catalogBrands,
+ "hugging-face-transformers":catalogBrands['hugging-face'],
+ "hugging-face-diffusers":catalogBrands['hugging-face'],
  "falcon-ocr-arabic":"/brands/falcon-ocr-arabic.svg",
  "claude-sonnet-5-5":"/api/logo?slug=claude",
  "chatgpt-dots":catalogBrands.chatgpt,

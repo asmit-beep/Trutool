@@ -46,6 +46,8 @@ const categoryTasks: Record<string, string> = {
  'ai-chatbots':'ai chatbot chat conversational assistant llm',
  'ai-browser-agents':'ai browser agent web automation',
  'ai-agent-frameworks':'ai agent framework sdk developer code orchestration',
+ 'ai-evaluation':'ai llm agent evaluation observability tracing testing prompt quality',
+ 'ai-memory':'ai agent memory retrieval embedding vector knowledge graph context',
  'ai-agent-builders':'ai agent builder workflow automation',
  'ai-model-platforms':'ai model inference api infrastructure llm',
  'ai-search-research':'ai research search evidence paper academic',
@@ -155,7 +157,14 @@ export function searchTools(query: string, category = '', sort = 'relevance'): T
    continue;
   }
   if (!terms.length) continue;
-  if (/\bchat ?bots?\b/.test(q) && ['ai-coworkers','ai-voice-agents'].includes(entry.tool.category)) continue;
+  // A general drive/sharing search should not return developer backend storage.
+  // Specific queries such as "file storage API" can still match those services.
+  if (terms.length===1 && terms[0]==='filestorage' && entry.tool.category!=='cloud-storage') continue;
+  // Machine-learning infrastructure is not a course for learning to code.
+  if (terms.length===2 && terms.includes('learn') && terms.includes('code') && entry.tool.category!=='edtech') continue;
+  // Creating image embeddings is retrieval infrastructure, not an image generator.
+  if (terms.includes('image') && terms.includes('create') && !terms.includes('embedding') && ['ai-memory','ai-evaluation'].includes(entry.tool.category)) continue;
+  if (/\bchat ?bots?\b/.test(q) && !terms.some(term=>['framework','evaluation','code','video'].includes(term)) && ['ai-coworkers','ai-voice-agents','ai-evaluation','ai-coding','ai-video'].includes(entry.tool.category)) continue;
   let score = 0, matches = 0;
   for (const term of terms) {
    if (entry.nameTokens.has(term)) {score += 40; matches++;}
