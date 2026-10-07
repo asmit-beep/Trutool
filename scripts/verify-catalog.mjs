@@ -14,6 +14,21 @@ try{
  fs.copyFileSync('lib/core-source-dates.json',path.join(tmp,'core-source-dates.json'));
  fs.copyFileSync('lib/community-reviews.json',path.join(tmp,'community-reviews.json'));
  const require=createRequire(import.meta.url),{tools,categories,guides}=require(path.join(tmp,'catalog.js')),{searchTools}=require(path.join(tmp,'search.js')),{workflows,validateBrief,pilotPlan,guideFor,matchTools,defaultWeights}=require(path.join(tmp,'diagnostic.js'));
+ const {capacityScenario,validateScenario,defaultScenario,pilotScore,validatePilotScores,planText}=require(path.join(tmp,'diagnostic.js'));
+ const caseInputs={...defaultScenario,items:10,before:20,after:10,people:3,weeks:48,adoption:50,rate:40,subscription:100,setup:600};
+ assert.deepEqual(capacityScenario(caseInputs),{weekly:2.5,annual:120,value:4800,cost:1200,ongoing:3600,net:3000,payback:2,change:50});
+ assert.equal(capacityScenario({...caseInputs,after:30}).weekly,-2.5,'Slower workflows must add time, not fabricate savings');
+ assert.equal(capacityScenario({...caseInputs,after:30}).payback,null);
+ assert.equal(capacityScenario({...caseInputs,adoption:0}).annual,0);
+ assert.equal(capacityScenario({...caseInputs,before:0}).change,null);
+ assert.deepEqual(validateScenario({items:NaN,adoption:101,weeks:53,rate:-1}),defaultScenario);
+ assert.equal(pilotScore({quality:5,ease:3,integration:4,value:2}),3.8);
+ assert.equal(pilotScore({quality:5}),null);
+ assert.equal(pilotScore({quality:6,ease:3,integration:4,value:2}),null);
+ assert.deepEqual(validatePilotScores({chatgpt:{quality:4,ease:9},other:{quality:5}},['chatgpt']),{chatgpt:{quality:4}});
+ const exportedPlan=planText({category:'ai',workflow:'writing',scale:'team',style:'balanced'},defaultWeights,[tools.find(t=>t.slug==='chatgpt')],caseInputs,[],{chatgpt:{quality:5,ease:3,integration:4,value:2}});
+ assert.ok(exportedPlan.includes('First-year net value: 3000.00'));
+ assert.ok(exportedPlan.includes('weighted result 3.8/5'));
  assert.ok(tools.length>1000);assert.ok(categories.length>40);assert.equal(new Set(tools.map(t=>t.slug)).size,tools.length);assert.equal(new Set(categories.map(c=>c.slug)).size,categories.length);
  for(const t of tools){assert.ok(categories.some(c=>c.slug===t.category),t.slug);assert.match(new URL(t.url).protocol,/https?:/);assert.ok(t.summary&&t.fit&&t.caution&&t.features.length,t.slug);assert.equal(searchTools(t.name)[0]?.slug,t.slug,'Name search: '+t.name)}
  for(const c of categories){assert.ok(tools.some(t=>t.category===c.slug),c.slug);const brief={category:c.slug,workflow:workflows[c.slug][0][0],scale:'team',style:'balanced'};assert.ok(validateBrief(brief));assert.equal(pilotPlan(brief).length,3);assert.ok(guideFor(c.slug));assert.ok(matchTools(brief,defaultWeights).length)}

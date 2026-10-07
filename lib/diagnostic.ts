@@ -106,7 +106,7 @@ export function timeScenario(items:number,before:number,after:number,people:numb
  const weekly=items*(before-after)*people/60;
  return {weekly,annual:weekly*weeks};
 }
-export function planText(a:DiagnosticBrief,weights:FitWeights,selected:Tool[],scenario:{items:number;before:number;after:number;people:number;weeks:number},checked:string[]=[]){
+export function planText(a:DiagnosticBrief,weights:FitWeights,selected:Tool[],scenario:Pick<TimeInputs,'items'|'before'|'after'|'people'|'weeks'>&Partial<TimeInputs>,checked:string[]=[],scores:PilotScores={}){
  const label=briefLabels(a),matches=matchTools(a,weights),total=weights.workflow+weights.scale+weights.style;
  const lines=['# My TruTool decision plan','','## The brief','- Category: '+label.category,'- Workflow: '+label.workflow,'- Scale: '+label.scale,'- Approach: '+label.style,'','## Shortlist'];
  for(const m of matches.slice(0,3))lines.push('- '+m.tool.name+' — '+m.points+'/'+total+' fit points; '+m.tool.url,'  Check: '+m.tool.caution);
@@ -116,5 +116,31 @@ export function planText(a:DiagnosticBrief,weights:FitWeights,selected:Tool[],sc
  for(const [i,p] of pilotPlan(a).entries()){lines.push('','### '+p.timing+' · '+p.label);for(const [j,task] of p.tasks.entries())lines.push('- ['+(checked.includes(i+'-'+j)?'x':' ')+'] '+task);}
  const time=timeScenario(scenario.items,scenario.before,scenario.after,scenario.people,scenario.weeks);
  lines.push('','## Time scenario','Inputs: '+scenario.items+' items per person/week; '+scenario.before+' minutes before; '+scenario.after+' minutes after; '+scenario.people+' people; '+scenario.weeks+' working weeks.','Weekly change: '+time.weekly.toFixed(1)+' hours. Annual change: '+time.annual.toFixed(1)+' hours.','This is a scenario from my inputs, not measured savings or a product forecast.','','## Evaluation guide','https://trutool-directory.vercel.app/guides/'+guideFor(a.category).slug);
+ const capacity=capacityScenario(validateScenario(scenario));
+ lines.push('','## Capacity & cost scenario','Adoption: '+validateScenario(scenario).adoption+'%. Weekly capacity change: '+capacity.weekly.toFixed(1)+' hours.','Annual capacity value: '+capacity.value.toFixed(2)+' currency units. First-year net value: '+capacity.net.toFixed(2)+' currency units.','Setup payback: '+(capacity.payback===null?'No positive recurring value':capacity.payback.toFixed(1)+' months')+'.','Value uses your hourly, monthly, and setup costs in a single currency; it is not guaranteed cash savings.','','## My pilot scorecard');
+ for(const tool of selected){const row=scores[tool.slug]||{},score=pilotScore(row);lines.push('- '+tool.name+': '+pilotCriteria.map(c=>c.label+' '+(row[c.id]??'not tested')).join('; ')+'; weighted result '+(score===null?'incomplete':score.toFixed(1)+'/5'));}
  return lines.join('\n');
+}
+
+export type TimeInputs={items:number;before:number;after:number;people:number;weeks:number;adoption:number;rate:number;subscription:number;setup:number};
+export const defaultScenario:TimeInputs={items:10,before:20,after:20,people:1,weeks:46,adoption:100,rate:0,subscription:0,setup:0};
+export function validateScenario(input:Partial<Record<keyof TimeInputs,unknown>>):TimeInputs{
+ const result={...defaultScenario};
+ for(const key of Object.keys(result) as Array<keyof TimeInputs>){const raw=input[key],n=Number(raw),max=key==='weeks'?52:key==='adoption'?100:10000;if(raw!==undefined&&raw!==null&&raw!==''&&Number.isFinite(n)&&n>=0&&n<=max)result[key]=n;}
+ return result;
+}
+export function capacityScenario(input:TimeInputs){
+ const s=validateScenario(input),time=timeScenario(s.items,s.before,s.after,s.people,s.weeks);
+ const weekly=time.weekly*s.adoption/100,annual=weekly*s.weeks,value=annual*s.rate,cost=s.subscription*12;
+ const ongoing=value-cost,net=ongoing-s.setup;
+ return {weekly,annual,value,cost,ongoing,net,payback:ongoing>0?s.setup/(ongoing/12):null,change:s.before>0?(s.before-s.after)/s.before*100:null};
+}
+export const pilotCriteria=[{id:'quality',label:'Output quality',weight:4},{id:'ease',label:'Ease of use',weight:2},{id:'integration',label:'Workflow fit',weight:2},{id:'value',label:'Value for cost',weight:2}] as const;
+export type PilotScores=Record<string,Partial<Record<(typeof pilotCriteria)[number]['id'],number>>>;
+export function pilotScore(scores:PilotScores[string]){return pilotCriteria.every(c=>Number.isInteger(scores[c.id])&&scores[c.id]!>=1&&scores[c.id]!<=5)?pilotCriteria.reduce((sum,c)=>sum+scores[c.id]!*c.weight,0)/pilotCriteria.reduce((sum,c)=>sum+c.weight,0):null;}
+export function validatePilotScores(input:unknown,allowed:string[]):PilotScores{
+ if(!input||typeof input!=='object'||Array.isArray(input))return {};
+ const result:PilotScores={};
+ for(const slug of allowed){const raw=(input as Record<string,unknown>)[slug];if(!raw||typeof raw!=='object'||Array.isArray(raw))continue;const row:PilotScores[string]={};for(const c of pilotCriteria){const n=(raw as Record<string,unknown>)[c.id];if(typeof n==='number'&&Number.isInteger(n)&&n>=1&&n<=5)row[c.id]=n;}if(Object.keys(row).length)result[slug]=row;}
+ return result;
 }
