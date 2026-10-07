@@ -1,3 +1,4 @@
+import {authorFor} from '@/lib/authors';
 import {notFound} from 'next/navigation';
 import {ArrowLeft,ArrowUpRight,MessageCircle,Clock3} from 'lucide-react';
 import Link from '@/components/site-link';
@@ -11,7 +12,7 @@ import {pricingFor} from '@/lib/pricing';
 import {pageMetadata} from '@/lib/seo';
 const sections=[{id:'short-answer',label:'Quick answer'},{id:'practical-steps',label:'What to do'},{id:'relevant-tools',label:'Useful tools'},{id:'answer-checklist',label:'Before you decide'},{id:'helpful',label:'Was this helpful?'}];
 export function generateStaticParams(){return communityAnswers.map(a=>({slug:a.slug}));}
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params,a=getCommunityAnswer(slug);return a?pageMetadata({title:a.question,description:a.answer,alternates:{canonical:SITE+'/community/'+a.slug},openGraph:{type:'article',title:a.question,description:a.answer}}):{title:'Answer not found',robots:{index:false}};}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params,a=getCommunityAnswer(slug);return a?pageMetadata({title:a.question,description:a.answer,alternates:{canonical:SITE+'/community/'+a.slug},authors:[{name:authorFor(a).name,url:SITE+'/authors/'+authorFor(a).slug}],openGraph:{authors:[SITE+'/authors/'+authorFor(a).slug],type:'article',title:a.question,description:a.answer}}):{title:'Answer not found',robots:{index:false}};}
 function BrandText({text,items}:{text:string;items:Tool[]}){
  const names=items.map(t=>t.name).sort((a,b)=>b.length-a.length);if(!names.length)return <>{text}</>;
  const pattern=new RegExp('('+names.map(n=>n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','g');
@@ -21,12 +22,12 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
  const {slug}=await params,a=getCommunityAnswer(slug);if(!a)notFound();
  const category=categoryOf(a.category),items=a.toolSlugs.map(getTool).filter((t):t is Tool=>Boolean(t)),related=relatedAnswers(a),guide=guides.find(g=>g.category===a.category);
  const words=[a.answer,...a.steps.map(s=>s.body),...items.map(t=>t.fit),...a.checks,a.pitfall].join(' ').split(/\s+/).length,minutes=Math.max(2,Math.ceil(words/180));
- const dateLabel=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(a.publishedAt)),shareImage=SITE+'/api/og?path='+encodeURIComponent('/community/'+a.slug);
+ const dateLabel=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(a.publishedAt)),shareImage=SITE+'/api/og?path='+encodeURIComponent('/community/'+a.slug)+'&v=approved-20261007';
  return <main id="main" className="shell article-page community-answer-page">
   <header className="article-header answer-header">
    <div className="breadcrumb"><Link href="/community#questions">Community</Link><span>/</span><Link href={'/categories/'+category.slug}>{category.short}</Link></div>
    <h1>{a.question}</h1>
-   <div className="article-meta"><AuthorProfile compact/><div><time dateTime={a.publishedAt}>Published {dateLabel}</time><span><Clock3 size={13} aria-hidden="true"/> {minutes} minute read</span></div></div>
+   <div className="article-meta"><AuthorProfile author={authorFor(a)} compact/><div><time dateTime={a.publishedAt}>Published {dateLabel}</time><span><Clock3 size={13} aria-hidden="true"/> {minutes} minute read</span></div></div>
   </header>
   <div className="article-layout"><aside><ArticleToc items={sections}/></aside><article className="article-content answer-content">
    <section id="short-answer" className="answer-quick"><span className="eyebrow">QUICK ANSWER</span><p><BrandText text={a.answer} items={items}/></p></section>
@@ -38,6 +39,6 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
    {related.length>0&&<section className="answer-related"><h2>Related questions</h2>{related.map(r=><Link key={r.slug} href={'/community/'+r.slug}><span>{r.question}</span><ArrowUpRight size={18}/></Link>)}</section>}
    <Link className="answer-back-link" href="/community#questions"><ArrowLeft size={16}/> Back to all community questions</Link>
   </article></div>
-  <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify({'@context':'https://schema.org','@type':'Article',headline:a.question,description:a.answer,image:shareImage,datePublished:a.publishedAt,dateModified:a.publishedAt,author:{'@type':'Person',name:'Yash',url:SITE+'/authors/yash'},publisher:{'@type':'Organization',name:'TruTool',url:SITE},mainEntityOfPage:SITE+'/community/'+a.slug}).replace(/</g,'\\u003c')}}/>
+  <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify({'@context':'https://schema.org','@type':'Article',headline:a.question,description:a.answer,image:shareImage,datePublished:a.publishedAt,dateModified:a.publishedAt,author:{'@type':'Person',name:authorFor(a).name,url:SITE+'/authors/'+authorFor(a).slug},publisher:{'@type':'Organization',name:'TruTool',url:SITE},mainEntityOfPage:SITE+'/community/'+a.slug}).replace(/</g,'\\u003c')}}/>
  </main>;
 }

@@ -1,3 +1,4 @@
+import {getAuthor} from '@/lib/authors';
 /* eslint-disable @next/next/no-img-element */
 import sharp from 'sharp';
 import {ImageResponse} from 'next/og';
@@ -10,7 +11,7 @@ import {brandAssets} from '@/lib/brand-assets';
 import {coverFor} from '@/components/guide-card';
 // Node allows local, bundled artwork; generating previews makes no remote requests.
 export const runtime='nodejs';
-const pageTitles:Record<string,string>={'/':'Find the tools. Make your next move.','/everything-ai':'Everything AI. Find your kind of future.','/tools':'Discover your next tool.','/categories':'Every kind of work. One directory.','/guides':'Buy smarter. Start with the work.','/compare':'Your tools. Compared.','/alternatives':'Explore a different way to work.','/community':'Good tools. Better conversations.','/services':'Find expertise. Move the work forward.','/diagnostic':'Find your fit. Build your pilot.','/about':'A clearer point of view.','/contact':'Start a conversation.','/editorial-policy':'Useful research. Clearer choices.','/methodology':'How TruTool researches tools.','/sources':'Sources & brand credits.','/privacy':'Your privacy on TruTool.','/terms':'Terms of use.','/cookies':'Browser storage & cookies.','/authors/yash':'Meet Yash. Read the field guides.','/list-your-product':'Put your product on the radar.'};
+const pageTitles:Record<string,string>={'/':'Find the tools. Make your next move.','/everything-ai':'Everything AI. Find your kind of future.','/tools':'Discover your next tool.','/categories':'Every kind of work. One directory.','/guides':'Buy smarter. Start with the work.','/compare':'Your tools. Compared.','/alternatives':'Explore a different way to work.','/community':'Good tools. Better conversations.','/services':'Find expertise. Move the work forward.','/diagnostic':'Find your fit. Build your pilot.','/about':'A clearer point of view.','/contact':'Start a conversation.','/editorial-policy':'Useful research. Clearer choices.','/methodology':'How TruTool researches tools.','/sources':'Sources & brand credits.','/privacy':'Your privacy on TruTool.','/terms':'Terms of use.','/cookies':'Browser storage & cookies.','/authors':'Four voices. Clearer choices.','/list-your-product':'Put your product on the radar.'};
 async function artwork(src:string){try{const safe=path.join(process.cwd(),'public',src);let bytes=await readFile(safe),ext=path.extname(src);if(ext==='.webp'){bytes=await sharp(bytes).resize(600,600,{fit:'inside',withoutEnlargement:true}).png().toBuffer();ext='.png'}return 'data:'+({'.svg':'image/svg+xml','.png':'image/png','.webp':'image/webp'}[ext]||'image/jpeg')+';base64,'+bytes.toString('base64')}catch{return null}}
 export async function GET(request:Request){
  const pathname=new URL(request.url).searchParams.get('path')||'/';
@@ -18,8 +19,10 @@ export async function GET(request:Request){
  if(!pathname.startsWith('/')||pathname.startsWith('//'))return new Response(null,{status:400});
  const parsed=new URL(pathname,'https://trutool-directory.vercel.app');
  const parts=parsed.pathname.split('/').filter(Boolean),tool=['tools','alternatives'].includes(parts[0])?getTool(parts[1]):null,guide=parts[0]==='guides'?guides.find(g=>g.slug===parts[1]):null,category=parts[0]==='categories'?categories.find(c=>c.slug===parts[1]):null,service=parts[0]==='services'?serviceCategories.find(c=>c.slug===parts[1]):null,pair=parts[0]==='compare'?(parts[1]?parts[1].split('-vs-'):(parsed.searchParams.get('tools')||'').split(',')).map(getTool).filter((t):t is NonNullable<typeof t>=>Boolean(t)).slice(0,3):[];
+ const author=parts[0]==='authors'?getAuthor(parts[1]):undefined;
  const answer=parts[0]==='community'?getCommunityAnswer(parts[1]):null;
  let title=pageTitles[parsed.pathname],label='THE DIRECTORY FOR YOUR NEXT MOVE',imageSrc:string|undefined=['/','/everything-ai'].includes(parsed.pathname)?coverFor('ai'):undefined,logos:string[]=[],subtitle='Clearer choices. Better tools.';
+ if(author){title='Meet '+author.name+'.';label=author.focus.toUpperCase();subtitle=author.bio}
  if(tool){title=tool.name+(parts[0]==='alternatives'?' alternatives':'');label='FEATURES · FIT · PRICING · REVIEWS';subtitle=tool.summary;imageSrc=coverFor(tool.category);logos=[brandAssets[tool.slug]].filter(Boolean)}
  if(guide){title=guide.title;label='THE TRUTOOL FIELD GUIDE';subtitle=guide.intro;imageSrc=coverFor(guide.category)}
  if(category){title=category.name;label='EXPLORE THE CATEGORY';subtitle=category.description;imageSrc=coverFor(category.slug)}

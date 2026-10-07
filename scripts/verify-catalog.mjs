@@ -8,7 +8,7 @@ import {createRequire} from 'node:module';
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'trutool-catalog-'));
 try{
  fs.writeFileSync(path.join(tmp,'package.json'),'{"type":"commonjs"}');
- for(const file of ['catalog','guides','search','diagnostic','catalog-results','ai','ai-news','demo','demo-reviews','reviews','pricing','community-answers'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
+ for(const file of ['catalog','guides','search','diagnostic','catalog-results','tool-discovery','discovery-options','authors','ai','ai-news','demo','demo-reviews','reviews','pricing','community-answers'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  fs.copyFileSync('lib/expanded-catalog.json',path.join(tmp,'expanded-catalog.json'));
  for(const name of ['ai-catalog.json','catalog-additions.json','ai-news.json','ai-discussions.json'])fs.copyFileSync('lib/'+name,path.join(tmp,name));
  fs.copyFileSync('lib/core-source-dates.json',path.join(tmp,'core-source-dates.json'));
@@ -195,6 +195,27 @@ try{
  for(const [file,source] of [['services',fs.readFileSync('lib/services.ts','utf8')],['sitemap',sitemapSource]])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  const entries=require(path.join(tmp,'sitemap.js')).default();for(const a of communityAnswers)assert.ok(entries.some(e=>e.url.endsWith('/community/'+a.slug))); for(const suffix of ['/everything-ai','/tools/qa-catalogue-fixture','/alternatives/qa-catalogue-fixture','/categories/qa-fixture-category','/guides/qa-guide-fixture'])assert.ok(entries.some(e=>e.url.endsWith(suffix)),suffix);
  assert.equal(new Set(entries.map(e=>e.url)).size,entries.length);
+ const {authors,authorFor,getAuthor}=require(path.join(tmp,'authors.js'));
+ assert.deepEqual(authors.map(a=>a.slug),['yash','snehil','sandeep','asmit']);
+ for(const author of authors){assert.ok(guides.some(g=>authorFor(g).slug===author.slug));assert.equal(getAuthor(author.slug).name,author.name)}
+ assert.ok(guides.every(g=>getAuthor(authorFor(g).slug)));
+ assert.equal(authorFor({category:'ai',authorSlug:'asmit'}).slug,'asmit');assert.equal(getAuthor('missing'),undefined);
+ const lensResults=require(path.join(tmp,'catalog-results.js')).toolResults;
+ const {discoveryMatches}=require(path.join(tmp,'tool-discovery.js'));
+ for(const lens of ['popular','useful','niche']){
+  const out=lensResults('','','relevance',1,50,'',lens);assert.ok(out.total>10);assert.ok(out.items.every(t=>discoveryMatches(t,lens)));assert.equal(out.discovery,lens);
+  const aiOut=lensResults('','','relevance',1,50,'ai',lens);assert.ok(aiOut.items.every(t=>isAITool(tools.find(x=>x.slug===t.slug))&&discoveryMatches(t,lens)));
+  const base=new Set(searchTools('meeting notes').map(t=>t.slug));assert.ok(lensResults('meeting notes','','relevance',1,50,'',lens).items.every(t=>base.has(t.slug)));
+  assert.equal(lensResults('quantum banana telescope','','relevance',1,50,'',lens).total,0);
+ }
+ assert.equal(lensResults('chagpt','','relevance',1,24,'','popular').items[0].slug,'chatgpt');
+ assert.ok(lensResults('password manager','','relevance',1,50,'','popular').items.some(t=>t.slug==='bitwarden'));
+ assert.ok(lensResults('Jev AI','','relevance',1,24,'ai','niche').items.some(t=>t.slug==='jev-ai'));
+ assert.equal(lensResults('','design','relevance',1,50,'','niche').items.every(t=>t.category==='design'),true);
+ assert.equal(lensResults('','','invalid',1,24,'','invalid').discovery,'all');
+ assert.equal(lensResults('','','relevance',99999,24,'','niche').page,lensResults('','','relevance',1,24,'','niche').pages);
+ const newest=lensResults('','','newest',1,50).items.map(t=>{const source=tools.find(x=>x.slug===t.slug);return source.addedAt||source.launchedAt||''});assert.deepEqual(newest,[...newest].sort((a,b)=>b.localeCompare(a)));
+ console.log('PASS: four balanced authors; discovery filters preserve relevance, category, AI scope and pagination; newest sorting and invalid options verified.');
  console.log('PASS: publishing a tool/category/guide updates totals, menus, search, newest guides and sitemap; pagination and compact API data verified.');
  console.log(`PASS: ${tools.length} unique tools, ${categories.length} populated categories, ${guides.length} guides, ${Object.keys(assets).length} local catalogue brand assets; exact-name/task searches and all diagnostic paths.`);
 }finally{fs.rmSync(tmp,{recursive:true,force:true})}

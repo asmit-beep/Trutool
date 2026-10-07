@@ -1,2 +1,4 @@
 import Link from './site-link';
-export function AuthorProfile({compact=false}:{compact?:boolean}){return <div className={'author-profile '+(compact?'compact':'')}><span className="avatar author-avatar">Y</span><div><Link href="/authors/yash"><strong>Yash</strong></Link><span>TruTool editorial team</span>{!compact&&<p>Writes practical guides to software evaluation, with an emphasis on real workflows, useful questions, and transparent sources.</p>}</div></div>}
+import type {CSSProperties} from 'react';
+import type {Author} from '@/lib/authors';
+export function AuthorProfile({author,compact=false}:{author:Author;compact?:boolean}){return <div className={'author-profile '+(compact?'compact':'')}><span className="avatar author-avatar" style={{'--author-color':author.color} as CSSProperties} aria-hidden="true">{author.initial}</span><div><Link href={'/authors/'+author.slug}><strong>{author.name}</strong></Link><span>{author.focus}</span>{!compact&&<p>{author.bio}</p>}</div></div>}
