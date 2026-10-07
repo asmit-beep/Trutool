@@ -6,7 +6,12 @@ import {MotionSymbol} from './motion-symbol';
 import {newsletterTopics,type NewsletterTopic} from '@/lib/newsletter';
 
 export function NewsletterForm(){
- const id=useId(),pathname=usePathname(),params=useSearchParams(),unsubscribe=pathname==='/newsletter'?params.get('unsubscribe'):null;
+ const pathname=usePathname(),params=useSearchParams(),unsubscribe=pathname==='/newsletter'?params.get('unsubscribe'):null;
+ return <NewsletterFormContent key={unsubscribe||pathname} pathname={pathname} unsubscribe={unsubscribe}/>;
+}
+
+function NewsletterFormContent({pathname,unsubscribe}:{pathname:string;unsubscribe:string|null}){
+ const id=useId();
  const [topics,setTopics]=useState<NewsletterTopic[]>(newsletterTopics.map(t=>t.id)),[busy,setBusy]=useState(false),[error,setError]=useState(''),[result,setResult]=useState<{already?:boolean;manageUrl?:string;unsubscribed?:boolean}|null>(null);
  async function submit(event:FormEvent<HTMLFormElement>){
   event.preventDefault();if(busy||result)return;setBusy(true);setError('');
