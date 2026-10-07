@@ -1,5 +1,7 @@
 'use client';
 
+import {usePathname} from 'next/navigation';
+import {MotionSymbol,type MotionKind} from './motion-symbol';
 import {useState, useRef, useEffect} from 'react';
 import {ChevronDown, Layers, BriefcaseBusiness, ArrowUpRight} from 'lucide-react';
 import Link from './site-link';
@@ -10,6 +12,9 @@ type Category = {slug:string; short:string; name:string; count:number; color:str
 type Menu = 'categories' | 'services' | null;
 
 export function Navigation({categories}:{categories:Category[]}) {
+  const pathname=usePathname();
+  const current=(href:string)=>pathname===href||pathname.startsWith(href+'/');
+  const navSymbols:Record<string,MotionKind>={Compare:'compare',Alternatives:'shuffle',Guides:'book',Community:'conversation'};
   const [menu, setMenu] = useState<Menu>(null);
   const [service, setService] = useState(serviceCategories[0].slug);
   const ref = useRef<HTMLDivElement>(null);
@@ -47,20 +52,20 @@ export function Navigation({categories}:{categories:Category[]}) {
     onBlur={e => {if (!e.currentTarget.contains(e.relatedTarget as Node)) openMenu(null)}}
     onKeyDown={e => {if (e.key === 'Escape') {e.preventDefault(); openMenu(null)}}}>
     <nav aria-label="Main navigation">
-      <Link href="/tools" onPointerEnter={() => openMenu(null)} onClick={() => openMenu(null)}>Browse tools</Link>
-      <button className="nav-capsule" aria-expanded={menu === 'categories'} aria-controls="category-mega"
+      <Link href="/tools" aria-current={current('/tools')?'page':undefined} onPointerEnter={() => openMenu(null)} onClick={() => openMenu(null)}><MotionSymbol kind="compass" size={15}/>Browse tools</Link>
+      <button className="nav-capsule" aria-expanded={menu === 'categories'} aria-controls="category-mega" data-current={current('/categories')}
         onPointerEnter={e => {if (e.pointerType === 'mouse') openMenu('categories')}}
         onClick={() => openMenu(menu === 'categories' ? null : 'categories')}
         onKeyDown={e => {if (e.key === 'ArrowDown') {e.preventDefault(); openMenu('categories'); requestAnimationFrame(() => document.querySelector<HTMLAnchorElement>('#category-mega a')?.focus())}}}>
-        All categories <ChevronDown size={13}/>
+        <MotionSymbol kind="layers" size={15}/>All categories <ChevronDown size={13}/>
       </button>
-      <button className="nav-capsule" aria-expanded={menu === 'services'} aria-controls="services-mega"
+      <button className="nav-capsule" aria-expanded={menu === 'services'} aria-controls="services-mega" data-current={current('/services')}
         onPointerEnter={e => {if (e.pointerType === 'mouse') openMenu('services')}}
         onClick={() => openMenu(menu === 'services' ? null : 'services')}
         onKeyDown={e => {if (e.key === 'ArrowDown') {e.preventDefault(); openMenu('services'); requestAnimationFrame(() => document.querySelector<HTMLAnchorElement>('#services-mega a')?.focus())}}}>
-        Services <ChevronDown size={13}/>
+        <MotionSymbol kind="service" size={15}/>Services <ChevronDown size={13}/>
       </button>
-      {['Compare','Alternatives','Guides','Community'].map(label => <Link key={label} href={'/'+label.toLowerCase()} onPointerEnter={() => openMenu(null)} onClick={() => openMenu(null)}>{label}</Link>)}
+      {['Compare','Alternatives','Guides','Community'].map(label => <Link key={label} href={'/'+label.toLowerCase()} aria-current={current('/'+label.toLowerCase())?'page':undefined} onPointerEnter={() => openMenu(null)} onClick={() => openMenu(null)}><MotionSymbol kind={navSymbols[label]} size={15}/>{label}</Link>)}
     </nav>
     {menu === 'categories' && <div className="mega-menu" id="category-mega" onPointerEnter={cancelClose}>
       <div className="mega-heading"><div><Layers size={21}/><strong>Find your next category.</strong></div><Link href="/categories" onClick={() => openMenu(null)}>Explore all categories <ArrowUpRight size={15}/></Link></div>
