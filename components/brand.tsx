@@ -1,4 +1,7 @@
 import Image from 'next/image';
 import Link from '@/components/site-link';
-export function FooterBrand(){return <Link href="/" className="footer-signature" aria-label="TruTool home"><svg className="footer-wordmark" viewBox="38 52 582 156" width="184" height="50" aria-hidden="true" focusable="false"><defs><filter id="footer-logo-alpha" colorInterpolationFilters="sRGB"><feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 -1 -1 -1 0 3"/></filter><mask id="footer-logo-mask" maskUnits="userSpaceOnUse" x="38" y="52" width="582" height="156" style={{maskType:'alpha'}}><image href="/trutool-logo.png" width="658" height="277" filter="url(#footer-logo-alpha)"/></mask><linearGradient id="footer-logo-colour" x1="0%" y1="0%" x2="100%" y2="0%"><stop className="footer-logo-stop footer-logo-stop-start" offset="0%" stopColor="#546e38"/><stop className="footer-logo-stop footer-logo-stop-middle" offset="50%" stopColor="#7661a7"/><stop className="footer-logo-stop footer-logo-stop-end" offset="100%" stopColor="#318597"/></linearGradient></defs><rect x="38" y="52" width="582" height="156" fill="url(#footer-logo-colour)" mask="url(#footer-logo-mask)"/></svg></Link>}
-export function Brand(){return <Link href="/" className="brand" aria-label="TruTool home"><span className="brand-image"><Image src="/trutool-logo.png" alt="TruTool" width={658} height={277} sizes="(max-width: 760px) 137px, 150px"/></span></Link>}
+
+const logo='/identity/trutool-logo-light.svg';
+
+export function FooterBrand(){return <Link href="/" className="footer-signature" aria-label="TruTool home"><span className="footer-logo-art"><Image src={logo} alt="TruTool" width={1129} height={323} unoptimized/><span className="footer-logo-sheen" aria-hidden="true"/></span></Link>}
+export function Brand(){return <Link href="/" className="brand" aria-label="TruTool home"><span className="brand-image"><Image src={logo} alt="TruTool" width={1129} height={323} unoptimized/></span></Link>}
