@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "eslint . --ignore-pattern .next",
     "typecheck": "tsc --noEmit",
-    "prebuild": "node scripts/verify-catalog.mjs",
+    "prebuild": "node scripts/verify-catalog.mjs && node scripts/verify-newsletter.mjs",
     "verify:catalog": "node scripts/verify-catalog.mjs"
   },
   "dependencies": {
