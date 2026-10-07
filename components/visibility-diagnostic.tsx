@@ -38,7 +38,8 @@ export function VisibilityDiagnostic({initialBrief,initialWeights,initialCategor
  async function copy(text:string,message:string){try{await navigator.clipboard.writeText(text);setNotice(message);}catch{setNotice('Copy is unavailable in this browser. Use Download plan to keep a copy.');}}
 
  if(!done){
-  const options=step===0?alphabeticalCategories.filter(c=>!categoryQuery||[c.short,c.name,c.description].join(' ').toLowerCase().includes(categoryQuery.toLowerCase())).map(c=>[c.slug,c.short,c.description]):step===1?workflows[answers.category||'local-listings']:step===2?scales:styles;
+  const categoryTerms=categoryQuery.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const options=step===0?alphabeticalCategories.filter(c=>categoryTerms.every(term=>[c.short,c.name,c.description].join(' ').toLowerCase().split(/[^a-z0-9]+/).some(word=>word.startsWith(term)))).map(c=>[c.slug,c.short,c.description]):step===1?workflows[answers.category||'local-listings']:step===2?scales:styles;
   const current=keys[step];
   return <section className="fit-builder">
    <aside className="fit-rail"><span className="eyebrow">YOUR DECISION BRIEF</span><h2>Less guesswork.<br/>A better shortlist.</h2><p>Four choices. Real directory profiles. A plan you can test.</p><ol>{questionNames.map((name,i)=><li key={name} className={i===step?'current':i<step?'complete':''}><span>{String(i+1).padStart(2,'0')}</span><div>{name}<small>{i<step?'Complete':i===step?'In progress':'Up next'}</small></div></li>)}</ol><div className="fit-rail-note">No sign-up.<br/>No sponsored fit scores.</div></aside>
