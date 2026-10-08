@@ -1,4 +1,4 @@
-import {tools, categories, guides, type Tool} from './catalog';
+import {tools, categories, guides, SITE, type Tool} from './catalog';
 
 export type DiagnosticBrief={category:string;workflow:string;scale:string;style:string};
 export type FitWeights={workflow:number;scale:number;style:number};
@@ -115,7 +115,7 @@ export function planText(a:DiagnosticBrief,weights:FitWeights,selected:Tool[],sc
  lines.push('## My 14-day pilot');
  for(const [i,p] of pilotPlan(a).entries()){lines.push('','### '+p.timing+' · '+p.label);for(const [j,task] of p.tasks.entries())lines.push('- ['+(checked.includes(i+'-'+j)?'x':' ')+'] '+task);}
  const time=timeScenario(scenario.items,scenario.before,scenario.after,scenario.people,scenario.weeks);
- lines.push('','## Time scenario','Inputs: '+scenario.items+' items per person/week; '+scenario.before+' minutes before; '+scenario.after+' minutes after; '+scenario.people+' people; '+scenario.weeks+' working weeks.','Weekly change: '+time.weekly.toFixed(1)+' hours. Annual change: '+time.annual.toFixed(1)+' hours.','This is a scenario from my inputs, not measured savings or a product forecast.','','## Evaluation guide','https://trutool-directory.vercel.app/guides/'+guideFor(a.category).slug);
+ lines.push('','## Time scenario','Inputs: '+scenario.items+' items per person/week; '+scenario.before+' minutes before; '+scenario.after+' minutes after; '+scenario.people+' people; '+scenario.weeks+' working weeks.','Weekly change: '+time.weekly.toFixed(1)+' hours. Annual change: '+time.annual.toFixed(1)+' hours.','This is a scenario from my inputs, not measured savings or a product forecast.','','## Evaluation guide',SITE+'/guides/'+guideFor(a.category).slug);
  const capacity=capacityScenario(validateScenario(scenario));
  lines.push('','## Capacity & cost scenario','Adoption: '+validateScenario(scenario).adoption+'%. Weekly capacity change: '+capacity.weekly.toFixed(1)+' hours.','Annual capacity value: '+capacity.value.toFixed(2)+' currency units. First-year net value: '+capacity.net.toFixed(2)+' currency units.','Setup payback: '+(capacity.payback===null?'No positive recurring value':capacity.payback.toFixed(1)+' months')+'.','Value uses your hourly, monthly, and setup costs in a single currency; it is not guaranteed cash savings.','','## My pilot scorecard');
  for(const tool of selected){const row=scores[tool.slug]||{},score=pilotScore(row);lines.push('- '+tool.name+': '+pilotCriteria.map(c=>c.label+' '+(row[c.id]??'not tested')).join('; ')+'; weighted result '+(score===null?'incomplete':score.toFixed(1)+'/5'));}
