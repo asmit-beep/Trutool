@@ -1,4 +1,5 @@
 import {tools, categories, type Tool} from './catalog';
+import {discoveryMatches} from './tool-discovery';
 
 export const discoveryQueries = ['AI research assistants', 'Meeting notes', 'Remove image backgrounds', 'Project management', 'No-code app builders', 'SEO tools', 'Local listings management', 'RFP response software'];
 const normalize = (value: string) => value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
@@ -27,6 +28,7 @@ const concepts = [
  'design designs designing designer designers', 'graphic graphics', 'keyword keywords', 'backlink backlinks',
  'rank ranks ranking rankings', 'listing listings', 'location locations', 'proposal proposals',
  'questionnaire questionnaires', 'review reviews', 'survey surveys', 'contract contracts', 'signature signatures esign signing',
+ 'legal law lawyer lawyers attorney attorneys', 'medical medicine healthcare clinical clinician clinicians doctor doctors', 'radiology radiological radiologist radiologists', 'redline redlining redlines', 'budget budgets budgeting', 'finance financial',
  'crm', 'rfp rfps', 'rfi rfis', 'ddq ddqs', 'hr', 'seo',
  'optimize optimization optimise optimisation', 'organize organised organizing organisation organization',
 ];
@@ -41,6 +43,11 @@ const canonical = (word: string) => equivalent.get(word) || (word.length > 4 && 
 // Generic buyer-fit descriptions are intentionally excluded from the index.
 const categoryTasks: Record<string, string> = {
  ai: 'ai artificial intelligence assistant llm',
+ 'ai-medical':'ai medical healthcare clinical', 'ai-legal':'ai legal law',
+ 'ai-security':'ai security guardrail protection', 'ai-3d':'ai 3d spatial design',
+ 'ai-education':'ai education tutor study learning', 'ai-translation':'ai translation language',
+ 'ai-finance':'ai finance accounting', healthcare:'medical healthcare practice',
+ logistics:'logistics asset', 'personal-finance':'finance budget spending', bookmarking:'bookmark reading readlater',
  'ai-agents':'ai agent autonomous automation task',
  'ai-coworkers':'ai agent coworker teammate assistant work',
  'ai-chatbots':'ai chatbot chat conversational assistant llm',
@@ -90,11 +97,16 @@ const categoryTasks: Record<string, string> = {
 };
 function phrases(value: string) {
  return normalize(value)
+  .replace(/^(?:search(?:ing)? for|looking for) /, '')
   .replace(/\b(?:no code|no coding|without code|without coding|nocode)\b/g, 'nocode')
   .replace(/\blow code\b/g, 'lowcode')
   .replace(/\b(?:app|apps) (?:builder|builders|building|development)\b/g, 'application builder')
   .replace(/\b(?:build|create|develop|make|generate) (?:an? )?apps?\b/g, 'create application')
   .replace(/\bartificial intelligence\b/g, 'ai')
+  .replace(/\b(?:health care|healthcare)\b/g, 'medical')
+  .replace(/\b(?:medical|clinical|ambient) (?:ai )?scrib(?:e|es|ing)\b/g, 'medical clinicaldocumentation')
+  .replace(/\b(?:clinical|medical) (?:notes?|documentation)\b/g, 'medical clinicaldocumentation')
+  .replace(/\bggrok\b/g, 'grok')
   .replace(/\bsearch engine (?:optimization|optimisation)\b/g, 'seo')
   .replace(/\b(?:google business profile|google my business|gbp|gmb)\b/g, 'googlebusinessprofile')
   .replace(/\bcustomer relationships?(?: management)?\b/g, 'crm')
@@ -110,13 +122,14 @@ function phrases(value: string) {
 }
 const tokens = (value: string) => phrases(value).split(' ').filter(Boolean).map(canonical);
 const alternativeNoise = new Set('ai assistant create tool software work team people platform application product content integrate'.split(' '));
-const stop = new Set('a an the for of to with in on by from and or as at best top software tool tools app apps platform platforms service services help need needs want me my our find compare alternative alternatives how can could would should i we you do does it is are that which what please looking get used use using give show recommend recommendation recommendations suitable solution solutions'.split(' '));
+const stop = new Set('a an the for of to with in on by from and or as at best top software tool tools app apps platform platforms service services help need needs want me my our find compare alternative alternatives how can could would should i we you do does it is are that which what please looking get used use using give show recommend recommendation recommendations suitable solution solutions any something some really literally current new available choose choosing about more also lets let'.split(' '));
 const categoryIndex = new Map(categories.map(c => [c.slug, new Set(tokens(categoryTasks[c.slug] || c.name + ' ' + c.short))]));
 const index = tools.map(tool => {
  const name = normalize(tool.name), slug = normalize(tool.slug);
  const content = phrases([tool.summary, ...tool.features, tool.keywords || ''].join(' '));
  const contentTokens = new Set(tokens(content));
  if (/linked sources|source grounded|research/.test(content)) contentTokens.add('research');
+ if (/clinical.*(?:note|documentation)|medical.*(?:scribe|note)|ambient.*scribe/.test(content)) contentTokens.add('clinicaldocumentation');
  if (tool.category === 'ai' && /ai assistant|chat|conversational/.test(content)) contentTokens.add('chat');
  const nameTokens = new Set(tokens(name + ' ' + slug));
  const categoryTokens = categoryIndex.get(tool.category) || new Set<string>();
@@ -160,11 +173,19 @@ export function searchTools(query: string, category = '', sort = 'relevance'): T
   // A general drive/sharing search should not return developer backend storage.
   // Specific queries such as "file storage API" can still match those services.
   if (terms.length===1 && terms[0]==='filestorage' && entry.tool.category!=='cloud-storage') continue;
-  // Machine-learning infrastructure is not a course for learning to code.
+  // Check the requested job, not just incidental mentions in a description.
+  if (/\b(?:medical|clinical|ambient) (?:ai )?scrib(?:e|es|ing)\b/.test(q) && entry.tool.category!=='ai-medical') continue;
+  if (terms.includes('medical') && !terms.includes('legal') && !['ai-medical','healthcare'].includes(entry.tool.category)) continue;
+  if (terms.includes('image') && terms.includes('create') && entry.tool.category==='ai-3d' && /3d models? from (?:text or )?image/.test(entry.content)) continue;
+  if (terms.length===1 && terms[0]==='speechsynthesis' && entry.tool.category==='ai-agent-frameworks') continue;
+  if (/\b(?:speech to text|speech recognition)\b/.test(q) && !/transcri(?:be|ption|bing)|speech recognition|speech to text/.test(entry.content)) continue;
+  if (terms.length===2 && terms.includes('podcast') && terms.includes('recording') && !['audio-production','video-editing'].includes(entry.tool.category)) continue;
+  if (terms.includes('nocode') && terms.includes('application') && terms.includes('create') && entry.tool.category!=='no-code') continue;
+  if (terms.includes('create') && terms.includes('presentation') && !['presentations','ai-design','design'].includes(entry.tool.category)) continue;
   if (terms.length===2 && terms.includes('learn') && terms.includes('code') && entry.tool.category!=='edtech') continue;
   // Creating image embeddings is retrieval infrastructure, not an image generator.
   if (terms.includes('image') && terms.includes('create') && !terms.includes('embedding') && ['ai-memory','ai-evaluation'].includes(entry.tool.category)) continue;
-  if (/\bchat ?bots?\b/.test(q) && !terms.some(term=>['framework','evaluation','code','video'].includes(term)) && ['ai-coworkers','ai-voice-agents','ai-evaluation','ai-coding','ai-video'].includes(entry.tool.category)) continue;
+  if (/\bchat ?bots?\b/.test(q) && !terms.some(term=>['framework','evaluation','code','video'].includes(term)) && !['ai','ai-chatbots','ai-agent-builders','ai-sales-support','ai-legal','ai-medical','ai-education','ai-data-analysis','ai-writing'].includes(entry.tool.category)) continue;
   let score = 0, matches = 0;
   for (const term of terms) {
    if (entry.nameTokens.has(term)) {score += 40; matches++;}
@@ -175,6 +196,7 @@ export function searchTools(query: string, category = '', sort = 'relevance'): T
   if (matches === terms.length) {
    if (entry.name.startsWith(q) || entry.compact.startsWith(compact)) score += 100;
    if (entry.content.includes(phrases(q))) score += 30;
+   if (discoveryMatches(entry.tool,'popular')) score += 20;
    scored.push({tool: entry.tool, score});
    continue;
   }

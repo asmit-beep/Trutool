@@ -162,7 +162,7 @@
       "slug": "grok-bot",
       "name": "Grok Bot",
       "category": "ai-coworkers",
-      "url": "https://x.ai/news/introducing-grok-bot",
+      "url": "https://docs.x.ai/grok-bot/overview",
       "summary": "Persistent AI teammates that work across apps on their own cloud computers.",
       "fit": "Teams coordinating ongoing work across connected apps.",
       "features": [
@@ -173,13 +173,14 @@
       "initial": "G",
       "format": "AI software",
       "pricing": "Check current vendor pricing",
-      "keywords": "Persistent AI teammates that work across apps on their own cloud computers.",
+      "keywords": "Persistent AI teammates that work across apps on their own cloud computers. ggrok bot grokbot grok bot persistent coworker",
       "sourceTitle": "Introducing Grok Bot | SpaceXAI",
       "sourceStatus": "Vendor source consulted",
-      "sourceChecked": "2026-10-06",
+      "sourceChecked": "2026-10-07",
       "updatedAt": "2026-10-06",
       "addedAt": "2026-10-06",
-      "ai": true
+      "ai": true,
+      "sourceUrl": "https://docs.x.ai/grok-bot/overview"
     },
     {
       "slug": "chatgpt-dots",
@@ -196,7 +197,7 @@
       "initial": "C",
       "format": "AI software",
       "pricing": "Check current vendor pricing",
-      "keywords": "Always-on AI agents with cloud computers and connected apps for ongoing work.",
+      "keywords": "Always-on AI agents with cloud computers and connected apps for ongoing work. dots dots bot dots ai OpenAI Dots always-on personal assistant",
       "sourceTitle": "Introducing dots | OpenAI",
       "sourceStatus": "Vendor source consulted",
       "sourceChecked": "2026-10-06",

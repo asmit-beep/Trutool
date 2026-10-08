@@ -1,13 +1,12 @@
 'use client';
 
-import {categories} from '@/lib/catalog';
 import {useState} from 'react';
 import Link from '@/components/site-link';
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Textarea} from '@/components/ui/textarea';
 
-export function ProductSubmissionForm(){
+export function ProductSubmissionForm({categories}:{categories:{slug:string;short:string}[]}){
  const [status,setStatus]=useState<'idle'|'sending'|'success'|'error'>('idle');
  const [error,setError]=useState('');
  const [reference,setReference]=useState('');

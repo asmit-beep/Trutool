@@ -10,7 +10,7 @@ try{
  fs.writeFileSync(path.join(tmp,'package.json'),'{"type":"commonjs"}');
  for(const file of ['catalog','guides','search','diagnostic','catalog-results','tool-discovery','discovery-options','authors','ai','ai-news','demo','demo-reviews','reviews','pricing','community-answers'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  fs.copyFileSync('lib/expanded-catalog.json',path.join(tmp,'expanded-catalog.json'));
- for(const name of ['ai-catalog.json','catalog-additions.json','ai-news.json','ai-discussions.json'])fs.copyFileSync('lib/'+name,path.join(tmp,name));
+ for(const name of ['ai-catalog.json','catalog-additions.json','catalog-expansion.json','ai-news.json','ai-discussions.json'])fs.copyFileSync('lib/'+name,path.join(tmp,name));
  fs.copyFileSync('lib/core-source-dates.json',path.join(tmp,'core-source-dates.json'));
  fs.copyFileSync('lib/community-reviews.json',path.join(tmp,'community-reviews.json'));
  const require=createRequire(import.meta.url),{tools,categories,guides}=require(path.join(tmp,'catalog.js')),{searchTools}=require(path.join(tmp,'search.js')),{workflows,validateBrief,pilotPlan,guideFor,matchTools,defaultWeights}=require(path.join(tmp,'diagnostic.js'));
@@ -29,14 +29,14 @@ try{
  const exportedPlan=planText({category:'ai',workflow:'writing',scale:'team',style:'balanced'},defaultWeights,[tools.find(t=>t.slug==='chatgpt')],caseInputs,[],{chatgpt:{quality:5,ease:3,integration:4,value:2}});
  assert.ok(exportedPlan.includes('First-year net value: 3000.00'));
  assert.ok(exportedPlan.includes('weighted result 3.8/5'));
- assert.ok(tools.length>1000);assert.ok(categories.length>40);assert.equal(new Set(tools.map(t=>t.slug)).size,tools.length);assert.equal(new Set(categories.map(c=>c.slug)).size,categories.length);
+ assert.ok(tools.length>=2000);assert.ok(categories.length>40);assert.equal(new Set(tools.map(t=>t.slug)).size,tools.length);assert.equal(new Set(categories.map(c=>c.slug)).size,categories.length);
  for(const t of tools){assert.ok(categories.some(c=>c.slug===t.category),t.slug);assert.match(new URL(t.url).protocol,/https?:/);assert.ok(t.summary&&t.fit&&t.caution&&t.features.length,t.slug);assert.equal(searchTools(t.name)[0]?.slug,t.slug,'Name search: '+t.name)}
  for(const c of categories){assert.ok(tools.some(t=>t.category===c.slug),c.slug);const brief={category:c.slug,workflow:workflows[c.slug][0][0],scale:'team',style:'balanced'};assert.ok(validateBrief(brief));assert.equal(pilotPlan(brief).length,3);assert.ok(guideFor(c.slug));assert.ok(matchTools(brief,defaultWeights).length)}
  for(const [q,expected] of [['chagpt','chatgpt'],['remove image backgrounds','remove-bg'],['AI research assistants','perplexity'],['RFP response software','inventive-ai'],['meeting notes','otter'],['password manager','1password'],['create presentations','gamma'],['no-code app builders','bubble']]){const result=searchTools(q).slice(0,20);console.log(q,':',result.slice(0,6).map(t=>t.name).join(', '));assert.ok(result.some(t=>t.slug===expected),'Task search: '+q+' should include '+expected)}
  const relevanceCases = [
-  ['remove image backgrounds',['remove-bg'],['ai-image']],
-  ['how do I remove backgrounds from photos',['remove-bg'],['ai-image']],
-  ['image background remover',['remove-bg'],['ai-image']],
+  ['remove image backgrounds',['remove-bg'],['ai-image','design']],
+  ['how do I remove backgrounds from photos',['remove-bg'],['ai-image','design']],
+  ['image background remover',['remove-bg'],['ai-image','design']],
   ['meeting notes',['otter','fireflies'],['meeting-notes']],
   ['meeting note',['otter'],['meeting-notes']],
   ['password manager',['1password','bitwarden'],['passwords']],
@@ -45,24 +45,24 @@ try{
   ['backlinks',['ahrefs'],['seo']],
   ['cloud storage',['google-drive','dropbox'],['cloud-storage']],
   ['file sharing',['google-drive'],['cloud-storage']],
-  ['customer relationship management',['hubspot','zoho-crm'],['crm','marketing']],
-  ['CRM',['zoho-crm'],['crm','marketing']],
+  ['customer relationship management',['hubspot','zoho-crm'],['crm','marketing','finance','time-tracking','ai-agent-builders']],
+  ['CRM',['zoho-crm'],['crm','marketing','finance','time-tracking','ai-agent-builders']],
   ['Google Business Profile',['synup','yext'],['local-listings']],
   ['google my business',['synup'],['local-listings']],
   ['GBP',['synup'],['local-listings']],
   ['local listings management',['synup','yext'],['local-listings']],
   ['RFP response software',['inventive-ai','loopio'],['rfp-software']],
-  ['request for proposal',['inventive-ai'],['rfp-software']],
+  ['request for proposal',['inventive-ai'],['rfp-software','legal']],
   ['no-code app builders',['bubble','lovable'],['no-code']],
   ['build apps without coding',['bubble'],['no-code']],
-  ['AI image generator',['midjourney','ideogram'],['ai-image','ai-video','ai-chatbots','ai-model-platforms']],
+  ['AI image generator',['midjourney','ideogram'],['ai-image','ai-video','ai-chatbots','ai-model-platforms','ai-3d']],
   ['video editing',['capcut','davinci-resolve'],['video-editing','ai-video']],
-  ['text to speech',['speechify','elevenlabs','revid-ai'],['ai-audio','ai-voice-agents','ai-video']],
-  ['speech to text',['assemblyai','deepgram'],['ai-audio','meeting-notes','audio-production','video-editing','ai-productivity']],
+  ['text to speech',['speechify','elevenlabs','revid-ai'],['ai-audio','ai-voice-agents','ai-video','productivity']],
+  ['speech to text',['assemblyai','deepgram'],['ai-audio','meeting-notes','audio-production','video-editing','ai-productivity','ai-video','pdf-documents','logistics']],
   ['logo maker',['canva','adobe-illustrator'],['design','ai-image','ai-design']],
-  ['email marketing',['mailchimp','brevo'],['email-marketing','marketing']],
-  ['AI chatbot',['chatgpt','claude','deepseek'],['ai','ai-chatbots','ai-agent-builders','ai-sales-support']],
-  ['AI research assistants',['perplexity','elicit'],['ai','ai-writing','ai-search-research','ai-chatbots','ai-coworkers']],
+  ['email marketing',['mailchimp','brevo'],['email-marketing','marketing','ai-writing','crm']],
+  ['AI chatbot',['chatgpt','claude','deepseek'],['ai','ai-chatbots','ai-agent-builders','ai-sales-support','ai-legal','ai-medical','ai-education','ai-data-analysis','ai-writing']],
+  ['AI research assistants',['perplexity','elicit'],['ai','ai-writing','ai-search-research','ai-chatbots','ai-coworkers','ai-legal','ai-medical']],
   ['ChatGPT alternatives',['claude','deepseek'],['ai','ai-chatbots']],
   ['Notion alternatives',['obsidian','evernote'],['productivity']],
   ['write marketing content',['jasper','writesonic'],['ai-writing']],
@@ -173,7 +173,7 @@ try{
  for(const [query,slug] of [['Jev AI','jev-ai'],['Grok Bot','grok-bot'],['AI coworker','grok-bot'],['AI agent frameworks','crewai'],['AI browser agents','browser-use'],['voice agents','vapi'],['AI chatbot','kimi']])assert.ok(toolResults(query,'','relevance',1,50,'ai').items.some(t=>t.slug===slug),query+' -> '+slug);
  assert.ok(!searchTools('AI chatbot').some(t=>['grok-bot','bland-ai','retell-ai'].includes(t.slug)),'Always-on coworkers and phone agents are not text chatbots');
  assert.equal(toolResults('password manager','','relevance',1,24,'ai').total,0);
- const {parseOfficialFeed,mergeAINews,officialFeeds,articleCover,safeNewsImage,parseHNDiscussions,AI_REFRESH_SECONDS}=require(path.join(tmp,'ai-news.js'));
+ const {parseOfficialFeed,mergeAINews,officialFeeds,articleCover,safeNewsImage,parseHNDiscussions,parseDiscussionFeed,parseArticleXDiscussions,mergeAIDiscussions,getAIDiscussions,discussionFeeds,AI_REFRESH_SECONDS}=require(path.join(tmp,'ai-news.js'));
  const newsNow=Date.parse('2026-10-06T12:00:00Z');
  const xml='<rss><channel><item><title><![CDATA[New AI agents &amp; tools]]></title><link>https://openai.com/index/check</link><pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate><description><![CDATA[<p>Agent update</p>]]></description></item><item><title>AI outside source</title><link>https://example.com/ai</link><pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate></item><item><title>AI future story</title><link>https://openai.com/future</link><pubDate>Wed, 05 Oct 2027 12:00:00 GMT</pubDate></item><item><title>Cooking tips</title><link>https://openai.com/cooking</link><pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate></item></channel></rss>';
  const parsedNews=parseOfficialFeed(xml,officialFeeds[0],newsNow);assert.equal(parsedNews.length,1);assert.equal(parsedNews[0].title,'New AI agents & tools');assert.equal(parsedNews[0].summary,'Agent update');
@@ -192,6 +192,46 @@ try{
  assert.ok(mergeAINews([],newsNow).filter(n=>n.image).every(n=>safeNewsImage(n.image)&&n.imageSource===n.url));
  const hn={hits:[{title:'New AI model',objectID:'123',created_at:'2026-10-05',num_comments:8},{title:'Airline routes',objectID:'124',created_at:'2026-10-05',num_comments:8},{title:'AI future',objectID:'125',created_at:'2027-10-05',num_comments:8},{title:'AI model',objectID:'../../secret',created_at:'2026-10-05',num_comments:8}]};
  assert.equal(parseHNDiscussions(hn,newsNow).length,1);assert.equal(parseHNDiscussions(hn,newsNow)[0].url,'https://news.ycombinator.com/item?id=123');
+ const discussionNow=Date.parse('2026-10-08T12:00:00Z');
+ const redditFeed=discussionFeeds.find(f=>f.community==='AI_Agents'),hfFeed=discussionFeeds.find(f=>f.platform==='Hugging Face');
+ const redditXML='<feed><entry><title>Which AI agent handles calendar work?</title><link href="https://www.reddit.com/r/AI_Agents/comments/abc123/ai_agents/"/><published>2026-10-08T09:00:00Z</published></entry></feed>';
+ const hfXML='<rss><channel><item><title>Local LLM inference questions</title><link>https://discuss.huggingface.co/t/local-llm/12345</link><pubDate>Thu, 08 Oct 2026 09:00:00 GMT</pubDate></item></channel></rss>';
+ assert.equal(parseDiscussionFeed(redditXML,redditFeed,discussionNow).length,1);
+ assert.equal(parseDiscussionFeed(hfXML,hfFeed,discussionNow).length,1);
+ for(const invalid of [redditXML.replace('www.reddit.com','evil.example'),redditXML.replace('r/AI_Agents','r/unrelated'),redditXML.replace('2026-10-08','2027-10-08'),redditXML.replace('2026-10-08','2026-07-08'),'x'.repeat(2_000_001)])assert.equal(parseDiscussionFeed(invalid,redditFeed,discussionNow).length,0);
+ const xID=((BigInt(Date.parse('2026-10-08T08:00:00Z'))-BigInt(1288834974657))<<BigInt(22)).toString();
+ const xBlock='<blockquote class="twitter-tweet"><p>AI agents and open models: a new release</p><a href="https://twitter.com/research/status/'+xID+'">Source</a></blockquote>';
+ const xStory={...parsedNews[0],publisher:'TechCrunch'};
+ assert.equal(parseArticleXDiscussions(xBlock,xStory,discussionNow)[0].url,'https://x.com/research/status/'+xID);
+ assert.equal(parseArticleXDiscussions(xBlock.replace('twitter.com','evil.example'),xStory,discussionNow).length,0);
+ assert.equal(parseArticleXDiscussions(xBlock,xStory,Date.parse('2026-12-08')).length,0);
+ const liveThreads=[...parseDiscussionFeed(redditXML,redditFeed,discussionNow),...parseDiscussionFeed(hfXML,hfFeed,discussionNow),...parseArticleXDiscussions(xBlock,xStory,discussionNow)];
+ assert.equal(mergeAIDiscussions([...liveThreads,...liveThreads],[],discussionNow).length,3);
+ assert.equal(mergeAIDiscussions(liveThreads,[],Date.parse('2026-12-08')).length,0);
+ const originalFetch=globalThis.fetch,originalNow=Date.now;let calls=[],version=1;
+ try{
+  Date.now=()=>discussionNow;
+  globalThis.fetch=async(url,options)=>{
+   calls.push([String(url),options]);
+   if(String(url).includes('LocalLLaMA')||String(url).includes('hermesagent'))throw Error('Source outage fixture');
+   if(String(url).includes('hn.algolia'))return new Response(JSON.stringify({hits:[{title:'AI agent discussion '+version,objectID:String(200+version),created_at:'2026-10-08T09:00:00Z',num_comments:8}]}));
+   if(String(url).includes('AI_Agents'))return new Response(redditXML);
+   if(String(url).includes('huggingface.co'))return new Response(hfXML);
+   return new Response(xBlock);
+  };
+  const first=await getAIDiscussions([xStory]);version=2;const next=await getAIDiscussions([xStory]);
+  assert.ok(first.some(d=>d.id==='hn-201')&&next.some(d=>d.id==='hn-202'));
+  assert.ok(new Set(next.map(d=>d.platform)).size>=4,'Live discussions span available sources despite individual outages');
+  assert.ok(calls.every(([,options])=>options.next.revalidate===AI_REFRESH_SECONDS),'Discussion requests use the 48-hour refresh cache');
+ }finally{globalThis.fetch=originalFetch;Date.now=originalNow;}
+ console.log('PASS: live Reddit, Hugging Face, Hacker News and embedded X discussion parsing; freshness, diversity, duplicate exclusion, source outage isolation and refresh.');
+ const expansion=JSON.parse(fs.readFileSync('lib/catalog-expansion.json','utf8'));
+ assert.ok(expansion.tools.length>=1000&&expansion.tools.filter(t=>t.ai).length>=600);
+ for(const t of expansion.tools){assert.ok(t.sourceTitle&&t.sourceChecked&&t.sourceUrl===t.url,t.slug+' has a checked primary source');if(t.pricingUrl)assert.equal(new URL(t.pricingUrl).protocol,'https:');}
+ for(const [query,slug] of [['Hermes','hermes-agent'],['hermes bot','hermes-agent'],['ggrok bot','grok-bot'],['dots','chatgpt-dots'],['medical scribe','heidi-health'],['legal research','cocounsel'],['AI contract review','spellbook'],['medical chatbot','clinicalkey-ai'],['AI search','perplexity'],['search for medical scribe','heidi-health'],['inventory management','inventree']])assert.ok(searchTools(query).some(t=>t.slug===slug),'Expanded specialist search: '+query+' -> '+slug);
+ assert.ok(searchTools('medical scribe').every(t=>t.category==='ai-medical'),'Medical scribe search excludes generic meeting recorders');
+ assert.ok(!searchTools('AI contract review').some(t=>t.slug==='chatgpt'),'Contract review search requires documented legal capability');
+ console.log('PASS: 2,000+ unique profiles, source records, specialist searches, automatic counts and categories.');
  const shelves=getAIShelves(newsNow);assert.equal(shelves.length,3);assert.ok(shelves.every(s=>s.tools.length===6));assert.ok(!shelves[1].tools.some(t=>t.slug==='devin'));assert.ok(shelves[1].tools.every(t=>t.launchedAt&&t.launchStatus));assert.equal(freshAITools(Date.parse('2027-01-01')).length,0);
  assert.ok(shelves[2].tools.some(t=>t.slug==='wispr-flow'));assert.ok(shelves[0].tools.some(t=>t.slug==='notebooklm'));
  console.log('PASS: '+aiCatalogue.tools.length+' added AI profiles, scoped search, source diversity, original article covers, 48-hour caching, discussion relevance, launch freshness, and feed fallback.');

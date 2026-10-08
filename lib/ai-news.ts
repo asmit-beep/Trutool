@@ -58,16 +58,67 @@ export async function getAINews():Promise<AINews[]>{
 }
 export function parseHNDiscussions(data:unknown,now=Date.now()):AIDiscussion[]{
  if(!data||typeof data!=='object'||!('hits' in data)||!Array.isArray(data.hits))return [];
- return data.hits.slice(0,30).flatMap((hit:Record<string,unknown>)=>{
+ return data.hits.slice(0,50).flatMap((hit:Record<string,unknown>)=>{
   if(typeof hit.title!=='string'||typeof hit.objectID!=='string'||!/^\d+$/.test(hit.objectID)||typeof hit.created_at!=='string'||!aiPattern.test(hit.title)||typeof hit.num_comments!=='number'||hit.num_comments<3)return [];
   const date=new Date(hit.created_at);if(!Number.isFinite(date.getTime())||date.getTime()>now||date.getTime()<now-30*86400000)return [];
   return [{id:'hn-'+hit.objectID,title:clean(hit.title).slice(0,140),summary:'Read the community’s questions, practical experiences, and competing viewpoints.',platform:'Hacker News',publishedAt:date.toISOString().slice(0,10),url:'https://news.ycombinator.com/item?id='+hit.objectID,topic:'Community discussion'}];
  });
 }
-export async function getAIDiscussions():Promise<AIDiscussion[]>{
- const now=Date.now();let live:AIDiscussion[]=[];
- try{live=parseHNDiscussions(JSON.parse(await fetchText('https://hn.algolia.com/api/v1/search_by_date?query=AI&tags=story&numericFilters=points%3E5&hitsPerPage=30','application/json')),now)}catch{/* Source-linked conversations remain available during outages. */}
- const pool=[...live,...conversations].filter(s=>new Date(s.publishedAt).getTime()<=now&&new Date(s.publishedAt).getTime()>=now-60*86400000).sort((a,b)=>{const priority=(s:AIDiscussion)=>s.id==='hn-huggingface'&&Date.parse(s.publishedAt)>=now-14*86400000?1:0;return priority(b)-priority(a)||b.publishedAt.localeCompare(a.publishedAt)}),selected:AIDiscussion[]=[];
- for(const cap of [1,3])for(const story of pool){if(selected.length>=6)break;if(!selected.some(s=>s.url===story.url)&&selected.filter(s=>s.platform===story.platform).length<cap)selected.push(story)}
+export const discussionFeeds=[
+ {url:'https://www.reddit.com/r/LocalLLaMA/new/.rss?limit=25',platform:'Reddit',host:'www.reddit.com',community:'LocalLLaMA'},
+ {url:'https://www.reddit.com/r/AI_Agents/new/.rss?limit=25',platform:'Reddit',host:'www.reddit.com',community:'AI_Agents'},
+ {url:'https://www.reddit.com/r/hermesagent/new/.rss?limit=25',platform:'Reddit',host:'www.reddit.com',community:'hermesagent'},
+ {url:'https://discuss.huggingface.co/latest.rss',platform:'Hugging Face',host:'discuss.huggingface.co',community:'Hugging Face community'}
+];
+export function parseDiscussionFeed(xml:string,feed:(typeof discussionFeeds)[number],now=Date.now()):AIDiscussion[]{
+ if(xml.length>2_000_000)return [];
+ return (xml.match(/<item(?:\s[^>]*)?>[\s\S]*?<\/item>|<entry(?:\s[^>]*)?>[\s\S]*?<\/entry>/gi)||[]).slice(0,40).flatMap(item=>{
+  const title=clean(tag(item,'title')).slice(0,140),content=clean(tag(item,'content')||tag(item,'description')||tag(item,'summary'));
+  const link=clean(tag(item,'link'))||attribute(item.match(/<link\b[^>]*>/i)?.[0]||'','href');
+  const date=new Date(clean(tag(item,'published')||tag(item,'pubDate')||tag(item,'updated')));
+  try{
+   const url=new URL(link),reddit=feed.platform==='Reddit';
+   const validPath=reddit?new RegExp('^/r/'+feed.community+'/comments/[a-z0-9]+(?:/[^/?#]*)?/?$','i').test(url.pathname):/^\/t\/(?:[a-z0-9-]+\/)?\d+\/?$/i.test(url.pathname);
+   if(url.protocol!=='https:'||url.hostname!==feed.host||url.username||url.password||!validPath||!title||!aiPattern.test(title+' '+content)||!Number.isFinite(date.getTime())||date.getTime()>now||date.getTime()<now-30*86400000)return [];
+   url.search='';url.hash='';
+   return [{id:url.href,title,summary:'Questions and experiences from '+feed.community+'. Open the thread for context and replies.',platform:feed.platform,publishedAt:date.toISOString().slice(0,10),url:url.href,topic:reddit?'Community · r/'+feed.community:'Models & practical workflows'}];
+  }catch{return []}
+ });
+}
+// Public X posts embedded in source articles: no guessed posts or search links.
+export function parseArticleXDiscussions(html:string,story:AINews,now=Date.now()):AIDiscussion[]{
+ if(html.length>2_000_000)return [];
+ return (html.match(/<blockquote\b[^>]*class=["'][^"']*twitter-tweet[^"']*["'][^>]*>[\s\S]*?<\/blockquote>/gi)||[]).slice(0,6).flatMap(block=>{
+  const links=block.match(/<a\b[^>]*>/gi)||[];
+  for(const anchor of links){
+   try{
+    const url=new URL(attribute(anchor,'href')),match=url.pathname.match(/^\/([a-z0-9_]{1,15})\/status\/(\d{15,22})\/?$/i);
+    if(url.protocol!=='https:'||!['x.com','twitter.com','www.twitter.com','www.x.com'].includes(url.hostname)||url.username||url.password||!match)continue;
+    const date=new Date(Number((BigInt(match[2])>>BigInt(22))+BigInt(1288834974657)));
+    const title=clean(tag(block,'p')).slice(0,140);
+    if(!title||!aiPattern.test(title+' '+story.title)||date.getTime()>now||date.getTime()<now-30*86400000)continue;
+    return [{id:'x-'+match[2],title,summary:'A public post referenced by '+story.publisher+'. Open the thread for replies and context.',platform:'X',publishedAt:date.toISOString().slice(0,10),url:'https://x.com/'+match[1]+'/status/'+match[2],topic:'Across the AI conversation'}];
+   }catch{/* Invalid links are excluded. */}
+  }
+  return [];
+ });
+}
+export function mergeAIDiscussions(live:AIDiscussion[],fallback:AIDiscussion[]=conversations,now=Date.now()):AIDiscussion[]{
+ const recent=(stories:AIDiscussion[],days:number)=>stories.filter(s=>Number.isFinite(Date.parse(s.publishedAt))&&Date.parse(s.publishedAt)<=now&&Date.parse(s.publishedAt)>=now-days*86400000).sort((a,b)=>b.publishedAt.localeCompare(a.publishedAt));
+ const fresh=recent(live,30),pool=[...fresh,...recent(fallback,30)],selected:AIDiscussion[]=[];
+ // Live threads take precedence; first show a different platform in each row.
+ for(const cap of [1,2])for(const story of pool){
+  if(selected.length>=6)break;
+  if(!selected.some(s=>s.url===story.url)&&selected.filter(s=>s.platform===story.platform).length<cap)selected.push(story);
+ }
  return selected;
+}
+export async function getAIDiscussions(news:AINews[]|Promise<AINews[]>=[]):Promise<AIDiscussion[]>{
+ const now=Date.now();
+ const sources=await Promise.allSettled([
+  fetchText('https://hn.algolia.com/api/v1/search_by_date?query=AI&tags=story&numericFilters=points%3E5%2Cnum_comments%3E2&hitsPerPage=50','application/json').then(text=>parseHNDiscussions(JSON.parse(text),now)),
+  ...discussionFeeds.map(feed=>fetchText(feed.url,'application/rss+xml, application/atom+xml, application/xml').then(xml=>parseDiscussionFeed(xml,feed,now))),
+  Promise.resolve(news).then(stories=>Promise.allSettled(stories.slice(0,6).map(story=>fetchText(story.url,'text/html').then(html=>parseArticleXDiscussions(html,story,now))))).then(results=>results.flatMap(result=>result.status==='fulfilled'?result.value:[]))
+ ]);
+ return mergeAIDiscussions(sources.flatMap(source=>source.status==='fulfilled'?source.value:[]),conversations,now);
 }
