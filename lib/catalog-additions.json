@@ -2457,7 +2457,7 @@
     {
       "slug": "harvey",
       "name": "Harvey",
-      "category": "ai-productivity",
+      "category": "ai-legal",
       "summary": "Support legal research, analysis, and drafting with an AI workspace.",
       "fit": "Professionals drafting, organizing, and reviewing knowledge work.",
       "features": [
@@ -2476,14 +2476,14 @@
       "sourceUrl": "https://www.harvey.ai",
       "sourceStatus": "Vendor source consulted",
       "sourceChecked": "2026-10-06",
-      "updatedAt": "2026-10-06",
+      "updatedAt": "2026-10-08",
       "addedAt": "2026-10-06",
       "ai": true
     },
     {
       "slug": "spellbook",
       "name": "Spellbook",
-      "category": "ai-productivity",
+      "category": "ai-legal",
       "summary": "Review and draft contracts with an AI assistant for legal teams.",
       "fit": "Professionals drafting, organizing, and reviewing knowledge work.",
       "features": [
@@ -2501,8 +2501,8 @@
       "sourceTitle": "AI Contract Review & Drafting | Spellbook",
       "sourceUrl": "https://spellbook.com/",
       "sourceStatus": "Vendor source consulted",
-      "sourceChecked": "2026-10-06",
-      "updatedAt": "2026-10-06",
+      "sourceChecked": "2026-10-08",
+      "updatedAt": "2026-10-08",
       "addedAt": "2026-10-06",
       "ai": true,
       "pricingUrl": "https://spellbook.com/pricing"
@@ -2510,7 +2510,7 @@
     {
       "slug": "legora",
       "name": "Legora",
-      "category": "ai-productivity",
+      "category": "ai-legal",
       "summary": "Collaborate on legal research, document review, and drafting with AI.",
       "fit": "Professionals drafting, organizing, and reviewing knowledge work.",
       "features": [
@@ -2529,14 +2529,14 @@
       "sourceUrl": "https://legora.com",
       "sourceStatus": "Vendor source consulted",
       "sourceChecked": "2026-10-06",
-      "updatedAt": "2026-10-06",
+      "updatedAt": "2026-10-08",
       "addedAt": "2026-10-06",
       "ai": true
     },
     {
       "slug": "luminance",
       "name": "Luminance",
-      "category": "ai-productivity",
+      "category": "ai-legal",
       "summary": "Analyze and manage legal documents using AI-supported workflows.",
       "fit": "Professionals drafting, organizing, and reviewing knowledge work.",
       "features": [
@@ -2555,7 +2555,7 @@
       "sourceUrl": "https://www.luminance.com",
       "sourceStatus": "Vendor source consulted",
       "sourceChecked": "2026-10-06",
-      "updatedAt": "2026-10-06",
+      "updatedAt": "2026-10-08",
       "addedAt": "2026-10-06",
       "ai": true
     },
