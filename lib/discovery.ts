@@ -1,0 +1,42 @@
+import {absolute,contentPages,contentAuthor,modifiedFor,markdownPath,relatedTools,type ContentPage} from './content-index';
+import {pricingFor} from './pricing';
+import {categories,tools,guides,categoryOf} from './catalog';
+
+const link=(title:string,path:string,description?:string)=>`- [${title.replace(/[\[\]\n]/g,' ')}](${/^https?:\/\//.test(path)?path:absolute(path)}): ${description||title}`;
+export function llmsIndex(){return ['# TruTool','', '> Discover tools and software, compare workflows, and read practical buying guides.','',
+ `The current directory includes ${tools.length} tools and ${categories.length} categories. Content is derived from the same catalog used by the website. Profiles summarize vendor sources and editorial evaluation criteria; they do not establish independently tested performance. Follow official vendor and pricing links for current terms.`,
+ '','## Start here',link('Browse tools',markdownPath('/tools')),link('Categories',markdownPath('/categories')),link('Comparisons',markdownPath('/compare')),link('Buying guides',markdownPath('/guides')),link('Community answers',markdownPath('/community')),link('Everything AI',markdownPath('/everything-ai')),
+ '','## Categories',...categories.map(c=>link(c.name,markdownPath('/categories/'+c.slug),c.description)),
+ '','## Buying guides',...guides.map(g=>link(g.title,markdownPath('/guides/'+g.slug),g.intro)),
+ '','## About and sources',...['/about','/authors','/methodology','/editorial-policy','/sources','/contact'].map(path=>{const p=contentPages.find(p=>p.path===path)!;return link(p.title,path,p.description)}),
+ '','## Optional',link('Full content reference','/llms-full.txt','Profiles, guides, answers, and links to canonical pages.'),link('All public page URLs','/sitemap.xml'),link('Latest published content','/rss.xml'),link('Atom feed','/atom.xml'),link('JSON Feed','/feed.json'),''
+ ].join('\n')}
+export function pageMarkdown(page:ContentPage):string{
+ const author=contentAuthor(page),modified=modifiedFor(page),lines=[`# ${page.title}`,'',`Canonical: ${absolute(page.path||'/')}`,...(author?[`Author: ${author.name} (${absolute('/authors/'+author.slug)})`]:[]),...(modified?[`Last modified: ${modified}`]:[]),'',page.description];
+ if(page.tool&&page.kind==='tool'){
+  const t=page.tool;lines.push('','## Overview',t.summary,'','## Who might consider it',t.fit,'','## What to explore',...t.features.map(f=>'- '+f),'','## Before you choose',t.caution,'','## Pricing',t.pricing,link('Official pricing or vendor contact',pricingFor(t).url),'','## Sources',link('Official '+t.name+' website',t.url),...(t.sourceChecked?[`Vendor source consulted: ${t.sourceChecked}.`]:[]),'Descriptions reflect vendor information and editorial categorisation; they are not hands-on performance findings.');
+ }else if(page.guide){
+  const g=page.guide,c=categoryOf(g.category);lines.push('','## TL;DR',g.answer,'',`## ${c.question}`,c.answer,'','## Evaluation checklist',...g.checks.map(x=>'- '+x),'','## A practical shortlist',...relatedTools(page).slice(0,6).flatMap(t=>[link(t.name,'/tools/'+t.slug,t.summary),`  - Before your pilot: ${t.caution}`,`  - Pricing: ${pricingFor(t).url}`]),'',`## ${g.question}`,g.answer,'','These are editorial evaluation criteria. Validate current features and terms with the vendor.');
+ }else if(page.answer){
+  const a=page.answer;lines.push('','## Quick answer',a.answer,'',...a.steps.flatMap(s=>['## '+s.title,s.body,'']),'## Before you decide',...a.checks.map(x=>'- '+x),'','## Keep in mind',a.pitfall,'','## Useful tools',...relatedTools(page).map(t=>link(t.name,'/tools/'+t.slug,t.fit)));
+ }else if(page.pair){
+  lines.push('','## Compare fit, features, and limitations',...page.pair.flatMap(t=>['','### '+t.name,t.summary,`Best fit: ${t.fit}`,...t.features.map(f=>'- '+f),`Before you choose: ${t.caution}`,`Pricing: ${pricingFor(t).url}`,link('Read '+t.name+' profile','/tools/'+t.slug)]));
+ }else if(page.kind==='alternatives'||page.category){
+  if(page.category)lines.push('',`## ${page.category.question}`,page.category.answer);
+  lines.push('','## Tools to explore',...relatedTools(page).map(t=>link(t.name,'/tools/'+t.slug,t.summary)));
+ }else if(page.author){
+  lines.push('','## Focus',page.author.focus,'','## Topics',...page.author.topics.map(t=>'- '+t),'','## Buying guides',...guides.filter(g=>contentAuthor({path:'',title:'',description:'',kind:'guide',guide:g})?.slug===page.author?.slug).map(g=>link(g.title,'/guides/'+g.slug)));
+ }else if(page.service){lines.push('','## Providers',...page.service.providers.map(([name,url])=>link(name,url)));}
+ else{
+  const section=page.path==='/tools'||page.path==='/everything-ai'?'tool':page.path==='/alternatives'?'alternatives':page.path==='/guides'?'guide':page.path==='/compare'?'comparison':page.path==='/community'?'answer':page.path==='/authors'?'author':page.path==='/services'?'service':null;
+  const relevant=page.path==='/categories'?contentPages.filter(p=>p.category):section?contentPages.filter(p=>p.kind===section):contentPages.filter(p=>p.kind==='collection'&&!p.category);
+  lines.push('','## Explore',...relevant.filter(p=>page.path!=='/everything-ai'||p.tool?.ai||p.tool?.category.startsWith('ai')).map(p=>link(p.title,p.path,p.description)));
+ }
+ return lines.join('\n')+'\n';
+}
+export function llmsFull(){return [llmsIndex(),'\n---\n',...contentPages.filter(p=>['tool','guide','answer','comparison'].includes(p.kind)).map(p=>pageMarkdown(p)+'\n---\n')].join('\n')}
+export const xmlEscape=(s:string)=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]!));
+export function feedItems(){return contentPages.filter(p=>['tool','guide','answer'].includes(p.kind)).sort((a,b)=>(modifiedFor(b)||'').localeCompare(modifiedFor(a)||'')||a.path.localeCompare(b.path)).slice(0,100)}
+export function rss(){const items=feedItems();return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>TruTool — Tools &amp; Guides</title><link>${absolute('/')}</link><description>Latest published tools, buying guides, and community answers from TruTool.</description><language>en</language><atom:link href="${absolute('/rss.xml')}" rel="self" type="application/rss+xml"/>${items.map(p=>`<item><title>${xmlEscape(p.title)}</title><link>${xmlEscape(absolute(p.path))}</link><guid isPermaLink="true">${xmlEscape(absolute(p.path))}</guid><description>${xmlEscape(p.description)}</description>${p.publishedAt?`<pubDate>${new Date(p.publishedAt).toUTCString()}</pubDate>`:''}<category>${p.kind}</category></item>`).join('')}</channel></rss>`}
+export function atom(){const items=feedItems(),updated=items.map(modifiedFor).filter((d):d is string=>Boolean(d)).sort().at(-1);return `<?xml version="1.0" encoding="UTF-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom"><id>${absolute('/')}</id><title>TruTool — Tools &amp; Guides</title><link href="${absolute('/atom.xml')}" rel="self"/><link href="${absolute('/')}"/><updated>${updated?new Date(updated).toISOString():'2026-10-05T00:00:00.000Z'}</updated><author><name>TruTool</name></author>${items.map(p=>`<entry><id>${absolute(p.path)}</id><title>${xmlEscape(p.title)}</title><link href="${xmlEscape(absolute(p.path))}"/><summary>${xmlEscape(p.description)}</summary><updated>${new Date(modifiedFor(p)||'2026-10-05').toISOString()}</updated>${p.publishedAt?`<published>${new Date(p.publishedAt).toISOString()}</published>`:''}</entry>`).join('')}</feed>`}
+export function jsonFeed(){return {version:'https://jsonfeed.org/version/1.1',title:'TruTool — Tools & Guides',home_page_url:absolute('/'),feed_url:absolute('/feed.json'),language:'en',items:feedItems().map(p=>({id:absolute(p.path),url:absolute(p.path),title:p.title,content_text:p.description,...(p.publishedAt?{date_published:new Date(p.publishedAt).toISOString()}:{}),...(modifiedFor(p)?{date_modified:new Date(modifiedFor(p)!).toISOString()}:{}),authors:[{name:contentAuthor(p)?.name||'TruTool'}],tags:[p.kind]}))}}

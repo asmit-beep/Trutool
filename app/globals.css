@@ -683,3 +683,5 @@ main :is(.prose,.article-content,.tool-profile-content,.answer-block,.compare-ta
 @keyframes hero-signal-shimmer{0%,35%{background-position:100% 0}65%,100%{background-position:0% 0}}
 @keyframes hero-signal-border{0%,25%{background-position:100% 0;opacity:.2}55%{opacity:.85}75%,100%{background-position:0% 0;opacity:.2}}
 @media(prefers-reduced-motion:reduce){.hero-signal *{animation:none!important;transition:none!important}.hero-signal .signal-star{opacity:1;transform:none}.signal-noise,.signal-wave,.signal-border{display:none}.hero-signal strong{background:none;color:#e4f3d0}.hero-signal:hover strong::after{transform:none}}
+
+.directory-pagination .chip[aria-disabled="true"]{opacity:.5;cursor:not-allowed}

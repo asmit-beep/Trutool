@@ -1,3 +1,4 @@
+import {PageStructuredData} from '@/components/page-structured-data';
 import {MotionSymbol} from '@/components/motion-symbol';
 import Image from 'next/image';
 import Link from '@/components/site-link';
@@ -6,7 +7,7 @@ import {AuthorCards} from '@/components/author-card';
 import {pageMetadata} from '@/lib/seo';
 import {SITE,tools,categories,guides} from '@/lib/catalog';
 export const metadata=pageMetadata({title:'About TruTool — Clearer Choices, Better Tools',description:'Meet the people behind TruTool. Explore our approach to software discovery, practical comparisons, and buying guides for every kind of work.',alternates:{canonical:SITE+'/about'}});
-export default function Page(){return <main id="main" className="about-page">
+export default function Page(){return <main id="main" className="about-page"><PageStructuredData path="/about"/>
  <section className="about-hero"><div className="shell about-hero-grid"><div className="about-hero-copy"><span className="about-kicker"><span/>THE WHY BEHIND TRUTOOL</span><h1>A world of tools.<br/><em>A clearer way in.</em></h1><p>The next great tool is the one that makes your work better. We help you find it, understand it, and choose with a little more clarity.</p><div className="about-hero-actions"><Link className="button lime" href="/tools">Find your next tool <ArrowUpRight size={18}/></Link><Link className="about-text-link" href="#team">Meet the people <span aria-hidden="true">↓</span></Link></div></div>
  <div className="about-map" aria-label="Discover, compare, and choose with TruTool"><div className="about-map-grid"/><div className="about-orbit orbit-one"/><div className="about-orbit orbit-two"/><div className="about-map-center"><Image src="/identity/trutool-icon-dark.svg" width={370} height={370} alt="TruTool" unoptimized/><span>Your next move.</span></div><div className="about-map-note note-ai"><MotionSymbol kind="sparkles" size={21}/><div><strong>AI & automation</strong><span>A little possibility.</span></div></div><div className="about-map-note note-design"><MotionSymbol kind="design" size={21}/><div><strong>Design & creativity</strong><span>Make the idea real.</span></div></div><div className="about-map-note note-work"><MotionSymbol kind="compass" size={21}/><div><strong>Everyday work</strong><span>Find your flow.</span></div></div><span className="about-map-caption">ONE DIRECTORY. YOUR DIRECTION.</span></div>
  </div></section>
