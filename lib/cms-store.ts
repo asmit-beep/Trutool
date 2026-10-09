@@ -1,4 +1,4 @@
-import { get,put } from '@vercel/blob';
+import { BlobNotFoundError,get,head,put } from '@vercel/blob';
 import { unstable_cache } from 'next/cache';
 import { cache } from 'react';
 import 'server-only';
@@ -10,11 +10,12 @@ const local=()=>!process.env.VERCEL&&process.env.CMS_TEST_STORE;
 export async function readStore():Promise<{store:CmsStore;etag?:string}>{
  if(local()){const fs=await import('node:fs/promises');try{return {store:JSON.parse(await fs.readFile(local() as string,'utf8'))}}catch(e){if((e as NodeJS.ErrnoException).code==='ENOENT')return {store:emptyStore()};throw e;}}
  if(!process.env.BLOB_READ_WRITE_TOKEN){if(process.env.VERCEL)throw new Error('Content storage unavailable');return {store:emptyStore()};}
- const response=await get(pathname,{access:'private',useCache:false});
+ let metadata;try{metadata=await head(pathname);}catch(e){if(e instanceof BlobNotFoundError)return {store:emptyStore()};throw e;}
+ const response=await get(metadata.url,{access:'private',useCache:false});
  if(!response)return {store:emptyStore()};if(response.statusCode!==200)throw new Error('Content storage unavailable');
  const store=await new Response(response.stream).json() as CmsStore;
  if(store.version!==1||!Array.isArray(store.records))throw new Error('Invalid content store');
- return {store,etag:response.blob.etag};
+ return {store,etag:metadata.etag};
 }
 export async function writeStore(store:CmsStore,etag?:string){
  if(local()){const fs=await import('node:fs/promises');await fs.writeFile(local() as string,JSON.stringify(store));return;}
