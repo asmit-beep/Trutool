@@ -1,14 +1,15 @@
-import {getAuthor} from '@/lib/authors';
+import { getAuthor } from '@/lib/authors';
+import { isHidden,publicContent } from '@/lib/cms-public';
 /* eslint-disable @next/next/no-img-element */
-import sharp from 'sharp';
-import {ImageResponse} from 'next/og';
-import {readFile} from 'node:fs/promises';
+import { coverFor } from '@/components/guide-card';
+import { brandAssets } from '@/lib/brand-assets';
+import { categories,getTool,guides,SITE,tools } from '@/lib/catalog';
+import { getCommunityAnswer } from '@/lib/community-answers';
+import { serviceCategories } from '@/lib/services';
+import { ImageResponse } from 'next/og';
+import { readFile } from 'node:fs/promises';
 import path from 'node:path';
-import {getTool,categories,guides,tools,SITE} from '@/lib/catalog';
-import {getCommunityAnswer} from '@/lib/community-answers';
-import {serviceCategories} from '@/lib/services';
-import {brandAssets} from '@/lib/brand-assets';
-import {coverFor} from '@/components/guide-card';
+import sharp from 'sharp';
 // Node allows local, bundled artwork; generating previews makes no remote requests.
 export const runtime='nodejs';
 const pageTitles:Record<string,string>={'/newsletter':'Your next good find. Delivered.','/':'Find the tools. Make your next move.','/everything-ai':'Everything AI. Find your kind of future.','/tools':'Discover your next tool.','/categories':'Every kind of work. One directory.','/guides':'Buy smarter. Start with the work.','/compare':'Your tools. Compared.','/alternatives':'Explore a different way to work.','/community':'Good tools. Better conversations.','/services':'Find expertise. Move the work forward.','/diagnostic':'Find your fit. Build your pilot.','/about':'A clearer point of view.','/contact':'Start a conversation.','/editorial-policy':'Useful research. Clearer choices.','/methodology':'How TruTool researches tools.','/sources':'Sources & brand credits.','/privacy':'Your privacy on TruTool.','/terms':'Terms of use.','/cookies':'Browser storage & cookies.','/authors':'Four voices. Clearer choices.','/list-your-product':'Put your product on the radar.'};
@@ -29,6 +30,7 @@ export async function GET(request:Request){
  if(service){title=service.name;label='SERVICES DIRECTORY';subtitle=service.description}
  if(pair.length>=2&&new Set(pair.map(t=>t.slug)).size===pair.length){title=pair.map(t=>t.name).join(' vs ');label='YOUR TOOLS. SIDE BY SIDE.';subtitle='Compare fit, capabilities, trade-offs, and pricing.';logos=pair.map(t=>brandAssets[t.slug]).filter(Boolean)}
  if(answer){title=answer.question;label='COMMUNITY · THE PRACTICAL ANSWER';subtitle=answer.answer;imageSrc=undefined;logos=answer.toolSlugs.slice(0,2).map(slug=>brandAssets[slug]).filter(Boolean)}
+ const cms=await publicContent(parsed.pathname);if(await isHidden(parsed.pathname))return new Response(null,{status:404});if(cms){title=cms.metaTitle||cms.title;subtitle=cms.metaDescription||cms.description;label='TRUTOOL · '+cms.kind.toUpperCase();}
  if(!title)return new Response(null,{status:404});
  if(parsed.pathname==='/'){
   const [brand,icon]=await Promise.all([artwork('/identity/trutool-logo-dark.png'),artwork('/identity/trutool-icon-dark.svg')]);

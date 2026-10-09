@@ -8,7 +8,8 @@ import {createRequire} from 'node:module';
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'trutool-catalog-'));
 try{
  fs.writeFileSync(path.join(tmp,'package.json'),'{"type":"commonjs"}');
- for(const file of ['catalog','guides','search','diagnostic','catalog-results','tool-discovery','discovery-options','authors','ai','ai-news','demo','demo-reviews','reviews','pricing','community-answers','content-index','covers'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
+ for(const file of ['catalog','guides','search','diagnostic','catalog-results','tool-discovery','discovery-options','authors','ai','ai-news','cms-types','demo','demo-reviews','reviews','pricing','community-answers','content-index','covers'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
+ fs.writeFileSync(path.join(tmp,'cms-store.js'),'exports.getPublished=async()=>[];');
  fs.copyFileSync('lib/content-history.json',path.join(tmp,'content-history.json'));
  fs.copyFileSync('lib/expanded-catalog.json',path.join(tmp,'expanded-catalog.json'));
  for(const name of ['ai-catalog.json','catalog-additions.json','catalog-expansion.json','ai-news.json','ai-discussions.json'])fs.copyFileSync('lib/'+name,path.join(tmp,name));
@@ -249,7 +250,8 @@ try{
  // The exact sitemap generator must include every newly published entity.
  const sitemapSource=fs.readFileSync('app/sitemap.ts','utf8').replaceAll('@/lib/','./');
  for(const [file,source] of [['services',fs.readFileSync('lib/services.ts','utf8')],['sitemap',sitemapSource]])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
- const entries=require(path.join(tmp,'sitemap.js')).default();for(const a of communityAnswers)assert.ok(entries.some(e=>e.url.endsWith('/community/'+a.slug))); for(const suffix of ['/everything-ai','/tools/qa-catalogue-fixture','/alternatives/qa-catalogue-fixture','/categories/qa-fixture-category','/guides/qa-guide-fixture'])assert.ok(entries.some(e=>e.url.endsWith(suffix)),suffix);
+ fs.writeFileSync(path.join(tmp,'cms-public.js'),"exports.publicPages=async()=>require('./content-index').contentPages;");
+ const entries=await require(path.join(tmp,'sitemap.js')).default();for(const a of communityAnswers)assert.ok(entries.some(e=>e.url.endsWith('/community/'+a.slug))); for(const suffix of ['/everything-ai','/tools/qa-catalogue-fixture','/alternatives/qa-catalogue-fixture','/categories/qa-fixture-category','/guides/qa-guide-fixture'])assert.ok(entries.some(e=>e.url.endsWith(suffix)),suffix);
  assert.equal(new Set(entries.map(e=>e.url)).size,entries.length);
  const {authors,authorFor,getAuthor}=require(path.join(tmp,'authors.js'));
  assert.deepEqual(authors.map(a=>a.slug),['yash','snehil','sandeep','asmit']);

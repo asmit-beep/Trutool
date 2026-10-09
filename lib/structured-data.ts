@@ -6,8 +6,8 @@ import {coverFor} from './covers';
 const organization={'@type':'Organization','@id':absolute('/#organization'),name:'TruTool',url:absolute('/'),logo:{'@type':'ImageObject',url:absolute('/identity/trutool-logo-light.svg')}};
 export function siteStructuredData(){return {'@context':'https://schema.org','@graph':[organization,{'@type':'WebSite','@id':absolute('/#website'),name:'TruTool',url:absolute('/'),inLanguage:'en',publisher:{'@id':organization['@id']},description:'Clearer choices. Better tools.'}]}}
 const labels:Record<string,string>={tools:'Tools',alternatives:'Alternatives',compare:'Comparisons',guides:'Buying guides',categories:'Categories',community:'Community',authors:'Editorial team',services:'Services'};
-export function pageStructuredData(path:string){
- const page=getContentPage(path);if(!page)return;
+export function pageStructuredData(path:string,override?:ContentPage){
+ const page=override||getContentPage(path);if(!page)return;
  const url=absolute(page.path||'/'),id=url+(page.kind==='guide'||page.kind==='answer'?'#article':'#webpage'),author=contentAuthor(page),modified=modifiedFor(page);
  const type=page.kind==='guide'||page.kind==='answer'?'Article':page.kind==='author'?'ProfilePage':page.path==='/about'?'AboutPage':page.path==='/contact'?'ContactPage':['collection','alternatives','service'].includes(page.kind)?'CollectionPage':'WebPage';
  const node:Record<string,unknown>={'@type':type,'@id':id,url,name:page.title,description:page.description,inLanguage:'en',isPartOf:{'@id':absolute('/#website')},publisher:{'@id':organization['@id']},...(modified?{dateModified:modified}:{})};

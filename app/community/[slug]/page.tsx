@@ -1,26 +1,29 @@
-import {PageStructuredData} from '@/components/page-structured-data';
-import {authorFor} from '@/lib/authors';
-import {notFound} from 'next/navigation';
-import {ArrowLeft,ArrowUpRight,MessageCircle,Clock3} from 'lucide-react';
+import { ArticleToc } from '@/components/article-toc';
+import { AuthorProfile } from '@/components/author-profile';
+import { CmsArticle } from '@/components/cms-article';
+import { HelpfulVote } from '@/components/helpful-vote';
+import { PageStructuredData } from '@/components/page-structured-data';
 import Link from '@/components/site-link';
-import {ArticleToc} from '@/components/article-toc';
-import {AuthorProfile} from '@/components/author-profile';
-import {Monogram} from '@/components/tool-card';
-import {HelpfulVote} from '@/components/helpful-vote';
-import {communityAnswers,getCommunityAnswer,relatedAnswers} from '@/lib/community-answers';
-import {getTool,categoryOf,guides,SITE,type Tool} from '@/lib/catalog';
-import {pricingFor} from '@/lib/pricing';
-import {pageMetadata} from '@/lib/seo';
+import { Monogram } from '@/components/tool-card';
+import { authorFor } from '@/lib/authors';
+import { categoryOf,getTool,guides,SITE,type Tool } from '@/lib/catalog';
+import { cmsMetadata,isHidden,publicContent } from '@/lib/cms-public';
+import { communityAnswers,getCommunityAnswer,relatedAnswers } from '@/lib/community-answers';
+import { pricingFor } from '@/lib/pricing';
+import { pageMetadata } from '@/lib/seo';
+import { ArrowLeft,ArrowUpRight,Clock3,MessageCircle } from 'lucide-react';
+import { notFound } from 'next/navigation';
+export const revalidate=30;
 const sections=[{id:'short-answer',label:'Quick answer'},{id:'practical-steps',label:'What to do'},{id:'relevant-tools',label:'Useful tools'},{id:'answer-checklist',label:'Before you decide'},{id:'helpful',label:'Was this helpful?'}];
 export function generateStaticParams(){return communityAnswers.map(a=>({slug:a.slug}));}
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params,a=getCommunityAnswer(slug);return a?pageMetadata({title:a.question,description:a.answer,alternates:{canonical:SITE+'/community/'+a.slug},authors:[{name:authorFor(a).name,url:SITE+'/authors/'+authorFor(a).slug}],openGraph:{authors:[SITE+'/authors/'+authorFor(a).slug],type:'article',title:a.question,description:a.answer}}):{title:'Answer not found',robots:{index:false}};}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const cmsPath='/community/'+slug,cms=await publicContent(cmsPath);if(await isHidden(cmsPath))notFound();if(cms)return cmsMetadata(cms);const a=getCommunityAnswer(slug);return a?pageMetadata({title:a.question,description:a.answer,alternates:{canonical:SITE+'/community/'+a.slug},authors:[{name:authorFor(a).name,url:SITE+'/authors/'+authorFor(a).slug}],openGraph:{authors:[SITE+'/authors/'+authorFor(a).slug],type:'article',title:a.question,description:a.answer}}):{title:'Answer not found',robots:{index:false}};}
 function BrandText({text,items}:{text:string;items:Tool[]}){
  const names=items.map(t=>t.name).sort((a,b)=>b.length-a.length);if(!names.length)return <>{text}</>;
  const pattern=new RegExp('('+names.map(n=>n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','g');
  return <>{text.split(pattern).map((part,index)=>{const t=items.find(t=>t.name===part);return t?<Link key={index} className="answer-inline-brand" href={'/tools/'+t.slug}><Monogram tool={t}/><span>{t.name}</span></Link>:<span key={index}>{part}</span>;})}</>;
 }
 export default async function Page({params}:{params:Promise<{slug:string}>}){
- const {slug}=await params,a=getCommunityAnswer(slug);if(!a)notFound();
+ const {slug}=await params;const cmsPath='/community/'+slug,cms=await publicContent(cmsPath);if(await isHidden(cmsPath))notFound();if(cms)return <CmsArticle content={cms}/>;const a=getCommunityAnswer(slug);if(!a)notFound();
  const category=categoryOf(a.category),items=a.toolSlugs.map(getTool).filter((t):t is Tool=>Boolean(t)),related=relatedAnswers(a),guide=guides.find(g=>g.category===a.category);
  const words=[a.answer,...a.steps.map(s=>s.body),...items.map(t=>t.fit),...a.checks,a.pitfall].join(' ').split(/\s+/).length,minutes=Math.max(2,Math.ceil(words/180));
  const dateLabel=new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(a.publishedAt));

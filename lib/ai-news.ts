@@ -1,3 +1,6 @@
+import {getPublished} from './cms-store';
+import {contentPath} from './cms-types';
+import {SITE} from './catalog';
 import curated from './ai-news.json';
 import conversations from './ai-discussions.json';
 export const AI_REFRESH_SECONDS=172800;
@@ -51,10 +54,11 @@ async function fetchText(url:string,accept:string):Promise<string>{
 }
 export async function getAINews():Promise<AINews[]>{
  const feeds=await Promise.allSettled(officialFeeds.map(async feed=>parseOfficialFeed(await fetchText(feed.url,'application/rss+xml, application/atom+xml, application/xml'),feed)));
+ const editorial=(await getPublished()).filter(c=>c.kind==='news').sort((a,b)=>(b.publishedAt||'').localeCompare(a.publishedAt||'')).slice(0,4).map(c=>({id:c.id,title:c.title,summary:c.description,publisher:'TruTool',publishedAt:c.publishedAt!.slice(0,10),url:SITE+contentPath(c),topic:c.sourceLabel||'Editorial update'}));
  const stories=mergeAINews(feeds.flatMap(f=>f.status==='fulfilled'?f.value:[]));
  // Covers come exclusively from the corresponding article's metadata.
  const covers=await Promise.allSettled(stories.slice(0,6).map(async story=>{if(story.image)return story;const image=articleCover(await fetchText(story.url,'text/html'));return image?{...story,image,imageSource:story.url}:story}));
- return stories.map((story,index)=>{const cover=covers[index];return cover?.status==='fulfilled'?cover.value:story});
+ return [...editorial,...stories].slice(0,12).map((story,index)=>{const cover=index>=editorial.length?covers[index-editorial.length]:undefined;return cover?.status==='fulfilled'?cover.value:story});
 }
 export function parseHNDiscussions(data:unknown,now=Date.now()):AIDiscussion[]{
  if(!data||typeof data!=='object'||!('hits' in data)||!Array.isArray(data.hits))return [];

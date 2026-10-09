@@ -124,7 +124,7 @@ const tokens = (value: string) => phrases(value).split(' ').filter(Boolean).map(
 const alternativeNoise = new Set('ai assistant create tool software work team people platform application product content integrate'.split(' '));
 const stop = new Set('a an the for of to with in on by from and or as at best top software tool tools app apps platform platforms service services help need needs want me my our find compare alternative alternatives how can could would should i we you do does it is are that which what please looking get used use using give show recommend recommendation recommendations suitable solution solutions any something some really literally current new available choose choosing about more also lets let'.split(' '));
 const categoryIndex = new Map(categories.map(c => [c.slug, new Set(tokens(categoryTasks[c.slug] || c.name + ' ' + c.short))]));
-const index = tools.map(tool => {
+const makeSearchIndex = (source:Tool[])=>source.map(tool => {
  const name = normalize(tool.name), slug = normalize(tool.slug);
  const content = phrases([tool.summary, ...tool.features, tool.keywords || ''].join(' '));
  const contentTokens = new Set(tokens(content));
@@ -135,7 +135,8 @@ const index = tools.map(tool => {
  const categoryTokens = categoryIndex.get(tool.category) || new Set<string>();
  return {tool, name, compact: name.replace(/ /g, ''), slugCompact: slug.replace(/ /g, ''), content, contentTokens, nameTokens, categoryTokens};
 });
-const knownTerms = new Set(index.flatMap(entry => [...entry.nameTokens, ...entry.contentTokens, ...entry.categoryTokens]));
+const baseIndex=makeSearchIndex(tools);
+const baseKnownTerms = new Set(baseIndex.flatMap(entry => [...entry.nameTokens, ...entry.contentTokens, ...entry.categoryTokens]));
 function distance(a: string, b: string, maximum: number) {
  if (Math.abs(a.length - b.length) > maximum) return maximum + 1;
  let row = Array.from({length: b.length + 1}, (_, i) => i);
@@ -147,9 +148,10 @@ function distance(a: string, b: string, maximum: number) {
  return row[b.length];
 }
 const resultCache = new Map<string, Tool[]>();
-export function searchTools(query: string, category = '', sort = 'relevance'): Tool[] {
+export function searchTools(query: string, category = '', sort = 'relevance', source?:Tool[]): Tool[] {
+ const index=source?makeSearchIndex(source):baseIndex,knownTerms=source?new Set(index.flatMap(entry=>[...entry.nameTokens,...entry.contentTokens,...entry.categoryTokens])):baseKnownTerms;
  const q = normalize(query.slice(0, 160)), key = JSON.stringify([q, category, sort, Boolean(query.trim())]);
- const cached = resultCache.get(key);
+ const cached = source?undefined:resultCache.get(key);
  if (cached) return cached;
  const terms = [...new Set(tokens(q).filter(word => !stop.has(word)))];
  const compact = q.replace(/ /g, '');
@@ -214,7 +216,7 @@ export function searchTools(query: string, category = '', sort = 'relevance'): T
  scored.sort((a, b) => sort === 'az' ? a.tool.name.localeCompare(b.tool.name) : b.score - a.score || a.tool.name.localeCompare(b.tool.name));
  const results = scored.map(entry => entry.tool);
  if (resultCache.size >= 96) resultCache.delete(resultCache.keys().next().value!);
- resultCache.set(key, results);
+ if(!source)resultCache.set(key, results);
  return results;
 }
 export {categoryCounts} from './catalog';

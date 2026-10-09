@@ -1,0 +1,7 @@
+import { ADMIN_COOKIE,authenticated,checkPassword,loginAttempt,makeSession,privateResponse,sameOrigin,sessionOptions } from '@/lib/admin-auth';
+import { cookies } from 'next/headers';
+export const dynamic='force-dynamic';
+export async function GET(){return privateResponse({authenticated:await authenticated()});}
+export async function POST(request:Request){if(!sameOrigin(request))return privateResponse({error:'Please sign in from TruTool.'},403);if(!process.env.ADMIN_PASSWORD_HASH||!process.env.ADMIN_SESSION_SECRET)return privateResponse({error:'Admin sign-in is temporarily unavailable.'},503);
+ try{const raw=await request.text();if(raw.length>500)return privateResponse({error:'Invalid sign-in.'},400);const data=JSON.parse(raw);if(typeof data.password!=='string')return privateResponse({error:'Enter your password.'},400);if(!await loginAttempt(request))return privateResponse({error:'Too many attempts. Try again in 15 minutes.'},429);if(!checkPassword(data.password))return privateResponse({error:'That password is incorrect.'},401);(await cookies()).set(ADMIN_COOKIE,makeSession(),sessionOptions);return privateResponse({ok:true});}catch{return privateResponse({error:'Sign-in is temporarily unavailable. Try again.'},503);}}
+export async function DELETE(request:Request){if(!sameOrigin(request))return privateResponse({error:'Invalid request.'},403);(await cookies()).delete(ADMIN_COOKIE);return privateResponse({ok:true});}

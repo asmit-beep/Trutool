@@ -1,7 +1,9 @@
-import {PageStructuredData} from '@/components/page-structured-data';
-import {pageMetadata} from '@/lib/seo';
+import { CmsList } from '@/components/cms-list';
+import { PageStructuredData } from '@/components/page-structured-data';
 import Link from '@/components/site-link';
-import {serviceCategories} from '@/lib/services';
-import {SITE} from '@/lib/catalog';
+import { SITE } from '@/lib/catalog';
+import { pageMetadata } from '@/lib/seo';
+import { serviceCategories } from '@/lib/services';
+export const revalidate=30;
 export const metadata=pageMetadata({title:'Services Directory — Find Expertise',description:'Explore cloud consulting, marketing, design, engineering, security, and business service providers.',alternates:{canonical:SITE+'/services'}});
-export default function Page(){return <main id="main" className="shell"><PageStructuredData path="/services"/><div className="page-intro"><span className="eyebrow">TOOLS + THE PEOPLE WHO MAKE THEM WORK</span><h1>Find expertise.<br/>Move the work forward.</h1><p>Explore service providers by the job you need done. Compare scope, ownership, deliverables, and the way each engagement will work.</p></div><div className="service-category-grid page-body">{serviceCategories.map((c,i)=><Link className="service-category-card" key={c.slug} href={'/services/'+c.slug}><span>0{i+1}</span><h2>{c.name}</h2><p>{c.description}</p><small>{c.providers.length} providers to explore</small></Link>)}</div><section className="answer-block"><h2>A better brief leads to a better engagement.</h2><p>Define the outcome, systems involved, available budget, and accountable owner. Request a written scope, delivery milestones, access arrangements, and a clear handover before choosing a provider.</p></section></main>}
+export default async function Page(){return <main id="main" className="shell"><PageStructuredData path="/services"/><div className="page-intro"><span className="eyebrow">TOOLS + THE PEOPLE WHO MAKE THEM WORK</span><h1>Find expertise.<br/>Move the work forward.</h1><p>Explore service providers by the job you need done. Compare scope, ownership, deliverables, and the way each engagement will work.</p></div><div className="service-category-grid page-body">{serviceCategories.map((c,i)=><Link className="service-category-card" key={c.slug} href={'/services/'+c.slug}><span>0{i+1}</span><h2>{c.name}</h2><p>{c.description}</p><small>{c.providers.length} providers to explore</small></Link>)}</div><section className="answer-block"><h2>A better brief leads to a better engagement.</h2><p>Define the outcome, systems involved, available budget, and accountable owner. Request a written scope, delivery milestones, access arrangements, and a clear handover before choosing a provider.</p></section><CmsList kind="service"/></main>}

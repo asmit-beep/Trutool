@@ -5,7 +5,7 @@ import {serviceCategories} from './services';
 import history from './content-history.json';
 
 export type PageKind='page'|'collection'|'tool'|'alternatives'|'comparison'|'guide'|'answer'|'author'|'service';
-export type ContentPage={path:string;title:string;description:string;kind:PageKind;tool?:Tool;category?:typeof categories[number];guide?:Guide;answer?:CommunityAnswer;author?:Author;pair?:Tool[];service?:typeof serviceCategories[number];publishedAt?:string;updatedAt?:string};
+export type ContentPage={body?:string;cms?:import("./cms-types").CmsContent;path:string;title:string;description:string;kind:PageKind;tool?:Tool;category?:typeof categories[number];guide?:Guide;answer?:CommunityAnswer;author?:Author;pair?:Tool[];service?:typeof serviceCategories[number];publishedAt?:string;updatedAt?:string};
 const staticPages:ContentPage[]=[
  ['','TruTool | Discover & Compare AI Tools and Software','Discover AI tools and software for work. Compare features, pricing and alternatives, explore useful guides, and find the right tools with TruTool.','page'],
  ['/tools','Browse Software & Learning Platforms',`Search ${tools.length} tools across ${categories.length} categories, including AI, design, productivity, marketing, and development.`,'collection'],
