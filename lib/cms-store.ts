@@ -18,7 +18,7 @@ export async function readStore():Promise<{store:CmsStore;etag?:string}>{
 }
 export async function writeStore(store:CmsStore,etag?:string){
  if(local()){const fs=await import('node:fs/promises');await fs.writeFile(local() as string,JSON.stringify(store));return;}
- await put(pathname,JSON.stringify(store),{access:'private',contentType:'application/json',addRandomSuffix:false,...(etag?{ifMatch:etag}:{allowOverwrite:false})});
+ await put(pathname,JSON.stringify(store),{access:'private',contentType:'application/json',addRandomSuffix:false,...(etag?{ifMatch:etag,allowOverwrite:true}:{allowOverwrite:false})});
 }
 const persistentStore=unstable_cache(async()=>(await readStore()).store,['trutool-cms-v1'],{revalidate:30,tags:['cms']});
 const cachedStore=cache(()=>persistentStore());

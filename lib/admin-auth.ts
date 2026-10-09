@@ -16,7 +16,7 @@ export async function loginAttempt(r:Request){
  const key=createHmac('sha256',secret()!).update(r.headers.get('x-vercel-forwarded-for')||r.headers.get('x-forwarded-for')||'unknown').digest('hex'),bucket=Math.floor(Date.now()/900000),path=`cms/security/login-${key}-${bucket}.json`;
  if(!process.env.BLOB_READ_WRITE_TOKEN){if(process.env.VERCEL)throw new Error('Admin unavailable');const key=path,counters=localAttempts;const n=counters.get(key)||0;if(n>=10)return false;counters.set(key,n+1);return true;}
  for(let i=0;i<3;i++){const res=await get(path,{access:'private',useCache:false}),n=res?.statusCode===200?Number((await new Response(res.stream).json()).count)||0:0;if(n>=10)return false;
- try{await put(path,JSON.stringify({count:n+1}),{access:'private',contentType:'application/json',addRandomSuffix:false,...(res?.statusCode===200?{ifMatch:res.blob.etag}:{allowOverwrite:false})});return true;}catch(e){if(!(e instanceof BlobPreconditionFailedError))throw e;}}
+ try{await put(path,JSON.stringify({count:n+1}),{access:'private',contentType:'application/json',addRandomSuffix:false,...(res?.statusCode===200?{ifMatch:res.blob.etag,allowOverwrite:true}:{allowOverwrite:false})});return true;}catch(e){if(!(e instanceof BlobPreconditionFailedError))throw e;}}
  return false;
 }
 const localAttempts=new Map<string,number>();
