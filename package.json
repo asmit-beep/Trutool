@@ -11,9 +11,10 @@
     "start": "next start",
     "lint": "eslint . --ignore-pattern .next",
     "typecheck": "tsc --noEmit",
-    "prebuild": "node scripts/verify-catalog.mjs && node scripts/verify-newsletter.mjs && node scripts/generate-content-history.mjs && node scripts/verify-seo.mjs",
+    "prebuild": "node scripts/verify-admin-publishing.mjs && node scripts/verify-catalog.mjs && node scripts/verify-newsletter.mjs && node scripts/generate-content-history.mjs && node scripts/verify-seo.mjs",
     "verify:catalog": "node scripts/verify-catalog.mjs",
-    "verify:seo": "node scripts/verify-seo.mjs"
+    "verify:seo": "node scripts/verify-seo.mjs",
+    "verify:publishing": "node scripts/verify-admin-publishing.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

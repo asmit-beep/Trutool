@@ -183,7 +183,7 @@ try{
  assert.equal(parseOfficialFeed('x'.repeat(2_000_001),officialFeeds[0],newsNow).length,0);
  const mergedNews=mergeAINews([...parsedNews,...parsedNews],newsNow);assert.equal(mergedNews.filter(n=>n.url===parsedNews[0].url).length,1);assert.ok(mergeAINews([],newsNow).length>=4);assert.ok(mergedNews.some(n=>n.url===parsedNews[0].url));
  assert.ok(mergedNews.every(n=>n.url.startsWith('https://')&&n.publishedAt));
- assert.equal(AI_REFRESH_SECONDS,48*3600);assert.ok(officialFeeds.length>=8);
+ assert.equal(AI_REFRESH_SECONDS,24*3600);assert.ok(officialFeeds.length>=8);
  const flooded=Array.from({length:30},(_,i)=>({...parsedNews[0],id:'flood-'+i,url:'https://openai.com/flood/'+i,publishedAt:'2026-10-06'}));
  const diverse=mergeAINews(flooded,newsNow);assert.ok(new Set(diverse.map(n=>n.publisher)).size>=8);assert.ok(diverse.filter(n=>n.publisher==='OpenAI').length<=2);assert.ok(diverse.some(n=>n.publisher==='Anthropic'));assert.ok(diverse.some(n=>n.id==='jev-launch'));
  const originalCover='https://cdn-uploads.huggingface.co/production/uploads/cover.png';
@@ -224,7 +224,7 @@ try{
   const first=await getAIDiscussions([xStory]);version=2;const next=await getAIDiscussions([xStory]);
   assert.ok(first.some(d=>d.id==='hn-201')&&next.some(d=>d.id==='hn-202'));
   assert.ok(new Set(next.map(d=>d.platform)).size>=4,'Live discussions span available sources despite individual outages');
-  assert.ok(calls.every(([,options])=>options.next.revalidate===AI_REFRESH_SECONDS),'Discussion requests use the 48-hour refresh cache');
+  assert.ok(calls.every(([,options])=>options.next.revalidate===AI_REFRESH_SECONDS),'Discussion requests use the 24-hour refresh cache');
  }finally{globalThis.fetch=originalFetch;Date.now=originalNow;}
  console.log('PASS: live Reddit, Hugging Face, Hacker News and embedded X discussion parsing; freshness, diversity, duplicate exclusion, source outage isolation and refresh.');
  const expansion=JSON.parse(fs.readFileSync('lib/catalog-expansion.json','utf8'));
@@ -236,7 +236,7 @@ try{
  console.log('PASS: 2,000+ unique profiles, source records, specialist searches, automatic counts and categories.');
  const shelves=getAIShelves(newsNow);assert.equal(shelves.length,3);assert.ok(shelves.every(s=>s.tools.length===6));assert.ok(!shelves[1].tools.some(t=>t.slug==='devin'));assert.ok(shelves[1].tools.every(t=>t.launchedAt&&t.launchStatus));assert.equal(freshAITools(Date.parse('2027-01-01')).length,0);
  assert.ok(shelves[2].tools.some(t=>t.slug==='wispr-flow'));assert.ok(shelves[0].tools.some(t=>t.slug==='notebooklm'));
- console.log('PASS: '+aiCatalogue.tools.length+' added AI profiles, scoped search, source diversity, original article covers, 48-hour caching, discussion relevance, launch freshness, and feed fallback.');
+ console.log('PASS: '+aiCatalogue.tools.length+' added AI profiles, scoped search, source diversity, original article covers, 24-hour caching, discussion relevance, launch freshness, and feed fallback.');
  // Simulate publication in an isolated catalogue: never add QA content to the site.
  const fixture=JSON.parse(fs.readFileSync(path.join(tmp,'expanded-catalog.json'),'utf8'));
  fixture.categories.push({...fixture.categories[0],slug:'qa-fixture-category',name:'QA Fixture category'});

@@ -3,7 +3,7 @@ import { unstable_cache } from 'next/cache';
 import { cache } from 'react';
 import 'server-only';
 import { authors } from './authors';
-import type { CmsContent,CmsStore } from './cms-types';
+import { effectivePublished,type CmsContent,type CmsStore } from './cms-types';
 const pathname='cms/content-v1.json';
 export const emptyStore=():CmsStore=>({version:1,revision:0,records:[],activity:[]});
 const local=()=>!process.env.VERCEL&&process.env.CMS_TEST_STORE;
@@ -23,7 +23,7 @@ export async function writeStore(store:CmsStore,etag?:string){
 }
 const persistentStore=unstable_cache(async()=>(await readStore()).store,['trutool-cms-v1'],{revalidate:30,tags:['cms']});
 const cachedStore=cache(()=>persistentStore());
-export async function getPublished():Promise<CmsContent[]>{const store=await cachedStore(),now=Date.now(),published=store.records.flatMap(r=>{const c=r.scheduled&&Date.parse(r.scheduled.publishedAt||'')<=now?r.scheduled:r.published;return !r.hidden&&c&&Date.parse(c.publishedAt||'')<=now?[c]:[];});const names=new Map(authors.map(a=>[a.slug as string,a.name as string]));for(const c of published)if(c.kind==='author')names.set(c.slug,c.title);return published.map(c=>({...c,authorName:names.get(c.authorSlug)||'TruTool'}));}
+export async function getPublished():Promise<CmsContent[]>{const store=await cachedStore(),now=Date.now(),published=store.records.flatMap(r=>{const c=effectivePublished(r,now);return c?[c]:[];});const names=new Map(authors.map(a=>[a.slug as string,a.name as string]));for(const c of published)if(c.kind==='author')names.set(c.slug,c.title);return published.map(c=>({...c,authorName:names.get(c.authorSlug)||'TruTool'}));}
 export async function isHidden(path:string){const {contentPath}=await import('./cms-types');return (await cachedStore()).records.some(r=>r.hidden&&contentPath(r.draft)===path);}
 
 export async function hiddenPaths(){const {contentPath}=await import("./cms-types");return new Set((await cachedStore()).records.filter(r=>r.hidden).map(r=>contentPath(r.draft)));}

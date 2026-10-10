@@ -3,7 +3,7 @@ import {contentPath} from './cms-types';
 import {SITE} from './catalog';
 import curated from './ai-news.json';
 import conversations from './ai-discussions.json';
-export const AI_REFRESH_SECONDS=172800;
+export const AI_REFRESH_SECONDS=86400;
 export type AINews={id:string;title:string;summary:string;publisher:string;publishedAt:string;url:string;toolSlug?:string;topic:string;image?:string;imageSource?:string};
 export type AIDiscussion={id:string;title:string;summary:string;platform:string;publishedAt:string;url:string;topic:string};
 export const officialFeeds=[
@@ -47,7 +47,7 @@ export function mergeAINews(live:AINews[],now=Date.now()):AINews[]{
  return selected;
 }
 async function fetchText(url:string,accept:string):Promise<string>{
- const response=await fetch(url,{signal:AbortSignal.timeout(4000),redirect:'error',next:{revalidate:AI_REFRESH_SECONDS},headers:{Accept:accept}});
+ const response=await fetch(url,{signal:AbortSignal.timeout(4000),redirect:'error',next:{revalidate:AI_REFRESH_SECONDS,tags:['ai-sources']},headers:{Accept:accept}});
  if(!response.ok||Number(response.headers.get('content-length'))>2_000_000)throw new Error('Source unavailable');
  const reader=response.body?.getReader();if(!reader)throw new Error('Empty source');let size=0,text='';const decoder=new TextDecoder();
  try{for(;;){const {value,done}=await reader.read();if(done)break;size+=value.byteLength;if(size>2_000_000){await reader.cancel();throw new Error('Source too large')}text+=decoder.decode(value,{stream:true})}return text+decoder.decode()}finally{reader.releaseLock()}
