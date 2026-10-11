@@ -8,7 +8,7 @@ import {AIToolShelves} from './ai-tool-shelves';
 import {MotionVisibility} from './motion-visibility';
 const date=(value:string)=>new Date(value+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
 const platformLogos:Record<string,string>={X:'/brands/x-platform.png',Reddit:'/brands/reddit-platform.png','Hacker News':'/brands/hacker-news-platform.svg','Hugging Face':'/brands/catalog-hugging-face.svg'};
-function PlatformMark({platform}:{platform:string}){const logo=platformLogos[platform];return <span className={'ai-platform-mark platform-'+platform.toLowerCase().replace(/\s+/g,'-')} aria-hidden="true">{logo?<Image src={logo} alt="" width={24} height={24} unoptimized={logo.endsWith('.svg')}/>:<Globe2 size={18}/>}</span>}
+function PlatformMark({platform}:{platform:string}){const logo=platformLogos[platform];return <span className={'ai-platform-mark platform-'+platform.toLowerCase().replace(/\s+/g,'-')} aria-hidden="true">{logo?<Image src={logo} alt={platform+' platform logo'} width={24} height={24} unoptimized={logo.endsWith('.svg')}/>:<Globe2 size={18}/>}</span>}
 export function EverythingAI({news,discussions,compact=false}:{news:AINews[];discussions:AIDiscussion[];compact?:boolean}){
  const lead=news.find(n=>n.image)||news[0];if(!lead)return null;
  const seen=new Set([lead.publisher]);const others=news.filter(n=>{if(seen.has(n.publisher))return false;seen.add(n.publisher);return true}).slice(0,3);
