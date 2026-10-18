@@ -63,6 +63,7 @@ export async function CmsArticle({ content: c, preview = false }: { content: Cms
       <Link href={c.kind === 'news' ? '/everything-ai' : contentPath(c).split('/').slice(0, 2).join('/')}>
         {c.kind === 'news' ? 'Everything AI' : isGuide ? 'Buying guides' : c.kind === 'answer' ? 'Community' : c.kind}
       </Link>
+      {isGuide && category && <><span>/</span><Link href={'/categories/' + category.slug}>{category.short}</Link><span>/</span><span aria-current="page">{c.title}</span></>}
     </div>
     {preview && <div className="cms-preview-notice">Private preview · This draft is not public.</div>}
     {isGuide ? <>

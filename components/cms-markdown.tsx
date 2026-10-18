@@ -11,6 +11,15 @@ function CmsBodyImage({ alt, src, hint, block = false }: { alt: string; src: str
   return block ? <figure className="cms-figure">{img}</figure> : img;
 }
 
+// Relative paths and trutool.co URLs are internal links and stay in the same tab.
+function isInternalUrl(href: string) {
+  if (href.startsWith('/')) return true;
+  try {
+    const host = new URL(href).hostname.toLowerCase();
+    return host === 'trutool.co' || host === 'www.trutool.co';
+  } catch { return false; }
+}
+
 // Markdown-safe inline formatting; links are parsed before emphasis so
 // [**Name**](url) becomes an accessible link with bold text, not literal stars.
 // Images are parsed before links so ![alt](url) is an image, not "!" plus a link.
@@ -26,7 +35,7 @@ function inline(value: string): React.ReactNode[] {
       if (image) result.push(image);
     } else if (match[5] !== undefined) {
       const url = safeHref(match[6]);
-      result.push(url ? <a key={n++} href={url} {...(url.startsWith('https:') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{inline(match[5])}</a> : match[0]);
+      result.push(url ? <a key={n++} href={url} {...(url.startsWith('https:') && !isInternalUrl(url) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{inline(match[5])}</a> : match[0]);
     } else if (match[7] !== undefined || match[8] !== undefined) {
       result.push(<strong key={n++}>{inline(match[7] ?? match[8])}</strong>);
     } else if (match[9] !== undefined) {

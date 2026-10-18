@@ -78,6 +78,9 @@ try {
   assert.ok(html.includes('<a href="https://synup.com/" target="_blank" rel="noopener noreferrer"><strong>Synup</strong></a>'), 'Markdown bold inside links must not show asterisks');
   assert.ok(!html.includes('**'), 'No raw bold markdown residue should appear in rendered HTML');
   assert.ok(html.includes('<table>') && html.includes('<tbody>'), 'Tables must be semantic');
+  const linkHtml = renderToStaticMarkup(React.createElement(CmsMarkdown, { body: '[a](/guides/x) [b](https://trutool.co/guides/y) [c](https://www.trutool.co/z) [d](https://example.com/) [e](https://nottrutool.co/)' }));
+  assert.ok(linkHtml.includes('<a href="/guides/x">a</a>') && linkHtml.includes('<a href="https://trutool.co/guides/y">b</a>') && linkHtml.includes('<a href="https://www.trutool.co/z">c</a>'), 'Internal links must open in the same tab');
+  assert.ok(linkHtml.includes('<a href="https://example.com/" target="_blank" rel="noopener noreferrer">d</a>') && linkHtml.includes('<a href="https://nottrutool.co/" target="_blank" rel="noopener noreferrer">e</a>'), 'External links must keep target=_blank');
 
   const article = fs.readFileSync('components/cms-article.tsx', 'utf8');
   const guides = fs.readFileSync('app/guides/page.tsx', 'utf8');
