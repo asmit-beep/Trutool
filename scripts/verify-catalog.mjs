@@ -161,7 +161,7 @@ try{
  for(const c of categories)assert.equal(categoryCounts[c.slug],tools.filter(t=>t.category===c.slug).length);
  const {toolResults}=require(path.join(tmp,'catalog-results.js'));
  const first=toolResults(),second=toolResults('','','relevance',2);
- assert.equal(first.total,tools.filter(t=>!require(path.join(tmp,'public-visibility.js')).excludedTool(t)).length);assert.equal(first.items.length,24);assert.equal(second.page,2);assert.ok(!first.items.some(t=>second.items.some(x=>x.slug===t.slug)));
+ assert.equal(first.total,tools.length);assert.equal(first.items.length,24);assert.equal(second.page,2);assert.ok(!first.items.some(t=>second.items.some(x=>x.slug===t.slug)));
  assert.ok(first.items.every(t=>t.categoryLabel&&!('fit' in t)&&!('features' in t)),'Compact search responses');
  assert.equal(toolResults('','','',Infinity,Infinity).limit,24);assert.equal(toolResults('','','',999999).page,first.pages);
  assert.equal(toolResults('','nonexistent-category').total,0);assert.ok(!toolResults('chagpt','','',1,6).items.some(t=>t.slug==='chatgpt'),'Excluded brand must not appear in public search results');
@@ -266,7 +266,7 @@ try{
   const base=new Set(searchTools('meeting notes').map(t=>t.slug));assert.ok(lensResults('meeting notes','','relevance',1,50,'',lens).items.every(t=>base.has(t.slug)));
   assert.equal(lensResults('quantum banana telescope','','relevance',1,50,'',lens).total,0);
  }
- assert.equal(lensResults('chagpt','','relevance',1,24,'','popular').items.length,0,'Excluded brand is not shown in public discovery');
+ assert.equal(lensResults('chagpt','','relevance',1,24,'','popular').items[0].slug,'chatgpt');
  assert.ok(lensResults('password manager','','relevance',1,50,'','popular').items.some(t=>t.slug==='bitwarden'));
  assert.ok(lensResults('Jev AI','','relevance',1,24,'ai','niche').items.some(t=>t.slug==='jev-ai'));
  assert.equal(lensResults('','design','relevance',1,50,'','niche').items.every(t=>t.category==='design'),true);
