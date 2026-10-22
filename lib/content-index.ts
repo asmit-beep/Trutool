@@ -5,8 +5,13 @@ import {communityAnswers,type CommunityAnswer} from './community-answers';
 import {serviceCategories} from './services';
 import history from './content-history.json';
 
+// Per-slug editorial notes for /alternatives/[slug]. Kept as data so only that page's content fingerprint changes.
+export type AlternativesNote={before:string;linkText:string;href:string;after:string};
+export const alternativesNotes:Record<string,AlternativesNote>={
+ cursor:{before:'Want a hands-on comparison? Read our guide to the ',linkText:'best Cursor alternatives in 2026',href:'/guides/cursor-alternatives',after:'.'},
+};
 export type PageKind='page'|'collection'|'tool'|'alternatives'|'comparison'|'guide'|'answer'|'author'|'service';
-export type ContentPage={body?:string;cms?:import("./cms-types").CmsContent;path:string;title:string;description:string;kind:PageKind;tool?:Tool;category?:typeof categories[number];guide?:Guide;answer?:CommunityAnswer;author?:Author;pair?:Tool[];service?:typeof serviceCategories[number];publishedAt?:string;updatedAt?:string};
+export type ContentPage={body?:string;cms?:import("./cms-types").CmsContent;path:string;title:string;description:string;kind:PageKind;tool?:Tool;category?:typeof categories[number];guide?:Guide;answer?:CommunityAnswer;author?:Author;pair?:Tool[];service?:typeof serviceCategories[number];note?:AlternativesNote;publishedAt?:string;updatedAt?:string};
 const staticPages:ContentPage[]=[
  ['','TruTool | Discover & Compare AI Tools and Software','Discover AI tools and software for work. Compare features, pricing and alternatives, explore useful guides, and find the right tools with TruTool.','page'],
  ['/tools','Browse Software & Learning Platforms',`Search ${tools.length} tools across ${categories.length} categories, including AI, design, productivity, marketing, and development.`,'collection'],
@@ -35,7 +40,7 @@ export const contentPages:ContentPage[]=[...staticPages,
  ...serviceCategories.map(service=>({path:'/services/'+service.slug,title:service.name,description:service.description,kind:'service' as const,service})),
  ...tools.flatMap(tool=>[
   {path:'/tools/'+tool.slug,title:tool.name+' — Features, Fit, Reviews & Alternatives',description:tool.summary+' '+tool.fit,kind:'tool' as const,tool,updatedAt:tool.updatedAt,publishedAt:tool.addedAt},
-  {path:'/alternatives/'+tool.slug,title:tool.name+' Alternatives — Options to Compare',description:'Explore '+categoryOf(tool.category).name.toLowerCase()+' alternatives to '+tool.name+' by fit, capabilities, and trade-offs.',kind:'alternatives' as const,tool},
+  {path:'/alternatives/'+tool.slug,title:tool.name+' Alternatives — Options to Compare',description:'Explore '+categoryOf(tool.category).name.toLowerCase()+' alternatives to '+tool.name+' by fit, capabilities, and trade-offs.',kind:'alternatives' as const,tool,...(alternativesNotes[tool.slug]?{note:alternativesNotes[tool.slug]}:{})},
  ]),
  ...categories.map(category=>({path:'/categories/'+category.slug,title:category.name+' — Tools & Comparisons',description:category.answer,kind:'collection' as const,category})),
  ...guides.map(guide=>({path:'/guides/'+guide.slug,title:guide.title,description:guide.intro,kind:'guide' as const,guide,publishedAt:guide.publishedAt||'2026-10-05',updatedAt:guide.updatedAt||guide.publishedAt||'2026-10-05'})),
