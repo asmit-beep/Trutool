@@ -234,7 +234,7 @@ try{
  assert.ok(searchTools('medical scribe').every(t=>t.category==='ai-medical'),'Medical scribe search excludes generic meeting recorders');
  assert.ok(!searchTools('AI contract review').some(t=>t.slug==='chatgpt'),'Contract review search requires documented legal capability');
  console.log('PASS: 2,000+ unique profiles, source records, specialist searches, automatic counts and categories.');
- const shelves=getAIShelves(newsNow);assert.equal(shelves.length,3);assert.ok(shelves.every(s=>s.tools.length>=4&&s.tools.length<=6),'Shelves only contain eligible public tools');assert.ok(!shelves[1].tools.some(t=>t.slug==='devin'));assert.ok(shelves[1].tools.every(t=>t.launchedAt&&t.launchStatus));assert.equal(freshAITools(Date.parse('2027-01-01')).length,0);
+ const shelves=getAIShelves(newsNow);assert.equal(shelves.length,3);assert.ok(shelves.every(s=>s.tools.length===6));assert.ok(!shelves[1].tools.some(t=>t.slug==='devin'));assert.ok(shelves[1].tools.every(t=>t.launchedAt&&t.launchStatus));assert.equal(freshAITools(Date.parse('2027-01-01')).length,0);
  assert.ok(shelves[2].tools.some(t=>t.slug==='wispr-flow'));assert.ok(shelves[0].tools.some(t=>t.slug==='notebooklm'));
  console.log('PASS: '+aiCatalogue.tools.length+' added AI profiles, scoped search, source diversity, original article covers, 24-hour caching, discussion relevance, launch freshness, and feed fallback.');
  // Simulate publication in an isolated catalogue: never add QA content to the site.
