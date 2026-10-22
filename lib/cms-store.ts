@@ -23,8 +23,7 @@ export async function writeStore(store:CmsStore,etag?:string){
 }
 const persistentStore=unstable_cache(async()=>(await readStore()).store,['trutool-cms-v1'],{revalidate:30,tags:['cms']});
 const cachedStore=cache(()=>persistentStore());
-export async function getPublished():Promise<CmsContent[]>{const store=await cachedStore(),now=Date.now(),published=store.records.flatMap(r=>{const c=effectivePublished(r,now);return c?[c]:[];});const names=new Map(authors.map(a=>[a.slug as string,a.name as string]));for(const c of published)if(c.kind==='author')names.set(c.slug,c.title);// Keep existing records editable in Admin, but do not publish pages with excluded brand references.
- return published.filter(c=>!/chatgpt/i.test(JSON.stringify(c))).map(c=>({...c,authorName:names.get(c.authorSlug)||'TruTool'}));}
+export async function getPublished():Promise<CmsContent[]>{const store=await cachedStore(),now=Date.now(),published=store.records.flatMap(r=>{const c=effectivePublished(r,now);return c?[c]:[];});const names=new Map(authors.map(a=>[a.slug as string,a.name as string]));for(const c of published)if(c.kind==='author')names.set(c.slug,c.title);return published.map(c=>({...c,authorName:names.get(c.authorSlug)||'TruTool'}));}
 export async function isHidden(path:string){const {contentPath}=await import('./cms-types');return (await cachedStore()).records.some(r=>r.hidden&&contentPath(r.draft)===path);}
 
 export async function hiddenPaths(){const {contentPath}=await import("./cms-types");return new Set((await cachedStore()).records.filter(r=>r.hidden).map(r=>contentPath(r.draft)));}
