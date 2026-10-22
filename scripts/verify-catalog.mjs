@@ -8,7 +8,7 @@ import {createRequire} from 'node:module';
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'trutool-catalog-'));
 try{
  fs.writeFileSync(path.join(tmp,'package.json'),'{"type":"commonjs"}');
- for(const file of ['catalog','public-visibility','guides','search','diagnostic','catalog-results','tool-discovery','discovery-options','authors','ai','ai-news','cms-types','demo','demo-reviews','reviews','pricing','community-answers','content-index','covers'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
+ for(const file of ['catalog','guides','search','diagnostic','catalog-results','tool-discovery','discovery-options','authors','ai','ai-news','cms-types','demo','demo-reviews','reviews','pricing','community-answers','content-index','covers'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  fs.writeFileSync(path.join(tmp,'cms-store.js'),'exports.getPublished=async()=>[];');
  fs.copyFileSync('lib/content-history.json',path.join(tmp,'content-history.json'));
  fs.copyFileSync('lib/expanded-catalog.json',path.join(tmp,'expanded-catalog.json'));
