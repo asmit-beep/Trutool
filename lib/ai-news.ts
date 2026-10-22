@@ -1,14 +1,13 @@
 import {getPublished} from './cms-store';
 import {contentPath} from './cms-types';
 import {SITE} from './catalog';
-import {excludedText} from './public-visibility';
 import curated from './ai-news.json';
 import conversations from './ai-discussions.json';
 export const AI_REFRESH_SECONDS=86400;
 export type AINews={id:string;title:string;summary:string;publisher:string;publishedAt:string;url:string;toolSlug?:string;topic:string;image?:string;imageSource?:string};
 export type AIDiscussion={id:string;title:string;summary:string;platform:string;publishedAt:string;url:string;topic:string};
 export const officialFeeds=[
- {url:'https://openai.com/news/rss.xml',publisher:'OpenAI',hosts:['openai.com'],toolSlug:'openai-agents-sdk'},
+ {url:'https://openai.com/news/rss.xml',publisher:'OpenAI',hosts:['openai.com'],toolSlug:'chatgpt'},
  {url:'https://huggingface.co/blog/feed.xml',publisher:'Hugging Face',hosts:['huggingface.co']},
  {url:'https://blog.google/technology/ai/rss/',publisher:'Google',hosts:['blog.google'],toolSlug:'gemini'},
  {url:'https://about.fb.com/feed/',publisher:'Meta',hosts:['about.fb.com']},
@@ -41,7 +40,7 @@ export function parseOfficialFeed(xml:string,feed:(typeof officialFeeds)[number]
 export function mergeAINews(live:AINews[],now=Date.now()):AINews[]{
  const unique=new Map<string,AINews>();
  // Publisher-checked launch information and covers take precedence over excerpts.
- for(const story of [...curated,...live])if(new Date(story.publishedAt).getTime()<=now&&new Date(story.publishedAt).getTime()>=now-60*86400000&&!excludedText(story.title)&&!excludedText(story.summary)&&!excludedText(story.url)&&!unique.has(story.url))unique.set(story.url,story);
+ for(const story of [...curated,...live])if(new Date(story.publishedAt).getTime()<=now&&new Date(story.publishedAt).getTime()>=now-60*86400000&&!unique.has(story.url))unique.set(story.url,story);
  const sorted=[...unique.values()].sort((a,b)=>b.publishedAt.localeCompare(a.publishedAt)),selected:AINews[]=[],counts=new Map<string,number>();
  // One headline per publisher first, then a second pass to prevent feed monopolies.
  for(const cap of [1,2])for(const story of sorted){if(selected.length>=12)break;if(!selected.some(s=>s.url===story.url)&&(counts.get(story.publisher)||0)<cap){selected.push(story);counts.set(story.publisher,(counts.get(story.publisher)||0)+1)}}
@@ -55,7 +54,7 @@ async function fetchText(url:string,accept:string):Promise<string>{
 }
 export async function getAINews():Promise<AINews[]>{
  const feeds=await Promise.allSettled(officialFeeds.map(async feed=>parseOfficialFeed(await fetchText(feed.url,'application/rss+xml, application/atom+xml, application/xml'),feed)));
- const editorial=(await getPublished()).filter(c=>c.kind==='news'&&!excludedText(c.title)&&!excludedText(c.description)).sort((a,b)=>(b.publishedAt||'').localeCompare(a.publishedAt||'')).slice(0,4).map(c=>({id:c.id,title:c.title,summary:c.description,publisher:'TruTool',publishedAt:c.publishedAt!.slice(0,10),url:SITE+contentPath(c),topic:c.sourceLabel||'Editorial update'}));
+ const editorial=(await getPublished()).filter(c=>c.kind==='news').sort((a,b)=>(b.publishedAt||'').localeCompare(a.publishedAt||'')).slice(0,4).map(c=>({id:c.id,title:c.title,summary:c.description,publisher:'TruTool',publishedAt:c.publishedAt!.slice(0,10),url:SITE+contentPath(c),topic:c.sourceLabel||'Editorial update'}));
  const stories=mergeAINews(feeds.flatMap(f=>f.status==='fulfilled'?f.value:[]));
  // Covers come exclusively from the corresponding article's metadata.
  const covers=await Promise.allSettled(stories.slice(0,6).map(async story=>{if(story.image)return story;const image=articleCover(await fetchText(story.url,'text/html'));return image?{...story,image,imageSource:story.url}:story}));
@@ -110,7 +109,7 @@ export function parseArticleXDiscussions(html:string,story:AINews,now=Date.now()
 }
 export function mergeAIDiscussions(live:AIDiscussion[],fallback:AIDiscussion[]=conversations,now=Date.now()):AIDiscussion[]{
  const recent=(stories:AIDiscussion[],days:number)=>stories.filter(s=>Number.isFinite(Date.parse(s.publishedAt))&&Date.parse(s.publishedAt)<=now&&Date.parse(s.publishedAt)>=now-days*86400000).sort((a,b)=>b.publishedAt.localeCompare(a.publishedAt));
- const fresh=recent(live.filter(s=>!excludedText(s.title)&&!excludedText(s.summary)),30),pool=[...fresh,...recent(fallback.filter(s=>!excludedText(s.title)&&!excludedText(s.summary)),30)],selected:AIDiscussion[]=[];
+ const fresh=recent(live,30),pool=[...fresh,...recent(fallback,30)],selected:AIDiscussion[]=[];
  // Live threads take precedence; first show a different platform in each row.
  for(const cap of [1,2])for(const story of pool){
   if(selected.length>=6)break;

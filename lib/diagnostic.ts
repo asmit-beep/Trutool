@@ -1,4 +1,3 @@
-import {excludedTool} from './public-visibility';
 import {tools, categories, guides, SITE, type Tool} from './catalog';
 
 export type DiagnosticBrief={category:string;workflow:string;scale:string;style:string};
@@ -79,7 +78,7 @@ export function briefLabels(a:DiagnosticBrief){
  return {category:categories.find(c=>c.slug===a.category)!.short,workflow:workflows[a.category].find(w=>w[0]===a.workflow)![1],scale:scales.find(s=>s[0]===a.scale)![1],style:styles.find(s=>s[0]===a.style)![1]};
 }
 export function matchTools(a:DiagnosticBrief,weights:FitWeights){
- return tools.filter(t=>t.category===a.category&&!excludedTool(t)).map(tool=>{
+ return tools.filter(t=>t.category===a.category).map(tool=>{
   const t=tags[tool.slug];
   if(!t)return {tool,tagged:false,signals:{workflow:false,scale:false,style:false},points:0};
   const signals={workflow:t.workflows.includes(a.workflow),scale:t.scales.includes(a.scale),style:t.styles.includes(a.style)};

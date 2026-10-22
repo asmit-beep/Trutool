@@ -1,5 +1,4 @@
 import {SITE,tools,categories,guides,pairs,getTool,categoryOf,type Tool,type Guide} from './catalog';
-import {excludedTool,excludedText,publicTool} from './public-visibility';
 import {authors,authorFor,type Author} from './authors';
 import {communityAnswers,type CommunityAnswer} from './community-answers';
 import {serviceCategories} from './services';
@@ -53,7 +52,7 @@ export function comparisonCanonicalPath(slug:string):string|undefined{
  const names=page.pair.map(t=>t.slug),existing=pairs.find(([a,b])=>names.includes(a)&&names.includes(b));
  return '/compare/'+(existing||names.sort()).join('-vs-');
 }
-export function getContentPage(path:string){const normalized=path==='/'?'':path.replace(/\/$/,'');const page=pageMap.get(normalized)||(normalized.startsWith('/compare/')?comparisonPage(normalized.slice(9)):undefined);return page&&(!excludedText(page.path)&&!excludedText(page.title)&&(!page.tool||!excludedTool(page.tool)))?{...page,description:page.description.replace(/chatgpt/gi,'AI assistant'),...(page.tool?{tool:publicTool(page.tool)}:{})}:undefined}
+export function getContentPage(path:string){const normalized=path==='/'?'':path.replace(/\/$/,'');return pageMap.get(normalized)||(normalized.startsWith('/compare/')?comparisonPage(normalized.slice(9)):undefined)}
 export const absolute=(path:string)=>SITE.replace(/\/$/,'')+path;
 export const markdownPath=(path:string)=>path?path+'.md':'/index.md';
 export function modifiedFor(page:ContentPage):string|undefined{
@@ -65,7 +64,7 @@ export function relatedTools(page:ContentPage):Tool[]{
  if(page.pair)return page.pair;
  if(page.answer)return page.answer.toolSlugs.map(getTool).filter((t):t is Tool=>Boolean(t));
  const category=page.tool?.category||page.guide?.category||page.category?.slug;
- return category?tools.filter(t=>t.category===category&&t.slug!==page.tool?.slug&&!excludedTool(t)).map(publicTool):[];
+ return category?tools.filter(t=>t.category===category&&t.slug!==page.tool?.slug):[];
 }
 // Fingerprints and revision dates are committed with content edits; builds only verify them.
 export function contentRevision(page:ContentPage){
