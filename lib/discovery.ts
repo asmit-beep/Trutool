@@ -1,5 +1,4 @@
-import {absolute,contentPages as indexedPages,getContentPage,contentAuthor,modifiedFor,markdownPath,relatedTools,type ContentPage} from './content-index';
-const defaultPages=indexedPages.map(page=>getContentPage(page.path)).filter((page):page is ContentPage=>Boolean(page));
+import {absolute,contentPages as defaultPages,contentAuthor,modifiedFor,markdownPath,relatedTools,type ContentPage} from './content-index';
 import {pricingFor} from './pricing';
 import {categories,guides,categoryOf} from './catalog';
 
