@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit",
     "content:history": "node scripts/generate-content-history.mjs --write",
     "verify:content-dates": "node scripts/verify-content-dates.mjs",
-    "prebuild": "node scripts/verify-admin-publishing.mjs && node scripts/verify-cms-guide-parity.mjs && node scripts/verify-catalog.mjs && node scripts/verify-newsletter.mjs && node scripts/verify-dispatch-welcome.mjs && node scripts/verify-contact-inbox.mjs && node scripts/verify-community-qa.mjs && node scripts/generate-content-history.mjs && node scripts/verify-content-dates.mjs && node scripts/verify-site-index.mjs && node scripts/verify-article-hero.mjs && node scripts/verify-image-alt.mjs && node scripts/verify-seo.mjs && node scripts/verify-supabase-preview.mjs && node scripts/verify-performance.mjs",
+    "prebuild": "node scripts/verify-admin-publishing.mjs && node scripts/verify-cms-guide-parity.mjs && node scripts/verify-cms-media-size.mjs && node scripts/verify-catalog.mjs && node scripts/verify-newsletter.mjs && node scripts/verify-dispatch-welcome.mjs && node scripts/verify-contact-inbox.mjs && node scripts/verify-community-qa.mjs && node scripts/generate-content-history.mjs && node scripts/verify-content-dates.mjs && node scripts/verify-site-index.mjs && node scripts/verify-article-hero.mjs && node scripts/verify-image-alt.mjs && node scripts/verify-seo.mjs && node scripts/verify-supabase-preview.mjs && node scripts/verify-performance.mjs",
     "verify:catalog": "node scripts/verify-catalog.mjs",
     "verify:seo": "node scripts/verify-seo.mjs",
     "verify:publishing": "node scripts/verify-admin-publishing.mjs",
