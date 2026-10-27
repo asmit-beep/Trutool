@@ -125,7 +125,7 @@ export async function writeStore(store:CmsStore,etag?:string){
  // overwrite each other. This NEVER writes to original Supabase.
  await writeCmsOverlay(next,etag);
 }
-const persistentStore=unstable_cache(async()=>(await readStore()).store,['trutool-cms-v1'],{revalidate:30,tags:['cms']});
+const persistentStore=unstable_cache(async()=>await readStore(),['trutool-cms-v1'],{revalidate:30,tags:['cms']});
 const cachedStore=cache(()=>persistentStore());
 /**
  * Restore only the public, already-published editorial guide snapshots while
@@ -162,6 +162,6 @@ export async function getPublished():Promise<CmsContent[]>{
  for(const c of published)if(c.kind==='author')names.set(c.slug,c.title);
  return published.map(c=>({...c,authorName:names.get(c.authorSlug)||'TruTool'}));
 }
-export async function isHidden(path:string){const {contentPath}=await import('./cms-types');return (await cachedStore()).records.some(r=>r.hidden&&contentPath(r.draft)===path);}
+export async function isHidden(path:string){const {contentPath}=await import('./cms-types');return (await cachedStore()).store.records.some(r=>r.hidden&&contentPath(r.draft)===path);}
 
-export async function hiddenPaths(){const {contentPath}=await import("./cms-types");return new Set((await cachedStore()).records.filter(r=>r.hidden).map(r=>contentPath(r.draft)));}
+export async function hiddenPaths(){const {contentPath}=await import("./cms-types");return new Set((await cachedStore()).store.records.filter(r=>r.hidden).map(r=>contentPath(r.draft)));}
