@@ -77,6 +77,16 @@ export async function head(path: string) {
 }
 
 export async function get(path: string, options: { access: 'private'; useCache?: boolean }) {
+  // New private enquiries live in Blob even during Supabase's temporary 402 restriction.
+  // For older enquiries, keep the Supabase read path intact.
+  if (path.startsWith('enquiries/')) {
+    try {
+      const blob = await blobGet(path, options);
+      if (blob) return blob;
+    } catch (error) {
+      if (!(error instanceof BlobNotFoundError)) throw error;
+    }
+  }
   if (!usingSupabaseStorage()) return blobGet(path, options);
   const row = await findRow(path);
   if (!row) return null;
@@ -102,6 +112,9 @@ export async function put(
     ifMatch?: string;
   },
 ) {
+  // Never touch historical Supabase enquiries. New submissions and receipt updates
+  // are stored in the already-connected private Vercel Blob store.
+  if (path.startsWith('enquiries/')) return blobPut(path, body, options);
   if (!usingSupabaseStorage()) return blobPut(path, body, options);
   if (!path.startsWith('cms/') && !path.startsWith('newsletter/') && !path.startsWith('enquiries/') && !path.startsWith('community-submissions/')) {
     throw new Error('Unsupported storage path');
@@ -126,7 +139,7 @@ export async function put(
   return { url: path, pathname: path };
 }
 
-export async function list(options: { prefix?: string; limit?: number; cursor?: string } = {}) {
+async function listOriginal(options: { prefix?: string; limit?: number; cursor?: string } = {}) {
   if (!usingSupabaseStorage()) return blobList(options);
   const limit = Math.max(1, Math.min(100, options.limit || 100));
   const offset = options.cursor && /^\d+$/.test(options.cursor) ? Number(options.cursor) : 0;
@@ -151,4 +164,48 @@ export async function list(options: { prefix?: string; limit?: number; cursor?: 
     hasMore,
     cursor: hasMore ? String(offset + limit) : undefined,
   };
+}
+
+/**
+ * The public contact rate-limit check reads the new Blob inbox only.
+ * Admin inbox with the exact enquiries/ prefix merges BOTH systems.
+ * If Supabase is restricted, return real Blob items with an explicit
+ * partialLegacy marker. Never pretend historical submissions were deleted.
+ */
+export async function list(options: { prefix?: string; limit?: number; cursor?: string } = {}) {
+  if (options.prefix?.startsWith('enquiries/')) {
+    if (options.prefix !== 'enquiries/') return blobList(options);
+    const files = new Map<string, Awaited<ReturnType<typeof blobList>>['blobs'][number]>();
+    // Enumerate all private Blob submissions; do not silently drop later pages.
+    let cursor: string | undefined, scanned = 0;
+    do {
+      const page = await blobList({prefix:'enquiries/',limit:1000,cursor});
+      for (const entry of page.blobs) files.set(entry.pathname, entry);
+      scanned += page.blobs.length;
+      cursor = page.hasMore ? page.cursor : undefined;
+      if (cursor && (!page.blobs.length || scanned >= 20000)) throw new Error('Private inbox pagination limit exceeded');
+    } while (cursor);
+    let partialLegacy = false;
+    if (usingSupabaseStorage()) {
+      try {
+        let oldCursor: string | undefined, processed = 0;
+        do {
+          const page = await listOriginal({prefix:'enquiries/',limit:100,cursor:oldCursor});
+          for (const entry of page.blobs) if (!files.has(entry.pathname)) files.set(entry.pathname, entry);
+          processed += page.blobs.length;
+          oldCursor = page.hasMore ? page.cursor : undefined;
+          if (oldCursor && (!page.blobs.length || processed >= 20000)) throw new Error('Legacy inbox pagination limit exceeded');
+        } while (oldCursor);
+      } catch(error) {
+        partialLegacy = true;
+        console.warn('Supabase enquiries are temporarily unavailable; retaining the private Blob inbox.');
+      }
+    }
+    const offset = options.cursor && /^\d+$/.test(options.cursor) ? Number(options.cursor) : 0;
+    const limit = Math.max(1,Math.min(options.limit||100,1000));
+    const sorted = [...files.values()].sort((a,b)=>a.pathname.localeCompare(b.pathname));
+    return {blobs:sorted.slice(offset,offset+limit),hasMore:offset+limit<sorted.length,
+      cursor:offset+limit<sorted.length?String(offset+limit):undefined,partialLegacy};
+  }
+  return listOriginal(options);
 }
