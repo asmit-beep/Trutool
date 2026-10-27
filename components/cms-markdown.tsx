@@ -23,7 +23,7 @@ function isInternalUrl(href: string) {
 // Markdown-safe inline formatting; links are parsed before emphasis so
 // [**Name**](url) becomes an accessible link with bold text, not literal stars.
 // Images are parsed before links so ![alt](url) is an image, not "!" plus a link.
-function inline(value: string): React.ReactNode[] {
+function inline(value: string, showImages = true): React.ReactNode[] {
   const pattern = /!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)(?:\{([^}]*)\})?|\[([^\]]+)\]\(([^)\s]+)(?:\s+"[^"]*")?\)|\*\*([^*]+)\*\*|__([^_]+)__|\x60([^\x60]+)\x60|(?<!\*)\*([^*\n]+)\*(?!\*)/g;
   const result: React.ReactNode[] = [];
   let cursor = 0, n = 0;
@@ -31,17 +31,18 @@ function inline(value: string): React.ReactNode[] {
     const index = match.index;
     if (index > cursor) result.push(value.slice(cursor, index));
     if (match[0].startsWith('![')) {
+      if (!showImages) { cursor = index + match[0].length; continue; }
       const image = <CmsBodyImage key={n++} alt={match[1] ?? ''} src={match[2] ?? ''} hint={[match[3], match[4]].filter(Boolean).join(' ')}/>;
       if (image) result.push(image);
     } else if (match[5] !== undefined) {
       const url = safeHref(match[6]);
-      result.push(url ? <a key={n++} href={url} {...(url.startsWith('https:') && !isInternalUrl(url) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{inline(match[5])}</a> : match[0]);
+      result.push(url ? <a key={n++} href={url} {...(url.startsWith('https:') && !isInternalUrl(url) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{inline(match[5], showImages)}</a> : match[0]);
     } else if (match[7] !== undefined || match[8] !== undefined) {
-      result.push(<strong key={n++}>{inline(match[7] ?? match[8])}</strong>);
+      result.push(<strong key={n++}>{inline(match[7] ?? match[8], showImages)}</strong>);
     } else if (match[9] !== undefined) {
       result.push(<code key={n++}>{match[9]}</code>);
     } else if (match[10] !== undefined) {
-      result.push(<em key={n++}>{inline(match[10])}</em>);
+      result.push(<em key={n++}>{inline(match[10], showImages)}</em>);
     }
     cursor = index + match[0].length;
   }
@@ -56,7 +57,7 @@ const tableCells = (value: string) => value.trim().replace(/^\||\|$/g, '').split
 const startsBlock = (value: string) => Boolean(headingLine.test(value) || fence.test(value) ||
   cmsListMarker(value) || cmsStandaloneImage(value) || /^\s{0,3}>/.test(value) || /^\s*\|/.test(value) || /^\s{0,3}(?:-{3,}|\*{3,})\s*$/.test(value));
 
-export function CmsMarkdown({ body }: { body: string }) {
+export function CmsMarkdown({ body, showImages = true }: { body: string; showImages?: boolean }) {
   const lines = body.replace(/\r\n?/g, '\n').split('\n');
   const headings = new Map(cmsHeadings(body).map(heading => [heading.line, heading.id]));
   const nodes: React.ReactNode[] = [];
@@ -76,13 +77,13 @@ export function CmsMarkdown({ body }: { body: string }) {
     if (heading) {
       const depth = heading[1].length;
       const Heading = depth <= 2 ? 'h2' : depth === 3 ? 'h3' : 'h4';
-      nodes.push(<Heading key={i} id={headings.get(i)}>{inline(heading[2])}</Heading>);
+      nodes.push(<Heading key={i} id={headings.get(i)}>{inline(heading[2], showImages)}</Heading>);
       continue;
     }
 
     const image = cmsStandaloneImage(raw);
     if (image) {
-      nodes.push(<CmsBodyImage key={i} alt={image.alt} src={image.src} hint={image.hint} block/>);
+      if (showImages) nodes.push(<CmsBodyImage key={i} alt={image.alt} src={image.src} hint={image.hint} block/>);
       continue;
     }
 
@@ -92,8 +93,8 @@ export function CmsMarkdown({ body }: { body: string }) {
       for (; i < lines.length && /^\s*\|/.test(lines[i]); i++) rows.push(tableCells(lines[i]));
       i--;
       nodes.push(<div className="cms-table-wrap" key={first}><table>
-        <thead><tr>{columns.map((cell, j) => <th key={j}>{inline(cell)}</th>)}</tr></thead>
-        <tbody>{rows.map((row, j) => <tr key={j}>{row.map((cell, k) => <td key={k}>{inline(cell)}</td>)}</tr>)}</tbody>
+        <thead><tr>{columns.map((cell, j) => <th key={j}>{inline(cell, showImages)}</th>)}</tr></thead>
+        <tbody>{rows.map((row, j) => <tr key={j}>{row.map((cell, k) => <td key={k}>{inline(cell, showImages)}</td>)}</tr>)}</tbody>
       </table></div>);
       continue;
     }
@@ -117,7 +118,7 @@ export function CmsMarkdown({ body }: { body: string }) {
         break;
       }
       i--;
-      const content = items.map((entry, j) => <li key={j}>{inline(entry)}</li>);
+      const content = items.map((entry, j) => <li key={j}>{inline(entry, showImages)}</li>);
       nodes.push(type === 'ol'
         ? <ol key={opening} start={firstNumber}>{content}</ol>
         : <ul key={opening}>{content}</ul>);
@@ -128,7 +129,7 @@ export function CmsMarkdown({ body }: { body: string }) {
       const first = i, parts: string[] = [];
       for (; i < lines.length && /^\s{0,3}>/.test(lines[i]); i++) parts.push(lines[i].replace(/^\s{0,3}>\s?/, ''));
       i--;
-      nodes.push(<blockquote key={first}>{inline(parts.join(' '))}</blockquote>);
+      nodes.push(<blockquote key={first}>{inline(parts.join(' '), showImages)}</blockquote>);
       continue;
     }
 
@@ -139,7 +140,10 @@ export function CmsMarkdown({ body }: { body: string }) {
 
     const first = i, paragraph = [raw.trim()];
     while (i + 1 < lines.length && lines[i + 1].trim() && !startsBlock(lines[i + 1])) paragraph.push(lines[++i].trim());
-    nodes.push(<p key={first}>{inline(paragraph.join(' '))}</p>);
+    const paragraphContent = inline(paragraph.join(' '), showImages);
+    // Image-only paragraphs should disappear completely, without empty whitespace.
+    if (paragraphContent.some(node => typeof node !== 'string' || node.trim().length > 0))
+      nodes.push(<p key={first}>{paragraphContent}</p>);
   }
 
   return <div className="cms-prose">{nodes}</div>;
