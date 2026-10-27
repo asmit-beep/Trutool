@@ -240,7 +240,7 @@ try{
  assert.ok(getAIShelves(newsNow,[{slug:'launch-model',name:'Model Studio',category:'ai',categoryLabel:'Product Hunt launch',format:'New discovery',summary:'New AI design studio',initial:'M',useCase:'New AI design studio',launchedAt:'2026-10-06',launchStatus:'Product Hunt listing',externalUrl:'https://www.producthunt.com/posts/model-studio'}])[1].tools.some(t=>t.externalUrl),'Verified source cards take precedence');assert.ok(shelves[1].tools.every(t=>t.launchedAt&&t.launchStatus));assert.equal(freshAITools(Date.parse('2027-01-01')).length,0);
  const otherDay=getAIShelves(newsNow+3*86400000);
  assert.ok(shelves[0].tools.every(t=>!['chatgpt','gemini','perplexity'].includes(t.slug)),'Generic chatbots must not dominate popular picks');
- assert.ok(shelves[2].tools.every(t=>discoveryMatches({slug:t.slug},'niche')),'Under the radar must select verified niche tools');
+ assert.ok(shelves[2].tools.every(t=>require(path.join(tmp,'tool-discovery.js')).discoveryMatches({slug:t.slug},'niche')),'Under the radar must select verified niche tools');
  assert.ok(new Set(shelves[2].tools.map(t=>t.slug)).size===shelves[2].tools.length);
  assert.ok(otherDay[2].tools.length>0,'Rotating specialists should remain populated');
  console.log('PASS: '+aiCatalogue.tools.length+' added AI profiles, scoped search, source diversity, original article covers, 4-hour caching, discussion relevance, launch freshness, and feed fallback.');
