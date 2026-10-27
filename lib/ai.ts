@@ -10,7 +10,7 @@ export const aiCategories=categories.filter(c=>c.slug==='ai'||c.slug.startsWith(
 export const aiStats={tools:aiTools.length,categories:aiCategories.length};
 export type AIShelfTool=DirectoryTool&{useCase:string;launchedAt?:string;launchStatus?:string;externalUrl?:string};
 const DAY=86400000;
-const generic=new Set(['chatgpt','gemini','perplexity','claude','deepseek','grok']);
+const generic=new Set(['chatgpt','gemini','perplexity','claude','deepseek','grok','devin']);
 const useCases:Record<string,string>={
  claude:'Write, analyze documents, and build with code.',perplexity:'Research a question with links to sources.',cursor:'Work on a codebase with AI in your editor.',notebooklm:'Ask questions grounded in your own sources.',gamma:'Turn an outline into a presentation.',
  undermind:'Find scientific papers beyond keyword matches.','napkin-ai':'Turn an explanation into a clear diagram.','wispr-flow':'Dictate naturally across your everyday apps.',granola:'Capture meeting notes without starting from scratch.',exa:'Give an agent search over live web content.','jev-ai':'Classify and route decisions with probabilities.'
@@ -24,7 +24,7 @@ export function compactAI(slugs:string[],directory:Tool[]=aiTools):AIShelfTool[]
   }));
 }
 export function freshAITools(now=Date.now(),directory:Tool[]=aiTools){
- return directory.filter(t=>isAITool(t)&&!generic.has(t.slug)&&t.launchedAt&&
+ return directory.filter(t=>isAITool(t)&&!generic.has(t.slug)&&!t.name.toLowerCase().includes('chatgpt')&&t.launchedAt&&
   Date.parse(t.launchedAt)<=now&&Date.parse(t.launchedAt)>=now-30*DAY)
   .sort((a,b)=>b.launchedAt!.localeCompare(a.launchedAt!)).slice(0,15);
 }
