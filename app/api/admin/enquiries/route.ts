@@ -32,10 +32,12 @@ export async function GET(request: Request) {
   if (!await authenticated()) return privateResponse({ error: 'Please sign in.' }, 401);
   try {
     const messages: ContactMessage[] = [];
+    let partialLegacy = false;
     let cursor: string | undefined;
     let pages = 0;
     do {
       const batch = await list({ prefix: 'enquiries/', limit: 100, cursor });
+      partialLegacy ||= Boolean('partialLegacy' in batch && batch.partialLegacy);
       for (let i = 0; i < batch.blobs.length; i += 10) {
         const records = await Promise.all(batch.blobs.slice(i, i + 10).map(async blob => {
           const response = await get(blob.pathname, { access: 'private', useCache: false });
@@ -60,12 +62,13 @@ export async function GET(request: Request) {
           'Content-Type': 'text/csv; charset=utf-8',
           'Content-Disposition': 'attachment; filename="trutool-contact-messages.csv"',
           'Cache-Control': 'private, no-store',
+          'X-TruTool-Inbox-Partial': partialLegacy ? 'true' : 'false',
           'X-Robots-Tag': 'noindex, nofollow',
           'X-Content-Type-Options': 'nosniff',
         },
       });
     }
-    return privateResponse({ messages, total: messages.length, truncated: Boolean(cursor) });
+    return privateResponse({ messages, total: messages.length, truncated: Boolean(cursor), partialLegacy });
   } catch {
     console.error('Private contact inbox could not be loaded');
     return privateResponse({ error: 'Messages could not be loaded. Please try again.' }, 503);
