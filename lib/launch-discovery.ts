@@ -5,12 +5,11 @@ const DAY=86400000;
 const aiWords=/\b(ai|llm|agentic|machine learning|generative|chatbot|text.to.image|text.to.video|voice agent|code assistant|model)\b/i;
 const strip=(value:string)=>value.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g,'$1').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;|&apos;/g,"'").replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
 const tag=(item:string,name:string)=>item.match(new RegExp('<'+name+'(?:\\s[^>]*)?>([\\s\\S]*?)</'+name+'>','i'))?.[1]||'';
-const attr=(fragment:string,name:string)=>fragment.match(new RegExp('\\\\b'+name+'\\\\s*=\\\\s*["\\\']([^"\\\']+)["\\\']','i'))?.[1]||'';
 function feedLink(item:string){
  const raw=strip(tag(item,'link'));
  if(raw.startsWith('https://www.producthunt.com/')||raw.startsWith('https://producthunt.com/'))return raw;
  for(const fragment of item.match(/<link\\b[^>]*\\/?\s*>/gi)||[]){
-  const href=strip(attr(fragment,'href'));
+  const href=strip(fragment.match(/\bhref\s*=\s*["']([^"']+)["']/i)?.[1]||'');
   if(/^https:\\/\\/(?:www\\.)?producthunt\\.com\\/(?:posts|products)\\/[a-z0-9-]+\\/?$/i.test(href))return href;
  }
  return raw;
