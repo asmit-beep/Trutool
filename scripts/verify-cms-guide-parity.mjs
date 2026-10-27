@@ -97,21 +97,21 @@ try {
     '- Option one ![Inline icon](https://example.com/icon.webp)',
     '',
     'Still a real paragraph.'
-  ].join('\\n');
+  ].join('\n');
   const bodyWithImages = renderToStaticMarkup(React.createElement(CmsMarkdown, { body: withImages }));
   const bodyWithoutImages = renderToStaticMarkup(React.createElement(CmsMarkdown, { body: withImages, showImages: false }));
-  assert.equal((bodyWithImages.match(/<img\\b/g) || []).length, 4, 'Other CMS content still renders its images normally');
-  assert.ok(!/<img\\b|<figure\\b|!\\[[^\\]]*\\]\\(/.test(bodyWithoutImages), 'Guide article bodies must not render any image or raw alt syntax');
+  assert.equal((bodyWithImages.match(/<img\b/g) || []).length, 4, 'Other CMS content still renders its images normally');
+  assert.ok(!/<img\b|<figure\b|!\[[^\]]*\]\(/.test(bodyWithoutImages), 'Guide article bodies must not render any image or raw alt syntax');
   assert.ok(!bodyWithoutImages.includes('<p></p>'), 'Removing standalone images must not leave blank paragraphs');
   assert.ok(bodyWithoutImages.includes('<table>') && bodyWithoutImages.includes('Still a real paragraph.'), 'Tables and body copy must remain');
   const restored = JSON.parse(fs.readFileSync('lib/recovered-published-guides.json', 'utf8'));
   assert.equal(restored.length, 12, 'All 12 original published guides are present');
   let removedFromGuideBodies = 0;
   for (const guide of restored) {
-    const rawImages = (guide.body.match(/!\\[[^\\]]*\\]\\([^)]+\\)/g) || []).length;
+    const rawImages = (guide.body.match(/!\[[^\]]*\]\([^)]+\)/g) || []).length;
     removedFromGuideBodies += rawImages;
     const rendered = renderToStaticMarkup(React.createElement(CmsMarkdown, { body: guide.body, showImages: false }));
-    assert.ok(!/<img\\b|<figure\\b/.test(rendered), 'Unexpected inline guide image: ' + guide.slug);
+    assert.ok(!/<img\b|<figure\b/.test(rendered), 'Unexpected inline guide image: ' + guide.slug);
     assert.ok(rendered.includes('<h2'), 'Guide headings were lost: ' + guide.slug);
     assert.ok(rendered.length > 1000, 'Guide text was lost: ' + guide.slug);
   }
