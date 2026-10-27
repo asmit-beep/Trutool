@@ -4,6 +4,7 @@ import { unstable_cache } from 'next/cache';
 import { cache } from 'react';
 import 'server-only';
 import { authors } from './authors';
+import recoveredPublishedGuides from './recovered-published-guides.json';
 import { contentPath,effectivePublished,type CmsContent,type CmsRecord,type CmsStore } from './cms-types';
 const pathname='cms/content-v1.json';
 export const emptyStore=():CmsStore=>({version:1,revision:0,records:[],activity:[]});
@@ -126,7 +127,41 @@ export async function writeStore(store:CmsStore,etag?:string){
 }
 const persistentStore=unstable_cache(async()=>(await readStore()).store,['trutool-cms-v1'],{revalidate:30,tags:['cms']});
 const cachedStore=cache(()=>persistentStore());
-export async function getPublished():Promise<CmsContent[]>{const store=await cachedStore(),now=Date.now(),published=store.records.flatMap(r=>{const c=effectivePublished(r,now);return c?[c]:[];});const names=new Map(authors.map(a=>[a.slug as string,a.name as string]));for(const c of published)if(c.kind==='author')names.set(c.slug,c.title);return published.map(c=>({...c,authorName:names.get(c.authorSlug)||'TruTool'}));}
+/**
+ * Restore only the public, already-published editorial guide snapshots while
+ * legacy Supabase REST is returning HTTP 402. This NEVER changes the original
+ * private Supabase CMS records, drafts or revision history.
+ *
+ * When Supabase is available again, live records take precedence and the
+ * read-only source snapshot is automatically ignored. This also includes
+ * the recovered guides in the public sitemap and guide index during builds.
+ */
+export async function getPublished():Promise<CmsContent[]>{
+ const {store,legacyUnavailable}=await cachedStore(),now=Date.now();
+ const live=store.records.flatMap(r=>{const c=effectivePublished(r,now);return c?[c]:[];});
+ const byPath=new Map<string,CmsContent>();
+ if(legacyUnavailable){
+  for(const guide of recoveredPublishedGuides as CmsContent[]){
+   if(guide.kind!=='guide'||!guide.slug||!guide.publishedAt||Date.parse(guide.publishedAt)>now)continue;
+   // Historical media remain in the original Supabase project. Use the
+   // existing category artwork rather than show a broken private image until
+   // the original storage service is restored. Keep original links in JSON.
+   const safeCover=guide.image?.startsWith('/media/')?{...guide,image:''}:guide;
+   byPath.set(contentPath(safeCover),safeCover);
+  }
+ }
+ for(const c of live){
+  const key=contentPath(c);
+  // Legacy public slugs retain priority while source reads are restricted;
+  // never let a newly entered duplicate shadow an original published guide.
+  if(legacyUnavailable&&byPath.has(key))continue;
+  byPath.set(key,c);
+ }
+ const published=[...byPath.values()];
+ const names=new Map(authors.map(a=>[a.slug as string,a.name as string]));
+ for(const c of published)if(c.kind==='author')names.set(c.slug,c.title);
+ return published.map(c=>({...c,authorName:names.get(c.authorSlug)||'TruTool'}));
+}
 export async function isHidden(path:string){const {contentPath}=await import('./cms-types');return (await cachedStore()).records.some(r=>r.hidden&&contentPath(r.draft)===path);}
 
 export async function hiddenPaths(){const {contentPath}=await import("./cms-types");return new Set((await cachedStore()).records.filter(r=>r.hidden).map(r=>contentPath(r.draft)));}
