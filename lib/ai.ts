@@ -3,7 +3,7 @@ import type {DirectoryTool} from './catalog-client';
 import type {AIPopularitySignal} from './ai-signals';
 import {discoveryMatches} from './tool-discovery';
 
-const related=new Set(['lovable','bolt','gamma','beautiful-ai','lindy','relevance-ai','bardeen','elicit','otter','fireflies','granola','mem','reclaim','motion','researchrabbit','zed']);
+const related=new Set(['claude-code','github-copilot','notebooklm','n8n','ollama','lovable','bolt','gamma','beautiful-ai','lindy','relevance-ai','bardeen','elicit','otter','fireflies','granola','mem','reclaim','motion','researchrabbit','zed']);
 export const isAITool=(tool:Pick<Tool,'slug'|'category'|'ai'>)=>Boolean(tool.ai||tool.category==='ai'||tool.category.startsWith('ai-')||related.has(tool.slug));
 export const aiTools=tools.filter(isAITool);
 export const aiCategories=categories.filter(c=>c.slug==='ai'||c.slug.startsWith('ai-'));
