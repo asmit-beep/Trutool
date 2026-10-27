@@ -82,7 +82,45 @@ try {
   assert.ok(linkHtml.includes('<a href="/guides/x">a</a>') && linkHtml.includes('<a href="https://trutool.co/guides/y">b</a>') && linkHtml.includes('<a href="https://www.trutool.co/z">c</a>'), 'Internal links must open in the same tab');
   assert.ok(linkHtml.includes('<a href="https://example.com/" target="_blank" rel="noopener noreferrer">d</a>') && linkHtml.includes('<a href="https://nottrutool.co/" target="_blank" rel="noopener noreferrer">e</a>'), 'External links must keep target=_blank');
 
+  // Guides must have exactly the hero cover; inline and standalone Markdown
+  // pictures are not rendered. Do not modify source article text.
+  const withImages = [
+    '## Examples',
+    'Intro ![Inline screenshot](/media/11111111-1111-4111-8111-111111111111.webp) text.',
+    '',
+    '![Standalone chart](/media/22222222-2222-4222-8222-222222222222.webp)',
+    '',
+    '| Comparison | Preview |',
+    '| --- | --- |',
+    '| Winner | ![Table image](https://example.com/chart.webp) |',
+    '',
+    '- Option one ![Inline icon](https://example.com/icon.webp)',
+    '',
+    'Still a real paragraph.'
+  ].join('\\n');
+  const bodyWithImages = renderToStaticMarkup(React.createElement(CmsMarkdown, { body: withImages }));
+  const bodyWithoutImages = renderToStaticMarkup(React.createElement(CmsMarkdown, { body: withImages, showImages: false }));
+  assert.equal((bodyWithImages.match(/<img\\b/g) || []).length, 4, 'Other CMS content still renders its images normally');
+  assert.ok(!/<img\\b|<figure\\b|!\\[[^\\]]*\\]\\(/.test(bodyWithoutImages), 'Guide article bodies must not render any image or raw alt syntax');
+  assert.ok(!bodyWithoutImages.includes('<p></p>'), 'Removing standalone images must not leave blank paragraphs');
+  assert.ok(bodyWithoutImages.includes('<table>') && bodyWithoutImages.includes('Still a real paragraph.'), 'Tables and body copy must remain');
+  const restored = JSON.parse(fs.readFileSync('lib/recovered-published-guides.json', 'utf8'));
+  assert.equal(restored.length, 12, 'All 12 original published guides are present');
+  let removedFromGuideBodies = 0;
+  for (const guide of restored) {
+    const rawImages = (guide.body.match(/!\\[[^\\]]*\\]\\([^)]+\\)/g) || []).length;
+    removedFromGuideBodies += rawImages;
+    const rendered = renderToStaticMarkup(React.createElement(CmsMarkdown, { body: guide.body, showImages: false }));
+    assert.ok(!/<img\\b|<figure\\b/.test(rendered), 'Unexpected inline guide image: ' + guide.slug);
+    assert.ok(rendered.includes('<h2'), 'Guide headings were lost: ' + guide.slug);
+    assert.ok(rendered.length > 1000, 'Guide text was lost: ' + guide.slug);
+  }
+  assert.ok(removedFromGuideBodies >= 10, 'Expected broken image markup in recovered articles');
   const article = fs.readFileSync('components/cms-article.tsx', 'utf8');
+  assert.ok(article.includes('<CmsMarkdown body={c.body} showImages={!isGuide}/>'), 'All CMS guides must disable body images but retain hero cover');
+  assert.ok(article.includes('<figure className="tt-article-hero-media">'), 'Guide cover must be retained');
+  console.log('PASS: recovered guide bodies have zero inline images and retain text, tables and single hero cover.');
+
   const guides = fs.readFileSync('app/guides/page.tsx', 'utf8');
   const home = fs.readFileSync('app/page.tsx', 'utf8');
   const sitemap = fs.readFileSync('app/sitemap.ts', 'utf8');
