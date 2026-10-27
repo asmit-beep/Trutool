@@ -38,7 +38,7 @@ export async function CmsArticle({ content: c, preview = false }: { content: Cms
       <h2>Pricing</h2><p>{c.tool.pricing}</p>
       <a className="button dark" href={c.tool.pricingUrl || c.tool.url} target="_blank" rel="noopener noreferrer">Check vendor pricing</a>
     </div>}
-    <CmsMarkdown body={c.body}/>
+    <CmsMarkdown body={c.body} showImages={!isGuide}/>
     {related.length > 0 && <section>
       <h2>Tools mentioned</h2>
       <div className="cms-related-tools">{related.map(tool => <Link key={tool.slug} href={'/tools/' + tool.slug}><strong>{tool.name}</strong><p>{tool.summary}</p></Link>)}</div>
