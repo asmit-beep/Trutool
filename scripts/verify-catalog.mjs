@@ -8,7 +8,7 @@ import {createRequire} from 'node:module';
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'trutool-catalog-'));
 try{
  fs.writeFileSync(path.join(tmp,'package.json'),'{"type":"commonjs"}');
- for(const file of ['catalog','category-ranking','category-crosslist','launch-discovery','guides','search','diagnostic','catalog-results','tool-discovery','discovery-options','authors','ai','ai-news','cms-types','demo','demo-reviews','reviews','pricing','community-answers','rfp-alternatives','content-index','covers','sitemap-inventory'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
+ for(const file of ['catalog','category-ranking','category-crosslist','launch-discovery','ai-signals','guides','search','diagnostic','catalog-results','tool-discovery','discovery-options','authors','ai','ai-news','cms-types','demo','demo-reviews','reviews','pricing','community-answers','rfp-alternatives','content-index','covers','sitemap-inventory'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  fs.writeFileSync(path.join(tmp,'cms-store.js'),'exports.getPublished=async()=>[];');
  fs.copyFileSync('lib/content-history.json',path.join(tmp,'content-history.json'));
  fs.copyFileSync('lib/expanded-catalog.json',path.join(tmp,'expanded-catalog.json'));
@@ -238,7 +238,11 @@ try{
  const shelves=getAIShelves(newsNow);assert.equal(shelves.length,3);assert.ok(shelves.every(s=>s.tools.length>=1&&s.tools.length<=6));assert.ok(!shelves[1].tools.some(t=>t.slug==='devin'||/chatgpt/i.test(t.name)));
  assert.ok(!shelves[0].tools.some(t=>/chatgpt/i.test(t.name)));
  assert.ok(getAIShelves(newsNow,[{slug:'launch-model',name:'Model Studio',category:'ai',categoryLabel:'Product Hunt launch',format:'New discovery',summary:'New AI design studio',initial:'M',useCase:'New AI design studio',launchedAt:'2026-10-06',launchStatus:'Product Hunt listing',externalUrl:'https://www.producthunt.com/posts/model-studio'}])[1].tools.some(t=>t.externalUrl),'Verified source cards take precedence');assert.ok(shelves[1].tools.every(t=>t.launchedAt&&t.launchStatus));assert.equal(freshAITools(Date.parse('2027-01-01')).length,0);
- assert.ok(shelves[2].tools.some(t=>t.slug==='wispr-flow'));assert.ok(shelves[0].tools.some(t=>t.slug==='notebooklm'));
+ const otherDay=getAIShelves(newsNow+3*86400000);
+ assert.ok(shelves[0].tools.every(t=>!['chatgpt','gemini','perplexity'].includes(t.slug)),'Generic chatbots must not dominate popular picks');
+ assert.ok(shelves[2].tools.every(t=>discoveryMatches({slug:t.slug},'niche')),'Under the radar must select verified niche tools');
+ assert.ok(new Set(shelves[2].tools.map(t=>t.slug)).size===shelves[2].tools.length);
+ assert.ok(otherDay[2].tools.length>0,'Rotating specialists should remain populated');
  console.log('PASS: '+aiCatalogue.tools.length+' added AI profiles, scoped search, source diversity, original article covers, 4-hour caching, discussion relevance, launch freshness, and feed fallback.');
  // Simulate publication in an isolated catalogue: never add QA content to the site.
  const fixture=JSON.parse(fs.readFileSync(path.join(tmp,'expanded-catalog.json'),'utf8'));
@@ -270,7 +274,23 @@ try{
  const sample='<rss><channel>'+post+unsafe+future+'</channel></rss>';
  const launches=parseProductHuntLaunches(sample,Date.parse('2026-10-23T12:00:00Z'),true);
  assert.equal(launches.length,1);assert.equal(launches[0].name,'Atlas AI Builder');assert.ok(launches[0].externalUrl.includes('/posts/atlas-ai-builder'));
- console.log('PASS: sourced launch dates and hosts validated; external launches stay separate from vetted directory profiles.');
+ const atom='<feed><entry><title>Orbit AI Agent</title><link rel="alternate" href="https://www.producthunt.com/products/orbit-ai-agent"/><updated>2026-10-22T06:00:00Z</updated><summary>AI agent workspace for marketing teams</summary></entry></feed>';
+ const parsedAtom=parseProductHuntLaunches(atom,Date.parse('2026-10-23T12:00:00Z'),true);
+ assert.equal(parsedAtom.length,1,'Product Hunt Atom entries must work, not only RSS items');
+ assert.equal(parsedAtom[0].externalUrl,'https://www.producthunt.com/products/orbit-ai-agent');
+ const badAtom=atom.replace('www.producthunt.com','untrusted.example');
+ assert.equal(parseProductHuntLaunches(badAtom,Date.parse('2026-10-23T12:00:00Z'),true).length,0);
+ const {parseAIPopularity}=require(path.join(tmp,'ai-signals.js'));
+ const popularity=parseAIPopularity([
+  {objectID:'10001',title:'Claude Code workflows for teams',points:190,num_comments:34,created_at:'2026-10-22T12:00:00Z'},
+  {objectID:'10002',title:'Claude Code workflows for teams',points:190,num_comments:34,created_at:'2026-10-22T12:00:00Z'},
+  {objectID:'10003',title:'What is new with AI agents',points:240,num_comments:90,created_at:'2026-10-22T12:00:00Z'}
+ ],Date.parse('2026-10-23T12:00:00Z'));
+ assert.ok(popularity.some(s=>s.slug==='claude-code'&&s.mentions===1),'Real named HN activity should count only once');
+ assert.ok(!popularity.some(s=>s.slug==='ai'),'Generic AI headlines must not be converted to tool popularity');
+ const sourcedShelf=getAIShelves(Date.parse('2026-10-23T12:00:00Z'),[],popularity);
+ assert.equal(sourcedShelf[0].tools[0].slug,'claude-code','Popular picks must use real activity signals before editorial fallbacks');
+  console.log('PASS: sourced launch dates and hosts validated; external launches stay separate from vetted directory profiles.');
  const {discoveryMatches}=require(path.join(tmp,'tool-discovery.js'));
  for(const lens of ['popular','useful','niche']){
   const out=lensResults('','','relevance',1,50,'',lens);assert.ok(out.total>10);assert.ok(out.items.every(t=>discoveryMatches(t,lens)));assert.equal(out.discovery,lens);
