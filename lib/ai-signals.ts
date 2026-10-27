@@ -4,7 +4,8 @@ import {aiTools} from './ai';
 export type AIPopularitySignal={slug:string;score:number;mentions:number;sourceUrl:string;observedAt:string};
 const DAY=86400000;
 const SIGNAL_REFRESH_SECONDS=14400;
-const AI_CONVERSATION_TERMS=['AI tools','AI coding','AI agents','LLM','Show HN','open source AI'];
+const AI_CONVERSATION_TERMS=['AI tools','AI coding','AI agents','LLM','Show HN','open source AI',
+ 'Claude Code','Cursor','Lovable','NotebookLM','n8n','Ollama','Runway','ElevenLabs','Replit','Granola','Suno'];
 // Avoid generic words and ambiguous product names as unsubstantiated matches.
 const excluded=new Set(['chatgpt','gemini','perplexity','claude','deepseek','grok','copilot','ai','bolt','motion','notion','gamma','mem','make','linear','figma','canva','v0']);
 const matchable=aiTools.filter(t=>!excluded.has(t.slug)&&t.name.length>=5&&t.name.length<42&&/^[a-z0-9][a-z0-9 .+\-]*$/i.test(t.name));
