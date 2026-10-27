@@ -8,9 +8,9 @@ const tag=(item:string,name:string)=>item.match(new RegExp('<'+name+'(?:\\s[^>]*
 function feedLink(item:string){
  const raw=strip(tag(item,'link'));
  if(raw.startsWith('https://www.producthunt.com/')||raw.startsWith('https://producthunt.com/'))return raw;
- for(const fragment of item.match(/<link\\b[^>]*\\/?\s*>/gi)||[]){
+ for(const fragment of item.match(/<link\b[^>]*\/?\s*>/gi)||[]){
   const href=strip(fragment.match(/\bhref\s*=\s*["']([^"']+)["']/i)?.[1]||'');
-  if(/^https:\\/\\/(?:www\\.)?producthunt\\.com\\/(?:posts|products)\\/[a-z0-9-]+\\/?$/i.test(href))return href;
+  if(/^https:\/\/(?:www\.)?producthunt\.com\/(?:posts|products)\/[a-z0-9-]+\/?$/i.test(href))return href;
  }
  return raw;
 }
@@ -24,7 +24,7 @@ export function parseProductHuntLaunches(xml:string,now=Date.now(),categoryFilte
   const at=Date.parse(strip(tag(item,'pubDate')||tag(item,'published')||tag(item,'updated')));
   if(!raw||!desc||!Number.isFinite(at)||at>now||at<now-21*DAY)continue;
   if(!categoryFiltered&&!aiWords.test(raw+' '+desc))continue;
-  if(/^(chatgpt|gemini|perplexity|claude)(?:\\b|\\s)/i.test(raw))continue;
+  if(/^(chatgpt|gemini|perplexity|claude)(?:\b|\s)/i.test(raw))continue;
   try{
    const url=new URL(rawLink);
    if(url.protocol!=='https:'||!['producthunt.com','www.producthunt.com'].includes(url.hostname)||!/^\/(posts|products)\/[a-z0-9-]+\/?$/i.test(url.pathname)||url.username||url.password)continue;
