@@ -131,7 +131,7 @@ export async function writeStore(store:CmsStore,etag?:string){
  // overwrite each other. This NEVER writes to original Supabase.
  await writeCmsOverlay(next,etag);
 }
-const persistentStore=unstable_cache(async()=>await readStore(),['trutool-cms-v1'],{revalidate:30,tags:['cms']});
+const persistentStore=unstable_cache(async()=>await readStore(),['trutool-cms-v1-public-guides-20261027'],{revalidate:30,tags:['cms']});
 const cachedStore=cache(()=>persistentStore());
 /**
  * Restore only the public, already-published editorial guide snapshots while
@@ -144,9 +144,12 @@ const cachedStore=cache(()=>persistentStore());
  */
 export async function getPublished():Promise<CmsContent[]>{
  const {store,legacyUnavailable}=await cachedStore(),now=Date.now();
+ // Source-of-truth Supabase takes precedence whenever it is readable.
+ // Independent Vercel previews may not have the original CMS at all.
+ const recoverPublicGuides=Boolean(legacyUnavailable)||(!usingSupabaseStorage()&&process.env.VERCEL_ENV==='preview');
  const live=store.records.flatMap(r=>{const c=effectivePublished(r,now);return c?[c]:[];});
  const byPath=new Map<string,CmsContent>();
- if(legacyUnavailable){
+ if(recoverPublicGuides){
   for(const guide of recoveredPublishedGuides as CmsContent[]){
    if(guide.kind!=='guide'||!guide.slug||!guide.publishedAt||Date.parse(guide.publishedAt)>now)continue;
    // Historical media remain in the original Supabase project. Use the
@@ -160,7 +163,7 @@ export async function getPublished():Promise<CmsContent[]>{
   const key=contentPath(c);
   // Legacy public slugs retain priority while source reads are restricted;
   // never let a newly entered duplicate shadow an original published guide.
-  if(legacyUnavailable&&byPath.has(key))continue;
+  if(recoverPublicGuides&&byPath.has(key))continue;
   byPath.set(key,c);
  }
  const published=[...byPath.values()];
