@@ -282,14 +282,14 @@ try{
  assert.equal(parseProductHuntLaunches(badAtom,Date.parse('2026-10-23T12:00:00Z'),true).length,0);
  const {parseAIPopularity}=require(path.join(tmp,'ai-signals.js'));
  const popularity=parseAIPopularity([
-  {objectID:'10001',title:'Claude Code workflows for teams',points:190,num_comments:34,created_at:'2026-10-22T12:00:00Z'},
-  {objectID:'10002',title:'Claude Code workflows for teams',points:190,num_comments:34,created_at:'2026-10-22T12:00:00Z'},
+  {objectID:'10001',title:'Wispr Flow speech dictation for teams',points:190,num_comments:34,created_at:'2026-10-22T12:00:00Z'},
+  {objectID:'10002',title:'Wispr Flow speech dictation for teams',points:190,num_comments:34,created_at:'2026-10-22T12:00:00Z'},
   {objectID:'10003',title:'What is new with AI agents',points:240,num_comments:90,created_at:'2026-10-22T12:00:00Z'}
  ],Date.parse('2026-10-23T12:00:00Z'));
- assert.ok(popularity.some(s=>s.slug==='claude-code'&&s.mentions===1),'Real named HN activity should count only once');
+ assert.ok(popularity.some(s=>s.slug==='wispr-flow'&&s.mentions===1),'Real named HN activity should count only once');
  assert.ok(!popularity.some(s=>s.slug==='ai'),'Generic AI headlines must not be converted to tool popularity');
  const sourcedShelf=getAIShelves(Date.parse('2026-10-23T12:00:00Z'),[],popularity);
- assert.equal(sourcedShelf[0].tools[0].slug,'claude-code','Popular picks must use real activity signals before editorial fallbacks');
+ assert.equal(sourcedShelf[0].tools[0].slug,'wispr-flow','Popular picks must use real activity signals before editorial fallbacks');
   console.log('PASS: sourced launch dates and hosts validated; external launches stay separate from vetted directory profiles.');
  const {discoveryMatches}=require(path.join(tmp,'tool-discovery.js'));
  for(const lens of ['popular','useful','niche']){
