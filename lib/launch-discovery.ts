@@ -5,17 +5,27 @@ const DAY=86400000;
 const aiWords=/\b(ai|llm|agentic|machine learning|generative|chatbot|text.to.image|text.to.video|voice agent|code assistant|model)\b/i;
 const strip=(value:string)=>value.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g,'$1').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;|&apos;/g,"'").replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
 const tag=(item:string,name:string)=>item.match(new RegExp('<'+name+'(?:\\s[^>]*)?>([\\s\\S]*?)</'+name+'>','i'))?.[1]||'';
+const attr=(fragment:string,name:string)=>fragment.match(new RegExp('\\\\b'+name+'\\\\s*=\\\\s*["\\\']([^"\\\']+)["\\\']','i'))?.[1]||'';
+function feedLink(item:string){
+ const raw=strip(tag(item,'link'));
+ if(raw.startsWith('https://www.producthunt.com/')||raw.startsWith('https://producthunt.com/'))return raw;
+ for(const fragment of item.match(/<link\\b[^>]*\\/?\s*>/gi)||[]){
+  const href=strip(attr(fragment,'href'));
+  if(/^https:\\/\\/(?:www\\.)?producthunt\\.com\\/(?:posts|products)\\/[a-z0-9-]+\\/?$/i.test(href))return href;
+ }
+ return raw;
+}
 export function parseProductHuntLaunches(xml:string,now=Date.now(),categoryFiltered=true):AIShelfTool[]{
  if(xml.length>1500000)return [];
  const found:AIShelfTool[]=[];const seen=new Set<string>();
- for(const item of (xml.match(/<item(?:\s[^>]*)?>[\s\S]*?<\/item>/gi)||[]).slice(0,65)){
+ for(const item of (xml.match(/<item(?:\s[^>]*)?>[\s\S]*?<\/item>|<entry(?:\s[^>]*)?>[\s\S]*?<\/entry>/gi)||[]).slice(0,100)){
   const raw=strip(tag(item,'title')).slice(0,160);
-  const desc=strip(tag(item,'description')||tag(item,'summary')).slice(0,200);
-  const rawLink=strip(tag(item,'link'));
-  const at=Date.parse(strip(tag(item,'pubDate')||tag(item,'published')));
-  if(!raw||!desc||!Number.isFinite(at)||at>now||at<now-14*DAY)continue;
+  const desc=strip(tag(item,'description')||tag(item,'summary')||tag(item,'content')).slice(0,200);
+  const rawLink=feedLink(item);
+  const at=Date.parse(strip(tag(item,'pubDate')||tag(item,'published')||tag(item,'updated')));
+  if(!raw||!desc||!Number.isFinite(at)||at>now||at<now-21*DAY)continue;
   if(!categoryFiltered&&!aiWords.test(raw+' '+desc))continue;
-  if(/chatgpt/i.test(raw+' '+desc))continue;
+  if(/^(chatgpt|gemini|perplexity|claude)(?:\\b|\\s)/i.test(raw))continue;
   try{
    const url=new URL(rawLink);
    if(url.protocol!=='https:'||!['producthunt.com','www.producthunt.com'].includes(url.hostname)||!/^\/(posts|products)\/[a-z0-9-]+\/?$/i.test(url.pathname)||url.username||url.password)continue;
@@ -27,7 +37,7 @@ export function parseProductHuntLaunches(xml:string,now=Date.now(),categoryFilte
    found.push({slug:'launch-'+slug,name,initial:name[0].toUpperCase(),category:'ai',categoryLabel:'Product Hunt launch',format:'New discovery',summary:desc,useCase:desc,launchedAt:new Date(at).toISOString().slice(0,10),launchStatus:'Product Hunt listing',externalUrl:url.origin+url.pathname});
   }catch{/* Exclude invalid publisher links rather than guessing an official vendor URL. */}
  }
- return found.sort((a,b)=>(b.launchedAt||'').localeCompare(a.launchedAt||'')).slice(0,12);
+ return found.sort((a,b)=>(b.launchedAt||'').localeCompare(a.launchedAt||'')).slice(0,18);
 }
 async function fetchFeed(url:string){
  const res=await fetch(url,{signal:AbortSignal.timeout(5000),redirect:'error',next:{revalidate:LAUNCH_REFRESH_SECONDS,tags:['ai-launches']},headers:{Accept:'application/rss+xml, application/atom+xml, application/xml'}});
@@ -56,12 +66,24 @@ export function parseShowHNLaunches(data:unknown,now=Date.now()):AIShelfTool[]{
  return selected.sort((a,b)=>(b.launchedAt||'').localeCompare(a.launchedAt||'')).slice(0,10);
 }
 async function getShowHNLaunches(now:number):Promise<AIShelfTool[]>{
- const url='https://hn.algolia.com/api/v1/search_by_date?query=Show%20HN&tags=story&hitsPerPage=100';
- const response=await fetch(url,{signal:AbortSignal.timeout(5000),redirect:'error',next:{revalidate:LAUNCH_REFRESH_SECONDS,tags:['ai-launches']},headers:{Accept:'application/json'}});
- if(!response.ok||Number(response.headers.get('content-length'))>900000)throw Error('Community launch feed unavailable');
- const raw=await response.text();
- if(raw.length>900000)throw Error('Community launch feed too large');
- return parseShowHNLaunches(JSON.parse(raw),now);
+ // Search by topic, not just the latest 100 Show HN stories (which are largely
+ // unrelated to AI). Every result must still pass the title/date/engagement check.
+ const since=Math.floor((now-21*DAY)/1000);
+ const terms=['AI','LLM','agent','machine learning','open source model'];
+ const sources=await Promise.allSettled(terms.map(async term=>{
+  const qs=new URLSearchParams({query:term,tags:'show_hn',numericFilters:'created_at_i>'+since,hitsPerPage:'100'});
+  const url='https://hn.algolia.com/api/v1/search_by_date?'+qs;
+  const response=await fetch(url,{signal:AbortSignal.timeout(5000),redirect:'error',
+   next:{revalidate:LAUNCH_REFRESH_SECONDS,tags:['ai-launches']},headers:{Accept:'application/json'}});
+  if(!response.ok||Number(response.headers.get('content-length'))>900000)throw new Error('Community launch feed unavailable');
+  const raw=await response.text();
+  if(raw.length>900000)throw new Error('Community launch feed too large');
+  const parsed=JSON.parse(raw);return Array.isArray(parsed.hits)?parsed.hits:[];
+ }));
+ const hits=new Map<string,unknown>();
+ for(const outcome of sources)if(outcome.status==='fulfilled')for(const h of outcome.value)
+  if(h&&typeof h.objectID==='string'&&!hits.has(h.objectID))hits.set(h.objectID,h);
+ return parseShowHNLaunches({hits:[...hits.values()]},now);
 }
 export async function getAIProductLaunches(now=Date.now()):Promise<AIShelfTool[]>{
  const feeds:[string,boolean][]=[['https://www.producthunt.com/feed?category=artificial-intelligence',true],['https://www.producthunt.com/feed',false]];
@@ -71,5 +93,5 @@ export async function getAIProductLaunches(now=Date.now()):Promise<AIShelfTool[]
  const community=await getShowHNLaunches(now).catch(()=>[] as AIShelfTool[]);
  const unique=new Map<string,AIShelfTool>();
  for(const card of [...verified,...community])if(!unique.has(card.externalUrl||card.slug))unique.set(card.externalUrl||card.slug,card);
- return [...unique.values()].sort((a,b)=>(b.launchedAt||'').localeCompare(a.launchedAt||'')).slice(0,6);
+ return [...unique.values()].sort((a,b)=>(b.launchedAt||'').localeCompare(a.launchedAt||'')).slice(0,16);
 }
