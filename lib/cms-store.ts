@@ -19,6 +19,11 @@ export async function readStore():Promise<CmsRead>{
   try{return {store:JSON.parse(await fs.readFile(local() as string,'utf8'))};}
   catch(e){if((e as NodeJS.ErrnoException).code==='ENOENT')return {store:emptyStore()};throw e;}
  }
+ // During prerendering, only built-in source-controlled pages are generated.
+ // Never hammer the private Blob store or restricted Supabase from thousands of workers.
+ // Real requests read the complete primary+overlay inventory at runtime.
+ if(process.env.TRUTOOL_BUILD_MODE==='1')
+  return {store:emptyStore(),legacyUnavailable:true};
  if(!process.env.BLOB_READ_WRITE_TOKEN){
   if(process.env.VERCEL)throw new Error('Content storage unavailable');
   return {store:emptyStore()};
