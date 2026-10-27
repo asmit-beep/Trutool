@@ -30,17 +30,19 @@ export function AdminEnquiryInbox({ onlyTools = false }: { onlyTools?: boolean }
   const [busy, setBusy] = useState(true);
   const [error, setError] = useState('');
   const [truncated, setTruncated] = useState(false);
+  const [partialLegacy, setPartialLegacy] = useState(false);
 
   const refresh = useCallback(async (signal?: AbortSignal) => {
     setBusy(true);
     setError('');
     try {
       const response = await fetch('/api/admin/enquiries', { credentials: 'same-origin', cache: 'no-store', signal });
-      const result = await response.json() as { messages?: Message[]; truncated?: boolean; error?: string };
+      const result = await response.json() as { messages?: Message[]; truncated?: boolean; partialLegacy?: boolean; error?: string };
       if (!response.ok) throw new Error(result.error || 'Messages could not be loaded.');
       const items = result.messages || [];
       setMessages(items);
       setTruncated(Boolean(result.truncated));
+      setPartialLegacy(Boolean(result.partialLegacy));
       setSelectedId(current => items.some(m => m.id === current) ? current : items[0]?.id || '');
     } catch (e) {
       if (e instanceof Error && e.name !== 'AbortError') setError(e.message);
@@ -84,6 +86,11 @@ export function AdminEnquiryInbox({ onlyTools = false }: { onlyTools?: boolean }
       <div className="studio-stat"><span>Showing</span><strong>{filtered.length}</strong><small>Matching your current filters</small></div>
     </div>
     {error && <div className="studio-error studio-global-error" role="alert">{error}</div>}
+    {partialLegacy && <div className="studio-info-note" role="status">
+      New submissions are saved securely and appear here. Older Supabase submissions are temporarily
+      unavailable because of the account's service restriction. They have not been removed and will
+      reappear when Supabase access is restored. This is a partial inbox, not the complete history.
+    </div>}
     {truncated && <p className="studio-info-note" role="status">The inbox is showing the first 10,000 stored messages. Export or archive older records before this limit is reached.</p>}
     <section className="studio-panel studio-inbox-panel" aria-label="Contact messages">
       <div className="studio-inbox-filters">
