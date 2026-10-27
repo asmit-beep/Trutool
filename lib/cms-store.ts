@@ -51,6 +51,12 @@ export async function readStore():Promise<CmsRead>{
   }
   if(primary.version!==1||!Array.isArray(primary.records)||!Array.isArray(primary.activity))
    throw new Error('Original CMS snapshot is invalid; refusing to replace it');
+  // Ordinary non-production previews may use the empty legacy Blob backend
+  // instead of the original Supabase project. Only in that preview-only case,
+  // display the recovered public guide snapshot for QA. Never activate this
+  // rule in production, where a successful original read is authoritative.
+  if(process.env.VERCEL_ENV==='preview' && !usingSupabaseStorage() && primary.records.length===0)
+   legacyUnavailable=true;
  }catch(e){
   if(!isRestricted(e))throw e;
   legacyUnavailable=true;
