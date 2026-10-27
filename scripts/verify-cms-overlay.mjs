@@ -60,6 +60,7 @@ try{
  fs.writeFileSync(path.join(temp,'package.json'),JSON.stringify({type:'commonjs'}));
  transpile('lib/cms-types.ts','cms-types.js');
  transpile('lib/cms-overlay.ts','cms-overlay.js');
+ fs.copyFileSync('lib/recovered-published-guides.json',path.join(temp,'recovered-published-guides.json'));
  transpile('lib/cms-store.ts','cms-store.js');
  Module._load=function(id,parent,isMain){
   if(id==='server-only')return {};
@@ -71,6 +72,14 @@ try{
   return originalLoad.call(this,id,parent,isMain);
  };
  const cms=require(path.join(temp,'cms-store.js'));
+ const backup=JSON.parse(fs.readFileSync('lib/recovered-published-guides.json','utf8'));
+ assert.equal(backup.length,12,'All previously published CMS guides must be backed up');
+ assert.equal(new Set(backup.map(r=>r.slug)).size,12,'Guide slugs must be unique');
+ assert.ok(backup.every(r=>r.kind==='guide'&&r.publishedAt&&r.body.length>1000));
+ const recovered=await cms.getPublished();
+ assert.equal(recovered.filter(r=>r.kind==='guide').length,12,'Public guide list must restore all published source records during 402');
+ assert.ok(recovered.some(g=>g.slug==='claude-vs-chatgpt'));
+ assert.ok(recovered.filter(g=>g.image.startsWith('/media/')).length===0,'Unavailable old covers must use safe category images');
  const first=await cms.readStore();
  assert.equal(first.legacyUnavailable,true);
  assert.equal(first.store.records.length,0,'Unverified legacy content must not be presented as migrated');
@@ -91,6 +100,8 @@ try{
  await assert.rejects(()=>cms.writeStore(second.store,second.etag),blob.BlobPreconditionFailedError,
   'Conflicting edits must not silently overwrite');
  restricted=false;
+ const liveGuides=await cms.getPublished();
+ assert.equal(liveGuides.filter(g=>g.kind==='guide').length,2,'Recovered guide snapshots must not override live Supabase records');
  let merged=await cms.readStore();
  assert.equal(merged.legacyUnavailable,false);
  assert.deepEqual(new Set(merged.store.records.map(r=>r.id)),new Set(['legacy-1','new-1']));
