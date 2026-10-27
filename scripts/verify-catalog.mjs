@@ -286,6 +286,7 @@ try{
   {objectID:'10002',title:'Wispr Flow speech dictation for teams',points:190,num_comments:34,created_at:'2026-10-22T12:00:00Z'},
   {objectID:'10003',title:'What is new with AI agents',points:240,num_comments:90,created_at:'2026-10-22T12:00:00Z'}
  ],Date.parse('2026-10-23T12:00:00Z'));
+ console.log('AI_SIGNAL_DEBUG',JSON.stringify({popularity,candidates:aiTools.filter(t=>t.slug==='wispr-flow').map(t=>({name:t.name,slug:t.slug,cat:t.category}))}));
  assert.ok(popularity.some(s=>s.slug==='wispr-flow'&&s.mentions===1),'Real named HN activity should count only once');
  assert.ok(!popularity.some(s=>s.slug==='ai'),'Generic AI headlines must not be converted to tool popularity');
  const sourcedShelf=getAIShelves(Date.parse('2026-10-23T12:00:00Z'),[],popularity);
