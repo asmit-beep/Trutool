@@ -175,7 +175,7 @@ async function listOriginal(options: { prefix?: string; limit?: number; cursor?:
 export async function list(options: { prefix?: string; limit?: number; cursor?: string } = {}) {
   if (options.prefix?.startsWith('enquiries/')) {
     if (options.prefix !== 'enquiries/') return blobList(options);
-    const files = new Map<string, Awaited<ReturnType<typeof blobList>>['blobs'][number]>();
+    const files = new Map<string, {pathname:string;url:string;uploadedAt:Date;size:number}>();
     // Enumerate all private Blob submissions; do not silently drop later pages.
     let cursor: string | undefined, scanned = 0;
     do {
