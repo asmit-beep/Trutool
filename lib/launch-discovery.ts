@@ -19,7 +19,7 @@ export function parseProductHuntLaunches(xml:string,now=Date.now(),categoryFilte
  const found:AIShelfTool[]=[];const seen=new Set<string>();
  for(const item of (xml.match(/<item(?:\s[^>]*)?>[\s\S]*?<\/item>|<entry(?:\s[^>]*)?>[\s\S]*?<\/entry>/gi)||[]).slice(0,100)){
   const raw=strip(tag(item,'title')).slice(0,160);
-  const desc=strip(tag(item,'description')||tag(item,'summary')||tag(item,'content')).slice(0,200);
+  const desc=strip(tag(item,'description')||tag(item,'summary')||tag(item,'content')).replace(/\s+Discussion\s*\|\s*Link\s*$/i,'').slice(0,200);
   const rawLink=feedLink(item);
   const at=Date.parse(strip(tag(item,'pubDate')||tag(item,'published')||tag(item,'updated')));
   if(!raw||!desc||!Number.isFinite(at)||at>now||at<now-21*DAY)continue;
