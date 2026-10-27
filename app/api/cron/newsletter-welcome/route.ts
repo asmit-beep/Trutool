@@ -23,6 +23,7 @@ export async function GET(request: Request) {
 
   let processed = 0, sent = 0, pending = 0, scanned = 0;
   let cursor: string | undefined;
+  let newsletterUnavailable = false;
   try {
     do {
       const batch = await list({ prefix: 'newsletter/subscribers/', limit: 100, cursor });
@@ -37,6 +38,11 @@ export async function GET(request: Request) {
       }
       cursor = batch.hasMore ? batch.cursor : undefined;
     } while (cursor && processed < 8 && scanned < 1000);
+  } catch {
+    newsletterUnavailable = true;
+    console.warn('Newsletter retries unavailable; independently retrying saved product receipts.');
+  }
+  try {
     // Product receipt retries use the same authenticated daily job and sender.
     // Older submissions have no confirmationEventId and are skipped deliberately.
     let productScanned=0,productSent=0,productPending=0;
@@ -54,10 +60,11 @@ export async function GET(request: Request) {
         productCursor=batch.hasMore?batch.cursor:undefined;
       }while(productCursor&&productSent+productPending<8&&productScanned<1000);
     }catch{console.error('Product confirmation retry encountered an error');}
-    return privateResponse({ ready: true, scanned, processed, sent, pending,
-      productConfirmations:{scanned:productScanned,sent:productSent,pending:productPending} });
+    return privateResponse({ ready: !newsletterUnavailable, scanned, processed, sent, pending,
+      newsletterUnavailable,productConfirmations:{scanned:productScanned,sent:productSent,pending:productPending} },
+      newsletterUnavailable ? 503 : 200);
   } catch {
-    console.error('Dispatch retry job failed');
-    return privateResponse({ error: 'Welcome delivery retry failed.', scanned, processed, sent, pending }, 503);
+    console.error('Product confirmation retry job failed');
+    return privateResponse({ error: 'Product receipt delivery retry failed.', scanned, processed, sent, pending }, 503);
   }
 }
