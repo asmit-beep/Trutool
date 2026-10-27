@@ -235,6 +235,9 @@ try{
  assert.ok(searchTools('medical scribe').every(t=>t.category==='ai-medical'),'Medical scribe search excludes generic meeting recorders');
  assert.ok(!searchTools('AI contract review').some(t=>t.slug==='chatgpt'),'Contract review search requires documented legal capability');
  console.log('PASS: 2,000+ unique profiles, source records, specialist searches, automatic counts and categories.');
+ const homeSource=fs.readFileSync('app/page.tsx','utf8');
+ assert.ok(homeSource.includes('getAICollectionData()') && homeSource.includes('getAIShelves(Date.now(),discovery.launches,discovery.signals,allTools)'), 'Homepage trending grid must receive dynamic source snapshots');
+ assert.ok(!homeSource.includes("const trending=['chatgpt'"), 'Hard-coded generic trending lineup must not return');
  const shelves=getAIShelves(newsNow);assert.equal(shelves.length,3);assert.ok(shelves.every(s=>s.tools.length>=1&&s.tools.length<=6));assert.ok(!shelves[1].tools.some(t=>t.slug==='devin'||/chatgpt/i.test(t.name)));
  assert.ok(!shelves[0].tools.some(t=>/chatgpt/i.test(t.name)));
  assert.ok(getAIShelves(newsNow,[{slug:'launch-model',name:'Model Studio',category:'ai',categoryLabel:'Product Hunt launch',format:'New discovery',summary:'New AI design studio',initial:'M',useCase:'New AI design studio',launchedAt:'2026-10-06',launchStatus:'Product Hunt listing',externalUrl:'https://www.producthunt.com/posts/model-studio'}])[1].tools.some(t=>t.externalUrl),'Verified source cards take precedence');assert.ok(shelves[1].tools.every(t=>t.launchedAt&&t.launchStatus));assert.equal(freshAITools(Date.parse('2027-01-01')).length,0);
