@@ -58,11 +58,8 @@ export async function refreshAICollectionSnapshot(now=Date.now()){
  return {ok:true,updatedAt,launches:launches.length,signals:signals.length};
 }
 
-export async function getAICollectionData(now=Date.now()){
- if(process.env.TRUTOOL_BUILD_MODE==='1')return {launches:[] as AIShelfTool[],signals:[] as AIPopularitySignal[],updatedAt:null as string|null};
- const stored=await readAICollectionSnapshot();
- if(stored&&now-Date.parse(stored.updatedAt)<3*DAY)
-  return {launches:stored.launches,signals:stored.signals,updatedAt:stored.updatedAt};
- const live=await discover(now);
- return {launches:live.launches,signals:live.signals,updatedAt:null as string|null};
+// Automated discovery is disabled. The homepage selects from the explicitly
+// published directory only; it never reads Blob snapshots or polls live feeds.
+export async function getAICollectionData(){
+ return {launches:[] as AIShelfTool[],signals:[] as AIPopularitySignal[],updatedAt:null as string|null};
 }

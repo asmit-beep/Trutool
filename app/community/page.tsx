@@ -14,7 +14,7 @@ import { getPublished } from '@/lib/cms-store';
 import { stories } from '@/lib/community-stories';
 import { displayReviews } from '@/lib/reviews';
 import { pageMetadata } from '@/lib/seo';
-export const revalidate=30;
+export const revalidate=false;
 export const metadata=pageMetadata({title:'Community — Tool Questions, Stories & Reviews',description:'Explore practical software questions, sourced customer stories, and community reviews. Share your experience with tools and buying guides.',alternates:{canonical:SITE+'/community'}});
 export default async function Page({searchParams}:{searchParams:Promise<Record<string,string|string[]|undefined>>}){
  const query=await searchParams,answer=typeof query.answer==='string'?getCommunityAnswer(query.answer):undefined;

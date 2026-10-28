@@ -131,7 +131,9 @@ export async function writeStore(store:CmsStore,etag?:string){
  // overwrite each other. This NEVER writes to original Supabase.
  await writeCmsOverlay(next,etag);
 }
-const persistentStore=unstable_cache(async()=>await readStore(),['trutool-cms-v1-public-guides-20261027'],{revalidate:30,tags:['cms']});
+// No timed revalidation or repeated Supabase 402 attempts. Content is
+// refreshed only by explicit Studio publishing/invalidateDiscovery().
+const persistentStore=unstable_cache(async()=>await readStore(),['trutool-cms-v1-manual-publish-20261028'],{revalidate:false,tags:['cms']});
 const cachedStore=cache(()=>persistentStore());
 /**
  * Restore only the public, already-published editorial guide snapshots while

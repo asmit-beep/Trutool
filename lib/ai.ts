@@ -30,51 +30,26 @@ export function freshAITools(now=Date.now(),directory:Tool[]=aiTools){
 }
 const editorialFallback=['claude-code','cursor','github-copilot','lovable','n8n','replit','notebooklm','runway','elevenlabs','suno','granola','ollama','gamma','midjourney','browser-use','open-webui'];
 
-export function getAIShelves(now=Date.now(),discovered:AIShelfTool[]=[],signals:AIPopularitySignal[]=[],directory:Tool[]=aiTools){
+// Fixed editorial shelves, not scheduled discoveries or daily rotations.
+// Manual additions to the CMS directory can be shown after explicit publish.
+export function getAIShelves(_now=Date.now(),_discovered:AIShelfTool[]=[],_signals:AIPopularitySignal[]=[],directory:Tool[]=aiTools){
  const available=directory.filter(isAITool);
- const known=new Map(available.map(t=>[t.slug,t]));
- const seen=new Set<string>();
- const sourceLaunches=discovered.filter(t=>t.externalUrl&&t.launchedAt&&
-  Date.parse(t.launchedAt)<=now&&Date.parse(t.launchedAt)>=now-21*DAY)
-  .sort((a,b)=>(b.launchedAt||'').localeCompare(a.launchedAt||''));
- const knownLaunches=compactAI(freshAITools(now,available).map(t=>t.slug),available);
- const newOnMarket=[...sourceLaunches,...knownLaunches].filter(t=>{
-  if(!t.launchedAt||seen.has(t.slug)||Date.parse(t.launchedAt)>now)return false;
-  seen.add(t.slug);return true;
- }).slice(0,6);
- // Not an invented "user count": these scores require named AI tools in
- // actual high-engagement, recent HN stories. Never claim measured traffic.
- const bySignal=signals.filter(s=>known.has(s.slug)&&!generic.has(s.slug)&&s.score>=20)
-  .sort((a,b)=>b.score-a.score).map(s=>s.slug);
- const fallback=editorialFallback.filter(s=>known.has(s)&&!generic.has(s));
- const rotated=fallback.slice(Math.floor(now/(7*DAY))%fallback.length).concat(fallback.slice(0,Math.floor(now/(7*DAY))%fallback.length));
- const popularSlugs=[...new Set([...bySignal,...rotated])].slice(0,6);
+ const recentlyAdded=available.filter(t=>!generic.has(t.slug)&&!t.name.toLowerCase().includes('chatgpt'))
+  .sort((a,b)=>(b.addedAt||b.publishedAt||b.launchedAt||'').localeCompare(a.addedAt||a.publishedAt||a.launchedAt||'')||a.slug.localeCompare(b.slug)).slice(0,6);
+ const added=compactAI(recentlyAdded.map(t=>t.slug),available);
+ const popularSlugs=editorialFallback.filter(slug=>available.some(t=>t.slug===slug)&&!generic.has(slug)).slice(0,6);
  const popular=compactAI(popularSlugs,available);
- // Select niche tools by source verification and recently-added metadata;
- // rotate across days so the same hand-picked three are never pinned forever.
- const excluded=new Set([...popularSlugs,...newOnMarket.map(t=>t.slug)]);
+ const excluded=new Set([...popularSlugs,...recentlyAdded.map(t=>t.slug)]);
  const specialists=available.filter(t=>discoveryMatches(t,'niche')&&!generic.has(t.slug)&&
-  (t.sourceChecked||t.sourceStatus?.includes('consulted'))&&
-  !excluded.has(t.slug));
- const day=Math.floor(now/DAY);
- const hash=(s:string)=>[...s].reduce((n,c)=>(n*31+c.charCodeAt(0))>>>0,7);
- specialists.sort((a,b)=>{
-  const da=Date.parse(a.addedAt||'2000-01-01'),db=Date.parse(b.addedAt||'2000-01-01');
-  const wa=Math.max(0,120-Math.floor((now-da)/DAY)),wb=Math.max(0,120-Math.floor((now-db)/DAY));
-  return (wb-wa)*100+((hash(b.slug+Math.floor(day/2))%97)-(hash(a.slug+Math.floor(day/2))%97));
- });
- const diverse:string[]=[],usedCategories=new Set<string>();
- for(const t of specialists)if(!usedCategories.has(t.category)&&diverse.length<6){diverse.push(t.slug);usedCategories.add(t.category)}
- for(const t of specialists)if(diverse.length<6&&!diverse.includes(t.slug))diverse.push(t.slug);
- const under=compactAI(diverse,available);
+  (t.sourceChecked||t.sourceStatus?.includes('consulted'))&&!excluded.has(t.slug))
+  .sort((a,b)=>(b.addedAt||'').localeCompare(a.addedAt||'')||a.slug.localeCompare(b.slug));
+ const chosen:string[]=[],categories=new Set<string>();
+ for(const t of specialists)if(!categories.has(t.category)&&chosen.length<6){chosen.push(t.slug);categories.add(t.category)}
+ for(const t of specialists)if(chosen.length<6&&!chosen.includes(t.slug))chosen.push(t.slug);
  return [
-  {id:'popular',label:'Popular picks',description:bySignal.length>=2?
-   'Tools drawing attention in recent Hacker News discussions, followed by editorial options. Not a user-count ranking.':
-   'Practical AI tools worth exploring while live discussion signals are limited. Not a usage or traffic ranking.',tools:popular},
-  {id:'added',label:'Just added',description:sourceLaunches.length?
-   'Recent AI product announcements from Product Hunt and Show HN. External discoveries are not yet vetted TruTool listings.':
-   'Most recent dated AI releases in the directory. Fresh source announcements appear automatically when available.',tools:newOnMarket},
-  {id:'specialist',label:'Under the radar',description:'Rotating, source-checked specialist tools for narrower workflows. Updated from the directory without fabricated popularity scores.',tools:under}
+  {id:'popular',label:'Popular picks',description:'Editor-selected practical AI tools. Not a live usage or traffic ranking.',tools:popular},
+  {id:'added',label:'Just added',description:'Most recently added AI directory profiles. This selection changes only when listings are manually published.',tools:added},
+  {id:'specialist',label:'Under the radar',description:'Source-checked specialist tools selected by the editors. No scheduled rotation.',tools:compactAI(chosen,available)}
  ];
 }
 export const aiShelves=getAIShelves();

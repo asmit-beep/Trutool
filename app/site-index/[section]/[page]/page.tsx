@@ -6,7 +6,7 @@ import { groupSiteIndex, SITE_INDEX_PAGE_SIZE, siteIndexPagePath, siteIndexSecti
 import { serializeSchema } from '@/lib/structured-data';
 import { notFound } from 'next/navigation';
 
-export const revalidate = 30;
+export const revalidate=false;
 
 type Props = { params: Promise<{ section: string; page: string }> };
 

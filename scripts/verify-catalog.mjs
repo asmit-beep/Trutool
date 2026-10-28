@@ -184,7 +184,7 @@ try{
  assert.equal(parseOfficialFeed('x'.repeat(2_000_001),officialFeeds[0],newsNow).length,0);
  const mergedNews=mergeAINews([...parsedNews,...parsedNews],newsNow);assert.equal(mergedNews.filter(n=>n.url===parsedNews[0].url).length,1);assert.ok(mergeAINews([],newsNow).length>=4);assert.ok(mergedNews.some(n=>n.url===parsedNews[0].url));
  assert.ok(mergedNews.every(n=>n.url.startsWith('https://')&&n.publishedAt));
- assert.equal(AI_REFRESH_SECONDS,4*3600);assert.ok(officialFeeds.length>=8);
+ assert.equal(AI_REFRESH_SECONDS,0);assert.ok(officialFeeds.length>=8);
  const flooded=Array.from({length:30},(_,i)=>({...parsedNews[0],id:'flood-'+i,url:'https://openai.com/flood/'+i,publishedAt:'2026-10-06'}));
  const diverse=mergeAINews(flooded,newsNow);assert.ok(new Set(diverse.map(n=>n.publisher)).size>=8);assert.ok(diverse.filter(n=>n.publisher==='OpenAI').length<=2);assert.ok(diverse.some(n=>n.publisher==='Anthropic'));assert.ok(diverse.some(n=>n.id==='jev-launch'));
  const originalCover='https://cdn-uploads.huggingface.co/production/uploads/cover.png';
@@ -211,23 +211,16 @@ try{
  const liveThreads=[...parseDiscussionFeed(redditXML,redditFeed,discussionNow),...parseDiscussionFeed(hfXML,hfFeed,discussionNow),...parseArticleXDiscussions(xBlock,xStory,discussionNow)];
  assert.equal(mergeAIDiscussions([...liveThreads,...liveThreads],[],discussionNow).length,3);
  assert.equal(mergeAIDiscussions(liveThreads,[],Date.parse('2026-12-08')).length,0);
- const originalFetch=globalThis.fetch,originalNow=Date.now;let calls=[],version=1;
+ // No RSS, news, discussion, or launch fetching during page rendering.
+ const originalFetch=globalThis.fetch;
  try{
-  Date.now=()=>discussionNow;
-  globalThis.fetch=async(url,options)=>{
-   calls.push([String(url),options]);
-   if(String(url).includes('LocalLLaMA')||String(url).includes('hermesagent'))throw Error('Source outage fixture');
-   if(String(url).includes('hn.algolia'))return new Response(JSON.stringify({hits:[{title:'AI agent discussion '+version,objectID:String(200+version),created_at:'2026-10-08T09:00:00Z',num_comments:8}]}));
-   if(String(url).includes('AI_Agents'))return new Response(redditXML);
-   if(String(url).includes('huggingface.co'))return new Response(hfXML);
-   return new Response(xBlock);
-  };
-  const first=await getAIDiscussions([xStory]);version=2;const next=await getAIDiscussions([xStory]);
-  assert.ok(first.some(d=>d.id==='hn-201')&&next.some(d=>d.id==='hn-202'));
-  assert.ok(new Set(next.map(d=>d.platform)).size>=4,'Live discussions span available sources despite individual outages');
-  assert.ok(calls.every(([,options])=>options.next.revalidate===AI_REFRESH_SECONDS),'Discussion requests use the scheduled 4-hour refresh cache');
- }finally{globalThis.fetch=originalFetch;Date.now=originalNow;}
- console.log('PASS: live Reddit, Hugging Face, Hacker News and embedded X discussion parsing; freshness, diversity, duplicate exclusion, source outage isolation and refresh.');
+  globalThis.fetch=()=>{throw Error('Unexpected automatic external feed request')};
+  const editorialThreads=await getAIDiscussions([xStory]);
+  const repeatThreads=await getAIDiscussions([xStory]);
+  assert.deepEqual(editorialThreads,repeatThreads,'Curated discussions must not change spontaneously');
+  assert.ok(editorialThreads.length>=1&&editorialThreads.every(d=>d.url.startsWith('https://')),'Preserve manual discussion content');
+ }finally{globalThis.fetch=originalFetch;}
+ console.log('PASS: no automatic external news or discussion requests; editorial discussion snapshots preserved.');
  const expansion=JSON.parse(fs.readFileSync('lib/catalog-expansion.json','utf8'));
  assert.ok(expansion.tools.length>=1000&&expansion.tools.filter(t=>t.ai).length>=600);
  for(const t of expansion.tools){assert.ok(t.sourceTitle&&t.sourceChecked&&t.sourceUrl===t.url,t.slug+' has a checked primary source');if(t.pricingUrl)assert.equal(new URL(t.pricingUrl).protocol,'https:');}
@@ -235,18 +228,30 @@ try{
  assert.ok(searchTools('medical scribe').every(t=>t.category==='ai-medical'),'Medical scribe search excludes generic meeting recorders');
  assert.ok(!searchTools('AI contract review').some(t=>t.slug==='chatgpt'),'Contract review search requires documented legal capability');
  console.log('PASS: 2,000+ unique profiles, source records, specialist searches, automatic counts and categories.');
+ const cron=JSON.parse(fs.readFileSync('vercel.json','utf8'));
+ assert.deepEqual(cron.crons.map(c=>c.path),['/api/cron/newsletter-welcome'],'No scheduled site/news/discovery refresh jobs; transactional email retry remains');
+ const cmsStoreSource=fs.readFileSync('lib/cms-store.ts','utf8');
+ assert.ok(cmsStoreSource.includes('revalidate:false,tags:[\'cms\']'),'Published content cache must have no timed revalidation');
+ for(const file of ['app/page.tsx','app/everything-ai/page.tsx','app/news/[slug]/page.tsx','app/guides/[slug]/page.tsx','app/tools/[slug]/page.tsx','app/alternatives/page.tsx','app/compare/page.tsx','app/rss.xml/route.ts']){
+  assert.ok(/export const revalidate\\s*=\\s*false/.test(fs.readFileSync(file,'utf8')),file+' still has timed ISR');
+ }
+ const runtimeNews=fs.readFileSync('lib/ai-news.ts','utf8');
+ assert.ok(!/export async function getAINews[\\s\\S]*?fetch\\(/.test(runtimeNews),'Live news must not poll feeds');
+ assert.ok(fs.readFileSync('lib/ai-discovery-snapshot.ts','utf8').includes('return {launches:[]'),'Homepage must not fetch automatic discovery snapshot');
+ assert.ok(fs.readFileSync('app/api/cron/ai-launch-refresh/route.ts','utf8').includes('status:410'),'Legacy automatic refresh endpoint must be disabled');
+ console.log('PASS: all automated content/news/visibility refreshes disabled; explicit publishing invalidation and transactional delivery preserved.');
  const homeSource=fs.readFileSync('app/page.tsx','utf8');
  assert.ok(homeSource.includes('getAICollectionData()') && homeSource.includes('getAIShelves(Date.now(),discovery.launches,discovery.signals,allTools)'), 'Homepage trending grid must receive dynamic source snapshots');
  assert.ok(!homeSource.includes("const trending=['chatgpt'"), 'Hard-coded generic trending lineup must not return');
  const shelves=getAIShelves(newsNow);assert.equal(shelves.length,3);assert.ok(shelves.every(s=>s.tools.length>=1&&s.tools.length<=6));assert.ok(!shelves[1].tools.some(t=>t.slug==='devin'||/chatgpt/i.test(t.name)));
  assert.ok(!shelves[0].tools.some(t=>/chatgpt/i.test(t.name)));
- assert.ok(getAIShelves(newsNow,[{slug:'launch-model',name:'Model Studio',category:'ai',categoryLabel:'Product Hunt launch',format:'New discovery',summary:'New AI design studio',initial:'M',useCase:'New AI design studio',launchedAt:'2026-10-06',launchStatus:'Product Hunt listing',externalUrl:'https://www.producthunt.com/posts/model-studio'}])[1].tools.some(t=>t.externalUrl),'Verified source cards take precedence');assert.ok(shelves[1].tools.every(t=>t.launchedAt&&t.launchStatus));assert.equal(freshAITools(Date.parse('2027-01-01')).length,0);
+ assert.ok(!getAIShelves(newsNow,[{slug:'launch-model',name:'Model Studio',category:'ai',categoryLabel:'Product Hunt launch',format:'New discovery',summary:'New AI design studio',initial:'M',useCase:'New AI design studio',launchedAt:'2026-10-06',launchStatus:'Product Hunt listing',externalUrl:'https://www.producthunt.com/posts/model-studio'}])[1].tools.some(t=>t.externalUrl),'Unpublished external discoveries must not change manual shelves');assert.ok(shelves[1].tools.every(t=>t.slug&&t.name&&!t.externalUrl));assert.equal(freshAITools(Date.parse('2027-01-01')).length,0);
  const otherDay=getAIShelves(newsNow+3*86400000);
  assert.ok(shelves[0].tools.every(t=>!['chatgpt','gemini','perplexity'].includes(t.slug)),'Generic chatbots must not dominate popular picks');
  assert.ok(shelves[2].tools.every(t=>require(path.join(tmp,'tool-discovery.js')).discoveryMatches({slug:t.slug},'niche')),'Under the radar must select verified niche tools');
  assert.ok(new Set(shelves[2].tools.map(t=>t.slug)).size===shelves[2].tools.length);
  assert.ok(otherDay[2].tools.length>0,'Rotating specialists should remain populated');
- console.log('PASS: '+aiCatalogue.tools.length+' added AI profiles, scoped search, source diversity, original article covers, 4-hour caching, discussion relevance, launch freshness, and feed fallback.');
+ console.log('PASS: '+aiCatalogue.tools.length+' AI profiles, directory search, curator-only news/discussion, and manual-only tool shelf updates.');
  // Simulate publication in an isolated catalogue: never add QA content to the site.
  const fixture=JSON.parse(fs.readFileSync(path.join(tmp,'expanded-catalog.json'),'utf8'));
  fixture.categories.push({...fixture.categories[0],slug:'qa-fixture-category',name:'QA Fixture category'});
@@ -292,7 +297,7 @@ try{
  assert.ok(popularity.some(s=>s.slug==='wispr-flow'&&s.mentions===1),'Real named HN activity should count only once');
  assert.ok(!popularity.some(s=>s.slug==='ai'),'Generic AI headlines must not be converted to tool popularity');
  const sourcedShelf=getAIShelves(Date.parse('2026-10-23T12:00:00Z'),[],popularity);
- assert.equal(sourcedShelf[0].tools[0].slug,'wispr-flow','Popular picks must use real activity signals before editorial fallbacks');
+ assert.deepEqual(sourcedShelf[0].tools.map(t=>t.slug),shelves[0].tools.map(t=>t.slug),'Manually curated popularity must not change from live signals');
   console.log('PASS: sourced launch dates and hosts validated; external launches stay separate from vetted directory profiles.');
  const {discoveryMatches}=require(path.join(tmp,'tool-discovery.js'));
  for(const lens of ['popular','useful','niche']){

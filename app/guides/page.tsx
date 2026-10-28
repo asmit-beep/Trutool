@@ -4,7 +4,7 @@ import { PageStructuredData } from '@/components/page-structured-data';
 import { latestGuides,SITE } from '@/lib/catalog';
 import { getPublished,hiddenPaths } from '@/lib/cms-store';
 import { pageMetadata } from '@/lib/seo';
-export const revalidate=30;
+export const revalidate=false;
 export const metadata=pageMetadata({title:'Software & Learning Buying Guides',description:'Practical buying guides for AI, design, marketing, productivity, local listings, proposals, and more.',alternates:{canonical:SITE+'/guides'}});
 export default async function Page() {
   const [hidden, published] = await Promise.all([hiddenPaths(), getPublished()]);

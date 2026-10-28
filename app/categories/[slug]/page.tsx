@@ -10,7 +10,7 @@ import {inCategory} from '@/lib/category-crosslist';
 import { getPublished, hiddenPaths } from '@/lib/cms-store';
 import { pageMetadata,categoryMetaDescription } from '@/lib/seo';
 import { notFound } from 'next/navigation';
-export const revalidate=30;
+export const revalidate=false;
 export function generateStaticParams(){return categories.map(c=>({slug:c.slug}))}
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params,c=categories.find(x=>x.slug===slug);return c?pageMetadata({title:c.name+' — Tools & Comparisons',description:categoryMetaDescription(c),alternates:{canonical:SITE+'/categories/'+slug}}):{title:'Category not found'}}
 export default async function Page({params,searchParams}:{params:Promise<{slug:string}>;searchParams:Promise<DirectoryParams>}){const {slug}=await params,c=categories.find(x=>x.slug===slug);if(!c)notFound();const filters=await searchParams;

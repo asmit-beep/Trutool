@@ -3,7 +3,7 @@ import {ArrowUpRight,ArrowRight,Sparkles,Globe2} from 'lucide-react';
 import Image from 'next/image';
 import Link from './site-link';
 import {aiStats,getAIShelves} from '@/lib/ai';
-import {LAUNCH_REFRESH_SECONDS} from '@/lib/launch-discovery';
+
 import {getAICollectionData} from '@/lib/ai-discovery-snapshot';
 import {publicTools} from '@/lib/cms-public';
 import type {AINews,AIDiscussion} from '@/lib/ai-news';
@@ -31,7 +31,7 @@ export async function EverythingAI({news,discussions,compact=false}:{news:AINews
    <div className="ai-news-panel ai-discussions"><div className="ai-panel-heading"><span><MotionSymbol kind="conversation" size={14}/> In the conversation</span><span className="ai-panel-chip">Open threads</span></div><div className="ai-panel-rows">{discussionPicks.map(n=><article className="ai-discussion-row" key={n.id}><a href={n.url} target="_blank" rel="noopener noreferrer"><PlatformMark platform={n.platform}/><div><span className="ai-brief-meta">{n.platform}<time dateTime={n.publishedAt}>{date(n.publishedAt)}</time></span><h3>{n.title}</h3><span className="ai-discussion-topic">{n.topic}</span></div><ArrowUpRight size={14}/></a></article>)}</div><div className="ai-panel-foot">{discussions[3]?<a href={discussions[3].url} target="_blank" rel="noopener noreferrer">More in the conversation <ArrowUpRight size={12}/></a>:<span>Fresh threads from across the AI community.</span>}</div></div>
   </div>
   <AIToolShelves shelves={getAIShelves(Date.now(),discovery.launches,discovery.signals,directory)}/>
-  <div className="ai-section-foot"><span><MotionSymbol kind="signal" size={13}/> New AI launches, community discussion signals and specialist selections refresh every {LAUNCH_REFRESH_SECONDS/3600} hours.</span><div>{[['ai-agents','Agents'],['ai-coworkers','Coworkers'],['ai-chatbots','Chatbots'],['ai-voice-agents','Voice']].map(([slug,label])=><Link key={slug} href={'/categories/'+slug}>{label}<ArrowUpRight size={12}/></Link>)}<Link href="/everything-ai#ai-directory">All AI tools <ArrowRight size={12}/></Link></div></div>
+  <div className="ai-section-foot"><span><MotionSymbol kind="signal" size={13}/> AI stories and tool selections are curated. Updates happen when editors publish changes.</span><div>{[['ai-agents','Agents'],['ai-coworkers','Coworkers'],['ai-chatbots','Chatbots'],['ai-voice-agents','Voice']].map(([slug,label])=><Link key={slug} href={'/categories/'+slug}>{label}<ArrowUpRight size={12}/></Link>)}<Link href="/everything-ai#ai-directory">All AI tools <ArrowRight size={12}/></Link></div></div>
   </div>
  </section>
 }

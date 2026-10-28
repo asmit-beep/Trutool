@@ -3,16 +3,8 @@
   "framework": "nextjs",
   "crons": [
     {
-      "path": "/api/cron/visibility",
-      "schedule": "0 0 * * *"
-    },
-    {
       "path": "/api/cron/newsletter-welcome",
       "schedule": "20 0 * * *"
-    },
-    {
-      "path": "/api/cron/ai-launch-refresh",
-      "schedule": "0 */4 * * *"
     }
   ]
 }

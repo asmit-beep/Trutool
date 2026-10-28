@@ -15,7 +15,7 @@ import { ratingFor,reviewsFor } from '@/lib/reviews';
 import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-export const revalidate=30;
+export const revalidate=false;
 const sections=[{id:'overview',label:'The short answer'},{id:'checklist',label:'Evaluation checklist'},{id:'shortlist',label:'Build your shortlist'},{id:'pilot',label:'Your 14-day pilot'},{id:'decision',label:'Make the decision'},{id:'faq',label:'Frequently asked questions'},{id:'sources',label:'Sources & author'},{id:'reviews',label:'Reader reviews'}];
 export function generateStaticParams(){return guides.map(t=>({slug:t.slug}))}
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const cmsPath='/guides/'+slug,cms=await publicContent(cmsPath);if(await isHidden(cmsPath))notFound();if(cms)return cmsMetadata(cms);const g=guides.find(g=>g.slug===slug);return g?pageMetadata({title:g.title,description:g.intro,alternates:{canonical:SITE+'/guides/'+slug},authors:[{name:authorFor(g).name,url:SITE+'/authors/'+authorFor(g).slug}],openGraph:{authors:[SITE+'/authors/'+authorFor(g).slug],type:'article' as const,title:g.title,description:g.intro,images:[SITE+coverFor(g.category)]}}):{title:'Guide not found'}}

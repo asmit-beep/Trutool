@@ -15,7 +15,7 @@ import { pricingFor } from '@/lib/pricing';
 import { pageMetadata } from '@/lib/seo';
 import { ArrowLeft,ArrowUpRight,Clock3,MessageCircle } from 'lucide-react';
 import { notFound } from 'next/navigation';
-export const revalidate=30;
+export const revalidate=false;
 const sections=[{id:'short-answer',label:'Quick answer'},{id:'practical-steps',label:'What to do'},{id:'relevant-tools',label:'Useful tools'},{id:'answer-checklist',label:'Before you decide'},{id:'helpful',label:'Was this helpful?'}];
 export function generateStaticParams(){return communityAnswers.map(a=>({slug:a.slug}));}
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const cmsPath='/community/'+slug,cms=await publicContent(cmsPath);if(await isHidden(cmsPath))notFound();if(cms)return cmsMetadata(cms);const a=getCommunityAnswer(slug);return a?pageMetadata({title:a.question,description:a.answer,alternates:{canonical:SITE+'/community/'+a.slug},authors:[{name:authorFor(a).name,url:SITE+'/authors/'+authorFor(a).slug}],openGraph:{authors:[SITE+'/authors/'+authorFor(a).slug],type:'article',title:a.question,description:a.answer}}):{title:'Answer not found',robots:{index:false}};}

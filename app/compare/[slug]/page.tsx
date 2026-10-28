@@ -9,7 +9,7 @@ import { cmsMetadata,isHidden,publicContent,publicTools } from '@/lib/cms-public
 import { comparisonCanonicalPath } from '@/lib/content-index';
 import { pageMetadata } from '@/lib/seo';
 import { notFound,permanentRedirect } from 'next/navigation';
-export const revalidate=30;
+export const revalidate=false;
 async function resolve(slug:string){const names=slug.split('-vs-');if(names.length!==2||names[0]===names[1])return null;const inventory=await publicTools(),a=inventory.find(t=>t.slug===names[0]),b=inventory.find(t=>t.slug===names[1]);return a&&b?[a,b]:null}
 export function generateStaticParams(){return pairs.map(([a,b])=>({slug:a+'-vs-'+b}))}
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const cmsPath='/compare/'+slug,cms=await publicContent(cmsPath);if(await isHidden(cmsPath))notFound();if(cms)return cmsMetadata(cms);const pair=await resolve(slug);return pair?pageMetadata({title:pair[0].name+' vs '+pair[1].name+' — Fit & Features',description:'Compare '+pair[0].name+' and '+pair[1].name+' by use case, features, limitations, and evaluation questions.',alternates:{canonical:SITE+(comparisonCanonicalPath(slug)||'/compare/'+slug.split('-vs-').sort().join('-vs-'))}}):{title:'Comparison not found'}}

@@ -9,7 +9,7 @@ import type { DirectoryParams } from '@/lib/catalog-client';
 import { toolResults } from '@/lib/catalog-results';
 import { publicTools } from '@/lib/cms-public';
 import { pageMetadata } from '@/lib/seo';
-export const revalidate=30;
+export const revalidate=false;
 export const metadata=pageMetadata({title:'Everything AI — Agents, Chatbots, Coworkers & News',description:`Discover ${(await publicTools()).filter(t=>t.ai||t.category.startsWith('ai')).length} AI tools across ${aiStats.categories} focused categories. Explore agents, coworkers, chatbots, coding, creative tools, and news from official sources.`,alternates:{canonical:SITE+'/everything-ai'}});
 export default async function Page({searchParams}:{searchParams:Promise<DirectoryParams>}){
  const params=await searchParams,query=params.q||'',category=aiCategories.some(c=>c.slug===params.category)?params.category!:'';

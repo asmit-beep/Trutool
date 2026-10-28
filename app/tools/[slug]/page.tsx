@@ -14,7 +14,7 @@ import { pricingFor } from '@/lib/pricing';
 import { ratingFor,reviewsFor } from '@/lib/reviews';
 import { pageMetadata,toolMetaDescription } from '@/lib/seo';
 import { notFound } from 'next/navigation';
-export const revalidate=30;
+export const revalidate=false;
 const baseSections=[{id:'overview',label:'Overview & fit'},{id:'capabilities',label:'What to explore'},{id:'pricing',label:'Pricing & plans'},{id:'evaluation',label:'Before you choose'},{id:'reviews',label:'Community reviews'},{id:'sources',label:'Sources & scope'}];
 export function generateStaticParams(){return tools.map(t=>({slug:t.slug}))}
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const cmsPath='/tools/'+slug,cms=await publicContent(cmsPath);if(await isHidden(cmsPath))notFound();if(cms)return cmsMetadata(cms);const t=getTool(slug);const metaDescription=t?toolMetaDescription(t):'';return t?pageMetadata({title:t.profile?t.name+' — Features, Use Cases & Pricing':t.name+' — Features, Fit, Reviews & Alternatives',description:metaDescription,alternates:{canonical:SITE+'/tools/'+slug},openGraph:{title:t.name+' | TruTool',description:metaDescription}}):{title:'Tool not found'}}

@@ -6,7 +6,7 @@ import { pageMetadata } from '@/lib/seo';
 import { groupSiteIndex, siteIndexPagePath } from '@/lib/site-index';
 import { serializeSchema } from '@/lib/structured-data';
 
-export const revalidate = 30;
+export const revalidate=false;
 export const metadata = pageMetadata({
   title: 'TruTool Site Index — All Public Pages',
   description: 'Browse all TruTool tool profiles, alternatives, categories, guides, comparisons, community answers, and other public pages.',

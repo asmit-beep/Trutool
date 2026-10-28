@@ -3,7 +3,7 @@ import {contentPath} from './cms-types';
 import {SITE} from './catalog';
 import curated from './ai-news.json';
 import conversations from './ai-discussions.json';
-export const AI_REFRESH_SECONDS=14400;
+export const AI_REFRESH_SECONDS=0;
 export type AINews={id:string;title:string;summary:string;publisher:string;publishedAt:string;url:string;toolSlug?:string;topic:string;image?:string;imageSource?:string};
 export type AIDiscussion={id:string;title:string;summary:string;platform:string;publishedAt:string;url:string;topic:string};
 export const officialFeeds=[
@@ -46,21 +46,19 @@ export function mergeAINews(live:AINews[],now=Date.now()):AINews[]{
  for(const cap of [1,2])for(const story of sorted){if(selected.length>=12)break;if(!selected.some(s=>s.url===story.url)&&(counts.get(story.publisher)||0)<cap){selected.push(story);counts.set(story.publisher,(counts.get(story.publisher)||0)+1)}}
  return selected;
 }
-async function fetchText(url:string,accept:string):Promise<string>{
- const response=await fetch(url,{signal:AbortSignal.timeout(4000),redirect:'error',next:{revalidate:AI_REFRESH_SECONDS,tags:['ai-sources']},headers:{Accept:accept}});
- if(!response.ok||Number(response.headers.get('content-length'))>2_000_000)throw new Error('Source unavailable');
- const reader=response.body?.getReader();if(!reader)throw new Error('Empty source');let size=0,text='';const decoder=new TextDecoder();
- try{for(;;){const {value,done}=await reader.read();if(done)break;size+=value.byteLength;if(size>2_000_000){await reader.cancel();throw new Error('Source too large')}text+=decoder.decode(value,{stream:true})}return text+decoder.decode()}finally{reader.releaseLock()}
-}
+asyn// Editorial-only mode. News appears when a writer publishes it in Studio or
+// when source-controlled curated stories are deliberately updated. Public
+// requests never fetch RSS feeds or article HTML.
 export async function getAINews():Promise<AINews[]>{
- const feeds=await Promise.allSettled(officialFeeds.map(async feed=>parseOfficialFeed(await fetchText(feed.url,'application/rss+xml, application/atom+xml, application/xml'),feed)));
- const editorial=(await getPublished()).filter(c=>c.kind==='news').sort((a,b)=>(b.publishedAt||'').localeCompare(a.publishedAt||'')).slice(0,4).map(c=>({id:c.id,title:c.title,summary:c.description,publisher:'TruTool',publishedAt:c.publishedAt!.slice(0,10),url:SITE+contentPath(c),topic:c.sourceLabel||'Editorial update'}));
- const stories=mergeAINews(feeds.flatMap(f=>f.status==='fulfilled'?f.value:[]));
- // Covers come exclusively from the corresponding article's metadata.
- const covers=await Promise.allSettled(stories.slice(0,6).map(async story=>{if(story.image)return story;const image=articleCover(await fetchText(story.url,'text/html'));return image?{...story,image,imageSource:story.url}:story}));
- return [...editorial,...stories].slice(0,12).map((story,index)=>{const cover=index>=editorial.length?covers[index-editorial.length]:undefined;return cover?.status==='fulfilled'?cover.value:story});
+ const editorial=(await getPublished()).filter(c=>c.kind==='news')
+  .sort((a,b)=>(b.publishedAt||'').localeCompare(a.publishedAt||''))
+  .slice(0,6).map(c=>({id:c.id,title:c.title,summary:c.description,publisher:'TruTool',publishedAt:c.publishedAt!.slice(0,10),url:SITE+contentPath(c),topic:c.sourceLabel||'Editorial update'}));
+ const now=Date.now();
+ const saved=(curated as AINews[]).filter(c=>Date.parse(c.publishedAt)<=now).sort((a,b)=>b.publishedAt.localeCompare(a.publishedAt));
+ const unique=new Map<string,AINews>();for(const story of [...editorial,...saved])if(!unique.has(story.url))unique.set(story.url,story);
+ return [...unique.values()].slice(0,12);
 }
-export function parseHNDiscussions(data:unknown,now=Date.now()):AIDiscussion[]{
+rt function parseHNDiscussions(data:unknown,now=Date.now()):AIDiscussion[]{
  if(!data||typeof data!=='object'||!('hits' in data)||!Array.isArray(data.hits))return [];
  return data.hits.slice(0,50).flatMap((hit:Record<string,unknown>)=>{
   if(typeof hit.title!=='string'||typeof hit.objectID!=='string'||!/^\d+$/.test(hit.objectID)||typeof hit.created_at!=='string'||!aiPattern.test(hit.title)||typeof hit.num_comments!=='number'||hit.num_comments<3)return [];
@@ -117,12 +115,8 @@ export function mergeAIDiscussions(live:AIDiscussion[],fallback:AIDiscussion[]=c
  }
  return selected;
 }
-export async function getAIDiscussions(news:AINews[]|Promise<AINews[]>=[]):Promise<AIDiscussion[]>{
- const now=Date.now();
- const sources=await Promise.allSettled([
-  fetchText('https://hn.algolia.com/api/v1/search_by_date?query=AI&tags=story&numericFilters=points%3E5%2Cnum_comments%3E2&hitsPerPage=50','application/json').then(text=>parseHNDiscussions(JSON.parse(text),now)),
-  ...discussionFeeds.map(feed=>fetchText(feed.url,'application/rss+xml, application/atom+xml, application/xml').then(xml=>parseDiscussionFeed(xml,feed,now))),
-  Promise.resolve(news).then(stories=>Promise.allSettled(stories.slice(0,6).map(story=>fetchText(story.url,'text/html').then(html=>parseArticleXDiscussions(html,story,now))))).then(results=>results.flatMap(result=>result.status==='fulfilled'?result.value:[]))
- ]);
- return mergeAIDiscussions(sources.flatMap(source=>source.status==='fulfilled'?source.value:[]),conversations,now);
+expo// No automated Reddit, Hacker News, X, or Hugging Face polling.
+export async function getAIDiscussions(_news:AINews[]|Promise<AINews[]>=[]):Promise<AIDiscussion[]>{
+ return (conversations as AIDiscussion[]).filter(item=>Date.parse(item.publishedAt)<=Date.now())
+  .sort((a,b)=>b.publishedAt.localeCompare(a.publishedAt)).slice(0,6);
 }
