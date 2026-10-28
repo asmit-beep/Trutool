@@ -233,10 +233,10 @@ try{
  const cmsStoreSource=fs.readFileSync('lib/cms-store.ts','utf8');
  assert.ok(cmsStoreSource.includes('revalidate:false,tags:[\'cms\']'),'Published content cache must have no timed revalidation');
  for(const file of ['app/page.tsx','app/everything-ai/page.tsx','app/news/[slug]/page.tsx','app/guides/[slug]/page.tsx','app/tools/[slug]/page.tsx','app/alternatives/page.tsx','app/compare/page.tsx','app/rss.xml/route.ts']){
-  assert.ok(/export const revalidate\\s*=\\s*false/.test(fs.readFileSync(file,'utf8')),file+' still has timed ISR');
+  assert.ok(fs.readFileSync(file,'utf8').includes('export const revalidate=false;'),file+' still has timed ISR');
  }
  const runtimeNews=fs.readFileSync('lib/ai-news.ts','utf8');
- assert.ok(!/export async function getAINews[\\s\\S]*?fetch\\(/.test(runtimeNews),'Live news must not poll feeds');
+ assert.ok(!runtimeNews.slice(runtimeNews.indexOf('export async function getAINews'),runtimeNews.indexOf('export function parseHNDiscussions')).includes('fetch('),'Live news must not poll feeds');
  assert.ok(fs.readFileSync('lib/ai-discovery-snapshot.ts','utf8').includes('return {launches:[]'),'Homepage must not fetch automatic discovery snapshot');
  assert.ok(fs.readFileSync('app/api/cron/ai-launch-refresh/route.ts','utf8').includes('status:410'),'Legacy automatic refresh endpoint must be disabled');
  console.log('PASS: all automated content/news/visibility refreshes disabled; explicit publishing invalidation and transactional delivery preserved.');
