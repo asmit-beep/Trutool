@@ -46,7 +46,7 @@ export function mergeAINews(live:AINews[],now=Date.now()):AINews[]{
  for(const cap of [1,2])for(const story of sorted){if(selected.length>=12)break;if(!selected.some(s=>s.url===story.url)&&(counts.get(story.publisher)||0)<cap){selected.push(story);counts.set(story.publisher,(counts.get(story.publisher)||0)+1)}}
  return selected;
 }
-asyn// Editorial-only mode. News appears when a writer publishes it in Studio or
+// Editorial-only mode. News appears when a writer publishes it in Studio or
 // when source-controlled curated stories are deliberately updated. Public
 // requests never fetch RSS feeds or article HTML.
 export async function getAINews():Promise<AINews[]>{
@@ -58,7 +58,7 @@ export async function getAINews():Promise<AINews[]>{
  const unique=new Map<string,AINews>();for(const story of [...editorial,...saved])if(!unique.has(story.url))unique.set(story.url,story);
  return [...unique.values()].slice(0,12);
 }
-rt function parseHNDiscussions(data:unknown,now=Date.now()):AIDiscussion[]{
+export function parseHNDiscussions(data:unknown,now=Date.now()):AIDiscussion[]{
  if(!data||typeof data!=='object'||!('hits' in data)||!Array.isArray(data.hits))return [];
  return data.hits.slice(0,50).flatMap((hit:Record<string,unknown>)=>{
   if(typeof hit.title!=='string'||typeof hit.objectID!=='string'||!/^\d+$/.test(hit.objectID)||typeof hit.created_at!=='string'||!aiPattern.test(hit.title)||typeof hit.num_comments!=='number'||hit.num_comments<3)return [];
@@ -115,7 +115,7 @@ export function mergeAIDiscussions(live:AIDiscussion[],fallback:AIDiscussion[]=c
  }
  return selected;
 }
-expo// No automated Reddit, Hacker News, X, or Hugging Face polling.
+// No automated Reddit, Hacker News, X, or Hugging Face polling.
 export async function getAIDiscussions(_news:AINews[]|Promise<AINews[]>=[]):Promise<AIDiscussion[]>{
  return (conversations as AIDiscussion[]).filter(item=>Date.parse(item.publishedAt)<=Date.now())
   .sort((a,b)=>b.publishedAt.localeCompare(a.publishedAt)).slice(0,6);
