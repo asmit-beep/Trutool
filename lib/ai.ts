@@ -35,7 +35,7 @@ const editorialFallback=['claude-code','cursor','github-copilot','lovable','n8n'
 export function getAIShelves(_now=Date.now(),_discovered:AIShelfTool[]=[],_signals:AIPopularitySignal[]=[],directory:Tool[]=aiTools){
  const available=directory.filter(isAITool);
  const recentlyAdded=available.filter(t=>!generic.has(t.slug)&&!t.name.toLowerCase().includes('chatgpt'))
-  .sort((a,b)=>(b.addedAt||b.publishedAt||b.launchedAt||'').localeCompare(a.addedAt||a.publishedAt||a.launchedAt||'')||a.slug.localeCompare(b.slug)).slice(0,6);
+  .sort((a,b)=>(b.addedAt||b.launchedAt||'').localeCompare(a.addedAt||a.launchedAt||'')||a.slug.localeCompare(b.slug)).slice(0,6);
  const added=compactAI(recentlyAdded.map(t=>t.slug),available);
  const popularSlugs=editorialFallback.filter(slug=>available.some(t=>t.slug===slug)&&!generic.has(slug)).slice(0,6);
  const popular=compactAI(popularSlugs,available);
