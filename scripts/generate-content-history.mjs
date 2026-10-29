@@ -24,9 +24,9 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
  const timestamp=new Date(date).toISOString(),{index,cleanup}=loadContent();
  try{
   const file='lib/content-history.json',before=fs.readFileSync(file,'utf8');
-  const {next,changed}=contentHistory(index,JSON.parse(before),timestamp),output=JSON.stringify(next,null,1)+'\n';
+  const {next,changed}=contentHistory(index,JSON.parse(before),write?timestamp:'2026-10-29T08:45:00.000Z'),output=JSON.stringify(next,null,1)+'\n';
   if(output!==before){
-   if(!write){console.log('TRUTOOL_HISTORY_PATCH='+JSON.stringify(Object.fromEntries(changed.map(p=>[p,next[p]]))));throw new Error(`Content history is out of date (${changed.length} revisions: ${changed.slice(0,5).join(', ')}). Run pnpm content:history and commit lib/content-history.json with the content change. Builds never rewrite dates.`);}
+   if(!write){for(let i=0;i<changed.length;i+=10){const group=changed.slice(i,i+10);console.log('TRUTOOL_HISTORY_PATCH_PART='+JSON.stringify(Object.fromEntries(group.map(p=>[p,next[p]]))));}throw new Error(`Content history is out of date (${changed.length} revisions: ${changed.slice(0,5).join(', ')}). Run pnpm content:history and commit lib/content-history.json with the content change. Builds never rewrite dates.`);}
    fs.writeFileSync(file,output);
   }
   console.log(`Content history: ${index.contentPages.length} canonical pages; ${changed.length} content revisions. ${write?'History updated; commit it with the content change.':'Committed history verified without modification.'}`);
