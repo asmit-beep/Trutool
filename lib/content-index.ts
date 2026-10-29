@@ -73,12 +73,22 @@ export function relatedTools(page:ContentPage):Tool[]{
  const category=page.tool?.category||page.guide?.category||page.category?.slug;
  return category?tools.filter(t=>inCategory(t,category)&&t.slug!==page.tool?.slug):[];
 }
+function collectionRevision(page:ContentPage){
+ if(page.path==='')return {tools,categories,guides,answers:communityAnswers.map(answer=>({slug:answer.slug,category:answer.category,question:answer.question,answer:answer.answer,toolSlugs:answer.toolSlugs,steps:answer.steps,checks:answer.checks,pitfall:answer.pitfall,publishedAt:answer.publishedAt})),pairs};
+ if(page.path==='/tools'||page.path==='/alternatives'||page.path==='/compare'||page.path==='/everything-ai')return {tools,...(page.path==='/compare'?{pairs}:{})};
+ if(page.path==='/categories')return {tools,categories};
+ if(page.path==='/guides')return {guides};
+ if(page.path==='/community')return {categories,answers:communityAnswers.map(answer=>({slug:answer.slug,category:answer.category,question:answer.question,answer:answer.answer,toolSlugs:answer.toolSlugs,steps:answer.steps,checks:answer.checks,pitfall:answer.pitfall,publishedAt:answer.publishedAt}))};
+ if(page.path==='/authors')return {authors};
+ if(page.path==='/services')return {services:serviceCategories};
+ return {};
+}
 // Fingerprints and revision dates are committed with content edits; builds only verify them.
 export function contentRevision(page:ContentPage){
  const related=relatedTools(page);
  const stableAnswer=(answer:CommunityAnswer)=>({slug:answer.slug,category:answer.category,question:answer.question,answer:answer.answer,toolSlugs:answer.toolSlugs,steps:answer.steps,checks:answer.checks,pitfall:answer.pitfall,publishedAt:answer.publishedAt});
- return {page:{...page,...(page.answer?{answer:stableAnswer(page.answer)}:{})},author:contentAuthor(page),related:page.kind==='guide'?related.slice(0,6):page.kind==='collection'&&page.category?related.map(t=>({slug:t.slug,name:t.name,summary:t.summary})):related,
+ return {page:{...page,...(page.answer?{answer:stableAnswer(page.answer)}:{})},author:contentAuthor(page),related:page.kind==='guide'?related.slice(0,6):page.kind==='tool'?related.slice(0,3):page.kind==='collection'&&page.category?related.map(t=>({slug:t.slug,name:t.name,summary:t.summary})):related,
   ...(page.kind==='author'?{guides:guides.filter(g=>authorFor(g).slug===page.author?.slug),answers:communityAnswers.filter(a=>authorFor(a).slug===page.author?.slug).map(stableAnswer)}:{}),
-  ...(page.kind==='collection'&&!page.category||page.path===''?{tools:tools.map(t=>({slug:t.slug,name:t.name,category:t.category,summary:t.summary})),categories,guides,answers:communityAnswers.map(stableAnswer),pairs}:{}),
+  ...(page.kind==='collection'&&!page.category||page.path===''?collectionRevision(page):{}),
  };
 }
