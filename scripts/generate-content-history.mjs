@@ -11,9 +11,9 @@ export function contentHistory(index,previous,timestamp){
  for(const page of index.contentPages){
   const pieces=page.path.split('/').filter(Boolean),template=pieces.length>1?`app/${pieces[0]}/[slug]/page.tsx`:page.path?`app${page.path}/page.tsx`:'app/page.tsx';
   const hash=createHash('sha256').update(JSON.stringify(index.contentRevision(page))).update(JSON.stringify(visibleText(template))).digest('hex').slice(0,32);
-  const prior=previous[page.path],same=prior?.fingerprintVersion!==2||prior?.hash===hash;
-  next[page.path]={hash,fingerprintVersion:2,modified:prior&&same?prior.modified:timestamp};
-  if(!prior||prior.fingerprintVersion===2&&prior.hash!==hash)changed.push(page.path||'/');
+  const prior=previous[page.path],same=prior?.fingerprintVersion!==3||prior?.hash===hash;
+  next[page.path]={hash,fingerprintVersion:3,modified:prior&&same?prior.modified:timestamp};
+  if(!prior||prior.fingerprintVersion===3&&prior.hash!==hash)changed.push(page.path||'/');
  }
  return {next,changed};
 }
