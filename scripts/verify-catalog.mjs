@@ -8,7 +8,7 @@ import {createRequire} from 'node:module';
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'trutool-catalog-'));
 try{
  fs.writeFileSync(path.join(tmp,'package.json'),'{"type":"commonjs"}');
- for(const file of ['catalog','category-ranking','category-crosslist','launch-discovery','ai-signals','guides','search','diagnostic','catalog-results','tool-discovery','discovery-options','authors','ai','ai-news','cms-types','demo','demo-reviews','reviews','pricing','community-answers','rfp-alternatives','content-index','covers','sitemap-inventory'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
+ for(const file of ['manually-published-tools','catalog','category-ranking','category-crosslist','launch-discovery','ai-signals','guides','search','diagnostic','catalog-results','tool-discovery','discovery-options','authors','ai','ai-news','cms-types','demo','demo-reviews','reviews','pricing','community-answers','rfp-alternatives','content-index','covers','sitemap-inventory'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  fs.writeFileSync(path.join(tmp,'cms-store.js'),'exports.getPublished=async()=>[];');
  fs.copyFileSync('lib/content-history.json',path.join(tmp,'content-history.json'));
  fs.copyFileSync('lib/expanded-catalog.json',path.join(tmp,'expanded-catalog.json'));
@@ -161,6 +161,23 @@ try{
  assert.equal(catalogueTotals.tools,tools.length);assert.equal(catalogueTotals.categories,categories.length);assert.equal(catalogueTotals.guides,guides.length);
  for(const c of categories)assert.equal(categoryCounts[c.slug],tools.filter(t=>inCategory(t,c.slug)).length);
  const {toolResults}=require(path.join(tmp,'catalog-results.js'));
+ // Explicit #15 editorial placements and full sourced profiles.
+ for(const entry of [
+  {slug:'aireiter',category:'ai-model-platforms',url:'https://aireiter.com/'},
+  {slug:'hausdraft',category:'ai-image',url:'https://hausdraft.com/'}
+ ]){
+  const matches=tools.filter(t=>t.slug===entry.slug);
+  assert.equal(matches.length,1,entry.slug+' must have one canonical profile');
+  const t=matches[0];
+  assert.equal(t.category,entry.category);
+  assert.equal(t.url,entry.url);
+  assert.ok(t.profile&&t.profile.faqs.length>=5&&t.profile.workflow.length>=4&&t.profile.useCases.length>=4&&t.features.length>=5,entry.slug+' missing substantial editorial content');
+  assert.ok(t.sourceChecked&&t.sourceUrl===t.url&&t.pricingUrl&&t.pricingUrl.startsWith(entry.url),entry.slug+' source and price verification');
+  const ranks=toolResults('',entry.category,'relevance',1,24);
+  assert.equal(ranks.items[14]?.slug,entry.slug,entry.slug+' must occupy position 15 in '+entry.category);
+  assert.equal(ranks.items[14]?.rank,15,entry.slug+' rank marker must be #15');
+ }
+ console.log('PASS: AIReiter and HausDraft published once with #15 positions, vendor sources and full editorial profiles.');
  const first=toolResults(),second=toolResults('','','relevance',2);
  assert.equal(first.total,tools.length);assert.equal(first.items.length,24);assert.equal(second.page,2);assert.ok(!first.items.some(t=>second.items.some(x=>x.slug===t.slug)));
  assert.ok(first.items.every(t=>t.categoryLabel&&!('fit' in t)&&!('features' in t)),'Compact search responses');

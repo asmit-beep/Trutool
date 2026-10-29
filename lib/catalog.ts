@@ -1,4 +1,5 @@
 import coreSourceDates from './core-source-dates.json';
+import {manuallyPublishedTools} from './manually-published-tools';
 import {additionalGuides} from './guides';
 import expanded from './expanded-catalog.json';
 import aiCatalog from './ai-catalog.json';
@@ -47,7 +48,7 @@ make('edx','edX','edtech','Explore online courses, certificates, and degree path
 ];
 const categoryMap=new Map(categories.map(c=>[c.slug,c]));
 export const categoryOf=(slug:string)=>categoryMap.get(slug)!;
-export const tools:Tool[]=[...coreTools.map(t=>({...t,sourceChecked:(coreSourceDates as Record<string,string>)[t.slug]||null,sourceStatus:(coreSourceDates as Record<string,string>)[t.slug]?'Vendor source consulted':'Confirm directly with vendor'})),...expanded.tools,...aiCatalog.tools,...additions.tools,...expansion.tools,...submitted.tools,...categoryGrowth.tools.filter(t=>![...coreTools,...expanded.tools,...aiCatalog.tools,...additions.tools,...expansion.tools,...submitted.tools].some(x=>x.slug===t.slug))].map(t=>({...t,categoryLabel:categoryOf(t.category)?.short||t.category}));
+export const tools:Tool[]=[...coreTools.map(t=>({...t,sourceChecked:(coreSourceDates as Record<string,string>)[t.slug]||null,sourceStatus:(coreSourceDates as Record<string,string>)[t.slug]?'Vendor source consulted':'Confirm directly with vendor'})),...expanded.tools,...aiCatalog.tools,...additions.tools,...expansion.tools,...submitted.tools,...manuallyPublishedTools,...categoryGrowth.tools.filter(t=>![...coreTools,...expanded.tools,...aiCatalog.tools,...additions.tools,...expansion.tools,...submitted.tools].some(x=>x.slug===t.slug))].map(t=>({...t,categoryLabel:categoryOf(t.category)?.short||t.category}));
 const toolMap=new Map(tools.map(t=>[t.slug,t]));
 export const getTool=(slug:string)=>toolMap.get(slug);
 export const categoryCounts:Record<string,number>=Object.fromEntries(categories.map(c=>[c.slug,0]));
