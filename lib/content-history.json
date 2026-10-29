@@ -7254,26 +7254,6 @@
   "fingerprintVersion": 2,
   "modified": "2026-10-08T16:04:55.459Z"
  },
- "/tools/aireiter": {
-  "hash": "071efc756f56fe1c980fb191216bb04c",
-  "fingerprintVersion": 2,
-  "modified": "2026-10-29T08:45:00.000Z"
- },
- "/alternatives/aireiter": {
-  "hash": "73cc6e0da817d9aa31a6daca45a67bf1",
-  "fingerprintVersion": 2,
-  "modified": "2026-10-29T08:45:00.000Z"
- },
- "/tools/hausdraft": {
-  "hash": "082ede6c943a5545b07a6391921ef1c5",
-  "fingerprintVersion": 2,
-  "modified": "2026-10-29T08:45:00.000Z"
- },
- "/alternatives/hausdraft": {
-  "hash": "8ba45ede5081f00f538a1a377c0e1766",
-  "fingerprintVersion": 2,
-  "modified": "2026-10-29T08:45:00.000Z"
- },
  "/tools/deepl": {
   "hash": "5551c75605fd172d16cbdaada55bd298",
   "fingerprintVersion": 2,
@@ -21453,6 +21433,26 @@
   "hash": "7a82020244cf29c5d844db2caa0b4c19",
   "fingerprintVersion": 2,
   "modified": "2026-10-23T12:00:00.000Z"
+ },
+ "/tools/aireiter": {
+  "hash": "071efc756f56fe1c980fb191216bb04c",
+  "fingerprintVersion": 2,
+  "modified": "2026-10-29T08:45:00.000Z"
+ },
+ "/alternatives/aireiter": {
+  "hash": "73cc6e0da817d9aa31a6daca45a67bf1",
+  "fingerprintVersion": 2,
+  "modified": "2026-10-29T08:45:00.000Z"
+ },
+ "/tools/hausdraft": {
+  "hash": "082ede6c943a5545b07a6391921ef1c5",
+  "fingerprintVersion": 2,
+  "modified": "2026-10-29T08:45:00.000Z"
+ },
+ "/alternatives/hausdraft": {
+  "hash": "8ba45ede5081f00f538a1a377c0e1766",
+  "fingerprintVersion": 2,
+  "modified": "2026-10-29T08:45:00.000Z"
  },
  "/tools/smartcat": {
   "hash": "9a045f8792eb8c3d6bab61c86a066c79",
