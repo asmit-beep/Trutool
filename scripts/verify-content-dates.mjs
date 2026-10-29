@@ -18,6 +18,10 @@ try{
  assert.deepEqual(change.changed,['/guides']);
  assert.equal(change.next['/guides'].modified,later);
  assert.deepEqual(change.next['/tools'],history['/tools']);
+ const revision=path=>content.index.contentRevision(content.index.contentPages.find(p=>p.path===path));
+ for(const path of ['/guides','/community','/authors','/services'])assert.ok(!('tools' in revision(path)),path+' must not follow unrelated catalogue additions');
+ assert.equal(revision('/tools/midjourney').related.length,3,'Tool profiles fingerprint only the three related cards they render');
+ assert.ok(revision('/alternatives/midjourney').related.length>3,'Alternatives pages fingerprint their full rendered category inventory');
 
  fs.writeFileSync(path.join(tmp,'package.json'),'{"type":"commonjs"}');
  const compile=(file,output,transform=s=>s)=>fs.writeFileSync(path.join(tmp,output),ts.transpileModule(transform(fs.readFileSync(file,'utf8')),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText);
