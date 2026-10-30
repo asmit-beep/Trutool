@@ -112,7 +112,11 @@ try {
   assert.ok(slack.metaDescription.length <= 155 && slack.metaDescription.includes('HubEngage') && slack.metaDescription.includes('Unily'));
   assert.equal((slack.body.match(/https:\/\/www\.hubengage\.com\/pricing\/?/g) || []).length, 0, 'Retired HubEngage pricing URL must not remain');
   assert.equal((slack.body.match(/https:\/\/www\.hubengage\.com\/employee-intranet\/intranet-pricing\//g) || []).length, 1);
+  assert.ok(!slack.body.includes('{{THREE_GAPS_IMAGE}}'), 'The three-gaps placeholder must be replaced in the guide body');
   const slackHtml = renderToStaticMarkup(React.createElement(CmsMarkdown, { body: slack.body, showImages: false }));
+  const gapsHeading = slackHtml.indexOf('id="three-things-slack-structurally-cannot-do"');
+  const gapsFigure = slackHtml.indexOf('<figure class="cms-figure"><img src="/images/guides/slack-alternatives-three-gaps.webp" alt="Three things Slack structurally cannot do" width="1200" height="675"');
+  assert.ok(gapsHeading >= 0 && gapsFigure > gapsHeading, 'The three-gaps figure must render under its heading');
   const slackFaq = JSON.parse(slack.jsonLd);
   assert.equal(slackFaq['@type'], 'FAQPage');
   assert.equal(slackFaq.mainEntity.length, 6);
@@ -126,7 +130,8 @@ try {
     const rawImages = (guide.body.match(/!\[[^\]]*\]\([^)]+\)/g) || []).length;
     removedFromGuideBodies += rawImages;
     const rendered = renderToStaticMarkup(React.createElement(CmsMarkdown, { body: guide.body, showImages: false }));
-    assert.ok(!/<img\b|<figure\b/.test(rendered), 'Unexpected inline guide image: ' + guide.slug);
+    assert.ok(!/src="\/media\//.test(rendered), 'Private media images stay out of guide HTML: ' + guide.slug);
+    assert.ok(!rendered.includes('{{THREE_GAPS_IMAGE}}'), 'Unreplaced image placeholder: ' + guide.slug);
     assert.ok(rendered.includes('<h2'), 'Guide headings were lost: ' + guide.slug);
     assert.ok(rendered.length > 1000, 'Guide text was lost: ' + guide.slug);
   }
@@ -134,7 +139,7 @@ try {
   const article = fs.readFileSync('components/cms-article.tsx', 'utf8');
   assert.ok(article.includes('<CmsMarkdown body={c.body} showImages={!isGuide}/>'), 'All CMS guides must disable body images but retain hero cover');
   assert.ok(article.includes('<figure className="tt-article-hero-media">'), 'Guide cover must be retained');
-  console.log('PASS: recovered guide bodies have zero inline images and retain text, tables and single hero cover.');
+  console.log('PASS: recovered guide bodies hide private media, render the public three-gaps figure, and retain text, tables and the hero cover.');
 
   const guides = fs.readFileSync('app/guides/page.tsx', 'utf8');
   const home = fs.readFileSync('app/page.tsx', 'utf8');

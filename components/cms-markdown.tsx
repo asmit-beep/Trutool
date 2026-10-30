@@ -11,6 +11,13 @@ function CmsBodyImage({ alt, src, hint, block = false }: { alt: string; src: str
   return block ? <figure className="cms-figure">{img}</figure> : img;
 }
 
+// Guide pages hide private /media images. A file shipped in public/images
+// is a real figure and still renders.
+function publicGuideImage(src: string) {
+  const href = safeHref(src);
+  return Boolean(href && href.startsWith('/images/'));
+}
+
 // Relative paths and trutool.co URLs are internal links and stay in the same tab.
 function isInternalUrl(href: string) {
   if (href.startsWith('/')) return true;
@@ -31,7 +38,7 @@ function inline(value: string, showImages = true): React.ReactNode[] {
     const index = match.index;
     if (index > cursor) result.push(value.slice(cursor, index));
     if (match[0].startsWith('![')) {
-      if (!showImages) { cursor = index + match[0].length; continue; }
+      if (!showImages && !publicGuideImage(match[2] ?? '')) { cursor = index + match[0].length; continue; }
       const image = <CmsBodyImage key={n++} alt={match[1] ?? ''} src={match[2] ?? ''} hint={[match[3], match[4]].filter(Boolean).join(' ')}/>;
       if (image) result.push(image);
     } else if (match[5] !== undefined) {
@@ -83,7 +90,7 @@ export function CmsMarkdown({ body, showImages = true }: { body: string; showIma
 
     const image = cmsStandaloneImage(raw);
     if (image) {
-      if (showImages) nodes.push(<CmsBodyImage key={i} alt={image.alt} src={image.src} hint={image.hint} block/>);
+      if (showImages || publicGuideImage(image.src)) nodes.push(<CmsBodyImage key={i} alt={image.alt} src={image.src} hint={image.hint} block/>);
       continue;
     }
 
