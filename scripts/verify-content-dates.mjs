@@ -57,6 +57,11 @@ exports.isHidden=async p=>(await exports.hiddenPaths()).has(p);`);
  const script=await PageStructuredData({path:'/guides'}),graph=JSON.parse(script.props.dangerouslySetInnerHTML.__html)['@graph'];
  assert.equal(graph.find(n=>n['@type']==='CollectionPage').dateModified,first);
  assert.equal((await sitemap()).find(p=>p.url.endsWith('/guides')).lastModified,first);
+ const sourceControlled=content.sitemap.sitemapEntries([{
+  path:'/guides/slack-alternatives-for-internal-communications',title:'Recovered guide',description:'Fixture',kind:'guide',
+  publishedAt:'2026-10-30T00:00:00.000Z',updatedAt:'2026-10-30T00:00:00.000Z',
+ }])[0];
+ assert.equal(sourceControlled.lastModified,'2026-10-30T15:51:18.000Z','Recovered guide sitemap date follows its latest rendered source commit');
  assert.ok(pageMarkdown(published.find(p=>p.path==='/guides')).includes(first));
  assert.deepEqual(dates(await publicPages()),current,'Repeated requests retain the same dates');
 
