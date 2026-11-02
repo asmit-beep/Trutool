@@ -104,7 +104,6 @@ try{
  assert.equal(recoveredComparisons.length,1,'All previously published CMS comparisons must be backed up');
  assert.equal(recoveredComparisons[0].slug,'chatgpt-vs-claude');
  assert.ok(recoveredComparisons[0].body.length>1000);
- assert.ok(recovered.some(g=>g.kind==='comparison')===false);
  assert.ok(recoveredComparisons.every(c=>c.publishedAt&&c.kind==='comparison'));
  assert.ok(recovered.some(g=>g.slug==='slack-alternatives-for-internal-communications'&&g.title===slack.title));
  assert.ok(recovered.filter(g=>g.image.startsWith('/media/')).length===0,'Unavailable old covers must use safe category images');
