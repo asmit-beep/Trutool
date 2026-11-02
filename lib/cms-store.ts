@@ -5,6 +5,7 @@ import { cache } from 'react';
 import 'server-only';
 import { authors } from './authors';
 import recoveredPublishedGuides from './recovered-published-guides.json';
+import recoveredPublishedComparisons from './recovered-published-comparisons.json';
 import { contentPath,effectivePublished,type CmsContent,type CmsRecord,type CmsStore } from './cms-types';
 const pathname='cms/content-v1.json';
 export const emptyStore=():CmsStore=>({version:1,revision:0,records:[],activity:[]});
@@ -138,7 +139,7 @@ export async function writeStore(store:CmsStore,etag?:string){
 const persistentStore=unstable_cache(async()=>await readStore(),['trutool-cms-v1-manual-publish-20261028'],{revalidate:false,tags:['cms']});
 const cachedStore=cache(()=>persistentStore());
 /**
- * Restore only the public, already-published editorial guide snapshots while
+ * Restore all original public, already-published CMS content snapshots while
  * legacy Supabase REST is returning HTTP 402. This NEVER changes the original
  * private Supabase CMS records, drafts or revision history.
  *
@@ -150,24 +151,28 @@ export async function getPublished():Promise<CmsContent[]>{
  const {store,legacyUnavailable}=await cachedStore(),now=Date.now();
  // Source-of-truth Supabase takes precedence whenever it is readable.
  // Independent Vercel previews may not have the original CMS at all.
- const recoverPublicGuides=Boolean(legacyUnavailable)||(!usingSupabaseStorage()&&process.env.VERCEL_ENV==='preview');
+ const recoverPublicContent=Boolean(legacyUnavailable)||(!usingSupabaseStorage()&&process.env.VERCEL_ENV==='preview');
  const live=store.records.flatMap(r=>{const c=effectivePublished(r,now);return c?[c]:[];});
  const byPath=new Map<string,CmsContent>();
- if(recoverPublicGuides){
-  for(const guide of recoveredPublishedGuides as CmsContent[]){
-   if(guide.kind!=='guide'||!guide.slug||!guide.publishedAt||Date.parse(guide.publishedAt)>now)continue;
-   // Historical media remain in the original Supabase project. Use the
-   // existing category artwork rather than show a broken private image until
-   // the original storage service is restored. Keep original links in JSON.
-   const safeCover=guide.image?.startsWith('/media/')?{...guide,image:''}:guide;
-   byPath.set(contentPath(safeCover),safeCover);
+ if(recoverPublicContent){
+  // Only public, previously published snapshots are allowed here. Newer
+  // independently published records are still read from the separate Blob overlay.
+  // Preserve URL, original publish dates and body; never materialize drafts.
+  const snapshots=[...recoveredPublishedGuides,...recoveredPublishedComparisons] as CmsContent[];
+  for(const content of snapshots){
+   if(!content.slug||!content.publishedAt||Date.parse(content.publishedAt)>now)continue;
+   if(!['guide','comparison'].includes(content.kind))continue;
+   // Historical media may be unavailable while the original Supabase store
+   // is restricted. Keep existing text without exposing broken media URLs.
+   const safeContent=content.image?.startsWith('/media/')?{...content,image:''}:content;
+   byPath.set(contentPath(safeContent),safeContent);
   }
  }
  for(const c of live){
   const key=contentPath(c);
   // Legacy public slugs retain priority while source reads are restricted;
   // never let a newly entered duplicate shadow an original published guide.
-  if(recoverPublicGuides&&byPath.has(key))continue;
+  if(recoverPublicContent&&byPath.has(key))continue;
   byPath.set(key,c);
  }
  const published=[...byPath.values()];
