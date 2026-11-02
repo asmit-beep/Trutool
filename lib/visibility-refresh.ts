@@ -13,7 +13,7 @@ export function invalidateDiscovery(changedPaths:readonly string[]=[]){
  revalidatePath('/');
  for(const archive of ['/guides','/tools','/compare','/alternatives','/community','/everything-ai','/services','/authors'])revalidatePath(archive);
  for(const path of new Set(changedPaths)){
-  if(!/^\\/[a-zA-Z0-9/_-]+$/.test(path)||path.includes('['))continue;
+  if(!path.startsWith('/') || path.includes('[') || /[^a-zA-Z0-9/_-]/.test(path))continue;
   revalidatePath(path);
   revalidatePath(path+'.md');
  }
