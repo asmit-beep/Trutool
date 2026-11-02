@@ -136,7 +136,7 @@ export async function writeStore(store:CmsStore,etag?:string){
 }
 // No timed revalidation or repeated Supabase 402 attempts. Content is
 // refreshed only by explicit Studio publishing/invalidateDiscovery().
-const persistentStore=unstable_cache(async()=>await readStore(),['trutool-cms-v1-manual-publish-20261028'],{revalidate:false,tags:['cms']});
+const persistentStore=unstable_cache(async()=>await readStore(),['trutool-cms-v2-recovered-public-inventory-20261102'],{revalidate:false,tags:['cms']});
 const cachedStore=cache(()=>persistentStore());
 /**
  * Restore all original public, already-published CMS content snapshots while
