@@ -39,6 +39,17 @@ try {
   for (const path of paths) assert.ok(!path.startsWith('/admin') && !path.startsWith('/api/'));
   const sitemapSource = fs.readFileSync('app/sitemap.ts', 'utf8');
   assert.ok(sitemapSource.includes('sitemapEntries(await publicPages())'), 'XML sitemap must include published CMS pages and public inventory.');
+  // The fallback inventory must retain the canonical URL of each previously
+  // published original CMS record when Supabase is restricted.
+  const backup=[...JSON.parse(fs.readFileSync('lib/recovered-published-guides.json','utf8')),
+    ...JSON.parse(fs.readFileSync('lib/recovered-published-comparisons.json','utf8'))];
+  const backupPaths=backup.map(c=>('/'+(c.kind==='guide'?'guides':'compare')+'/'+c.slug));
+  assert.equal(new Set(backupPaths).size,backupPaths.length,'Duplicate recovered CMS canonical path');
+  for(const c of backup)assert.ok(c.publishedAt&&c.body?.length>=80,'Published CMS recovery content is incomplete: '+c.slug);
+  const recoveredOnly=backupPaths.filter(p=>!pages.some(entry=>entry.path===p));
+  const recoveredPages=recoveredOnly.map(p=>({path:p,title:p,description:'Recovered published editorial content',kind:'guide'}));
+  const recoveryXml=new Set(content.sitemap.sitemapEntries([...pages,...recoveredPages]).map(entry=>new URL(entry.url).pathname));
+  for(const p of backupPaths)assert.ok(recoveryXml.has(p),'Sitemap excludes recovered published CMS URL: '+p);
   const xmlPaths = content.sitemap.sitemapEntries(pages).map(entry => new URL(entry.url).pathname);
   const expectedXmlPaths = [...pages.map(page => page.path || '/'), ...paths];
   assert.equal(xmlPaths.length, expectedXmlPaths.length, 'Every public canonical URL must be included exactly once in the XML sitemap.');
