@@ -67,6 +67,7 @@ try{
  transpile('lib/cms-types.ts','cms-types.js');
  transpile('lib/cms-overlay.ts','cms-overlay.js');
  fs.copyFileSync('lib/recovered-published-guides.json',path.join(temp,'recovered-published-guides.json'));
+ fs.copyFileSync('lib/recovered-published-comparisons.json',path.join(temp,'recovered-published-comparisons.json'));
  transpile('lib/cms-store.ts','cms-store.js');
  Module._load=function(id,parent,isMain){
   if(id==='server-only')return {};
@@ -97,7 +98,14 @@ try{
  assert.equal(slack.updatedAt,'2026-10-30T00:00:00.000Z');
  const recovered=await cms.getPublished();
  assert.equal(recovered.filter(r=>r.kind==='guide').length,13,'Public guide list must restore every published source record during 402');
+ assert.ok(recovered.some(r=>r.kind==='comparison'&&r.slug==='chatgpt-vs-claude'),'Published comparison must survive Supabase 402');
  assert.ok(recovered.some(g=>g.slug==='claude-vs-chatgpt'));
+ const recoveredComparisons=JSON.parse(fs.readFileSync('lib/recovered-published-comparisons.json','utf8'));
+ assert.equal(recoveredComparisons.length,1,'All previously published CMS comparisons must be backed up');
+ assert.equal(recoveredComparisons[0].slug,'chatgpt-vs-claude');
+ assert.ok(recoveredComparisons[0].body.length>1000);
+ assert.ok(recovered.some(g=>g.kind==='comparison')===false);
+ assert.ok(recoveredComparisons.every(c=>c.publishedAt&&c.kind==='comparison'));
  assert.ok(recovered.some(g=>g.slug==='slack-alternatives-for-internal-communications'&&g.title===slack.title));
  assert.ok(recovered.filter(g=>g.image.startsWith('/media/')).length===0,'Unavailable old covers must use safe category images');
  const first=await cms.readStore();
@@ -151,6 +159,7 @@ try{
  restricted=false;
  const liveGuides=await cms.getPublished();
  assert.equal(liveGuides.filter(g=>g.kind==='guide').length,2,'Recovered guide snapshots must not override live Supabase records');
+ assert.equal(liveGuides.some(r=>r.kind==='comparison'),false,'The live CMS must remain authoritative when healthy');
  let merged=await cms.readStore();
  assert.equal(merged.legacyUnavailable,false);
  assert.deepEqual(new Set(merged.store.records.map(r=>r.id)),new Set(['legacy-1','new-1']));
