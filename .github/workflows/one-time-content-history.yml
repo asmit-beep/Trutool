@@ -1,0 +1,40 @@
+name: Record editorial content revision dates
+on:
+  push:
+    branches:
+      - feature/november-tool-submissions-20261102
+    paths:
+      - .github/workflows/one-time-content-history.yml
+permissions:
+  contents: write
+jobs:
+  record:
+    name: Generate accurate SEO fingerprints
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Generate committed source-of-truth content dates
+        run: node scripts/generate-content-history.mjs --write --date 2026-11-02T09:00:00Z
+      - name: Commit only regenerated content history
+        run: |
+          if git diff --quiet -- lib/content-history.json; then
+            echo "No revisions needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lib/content-history.json
+          git commit -m "Record editorial SEO revision dates for November product profiles"
+          git push origin HEAD:feature/november-tool-submissions-20261102
