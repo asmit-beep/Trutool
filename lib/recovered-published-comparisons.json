@@ -1,0 +1,22 @@
+[
+  {
+    "id": "/compare/chatgpt-vs-claude",
+    "body": "Compare ChatGPT and Claude by use case, features, limitations, and evaluation questions.\n\n## Compare fit, features, and limitations\n\n### ChatGPT\nConversational AI for questions, writing, analysis, and coding.\nBest fit: Knowledge workers and teams considering ChatGPT for this job: Conversational AI for questions, writing, analysis, and coding.\n- Conversational AI for questions, writing, analysis, and coding\nBefore you choose: Test factual questions, document interpretation, and revisions separately; review account data settings and human correction work.\nPricing: https://chatgpt.com/pricing/\n- [Read ChatGPT profile](https://trutool.co/tools/chatgpt): Read ChatGPT profile\n\n### Claude\nAI assistant for writing, reasoning, analysis, and code.\nBest fit: Knowledge workers and teams considering Claude for this job: AI assistant for writing, reasoning, analysis, and code.\n- AI assistant for writing, reasoning, analysis, and code\nBefore you choose: Check important claims against your input documents and test a long or conflicting source before relying on a draft.\nPricing: https://claude.com/pricing\n- [Read Claude profile](https://trutool.co/tools/claude): Read Claude profile\n\nFor a deeper comparison, read the [full Claude vs ChatGPT guide with prices checked 16 Oct 2026](/guides/claude-vs-chatgpt).",
+    "kind": "comparison",
+    "slug": "chatgpt-vs-claude",
+    "tags": "",
+    "image": "",
+    "title": "ChatGPT vs Claude — Fit & Features",
+    "category": "ai",
+    "imageAlt": "",
+    "metaTitle": "",
+    "sourceUrl": "",
+    "toolSlugs": [],
+    "updatedAt": "2026-10-15T22:08:17.890Z",
+    "authorSlug": "snehil",
+    "description": "Compare ChatGPT and Claude by use case, features, limitations, and evaluation questions.",
+    "publishedAt": "2026-10-15T22:08:17.890Z",
+    "sourceLabel": "",
+    "metaDescription": ""
+  }
+]
