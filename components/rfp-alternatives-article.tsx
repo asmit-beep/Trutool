@@ -3,6 +3,7 @@ import {RfpBrandLogo} from '@/components/rfp-brand-logo';
 import Image from 'next/image';
 import {ArticleToc} from '@/components/article-toc';
 import {SITE,getTool} from '@/lib/catalog';
+import {ALTERNATIVES_COMPARE_LINK_LIMIT,allowlistedComparePartners,allowlistedComparePath} from '@/lib/compare-pairs';
 import {authors} from '@/lib/authors';
 import {rfpAlternativePages,type RfpPage} from '@/lib/rfp-alternatives';
 import {serializeSchema} from '@/lib/structured-data';
@@ -48,6 +49,7 @@ export function rfpAlternativeSchema(slug:'loopio'|'responsive'){
 }
 export function RfpAlternativesArticle({slug}:{slug:'loopio'|'responsive'}){
  const p:RfpPage=rfpAlternativePages[slug],other=rfpAlternativePages[p.crossSlug],author=authors.find(a=>a.slug==='snehil')!;
+ const pathPartners=new Set(allowlistedComparePartners(slug).slice(0,ALTERNATIVES_COMPARE_LINK_LIMIT));
  return <main id="main" className="shell article-page rfp-alt-page">
  <header className="article-header rfp-alt-header">
   <div className="breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/alternatives">Alternatives</Link><span>/</span><span>{p.target}</span></div>
@@ -94,7 +96,7 @@ export function RfpAlternativesArticle({slug}:{slug:'loopio'|'responsive'}){
    <ul>{v.capabilities.map(s=><li key={s}>{s}</li>)}</ul>
    <p><strong>What to consider:</strong> {v.consider}</p>
    <div className="rfp-alt-test"><strong>Ask in the demo</strong><p>{v.pilot}</p></div>
-   <div className="rfp-alt-vendor-links">{t&&<Link className="text-link" href={'/tools/'+v.slug}>Read the {v.name} profile →</Link>}<a className="text-link" href={v.url} target="_blank" rel="noopener noreferrer">Official vendor website ↗</a></div>
+   <div className="rfp-alt-vendor-links">{t&&<Link className="text-link" href={'/tools/'+v.slug}>Read the {v.name} profile →</Link>}{pathPartners.has(v.slug)&&allowlistedComparePath(slug,v.slug)&&<Link className="text-link" href={allowlistedComparePath(slug,v.slug)!}>{`Compare ${p.target} with ${v.name}`}</Link>}<a className="text-link" href={v.url} target="_blank" rel="noopener noreferrer">Official vendor website ↗</a></div>
   </section>})}
   </section>
   <section id="evaluate"><h2>How to choose an RFP response platform fairly</h2>

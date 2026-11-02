@@ -1,9 +1,18 @@
+import { allowlistedCompareRedirect } from '@/lib/compare-pairs';
 import { NextRequest, NextResponse } from 'next/server';
 
 // Clean ChatGPT referral labels from tracking parameters only.
 // Never inspect page content or change legitimate guide/tool URLs.
 export function proxy(request: NextRequest) {
   const url = request.nextUrl.clone();
+  if (url.pathname === '/compare' || url.pathname === '/compare/') {
+    const destination = allowlistedCompareRedirect(url.searchParams.get('tools'));
+    if (destination) {
+      const target = new URL(destination, request.url);
+      target.search = '';
+      return NextResponse.redirect(target, 301);
+    }
+  }
   let changed = false;
 
   for (const [key, value] of [...url.searchParams.entries()]) {

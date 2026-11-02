@@ -65,4 +65,4 @@ export type Guide=(typeof coreGuides)[number]&{publishedAt?:string;updatedAt?:st
 export const guides:Guide[]=[...coreGuides,...additionalGuides];
 export const latestGuides=guides.map((guide,index)=>({guide,index})).sort((a,b)=>(b.guide.publishedAt||'2026-10-05').localeCompare(a.guide.publishedAt||'2026-10-05')||b.index-a.index).map(x=>x.guide);
 export const catalogueTotals={...catalogueStats,guides:guides.length};
-export const pairs=[['chatgpt','claude'],['notion','obsidian'],['figma','canva'],['synup','yext'],['inventive-ai','loopio'],['slack','microsoft-teams'],['staragile','simplilearn']];
+export {pairs} from './compare-pairs';

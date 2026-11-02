@@ -1,8 +1,8 @@
 {
  "": {
-  "hash": "2df00cfec527d5a1d8907e3822b4ce7b",
+  "hash": "2322f8c7fcbbdfa18177c389fe338256",
   "fingerprintVersion": 3,
-  "modified": "2026-11-02T09:00:00.000Z"
+  "modified": "2026-11-02T22:20:02.748Z"
  },
  "/tools": {
   "hash": "2949c25955d4d2ecd6a39397616b62be",
@@ -15,9 +15,9 @@
   "modified": "2026-11-02T09:00:00.000Z"
  },
  "/compare": {
-  "hash": "92c4b66fda88bb8ad4db21d3386824de",
+  "hash": "7a5cc23d4b45384b3e82250cd7c99cd3",
   "fingerprintVersion": 3,
-  "modified": "2026-11-02T09:00:00.000Z"
+  "modified": "2026-11-02T22:20:02.748Z"
  },
  "/alternatives": {
   "hash": "a74222b7f325045968d53855288638c5",
@@ -23108,5 +23108,220 @@
   "hash": "0171e4163ab294046977ba19e26de191",
   "fingerprintVersion": 3,
   "modified": "2026-10-08T16:04:55.459Z"
+ },
+ "/compare/docling-vs-paddleocr": {
+  "hash": "d61ef2cc8769d5a240fdf84382957807",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/dbeaver-vs-visual-studio-code": {
+  "hash": "01761cf514b4b4420dc5a914d57809fe",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/gitea-vs-linear": {
+  "hash": "89ecb5f33162f388f6073caded5a786c",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/gitea-vs-plane": {
+  "hash": "423504d37bbc1b7bebbfda47861a81b2",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/pangolin-vs-zoraxy": {
+  "hash": "fcf39840fc4a91188718ebe6c92489f3",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/continue-vs-kilo-code": {
+  "hash": "501fc34d8b31be5e829d5514e0491bd0",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/nginx-proxy-manager-vs-pangolin": {
+  "hash": "ce9f8cc72c147545279ed077506620fb",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/clipspeedai-vs-happysrt": {
+  "hash": "32a06e48765955aabc5ef0683c9118ee",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/gitea-vs-openproject": {
+  "hash": "828a22ecd1b08e40ae204378608035d0",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/docling-vs-xberg": {
+  "hash": "0fc40ce5b3f9d6143bc4d45e9c2a5b95",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/comfyui-vs-pytorch": {
+  "hash": "9bd653ef69e96f35e860b108dc7782e7",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/open-webui-vs-typingmind": {
+  "hash": "2dee5e7f4d9d92af717964a079f1444d",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/mlflow-vs-ray-serve": {
+  "hash": "ad2a527e9fea80507bc8d3b0008bc443",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/modal-vs-ray-serve": {
+  "hash": "141b18dbfc69217b0fb59b686d226117",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/digimindmap-vs-para": {
+  "hash": "4f34c55bafb28347cfe227941e2a30ae",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/hermes-agent-vs-openfang": {
+  "hash": "1dad57ffc9e8dcde7addeca6a76c559f",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/litellm-vs-pytorch": {
+  "hash": "91cf52c1cf8d9b2ad3395bda65bcb48e",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/chatbox-ai-vs-typingmind": {
+  "hash": "ace6833f3641b2901e5ac8211b627706",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/jan-vs-msty": {
+  "hash": "dfca660fd5153bbba6255c811e5b6db8",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/claude-vs-rundiffusion": {
+  "hash": "38ffbbb21f09d0153d3a4302f8c63079",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/tabby-vs-twinny": {
+  "hash": "dc402ccdbe0e25ef160d89fa89dc0893",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/jan-vs-chatbox-ai": {
+  "hash": "47f3e5657e15a4c258f28ebcd0f9ef5e",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/rocket-new-vs-unpkg-ai": {
+  "hash": "db17fb5a5bb753ecf0741f53cb1a6f14",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/eraser-vs-linearity-curve": {
+  "hash": "b36542f03c205ebb34303657c8e5bc65",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/flow-ai-video-vs-happysrt": {
+  "hash": "24852b626e6c823702559afe3f247ea9",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/based-ai-vs-hailuo-ai": {
+  "hash": "83ea410b86bee8c4636bf3f3a54615a1",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/jan-vs-tencent-yuanbao": {
+  "hash": "0bcdb842ac397b7db49c3b0744a3c011",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/calagopus-vs-scribble-rs": {
+  "hash": "9b587ad137342310ca18e619eb100b05",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/ai-for-developers-vs-appdeploy": {
+  "hash": "7b1a78b8b81122eceb5a4eaff8bd8615",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/generative-ai-for-beginners-vs-harbor": {
+  "hash": "53505f0cf96ec479f721ec802218c92e",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/bruno-vs-github": {
+  "hash": "c4aeac99f3c1daddaab7cbf18a9583e2",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/ai-transcription-by-riverside-vs-based-ai": {
+  "hash": "4ff796ad95c18b03f443b6f0c25f268d",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/hugging-face-transformers-vs-pytorch": {
+  "hash": "5f2c60ac6ff64f431d463d630e3f8bf9",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/based-ai-vs-wisecut": {
+  "hash": "3740f425aa5c968fe585db63b118984a",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/modal-vs-vllm": {
+  "hash": "d341367b9d0d7ee34f82a14ebbeec377",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/jan-vs-librechat": {
+  "hash": "a7ab97ddd3dccb8c4c2135e71a9e72b7",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/smallpdf-vs-adobe-acrobat": {
+  "hash": "7a977317c8a384580466ad9c5252e1f7",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/pytorch-vs-vllm": {
+  "hash": "c3cfe0ec4d8fc0a55fc536889fbf051c",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/generative-ai-for-beginners-vs-se-visible-visible-seranking-com": {
+  "hash": "b7e860d59c1be24dc4b52459ab8f87fb",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/microsoft-agent-framework-vs-semantic-kernel": {
+  "hash": "8c81445d85286b363b937b81759de62e",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/huly-vs-linear": {
+  "hash": "bb3b8c2f4f8c79bac044c83b0f3632c6",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/civitai-vs-seaart-ai": {
+  "hash": "dc16c86a167cb26e9f19ee1b5c1999cf",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
+ },
+ "/compare/ai-transcription-by-riverside-vs-happysrt": {
+  "hash": "78012f6d2b9a74536aca43a519a6fd8d",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T22:20:02.748Z"
  }
 }

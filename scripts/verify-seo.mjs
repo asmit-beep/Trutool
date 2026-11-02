@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {loadContent} from './load-content.mjs';
-const {index,discovery,schema,cleanup}=loadContent();
+const {index,discovery,schema,sitemap,cleanup}=loadContent();
 try{
  const paths=new Set(index.contentPages.map(p=>p.path));assert.equal(paths.size,index.contentPages.length,'Duplicate canonical path');
  const history=JSON.parse(fs.readFileSync('lib/content-history.json','utf8'));
@@ -24,12 +24,48 @@ try{
  assert.equal(index.comparisonCanonicalPath('claude-vs-chatgpt'),'/compare/chatgpt-vs-claude');
  assert.equal(index.comparisonCanonicalPath('chatgpt-vs-claude'),'/compare/chatgpt-vs-claude');
  assert.equal(index.comparisonCanonicalPath('does-not-exist-vs-chatgpt'),undefined);
+ assert.equal(index.pairs.length,50,'Compare allowlist is the 50-slug list');
+ assert.deepEqual(index.pairs.slice(0,7),[['chatgpt','claude'],['notion','obsidian'],['figma','canva'],['synup','yext'],['inventive-ai','loopio'],['slack','microsoft-teams'],['staragile','simplilearn']],'Keep the original curated display order');
+ assert.equal(index.comparisonCanonicalPath('smallpdf-vs-adobe-acrobat'),'/compare/smallpdf-vs-adobe-acrobat');
+ assert.equal(index.comparisonCanonicalPath('adobe-acrobat-vs-smallpdf'),'/compare/smallpdf-vs-adobe-acrobat');
+ assert.equal(index.comparisonCanonicalPath('jan-vs-chatbox-ai'),'/compare/jan-vs-chatbox-ai');
+ assert.equal(index.comparisonCanonicalPath('chatbox-ai-vs-jan'),'/compare/jan-vs-chatbox-ai');
+ assert.equal(index.allowlistedCompareRedirect('claude,chatgpt'),'/compare/chatgpt-vs-claude');
+ assert.equal(index.allowlistedCompareRedirect('chatgpt,claude'),'/compare/chatgpt-vs-claude');
+ assert.equal(index.allowlistedCompareRedirect(' chatgpt , claude '),'/compare/chatgpt-vs-claude');
+ assert.equal(index.allowlistedCompareRedirect('jan,chatbox-ai'),'/compare/jan-vs-chatbox-ai');
+ assert.equal(index.allowlistedCompareRedirect('chatgpt,gemini'),undefined);
+ assert.equal(index.allowlistedCompareRedirect('chatgpt,claude,gemini'),undefined);
+ assert.equal(index.allowlistedCompareRedirect('chatgpt'),undefined);
+ assert.deepEqual(index.compareRobots('chatgpt-vs-claude'),{index:true,follow:true,googleBot:{index:true,follow:true,'max-image-preview':'large','max-snippet':-1}});
+ assert.equal(index.compareRobots('claude-vs-chatgpt').index,true);
+ assert.equal(index.compareRobots('chatgpt-vs-gemini').index,false);
+ assert.equal(index.compareRobots('chatgpt-vs-gemini').follow,true);
+ assert.equal(index.comparisonCanonicalPath('gemini-vs-chatgpt'),'/compare/chatgpt-vs-gemini');
+ const comparePaths=index.contentPages.filter(p=>p.path==='/compare'||p.path.startsWith('/compare/')).map(p=>p.path);
+ assert.deepEqual(comparePaths,['/compare',...index.pairs.map(([a,b])=>'/compare/'+a+'-vs-'+b)]);
+ const xmlCompare=sitemap.sitemapEntries(index.contentPages).map(entry=>new URL(entry.url).pathname).filter(p=>p==='/compare'||/^\/compare\/[^/]+$/.test(p));
+ assert.equal(xmlCompare.length,index.pairs.length+1,'Sitemap compare paths are the hub plus the allowlist');
+ assert.ok(!xmlCompare.includes('/compare/chatgpt-vs-gemini'),'Tail compare paths stay out of the sitemap');
+ assert.ok(!index.contentPages.some(p=>p.path==='/compare/chatgpt-vs-gemini'));
+ assert.equal(index.ALTERNATIVES_COMPARE_LINK_LIMIT,5);
+ const janPartners=index.pairs.flatMap(([a,b])=>a==='jan'?[b]:b==='jan'?[a]:[]);
+ assert.deepEqual(janPartners,['msty','chatbox-ai','tencent-yuanbao','librechat']);
  for(const page of index.contentPages){const pieces=page.path.split('/').filter(Boolean),template=pieces.length>1?`app/${pieces[0]}/[slug]/page.tsx`:page.path?`app${page.path}/page.tsx`:'app/page.tsx';assert.ok(fs.readFileSync(template,'utf8').includes('<PageStructuredData'),'Schema component absent: '+template)}
  const feed=discovery.jsonFeed();assert.equal(new Set(feed.items.map(i=>i.id)).size,feed.items.length);assert.ok(feed.items.length===100);for(const i of feed.items)assert.ok(paths.has(new URL(i.url).pathname));
  assert.ok(discovery.rss().includes('<rss version="2.0"'));assert.ok(discovery.atom().includes('http://www.w3.org/2005/Atom'));assert.ok(discovery.llmsIndex().startsWith('# TruTool\n'));
  for(const match of discovery.llmsIndex().matchAll(/\]\((https?:\/\/[^)]+)\)/g)){const url=new URL(match[1]);assert.equal(url.origin,new URL(index.absolute('/')).origin);if(url.pathname.endsWith('.md'))assert.ok(index.getContentPage(url.pathname==='/index.md'?'':url.pathname.slice(0,-3)),url.href)}
  const alternativesSource=fs.readFileSync('app/alternatives/[slug]/page.tsx','utf8');
- assert.ok(alternativesSource.includes("href={'/compare?tools='+encodeURIComponent(t.slug+','+x.slug)}"),'Alternatives must link to the canonical comparison builder.');
+ assert.ok(alternativesSource.includes("'/compare?tools='+encodeURIComponent(t.slug+','+x.slug)"),'Non-allowlist alternatives keep query comparison links.');
+ assert.ok(alternativesSource.includes('allowlistedComparePath(t.slug,x.slug)'),'Allowlisted alternatives use the canonical compare path.');
+ assert.ok(alternativesSource.includes('ALTERNATIVES_COMPARE_LINK_LIMIT'),'Alternatives path links are capped.');
  assert.ok(!alternativesSource.includes("href={'/compare/'+t.slug+'-vs-'+x.slug}"),'Do not generate thousands of uncurated crawlable comparison URLs.');
+ const proxySource=fs.readFileSync('proxy.ts','utf8');
+ assert.ok(proxySource.includes('allowlistedCompareRedirect'),'Allowlisted query pairs redirect before render.');
+ assert.match(proxySource,/NextResponse\.redirect\(\s*target,\s*301\s*\)/,'Allowlisted query pairs use HTTP 301.');
+ const comparePage=fs.readFileSync('app/compare/page.tsx','utf8');
+ assert.ok(comparePage.includes("canonical:SITE+'/compare'"),'Other compare queries stay canonicalized to the hub.');
+ const compareSlug=fs.readFileSync('app/compare/[slug]/page.tsx','utf8');
+ assert.ok(compareSlug.includes('withCompareRobots'),'Tail compare paths must be able to noindex.');
  console.log(`SEO verification passed: ${index.contentPages.length} canonical pages have valid schema graphs, dates, breadcrumbs, and Markdown references. RSS, Atom, JSON Feed, and llms.txt checked.`);
 }finally{cleanup()}

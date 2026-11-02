@@ -1,4 +1,6 @@
-import {SITE,tools,categories,guides,pairs,getTool,categoryOf,type Tool,type Guide} from './catalog';
+import {SITE,tools,categories,guides,getTool,categoryOf,type Tool,type Guide} from './catalog';
+import {allowlistedComparePath,pairs} from './compare-pairs';
+export {pairs,allowlistedCompareRedirect,compareRobots,ALTERNATIVES_COMPARE_LINK_LIMIT} from './compare-pairs';
 import {inCategory} from './category-crosslist';
 import {authors,authorFor,type Author} from './authors';
 import {communityAnswers,type CommunityAnswer} from './community-answers';
@@ -56,8 +58,8 @@ export function comparisonPage(slug:string):ContentPage|undefined{
 }
 export function comparisonCanonicalPath(slug:string):string|undefined{
  const page=comparisonPage(slug);if(!page?.pair)return;
- const names=page.pair.map(t=>t.slug),existing=pairs.find(([a,b])=>names.includes(a)&&names.includes(b));
- return '/compare/'+(existing||names.sort()).join('-vs-');
+ const names=page.pair.map(t=>t.slug);
+ return allowlistedComparePath(names[0],names[1])||'/compare/'+[...names].sort().join('-vs-');
 }
 export function getContentPage(path:string){const normalized=path==='/'?'':path.replace(/\/$/,'');return pageMap.get(normalized)||(normalized.startsWith('/compare/')?comparisonPage(normalized.slice(9)):undefined)}
 export const absolute=(path:string)=>SITE.replace(/\/$/,'')+path;
