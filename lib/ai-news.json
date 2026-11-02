@@ -1,5 +1,53 @@
 [
   {
+    "id": "adnoc-openai-g42-20261102",
+    "title": "ADNOC partners with OpenAI and G42 on industrial AI agents.",
+    "summary": "The companies plan to connect operations, planning and commercial decisions using frontier models, with human oversight.",
+    "publisher": "ADNOC",
+    "publishedAt": "2026-11-02",
+    "url": "https://www.adnoc.ae/media-center/news/2026/11/ADNOC-Signs-Landmark-Partnership-Agreement-with-OpenAI",
+    "topic": "Enterprise AI"
+  },
+  {
+    "id": "gemini-file-editing-oct2026",
+    "title": "Gemini adds in-chat editing for documents, PDFs and slide decks.",
+    "summary": "Google now lets users generate, preview and revise files inside Gemini. PDF editing also works on mobile.",
+    "publisher": "Google",
+    "publishedAt": "2026-10-29",
+    "url": "https://blog.google/innovation-and-ai/products/gemini-app/edit-files-directly/",
+    "toolSlug": "gemini",
+    "topic": "Productivity"
+  },
+  {
+    "id": "anthropic-science-expand-oct2026",
+    "title": "Anthropic expands AI for Science to 20 research partners.",
+    "summary": "Its program offers Claude credits to selected scientific foundations, institutions and research groups working on high-impact projects.",
+    "publisher": "Anthropic",
+    "publishedAt": "2026-10-28",
+    "url": "https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions",
+    "toolSlug": "claude",
+    "topic": "AI research"
+  },
+  {
+    "id": "anthropic-claude-drug-discovery-oct2026",
+    "title": "Anthropic reports early drug-discovery work with Claude.",
+    "summary": "Anthropic describes research collaborations with six drug-development organizations and what Claude still needs to improve.",
+    "publisher": "Anthropic",
+    "publishedAt": "2026-10-27",
+    "url": "https://www.anthropic.com/research/early-progress-drug-development",
+    "toolSlug": "claude",
+    "topic": "Life sciences"
+  },
+  {
+    "id": "openai-terra-oct2026",
+    "title": "OpenAI releases GPT-6.1 Terra for computer-use workflows.",
+    "summary": "Terra is designed for visual reasoning, computer use and writing, and is available through the API, Work and Codex.",
+    "publisher": "OpenAI",
+    "publishedAt": "2026-10-26",
+    "url": "https://openai.com/index/introducing-gpt-6-1-terra/",
+    "topic": "AI models"
+  },
+  {
     "id": "openai-mathematics-october-2026",
     "title": "OpenAI releases 722 AI-generated mathematics manuscripts.",
     "summary": "372 research families, with many Lean proofs. Verification is ongoing; some results remain unformalized and may contain errors.",

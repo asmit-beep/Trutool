@@ -8,7 +8,7 @@ export const isAITool=(tool:Pick<Tool,'slug'|'category'|'ai'>)=>Boolean(tool.ai|
 export const aiTools=tools.filter(isAITool);
 export const aiCategories=categories.filter(c=>c.slug==='ai'||c.slug.startsWith('ai-'));
 export const aiStats={tools:aiTools.length,categories:aiCategories.length};
-export type AIShelfTool=DirectoryTool&{useCase:string;launchedAt?:string;launchStatus?:string;externalUrl?:string};
+export type AIShelfTool=DirectoryTool&{useCase:string;launchedAt?:string;launchStatus?:string;externalUrl?:string;addedAt?:string};
 const DAY=86400000;
 const generic=new Set(['chatgpt','gemini','perplexity','claude','deepseek','grok','devin']);
 const useCases:Record<string,string>={
@@ -18,9 +18,9 @@ const useCases:Record<string,string>={
 export function compactAI(slugs:string[],directory:Tool[]=aiTools):AIShelfTool[]{
  const available=new Map(directory.filter(isAITool).map(t=>[t.slug,t]));
  return slugs.map(s=>available.get(s)).filter((t):t is Tool=>Boolean(t))
-  .map(({slug,name,category,categoryLabel,summary,format,initial,launchedAt,launchStatus})=>({
+  .map(({slug,name,category,categoryLabel,summary,format,initial,launchedAt,launchStatus,addedAt})=>({
    slug,name,category,categoryLabel:categoryLabel||category,summary,format,initial,useCase:useCases[slug]||summary,
-   ...(launchedAt?{launchedAt,launchStatus}:{})
+   ...(launchedAt?{launchedAt,launchStatus}:{}),...(addedAt?{addedAt}:{})
   }));
 }
 export function freshAITools(now=Date.now(),directory:Tool[]=aiTools){
@@ -28,7 +28,8 @@ export function freshAITools(now=Date.now(),directory:Tool[]=aiTools){
   Date.parse(t.launchedAt)<=now&&Date.parse(t.launchedAt)>=now-30*DAY)
   .sort((a,b)=>b.launchedAt!.localeCompare(a.launchedAt!)).slice(0,15);
 }
-const editorialFallback=['claude-code','cursor','github-copilot','lovable','n8n','replit','notebooklm','runway','elevenlabs','suno','granola','ollama','gamma','midjourney','browser-use','open-webui'];
+// November 2 editorial selection: varied, useful AI workflows rather than six coding assistants.
+const editorialFallback=['granola','n8n','notebooklm','gamma','ollama','napkin-ai','claude-code','cursor','replit','runway','elevenlabs','suno','lovable','midjourney','browser-use','open-webui'];
 
 // Fixed editorial shelves, not scheduled discoveries or daily rotations.
 // Manual additions to the CMS directory can be shown after explicit publish.

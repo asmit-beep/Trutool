@@ -1,5 +1,23 @@
 [
   {
+    "id": "hn-terra-comparison-nov2",
+    "title": "Do visual benchmarks still help compare frontier AI models?",
+    "summary": "Developers debate how much model demos reveal about real tasks.",
+    "platform": "Hacker News",
+    "publishedAt": "2026-11-02",
+    "url": "https://news.ycombinator.com/item?id=50319873",
+    "topic": "Choosing AI models"
+  },
+  {
+    "id": "hn-terra-launch-oct26",
+    "title": "Developers discuss GPT-6.1 Terra's speed, pricing and trade-offs.",
+    "summary": "The Hacker News thread compares the new model with alternatives across everyday workflows.",
+    "platform": "Hacker News",
+    "publishedAt": "2026-10-26",
+    "url": "https://news.ycombinator.com/item?id=50248124",
+    "topic": "Model comparisons"
+  },
+  {
     "id": "x-mistral-launch",
     "title": "Mistral’s new open-model preview sparks discussion.",
     "summary": "Follow Mistral’s announcement and the replies about its next open model.",

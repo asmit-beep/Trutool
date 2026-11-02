@@ -15,7 +15,8 @@ const platformLogos:Record<string,string>={X:'/brands/x-platform.png',Reddit:'/b
 function PlatformMark({platform}:{platform:string}){const logo=platformLogos[platform];return <span className={'ai-platform-mark platform-'+platform.toLowerCase().replace(/\s+/g,'-')} aria-hidden="true">{logo?<Image src={logo} alt={platform + " platform logo"} width={24} height={24} unoptimized={logo.endsWith('.svg')}/>:<Globe2 size={18}/>}</span>}
 export async function EverythingAI({news,discussions,compact=false}:{news:AINews[];discussions:AIDiscussion[];compact?:boolean}){
  const [discovery,directory]=await Promise.all([getAICollectionData(),publicTools()]);
- const lead=news.find(n=>n.image)||news[0];if(!lead)return null;
+ // Prefer the newest verified story even when its publisher has no image.
+ const lead=news[0];if(!lead)return null;
  const seen=new Set([lead.publisher]);const others=news.filter(n=>{if(seen.has(n.publisher))return false;seen.add(n.publisher);return true}).slice(0,3);
  const discussionPicks=discussions.slice(0,3);
  return <section className={'everything-ai section '+(compact?'ai-destination':'')} id="everything-ai" data-motion="idle">
