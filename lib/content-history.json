@@ -1,28 +1,28 @@
 {
  "": {
-  "hash": "85d23a77056ef46af0372acb7303458e",
+  "hash": "2df00cfec527d5a1d8907e3822b4ce7b",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools": {
-  "hash": "1cb9f9b88a80d094d9c73b1e90dd2729",
+  "hash": "2949c25955d4d2ecd6a39397616b62be",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/categories": {
-  "hash": "a8c378a1cf657c8ee99bdcf2e6d3744a",
+  "hash": "3fd133cbf772ded830fd098cf6770c3f",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/compare": {
-  "hash": "af7b4436141de5ca0a7b70316f88be47",
+  "hash": "92c4b66fda88bb8ad4db21d3386824de",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/alternatives": {
-  "hash": "aca6f53d66e5e289f6931f92cb55b41a",
+  "hash": "a74222b7f325045968d53855288638c5",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/guides": {
   "hash": "1e50101e9346948c0ab81388b2a651bf",
@@ -30,9 +30,9 @@
   "modified": "2026-10-23T12:00:00.000Z"
  },
  "/everything-ai": {
-  "hash": "fecca4a20c15d9dd79e3d4d90e4c0c78",
+  "hash": "bf01542bef5f674bf2b6e1bfddfc5a03",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/community": {
   "hash": "93cb23c7350ae9af93a08b33a5253fd8",
@@ -570,9 +570,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/midjourney": {
-  "hash": "72f5979e82c2597d2df514faa46b8e0f",
+  "hash": "63f49b6a54d5fe87eac654d2c8b6d562",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/adobe-firefly": {
   "hash": "3727e54195c259669acb2c92a646b4bd",
@@ -580,9 +580,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/adobe-firefly": {
-  "hash": "938d274b3277708dccf42fc1b8d4799b",
+  "hash": "94e1950b7b7ae0ba14624058f232333c",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/ideogram": {
   "hash": "f27e1e1d16385cc194ef3b3567464fc6",
@@ -590,9 +590,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ideogram": {
-  "hash": "c19815ae6c7eca299b223c485b902618",
+  "hash": "111cd3b1008629eb6218d228b0bb8f3b",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/leonardo-ai": {
   "hash": "5ba73c0452e7df407a376097f409db2c",
@@ -600,9 +600,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/leonardo-ai": {
-  "hash": "759a8a1de2c43a4879b8e5f731402c1e",
+  "hash": "60ff9e1be8dab09990ea5d2c22c7feaa",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/recraft": {
   "hash": "0d61380639ef608eb9947cac30b255b9",
@@ -610,9 +610,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/recraft": {
-  "hash": "db716e4b4fde0acb1bf0895d893c8f00",
+  "hash": "2344012a21286c8e2cbf12bc52523372",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/flux": {
   "hash": "daa3dfe16217f960693e13a3c1b23c03",
@@ -620,9 +620,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/flux": {
-  "hash": "a851f6ed85fbaff065c5cb2f158f5d8d",
+  "hash": "2345edc8cf4ac23566704f3567d85aa4",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/stability-ai": {
   "hash": "3c7727a85cf5f72feeee9938e479dcb2",
@@ -630,9 +630,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/stability-ai": {
-  "hash": "37e4ee5e65fe364921fb53687cd194e3",
+  "hash": "bd7f2040261c2926bcf610050ecb487c",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/krea": {
   "hash": "087b00ddd236c70faa026660abfa6ee8",
@@ -640,9 +640,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/krea": {
-  "hash": "43ab4a186fea619728867ade9e4e7a1d",
+  "hash": "d54ad6b3ef4bba3ce208060aa9822906",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/playground": {
   "hash": "6ca72d047809e24ac9bddd6e09b301b6",
@@ -650,9 +650,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/playground": {
-  "hash": "d15c479859aacd6c83238890a7ce43d0",
+  "hash": "b1a59128d343912612aad30e8864ff0b",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/photoroom": {
   "hash": "bbf280ce4c984117238046d56b1627b7",
@@ -660,9 +660,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/photoroom": {
-  "hash": "e80217d4abe85b26faca5144328ad1d8",
+  "hash": "8f3a5bfdfa9a885ab71d879b3767b292",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/remove-bg": {
   "hash": "628e20086eaa6be3fa72774131ee31e2",
@@ -670,9 +670,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/remove-bg": {
-  "hash": "997fc90fef5bbf110400235cd6a266c4",
+  "hash": "fcab6390c1e460271bfeaf05bdfb3576",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/clipdrop": {
   "hash": "79fd2acdb7095ff1f3524ee55189e2f2",
@@ -680,9 +680,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/clipdrop": {
-  "hash": "04a4551794112d399912cf3aca060870",
+  "hash": "ccc5a4b5ac1da273a8aaa369c8d876c1",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/runway": {
   "hash": "3d1b9d088a5445f54c0333083a11f77b",
@@ -5580,9 +5580,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/audacity": {
-  "hash": "760f91446d283d3d1109fe196fafdced",
+  "hash": "76a7c3673d43138800e43148787bd870",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/ableton-live": {
   "hash": "ae6512e0f8c2ff04b127a16059ab6c2b",
@@ -5590,9 +5590,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ableton-live": {
-  "hash": "724211493ac396343cfd04c2f5eeba7a",
+  "hash": "c19137da8d63c2e2441c5e3fcb55ff00",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/fl-studio": {
   "hash": "9d13ad1b2dbd3eca2114b99f9d13516a",
@@ -5600,9 +5600,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/fl-studio": {
-  "hash": "7d12762b6df18bb2c3622e454fe2af44",
+  "hash": "38fe563cd068dc5ef3e588e5c66704e5",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/logic-pro": {
   "hash": "9f21a2a115d2a1e67e746ffc4ede150a",
@@ -5610,9 +5610,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/logic-pro": {
-  "hash": "d1dd5acb37b045effff61b122f96a1fa",
+  "hash": "6f14001600e972fb198adaeb522d7f44",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/reaper": {
   "hash": "59cd13958ca30906e77a7f7cc41cc633",
@@ -5620,9 +5620,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/reaper": {
-  "hash": "e4226a559d93f63977b0d8d30ccb4901",
+  "hash": "e0ea649cc0fa5eb778fc39ae27d46edd",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/garageband": {
   "hash": "9db175b721d60ec1a9681dd2af346ac5",
@@ -5630,9 +5630,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/garageband": {
-  "hash": "1526eacce5296d186bf4d8fe5a702570",
+  "hash": "b6c8a845175f43dc33f713eee1c58e9b",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/pro-tools": {
   "hash": "6f5606e8babb723b64badbde4d9250db",
@@ -5640,9 +5640,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/pro-tools": {
-  "hash": "063f5a90a9e9ae641122c9b8d458564d",
+  "hash": "5115707bf01d0d534660b1e65c7f87c7",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/cubase": {
   "hash": "0a9106ee2351a561008f5831ae1899fb",
@@ -5650,9 +5650,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/cubase": {
-  "hash": "820d9507194fc7ef2e8395608fb84df2",
+  "hash": "4095befac57de9f721fb99dcb7244a1e",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/ardour": {
   "hash": "25314d9f5a91504754a8e64a4e3d8553",
@@ -5660,9 +5660,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ardour": {
-  "hash": "c48e5cf460c2d2d2c1b5e08685735051",
+  "hash": "d97bbce7db2d9d6832c0385206e457cf",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/lmms": {
   "hash": "884c883d656999b0a8e0e8f95dd85385",
@@ -5670,9 +5670,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/lmms": {
-  "hash": "8f6f6213fb6a24c1fbace1cb8be3c9d0",
+  "hash": "780aa9da1312100526c729047dded1e6",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/bandlab": {
   "hash": "321cd17255f42e1a4810997b1436d9ba",
@@ -5680,9 +5680,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/bandlab": {
-  "hash": "4cc43c74f2a6dbca804de3ab86f3bd45",
+  "hash": "10b6eb1ef509e894f3ceed5821690e13",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/soundtrap": {
   "hash": "0a4750e24ccbdb961dd463ba55fa10a9",
@@ -5690,9 +5690,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/soundtrap": {
-  "hash": "dd2a55f0f66664d6b5477c1aaf5f84ed",
+  "hash": "a0be40d2b3db54351b4674478027edf2",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/gamma": {
   "hash": "a4990d5e7c4ff9cda52075e6fefbcf3d",
@@ -8690,9 +8690,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/napkin-ai": {
-  "hash": "be31cf1c2a0e961c8865f770145f0d37",
+  "hash": "7678e98d0ab445dc75e2f95865372d98",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/uizard": {
   "hash": "6c88b41fdadce5997658b5133eca5129",
@@ -8700,9 +8700,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/uizard": {
-  "hash": "0b144ae59479358b11d488c08f03dda0",
+  "hash": "82f826881d818e5f52768e68e267d5e1",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/visily": {
   "hash": "e2be9c29b9c2cd3d23711c13b500f216",
@@ -8710,9 +8710,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/visily": {
-  "hash": "9916180b6f278de9f46276488f0ce58d",
+  "hash": "5cc8bcfd68a8880e56dfcb63d4cb9642",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/google-stitch": {
   "hash": "a46d607ca6ad11517de4aae5bdb57d5b",
@@ -8720,9 +8720,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/google-stitch": {
-  "hash": "6658340fdfb84ca02dd6ebd956213728",
+  "hash": "e32102563728150e061f36a5878cd7c3",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/looka": {
   "hash": "eb3f4fb686c6b92f2766221e5d600d52",
@@ -8730,9 +8730,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/looka": {
-  "hash": "1e2d53540f2a61533f5e36339d3771e6",
+  "hash": "6686825c56c33efe6b64dda483fe834b",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/brandmark": {
   "hash": "be5c8cc0c0ef1b6a1b4e1321ce777397",
@@ -8740,9 +8740,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/brandmark": {
-  "hash": "578f50f67b47eb398453d8858a51c2ae",
+  "hash": "b10ecead3f441fa0062ab873b72bf56b",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/designs-ai": {
   "hash": "c5ff907098c872d65584c061e5caad11",
@@ -8750,9 +8750,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/designs-ai": {
-  "hash": "5653d666f25771c13d9886545e2375b6",
+  "hash": "35a17508a4068e82b070bbd2c9587a85",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/lets-enhance": {
   "hash": "db6443dca49f3a9006e2c4070a2e5c3e",
@@ -8760,9 +8760,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/lets-enhance": {
-  "hash": "0f899b13d85fcfd87098df04b3d267b5",
+  "hash": "9605bb3ae7a64c01667c92fc61ab37ba",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/topaz-labs": {
   "hash": "4365632a0d7255ee42a6fe50df1bb0e1",
@@ -8770,9 +8770,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/topaz-labs": {
-  "hash": "0a585b8fdb8e92752e89fb3d1b0c636a",
+  "hash": "901ccd7443bd6847024b1794d2ca2112",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/magnific": {
   "hash": "232359cb69f2b0f16e2198a07a4f5efc",
@@ -8780,9 +8780,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/magnific": {
-  "hash": "6be9934c269f6884585e54288e857d95",
+  "hash": "cc9cc24e7b5642d818c85639b433070a",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/upscale-media": {
   "hash": "bbb178075788ab66ee5e709dbc0b0236",
@@ -8790,9 +8790,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/upscale-media": {
-  "hash": "05b064e661877370dd38fae9e36dc30c",
+  "hash": "0e9f8398fd173f5198b584adead46788",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/cleanup-pictures": {
   "hash": "78b938ca92de966507be5a20d65619a6",
@@ -8800,9 +8800,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/cleanup-pictures": {
-  "hash": "f8b03baac620dbf432a223d614b47270",
+  "hash": "7c7ded0fccf014a2137e822658c0de21",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/pixlr": {
   "hash": "193b489136f22f3a78fa0c279bab94a6",
@@ -8810,9 +8810,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/pixlr": {
-  "hash": "1391d4e861003c59e163a1ec8ba3c7db",
+  "hash": "da8943720eae006c3617c6c794b7e5b4",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/picsart-ai": {
   "hash": "e5c23051433c75b2d12363b07c34e564",
@@ -8820,9 +8820,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/picsart-ai": {
-  "hash": "dd86be3969acecc37d6a6fbd2eaf084b",
+  "hash": "43e055e8ee62ec71028abbe8d902819f",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/hedra": {
   "hash": "e7dde23ccec97dfa6dc186ba27330ea7",
@@ -9400,9 +9400,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/hugging-face-diffusers": {
-  "hash": "19b924e58e61478743bf6db223c110f7",
+  "hash": "c90f346aa838a6d813e549e200d427f0",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/sentence-transformers": {
   "hash": "695602f57d4329f566bac5734599eaba",
@@ -12170,9 +12170,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ai-for-google-slides": {
-  "hash": "2ed1fd658035f2c929bccb854cae8557",
+  "hash": "b2d4b2fb103e28655068d88fb1a1cea0",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/ai-image": {
   "hash": "acafa9686151e3fe35b283e05d3958ac",
@@ -12180,9 +12180,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ai-image": {
-  "hash": "83c70ea2b2ca131ddb8efdf82aa90f7f",
+  "hash": "8b4a7c984ad7f5c4cf56e7db042e2725",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/ai-logo-generator": {
   "hash": "dd785bb6557e09d2d6c56a072b68ba2a",
@@ -12190,9 +12190,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ai-logo-generator": {
-  "hash": "2c4bafafb3ac130b4d8e287877664ae7",
+  "hash": "75bc83c62e2291d373b59a1347f0e317",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/ai-mastering": {
   "hash": "ca6fdb71c21a15f8a57ef0fb552cd4e9",
@@ -12220,9 +12220,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ai-photo-forge": {
-  "hash": "e6b347eeb1342825ffebe76b06151b16",
+  "hash": "8a34dd02c20937a543a0160c3ae2c540",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/ai-poem-generator": {
   "hash": "faad37ac78d50da05485f61fe37b92ef",
@@ -12290,9 +12290,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ai-virtual-staging": {
-  "hash": "e49f15be63ec3618751f18340a102201",
+  "hash": "e17bfa58211f359ba60e53382e7809a0",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/ai-voice-agents": {
   "hash": "edab75b2984aa709aebb8f7737a57a35",
@@ -12400,9 +12400,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/aiphotoeditor": {
-  "hash": "ebbb95554decb5afb370742b8b7040ff",
+  "hash": "faecf143d3e181753f16999177df1bae",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/aiprm": {
   "hash": "6ad4acacecd8df144379958ec5555aad",
@@ -12440,9 +12440,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/aivg": {
-  "hash": "b5bceee4689a4cdd8748556298516aaf",
+  "hash": "b89f72324f78a9198623cd33d0a28d66",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/aiwatch": {
   "hash": "ec5be558ad1f67c33e3c0a19edc14544",
@@ -12500,9 +12500,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/amymind": {
-  "hash": "2e957e4f8227a485aabd7ffc79b377e9",
+  "hash": "ebc166bfcc1158879f7fa84943cec6ff",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/anaqua": {
   "hash": "5690e984d9b115829a5840ce14656f23",
@@ -12570,9 +12570,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/artbreeder": {
-  "hash": "9851e4b57a859e491b8dde415dab2f12",
+  "hash": "9dbf5a64926cc8a2156b81e37b6ee1cb",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/askcodi": {
   "hash": "4afbb9c9d32c747051ae23f837dbdb55",
@@ -12690,9 +12690,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/bing-image-creator": {
-  "hash": "b0c30be51e8ea01b22276ad2c7a2cf5e",
+  "hash": "ab0dff7acf17f646b97e22e7940fdbbb",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/black-headshots": {
   "hash": "d33eb6d1eff0585169ada8661e59b8cf",
@@ -12720,9 +12720,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/bluewillow": {
-  "hash": "b459b336a618299cc49594079a4fe23f",
+  "hash": "0978b4ecf4e4557e066c8aa3d5b0136a",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/brave-ai-search": {
   "hash": "8c578877805fe28bc7e8063eb5dd3ef8",
@@ -12780,9 +12780,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/bulkpictools": {
-  "hash": "c97bc06886255542b35d18848dd50d71",
+  "hash": "3322be9f232ba7811ed70dfad70fe5b5",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/burnrate": {
   "hash": "ffdcc92d93cf140d57d5579c2bd1c5f1",
@@ -12840,9 +12840,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/chatppt": {
-  "hash": "d94803d707a32d182f6e6cdec6459e65",
+  "hash": "2cacd4bf09c4cc5d5c448e4ff92f3078",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/chronicle": {
   "hash": "5766ae3c17bf86b5ffc13aa9979611db",
@@ -12850,9 +12850,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/chronicle": {
-  "hash": "46336f863ff24664c34cb4d3ef6f4449",
+  "hash": "8f8d7045313786bee5fc9eeea51418a7",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/civitai": {
   "hash": "171acce830fb1abbf3bb43aac076136b",
@@ -12880,9 +12880,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/claid-ai": {
-  "hash": "f599a8c76d74750035baa98f657df0d3",
+  "hash": "20f398214979ccfd9fbf894510006dff",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/cleanlab": {
   "hash": "675cd8e80e3615149dbfb646be12cef7",
@@ -13200,9 +13200,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/dressmeai": {
-  "hash": "99c6fec554f88a708d353857b10ecfa1",
+  "hash": "f6fcccd1069c837658a090a29218b779",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/dubverse": {
   "hash": "41c7ef7019e0db408e1f39e008348e7e",
@@ -13260,9 +13260,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/edraw-mindmaster": {
-  "hash": "634b5da41521c04f37c3a3339d4cffe1",
+  "hash": "7f6cb2e0994026a010d8c1596b5e93fc",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/education-copilot": {
   "hash": "b15dacf4fd1921d3f9d78759b7b95c39",
@@ -13370,9 +13370,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/eye-type-detector": {
-  "hash": "46460bfcd8293f10144304eba07e11d3",
+  "hash": "7dfffce8bf976850424178750aedecd5",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/fabdream-ai": {
   "hash": "24842e10e9a41e72c3fd04e70bf0fcb0",
@@ -13400,9 +13400,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/fantasy-ai": {
-  "hash": "155003e5cb65c16869025b2ccfd222e5",
+  "hash": "fc429d6188e38cec8a86e0802f83c872",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/fineshare-finecam": {
   "hash": "976a1379ce151f79872577b4c0c0cda5",
@@ -13490,9 +13490,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/fronty": {
-  "hash": "e5b6a336b1d3f377e3223933c2a3c63b",
+  "hash": "3250ce9f6577521a024918a7b480f9b0",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/fynk": {
   "hash": "c228bb1a33a9be94fc5af7fbe5d392d4",
@@ -13530,9 +13530,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/generated-photos": {
-  "hash": "b44d3eb37033117c0e107ade9e6b6524",
+  "hash": "a42e06b83264d9807807db141e7fe277",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/genie": {
   "hash": "53d35e58818faf3d95f363474603c44a",
@@ -13620,9 +13620,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/gitmind": {
-  "hash": "27e26983043a720185ed0585bcbbb08c",
+  "hash": "c68749711af6c0a7eb6b054b35506b99",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/glasp": {
   "hash": "27f259a4b27798d387c2196e6cfe68db",
@@ -13700,9 +13700,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/gpt-for-sheets-and-docs": {
-  "hash": "9f1effb52e8fd2008263f306800ffabe",
+  "hash": "d33231825b80645dd42dbd9a5b600dba",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/gptexcel": {
   "hash": "5fbe2f1546d540cd48de19257eef46f9",
@@ -13740,9 +13740,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/gptlocalhost": {
-  "hash": "6951ca62462310aab61c65fa86f32ae5",
+  "hash": "628e04c41197898957d63be1a395ddea",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/gradgpt": {
   "hash": "7750901f0ef6cc471350ed09476e8d13",
@@ -13850,9 +13850,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/hey-data": {
-  "hash": "a24fb1fca2b6efd664fcb2fe5309d36a",
+  "hash": "c102b5a4e0d82fa3b2e14313f08fcb46",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/hyperbrowser": {
   "hash": "810d11e3d7e1bb87018a015a21fcc73f",
@@ -13910,9 +13910,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/hotpot-ai": {
-  "hash": "6069f1a8c028af4d3857f7fc55827739",
+  "hash": "e0936cf291e827b43edc082afc19aac4",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/human-generator": {
   "hash": "7595e61d30d6450b0942d00d9965cdad",
@@ -13920,9 +13920,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/human-generator": {
-  "hash": "ff3cadd74a80296de7aae6ba2fbeacb3",
+  "hash": "e0a586b3912018d5d77f3faef2145b3f",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/inline-help": {
   "hash": "234561876a6dce31f170e48b6cb49422",
@@ -13940,9 +13940,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/localepack": {
-  "hash": "0ad423261d044caf7cb258fa10bf0cdd",
+  "hash": "7ca3767156984d2297c08a8550ccb057",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/highreach": {
   "hash": "a37543c8995bbda41731c6b7626bcf31",
@@ -14090,9 +14090,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/azuracast": {
-  "hash": "a09dba18ae9eb5b8920f217f53e58ce7",
+  "hash": "323e2038b780c9076c34020361c66a9c",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/calagopus": {
   "hash": "8912478f6900e306c0208980b2cc4da6",
@@ -14210,9 +14210,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/selecttranslate": {
-  "hash": "9307c34b54d68eff92e36dbebc000dc0",
+  "hash": "47905245a431f064d64d5bca29f02973",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/maza-ad-blocking": {
   "hash": "8c651303cc017c75a51e658219c66103",
@@ -14670,9 +14670,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/img-upscaler": {
-  "hash": "0682401f788fa150ca06902c4bda6089",
+  "hash": "f9c31875cbaa57b2f4e0ab24dfbd98d7",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/presspulse-ai": {
   "hash": "003d59bff3ffe78412a907c9154ebeba",
@@ -14710,9 +14710,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/x-doc-ai": {
-  "hash": "9be5af9b6a31687407921bfdb56ca431",
+  "hash": "47513873ff32eec6d863dba0767da9ae",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/lex": {
   "hash": "933b614b1793cbbf967b1c2ec11cfdfc",
@@ -14810,9 +14810,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/funkwhale": {
-  "hash": "725417132286cf45f4ee4d869dc6a9ba",
+  "hash": "d93113d89c429cf76dce60d9b0ec5882",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/agency-swarm-by-vrsen": {
   "hash": "ac057c34d0dbe9dffa8c37067b608af0",
@@ -15090,9 +15090,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/powerpresent-ai": {
-  "hash": "1affc5a5bd7aaec1dc6468f3de265794",
+  "hash": "76551c5428438bb5ce8884a3c6486026",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/presentations-ai": {
   "hash": "b41163071b20dc8ea0f812f929475c42",
@@ -15100,9 +15100,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/presentations-ai": {
-  "hash": "271aec932f7adaac9064046a16ae57aa",
+  "hash": "408b3611eced2c4e10d58dd206aee86e",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/studyarena": {
   "hash": "88789568dbe0039c3641c0f8bb891d77",
@@ -15120,9 +15120,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/landscapioai": {
-  "hash": "c94f8eaf57e59ff9bf35210fc02fae02",
+  "hash": "86e6eb6f2363c44706395ee850dcf080",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/agent-qa": {
   "hash": "a7edec3965745a9377f54dde517235e2",
@@ -15360,9 +15360,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/lexical-art": {
-  "hash": "2aeca0eab3da05058585e8727f89f9e4",
+  "hash": "2a12596fc198eeca225253795b57d249",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/agents-by-ai-waves": {
   "hash": "12aa3b91aeedeff6484f91cbb7967745",
@@ -15560,9 +15560,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/trancy": {
-  "hash": "aa8e92b7d493964cd793f3d8ca8e02ee",
+  "hash": "9d8b87b1130d769e633945d4a5ed6d8d",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/inferable": {
   "hash": "b32cb2b0f62d448162c6be04dd3025fd",
@@ -15680,9 +15680,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/magic-eraser": {
-  "hash": "19472f96ba64b56dc3d1c6917083cc20",
+  "hash": "0a3cc1598c6624382e892bce0efe94bd",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/localai": {
   "hash": "85593b901e63282749f811431e1d1a49",
@@ -15830,9 +15830,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/koel": {
-  "hash": "9c2e869f9aede3df82d5d661038d00c9",
+  "hash": "a30848a24b4b982aa8602ce483f2dcfc",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/lervos": {
   "hash": "0c2635fbe5f1c517f84ddcd455d39ec6",
@@ -15880,9 +15880,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/slideswizard": {
-  "hash": "7fa5927aa774d12641992ca34190c803",
+  "hash": "8ca1de7509eaf292d3b00a937f20cb70",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/mypicnow": {
   "hash": "1d54a725d8238adcf443466c43ccb627",
@@ -15890,9 +15890,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/mypicnow": {
-  "hash": "c9b7643cfcc4bc73fea5ac914467f103",
+  "hash": "066dafac36f829d39166f65baa3c57ec",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/netron": {
   "hash": "1a61a2abede5429bda5915599bba8be3",
@@ -15950,9 +15950,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/libretime": {
-  "hash": "f2c18661bdb934342a6dbd971cde0b07",
+  "hash": "67c8ce68bffe00bc2ecf3ebc79e3ebc2",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/remusic": {
   "hash": "b5a53fd0b017278b5f284337e5d730da",
@@ -15990,9 +15990,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/nightcafe": {
-  "hash": "4d800baafa3a86070dfd4fa8c6ec9472",
+  "hash": "751c231edd2c5b6170400ff60968a46c",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/wordvice-ai": {
   "hash": "2892f5a22927dced31174dc0273d2639",
@@ -16000,9 +16000,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/wordvice-ai": {
-  "hash": "f82ed6a6105e7b9926974a6c72585496",
+  "hash": "664a9791a86c6ec50a75b2511dfa9871",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/neural-love": {
   "hash": "25978689f15b776c086621504686406e",
@@ -16410,9 +16410,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/magic-type-ai": {
-  "hash": "c7a94d7f6549b6d59c60b77e81d083ba",
+  "hash": "1ddd4016d39f1f8b86fbedc38761ae95",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/traceai": {
   "hash": "f87506d1763c56d368c31bbd05d8bd1b",
@@ -16530,9 +16530,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/whimsical": {
-  "hash": "9c8c2cc78217d6d95a82d0741ddb6300",
+  "hash": "e7162f1b3f995c103f7e2a672f6f2c72",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/photogenerai": {
   "hash": "f87bc41cf171cd263f59267696841d58",
@@ -16540,9 +16540,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/photogenerai": {
-  "hash": "1f77cd583e7c1195e1f4799f3f44c910",
+  "hash": "da03e1f2e69873cd679d2a8a78314913",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/context-engine-ai": {
   "hash": "45957142789ecef678d8017aa932e11d",
@@ -16730,9 +16730,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/photorestore-ai": {
-  "hash": "70643aceae5a96d273e98580769b1a45",
+  "hash": "a1866a37159a93a882ce2b1e3d10e8a4",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/photosstyle": {
   "hash": "8041426243747b67deb8bf7657f0a02a",
@@ -16880,9 +16880,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/photostockeditor": {
-  "hash": "040a2bcb27bab5dab9383efc0898c7bc",
+  "hash": "3d0d4e311787335de612e1c54b3279ca",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/dbt-llm-tools": {
   "hash": "76938a248f33653a1bad80d9b510ae15",
@@ -17000,9 +17000,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/mstream": {
-  "hash": "8d58169236d22dd149591929e70ec971",
+  "hash": "a9da907df38d257db2a99c41a0bac937",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/autodev": {
   "hash": "0a651a0bd90b28e109c764a438784c9c",
@@ -17150,9 +17150,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/namelix": {
-  "hash": "70c0d02f3e388a5037ff1209b088853a",
+  "hash": "69f06b8bf3661c29cf5e06306f48c230",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/bark": {
   "hash": "0ec54eed77b280c393a4f439cf643258",
@@ -17290,9 +17290,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/navidrome-music-server": {
-  "hash": "2728c99f2b9f680084789dbb819da51f",
+  "hash": "4b1d07ecf8fd17ef5e79aa912baefd78",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/suroi": {
   "hash": "7be02a66bfb641d877ded3d41307406c",
@@ -17340,9 +17340,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/plantphotoai": {
-  "hash": "fe28700dc2a46d44926bdb4accb990fe",
+  "hash": "d297a6c2a297cea0547568749c742e03",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/gpt-researcher-by-tavily": {
   "hash": "d999cc12792161a98c462a6a7bf5cf30",
@@ -17600,9 +17600,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/rao-edits": {
-  "hash": "c369fc05d7cf14bf8d27daf77a59b712",
+  "hash": "cdc55f84f6d6656942065eff932ed5b4",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/shortshort": {
   "hash": "56c5033c155adc6216c31a7d19c84675",
@@ -17750,9 +17750,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/restorephoto": {
-  "hash": "82b1b6f176e84e1940fd105b84eb64e3",
+  "hash": "1de7da2583b381590ebc130b60200ba5",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/shy-editor": {
   "hash": "0e84179e243d3c0898c74abf74d67999",
@@ -17820,9 +17820,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/pinepods": {
-  "hash": "b9235c03ad29f8fcef541c908b3a0d39",
+  "hash": "de4d42271b7f24d8a8b117cecf84788a",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/hypersomnia": {
   "hash": "07831db38020ae55b2bafd818c524ddf",
@@ -17840,9 +17840,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/photoguruai": {
-  "hash": "9087d975abe21333977bd0487017dd6c",
+  "hash": "f1da14a3338be433d4ca74f9dcfd329b",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/joinly": {
   "hash": "5f6249cd2fb7a11bbab8c055a3f8a2a0",
@@ -18050,9 +18050,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/stable-diffusion-online": {
-  "hash": "14dcfad43059f045e9616d1160a2253a",
+  "hash": "d1cd1034c619e33c7798c4da5fac3119",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/llm-embed-jina": {
   "hash": "ea78504f00c28214f23c2d478e4fbff2",
@@ -18270,9 +18270,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/suit-me-up": {
-  "hash": "eec4ad3d3018500d42ea9cbde8de8bc3",
+  "hash": "98a28c0b53370701daa65868496b7fbf",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/localgpt": {
   "hash": "fc6e4241ce661489040c0f7284101328",
@@ -18450,9 +18450,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/tinywow": {
-  "hash": "40002f93c24c44ad98ced97bfcaf8fb3",
+  "hash": "2c312857af0a1d176737caecc31b8f30",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/virbo": {
   "hash": "351b7fea4e9b3df102f5516d0f67afb4",
@@ -18640,9 +18640,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/tryonswap": {
-  "hash": "e76a4e3e84b887e68d58b1255f719c14",
+  "hash": "e8579da153a1b2dc1c4042e7aaed3781",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/thingsboard": {
   "hash": "186edfb330e04b2b56a3b83804034153",
@@ -18800,9 +18800,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/gonic": {
-  "hash": "03a2f6737c713d440181c490e6f3348a",
+  "hash": "a01b7c67f4e2a0795a5b22e4cad78bcb",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/ai-context-templates": {
   "hash": "cd05d27b4c1e4868b14bd1ed90ed48b3",
@@ -18890,9 +18890,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/wipe": {
-  "hash": "b500586ea70af4b4a7274d7037ddb2ef",
+  "hash": "83e44c73b4ca7344f500923060391117",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/lha": {
   "hash": "4955bab60de7e539c8f7fc6bd330902f",
@@ -18930,9 +18930,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/lms": {
-  "hash": "828c465491ca866297f956b865905508",
+  "hash": "42ce170034f438c93db01faff07b7ac0",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/rundiffusion": {
   "hash": "1640fa807d659be1dfeda963724a98ba",
@@ -19040,9 +19040,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/musikcube": {
-  "hash": "13b2391ba25896ac7ae590a1471f3d55",
+  "hash": "8aa90139d4bf815ab18cdf3e44b46a8e",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/sharegpt": {
   "hash": "3eea808f3e72b0a866d5cad3805ff1bb",
@@ -19060,9 +19060,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/yingtu": {
-  "hash": "98ee4f64f55348b9b3bb3870e5d44f95",
+  "hash": "ac9071433d9b556f53462ba27e44633e",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/ovenmediaengine": {
   "hash": "3b0a0228b96323012f9a5437dd8199af",
@@ -19120,9 +19120,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/polaris": {
-  "hash": "c40ecccb1f7d0a128c5e44c5f92ea408",
+  "hash": "4245f5a7a807980cc7a44aa3b182d6e5",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/slate": {
   "hash": "483d9c42f40197182a5593b8a24eef81",
@@ -19210,9 +19210,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/snapcast": {
-  "hash": "f1b3a4b184af579de42af0b4fbe185a8",
+  "hash": "df0445ea75b4c37f51dc2170e3f1200b",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/deforum-stable-diffusion": {
   "hash": "4d94d49f81c2cfd21ae877ca781b9303",
@@ -19250,9 +19250,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/supysonic": {
-  "hash": "183592fb25bd354005219959856c11ed",
+  "hash": "b4f757ce4834d91532749b916b2dc1e5",
   "fingerprintVersion": 3,
-  "modified": "2026-10-08T16:04:55.459Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/googleapis-go-genai": {
   "hash": "0be43eb08225dcfdbf08c2df8cd8c638",
@@ -19390,9 +19390,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/stable-horde": {
-  "hash": "f425f7a0b49f6d367fc96f4996cb8500",
+  "hash": "c03b2976803c1bb098a995cf11c2eda2",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/xbackbone": {
   "hash": "1c5629df6c77ffff8df1683cc7ce9b30",
@@ -19490,9 +19490,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/virtualstagingai": {
-  "hash": "676214d77425da3f108988cb1c0fffc6",
+  "hash": "b3b88fff1459c5618bf5aa7f2d4e70e6",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/files-sharing": {
   "hash": "da06c54ef4e07c46129708d70f27b01a",
@@ -21280,9 +21280,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/imgkits": {
-  "hash": "4e40e0e413e45fa9fb95cbb41c79aea6",
+  "hash": "bffffcc2e5e0cb52afde145b1f4c518b",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/transmonkey": {
   "hash": "2950579901b986e02fa22a477a5dde86",
@@ -21290,9 +21290,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/transmonkey": {
-  "hash": "4378cf6fda84d1c495b217a6b106731e",
+  "hash": "f8810b29b8d3feb296e8a58e675a3a3a",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/teachany": {
   "hash": "41dc4cf84078e7c8aeec473781ff9070",
@@ -21330,9 +21330,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ai-image-editor": {
-  "hash": "a5c1bb0b203cb2ec848f7905963287b0",
+  "hash": "99162d54119305b51eb59aeaf14eacf5",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/curbora": {
   "hash": "c81061baef921106f92adc98a4547b7f",
@@ -21340,9 +21340,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/curbora": {
-  "hash": "da9ad88499772e85dcd590f4fc541c78",
+  "hash": "bda10cf56c44f2fefb9bdbaced2df7ca",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/advelum": {
   "hash": "3ebb89f49b43842c350ec4de019b9b34",
@@ -21360,9 +21360,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/image-2": {
-  "hash": "55e28ae38673abc1466fa1408dbfa862",
+  "hash": "18ab873a7f7055cc6a5d87f94eb85a02",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/flux-2": {
   "hash": "dfa2391aab969c46644f5fca4b857ffb",
@@ -21370,9 +21370,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/flux-2": {
-  "hash": "223883d46af882530b5b6e3d83bfe871",
+  "hash": "563a17c3cb30fe32653608e7c5268186",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/isrc-finder": {
   "hash": "d91d09517841a14a078cd264be10c876",
@@ -21390,9 +21390,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/sceneflare": {
-  "hash": "428c80fda296265ac2bb385379717e96",
+  "hash": "e887bb99fbc74127f89a2cbc8bef7a24",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/love-story-movie": {
   "hash": "350314a1ff14a8ca106f9ef13e9f2f81",
@@ -21445,14 +21445,44 @@
   "modified": "2026-10-29T08:45:00.000Z"
  },
  "/tools/hausdraft": {
-  "hash": "f3b4998afe165a0bcb4601471214dc21",
+  "hash": "d37205c4eb5e70d6bce352c39cbde860",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/alternatives/hausdraft": {
-  "hash": "8ba45ede5081f00f538a1a377c0e1766",
+  "hash": "169183fb23e66ffdcbd9bf7283d1d4e1",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
+ },
+ "/tools/ai-music-mastering": {
+  "hash": "5778ab190f2276ddfddebac387710f4e",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T09:00:00.000Z"
+ },
+ "/alternatives/ai-music-mastering": {
+  "hash": "144b7949537c879e64bb7ae940353b01",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T09:00:00.000Z"
+ },
+ "/tools/book-cover-generator": {
+  "hash": "683c6df3d512a2d0a7c74438781342cd",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T09:00:00.000Z"
+ },
+ "/alternatives/book-cover-generator": {
+  "hash": "f27a917f243f98a862b9f284a5971da5",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T09:00:00.000Z"
+ },
+ "/tools/transly": {
+  "hash": "e99adac536bf6240d5271321d007a782",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T09:00:00.000Z"
+ },
+ "/alternatives/transly": {
+  "hash": "86080e9a19176b5a7a401697e5383e0b",
+  "fingerprintVersion": 3,
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/smartcat": {
   "hash": "b96bcc2ded49348871bdbf7fb5c83b73",
@@ -21460,9 +21490,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/smartcat": {
-  "hash": "16efeb14fc6aa3c6302a7f1474b169ef",
+  "hash": "33d2209f3a10c5b1b30d13913c3318c1",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/unbabel": {
   "hash": "e7e1bc202fde87e4fa24cea45de86861",
@@ -21470,9 +21500,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/unbabel": {
-  "hash": "13d1869a286eae36fee042e38a34eef6",
+  "hash": "7c615238154fb557f64515078e2ac949",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/xtm-cloud": {
   "hash": "6b174f36d3b907f2033737026e69c40d",
@@ -21480,9 +21510,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/xtm-cloud": {
-  "hash": "7fa0733e31c07a890e28899d48387391",
+  "hash": "6149b83f71929e500cb063b19df4a3ee",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/google-cloud-translation": {
   "hash": "7179a7a38f7561d47429af35cd187425",
@@ -21490,9 +21520,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/google-cloud-translation": {
-  "hash": "a54df0e2f31eba8ba210f3c25f8e065e",
+  "hash": "b8261bbec469207cb2258bb532cacf6d",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/azure-ai-translator": {
   "hash": "46be44480be4d98f2c2508bfbf8eae87",
@@ -21500,9 +21530,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/azure-ai-translator": {
-  "hash": "7dc7e166c3cc856b9d214d531705119d",
+  "hash": "42ce638141d09cfb5933b6a17d01c865",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/amazon-translate": {
   "hash": "99d36300742525c1a75f9f9a398d2251",
@@ -21510,9 +21540,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/amazon-translate": {
-  "hash": "9d27b236ed71fd7f902feb10924dfc73",
+  "hash": "23c4543c769b8e2b319cf345d3adf709",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/naver-papago": {
   "hash": "65d588e1f12081f833ae1914020e6411",
@@ -21520,9 +21550,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/naver-papago": {
-  "hash": "aa20a10beb699a9d7e20a4f327fa3147",
+  "hash": "7ddf885b2f4a83677a31bb6a1c6e9429",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/reverso-context": {
   "hash": "e95d52d158b9162c6e3a8abe12eacf5e",
@@ -21530,9 +21560,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/reverso-context": {
-  "hash": "c44b33fb40462becda9d7bf6998f6843",
+  "hash": "b14478dde5cb6f5c16de474cafa8fd37",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/lingvanex": {
   "hash": "2803ae8499e82e2fbf04dca873f2fe3f",
@@ -21540,9 +21570,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/lingvanex": {
-  "hash": "7fdf8c37cba59654dee78c7097137919",
+  "hash": "729e40099f313742be56b4baf5fb16b7",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/modernmt": {
   "hash": "e3ff091fabbdb55d06a86bb4e18c6d34",
@@ -21550,9 +21580,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/modernmt": {
-  "hash": "ee688aa198889ec936cad29cdd0b25f2",
+  "hash": "8d3e2376bb11c745c25f4383d876ece6",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/matecat": {
   "hash": "15ca20ef3c77c870fb9a9ae019c96e65",
@@ -21560,9 +21590,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/matecat": {
-  "hash": "52be9045508c5f96447edae3ed73bb49",
+  "hash": "ddc4abe339f01e473caa23801db64c51",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/wordly": {
   "hash": "52cdc69ef4b3933eaf29644f96e2da86",
@@ -21570,9 +21600,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/wordly": {
-  "hash": "a66ecfb3b8ad18ca9179141312b53009",
+  "hash": "3946bfc6be3024bb2f907033a27d801f",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/trados-studio": {
   "hash": "3edfda0b4cf0787d66864fd2d0e59c90",
@@ -21580,9 +21610,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/trados-studio": {
-  "hash": "52c645f10474a5804f40f4c18fa955aa",
+  "hash": "d81f82a65472b2b9dd92f4935ddd35a6",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/bureau-works": {
   "hash": "776c7b78cc766dbf9047d9e960403fe2",
@@ -21590,9 +21620,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/bureau-works": {
-  "hash": "61f40b938375fcc4533c105b1a8789d0",
+  "hash": "454977803b5d3d94ad54b5d2fd914d0d",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/linguise": {
   "hash": "0781ab71b27faec108c9d2702da635af",
@@ -21600,9 +21630,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/linguise": {
-  "hash": "b40613e5102007a931ee3580ca7925b6",
+  "hash": "3afca5415b6d016217c825218635ddea",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/memoq": {
   "hash": "dfcc33542048a05828531cbae2a03c67",
@@ -21610,9 +21640,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/memoq": {
-  "hash": "763fa48fb620ab9a7b4ac4fbd2c32f5b",
+  "hash": "61c708202d7be62fecc1c104638c9b38",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/text-united": {
   "hash": "ac8eb0469535a33748c75fe039cadfa6",
@@ -21620,9 +21650,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/text-united": {
-  "hash": "17072e8b3e910201b5befdcfc2910ccb",
+  "hash": "e8ca88b3e9670c9377745b99c4b82a69",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/gengo": {
   "hash": "672d5fa5962fa920d25528af6688b709",
@@ -21630,9 +21660,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/gengo": {
-  "hash": "4a26cbbc86e2a7b50903b3fa9ce320fc",
+  "hash": "fd19a58ab2d1d391dc3489caa119c771",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/pairaphrase": {
   "hash": "1205c6d767368948d720e98f4385786c",
@@ -21640,9 +21670,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/pairaphrase": {
-  "hash": "6ac9277e2011a97899ef778f0e091fbe",
+  "hash": "6740b621d6b9cd638a78748f93739d1e",
   "fingerprintVersion": 3,
-  "modified": "2026-10-22T14:00:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/tools/magicschool": {
   "hash": "1b5b86929815139218ac49b1ea4c20a6",
@@ -21980,9 +22010,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/categories/ai-image": {
-  "hash": "340e734adf5962d7369426903d8f6a46",
+  "hash": "9ea37b8b67b0d29e902c9cbfa802cd03",
   "fingerprintVersion": 3,
-  "modified": "2026-10-29T08:45:00.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/categories/ai-video": {
   "hash": "2c95a97b5d9659211169cb99ded1405f",
@@ -22180,9 +22210,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/categories/audio-production": {
-  "hash": "ac571bef1b8d2f60fece21825ad86abd",
+  "hash": "c690b78402254ad126acc3292651a497",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T18:43:34.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/categories/presentations": {
   "hash": "0717868ec73de720a4e6aa74af7f0d28",
@@ -22310,9 +22340,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/categories/ai-design": {
-  "hash": "cd21803a648bcfdd519c6a13af430445",
+  "hash": "39fa0aae0d04f923a817864ed7ab5538",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T18:43:34.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/categories/ai-productivity": {
   "hash": "d1f6215a6f7855f28ecc68b97c467e38",
@@ -22355,9 +22385,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/categories/ai-translation": {
-  "hash": "a86e6e2624c97122d438d866dd61bb4e",
+  "hash": "8d5ecde1420eab453180a7cfd7c68e90",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T18:43:34.000Z"
+  "modified": "2026-11-02T09:00:00.000Z"
  },
  "/categories/ai-finance": {
   "hash": "3255e055b3da308af79415e0312fda7b",
