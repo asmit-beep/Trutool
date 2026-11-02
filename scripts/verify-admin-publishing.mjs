@@ -54,7 +54,8 @@ try{
  };
  globalThis.fetch=async url=>{assert.equal(new URL(url).origin,'https://trutool.co');return new Response('ok');};
  const {refreshVisibility,visibilityPaths}=require(path.join(tmp,'visibility-refresh.js'));
- const refreshed=await refreshVisibility();assert.ok(refreshed.ok);assert.equal(refreshed.checks.length,8);assert.equal(saved.revision,5);assert.equal(saved.records[0].draft.body,'concurrent editorial edit');assert.ok(saved.visibility.checkedAt);assert.ok(invalidations.some(args=>args[0]==='/'&&args[1]==='layout'));assert.ok(invalidations.some(args=>args[0]==='ai-sources'));
+ const refreshed=await refreshVisibility();assert.ok(refreshed.ok);assert.equal(refreshed.checks.length,8);assert.equal(saved.revision,5);assert.equal(saved.records[0].draft.body,'concurrent editorial edit');assert.ok(saved.visibility.checkedAt);assert.ok(invalidations.some(args=>args[0]==='/sitemap.xml'));
+ assert.ok(!invalidations.some(args=>args[0]==='/'&&args[1]==='layout'),'Manual refresh must not invalidate every page through root layout');assert.ok(invalidations.some(args=>args[0]==='ai-sources'));
  globalThis.fetch=async url=>new Response('',{status:new URL(url).pathname==='/rss.xml'?503:200});const failed=await refreshVisibility();assert.equal(failed.ok,false);assert.equal(failed.checks.find(c=>c.path==='/rss.xml').ok,false);
  assert.deepEqual(JSON.parse(fs.readFileSync('vercel.json','utf8')).crons,[{path:'/api/cron/newsletter-welcome',schedule:'20 0 * * *'}]);assert.ok(visibilityPaths.includes('/robots.txt'));
  console.log('PASS: daily discovery refresh, failure reporting, AI cache refresh, and concurrent edit preservation.');
