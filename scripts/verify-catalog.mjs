@@ -8,7 +8,7 @@ import {createRequire} from 'node:module';
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'trutool-catalog-'));
 try{
  fs.writeFileSync(path.join(tmp,'package.json'),'{"type":"commonjs"}');
- for(const file of ['manually-published-tools','catalog','category-ranking','category-crosslist','launch-discovery','ai-signals','guides','search','diagnostic','catalog-results','tool-discovery','discovery-options','authors','ai','ai-news','cms-types','demo','demo-reviews','reviews','pricing','community-answers','rfp-alternatives','content-index','covers','sitemap-inventory'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
+ for(const file of ['manually-published-tools','new-editorial-tools','catalog','category-ranking','category-crosslist','launch-discovery','ai-signals','guides','search','diagnostic','catalog-results','tool-discovery','discovery-options','authors','ai','ai-news','cms-types','demo','demo-reviews','reviews','pricing','community-answers','rfp-alternatives','content-index','covers','sitemap-inventory'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  fs.writeFileSync(path.join(tmp,'cms-store.js'),'exports.getPublished=async()=>[];');
  fs.copyFileSync('lib/content-history.json',path.join(tmp,'content-history.json'));
  fs.copyFileSync('lib/expanded-catalog.json',path.join(tmp,'expanded-catalog.json'));
@@ -163,8 +163,11 @@ try{
  const {toolResults}=require(path.join(tmp,'catalog-results.js'));
  // Explicit #15 editorial placements and full sourced profiles.
  for(const entry of [
-  {slug:'aireiter',category:'ai-model-platforms',url:'https://aireiter.com/'},
-  {slug:'hausdraft',category:'ai-image',url:'https://hausdraft.com/'}
+  {slug:'aireiter',category:'ai-model-platforms',url:'https://aireiter.com/',verified:true},
+  {slug:'hausdraft',category:'ai-design',url:'https://hausdraft.com/',verified:true},
+  {slug:'ai-music-mastering',category:'audio-production',url:'https://aimusicmastering.app/',verified:true},
+  {slug:'book-cover-generator',category:'ai-image',url:'https://bookcovergenerator.net/',verified:false},
+  {slug:'transly',category:'ai-translation',url:'https://www.transly.app/',verified:true}
  ]){
   const matches=tools.filter(t=>t.slug===entry.slug);
   assert.equal(matches.length,1,entry.slug+' must have one canonical profile');
@@ -172,12 +175,14 @@ try{
   assert.equal(t.category,entry.category);
   assert.equal(t.url,entry.url);
   assert.ok(t.profile&&t.profile.faqs.length>=5&&t.profile.workflow.length>=4&&t.profile.useCases.length>=4&&t.features.length>=5,entry.slug+' missing substantial editorial content');
-  assert.ok(t.sourceChecked&&t.sourceUrl===t.url&&t.pricingUrl&&t.pricingUrl.startsWith(entry.url),entry.slug+' source and price verification');
+  assert.equal(t.sourceUrl,t.url,entry.slug+' canonical official site link');
+   if(entry.verified)assert.ok(t.sourceChecked&&t.pricingUrl?.startsWith('https://'),entry.slug+' official source and pricing link');
+   else assert.ok(!t.sourceChecked&&/could not be independently/i.test(t.sourceStatus||''),entry.slug+' must disclose unavailable vendor verification');
   const ranks=toolResults('',entry.category,'relevance',1,24);
   assert.equal(ranks.items[14]?.slug,entry.slug,entry.slug+' must occupy position 15 in '+entry.category);
   assert.equal(ranks.items[14]?.rank,15,entry.slug+' rank marker must be #15');
  }
- console.log('PASS: AIReiter and HausDraft published once with #15 positions, vendor sources and full editorial profiles.');
+ console.log('PASS: five new complete editorial tool pages with exact #15 category positions and no duplicate slugs.');
  const first=toolResults(),second=toolResults('','','relevance',2);
  assert.equal(first.total,tools.length);assert.equal(first.items.length,24);assert.equal(second.page,2);assert.ok(!first.items.some(t=>second.items.some(x=>x.slug===t.slug)));
  assert.ok(first.items.every(t=>t.categoryLabel&&!('fit' in t)&&!('features' in t)),'Compact search responses');

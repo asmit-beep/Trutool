@@ -19,10 +19,10 @@ export function rankedCategoryTools(category:string,all:Tool[]):Tool[]{
  const submissions=eligible.filter(t=>Boolean(t.profile)).sort((a,b)=>{if(category==='ai-video'){if(a.slug==='ai-bulin-47')return -1;if(b.slug==='ai-bulin-47')return 1;}return a.name.localeCompare(b.name,'en',{sensitivity:'base'});});
  // New, free submissions enter around position ten; paid placements will be clearly labelled separately.
  const result=submissions.length?[...regular.slice(0,9),...submissions,...regular.slice(9)]:regular;
- // Two explicitly requested, non-sponsored editorial positions. Place the
+ // Explicitly requested, non-sponsored editorial positions. Place the
  // verified profiles at exactly #15 in their primary category, without hiding
  // any other listings or changing sorting for searches/newest/A-Z views.
- const fifteenth:{[key:string]:string}={'ai-model-platforms':'aireiter','ai-image':'hausdraft'};
+ const fifteenth:{[key:string]:string}={'ai-model-platforms':'aireiter','ai-design':'hausdraft','ai-image':'book-cover-generator','audio-production':'ai-music-mastering','ai-translation':'transly'};
  const selected=fifteenth[category],item=selected?result.find(t=>t.slug===selected):undefined;
  if(!item)return result;
  const others=result.filter(t=>t.slug!==selected);

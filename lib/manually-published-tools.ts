@@ -65,7 +65,7 @@ export const manuallyPublishedTools:Tool[]=[
  {
   slug:'hausdraft',
   name:'HausDraft',
-  category:'ai-image',
+  category:'ai-design',
   summary:'HausDraft turns photos of real rooms, home exteriors, and yards into AI-generated design concepts while aiming to preserve the original space and camera angle.',
   fit:'Homeowners, renters, interior designers, real estate agents, and contractors who want to visualize finishes, furnishings, paint, or landscaping on photos of an actual space.',
   features:[
