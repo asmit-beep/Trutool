@@ -1,28 +1,28 @@
 {
  "": {
-  "hash": "2322f8c7fcbbdfa18177c389fe338256",
+  "hash": "e4409972bc7b355b0f4b344f82e443bb",
   "fingerprintVersion": 3,
-  "modified": "2026-11-02T22:20:02.748Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools": {
-  "hash": "2949c25955d4d2ecd6a39397616b62be",
+  "hash": "3453e0e3e5a38ebc2ad0197e2218d274",
   "fingerprintVersion": 3,
-  "modified": "2026-11-02T09:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/categories": {
-  "hash": "3fd133cbf772ded830fd098cf6770c3f",
+  "hash": "c54214e06260dbebf5bee3af5733d7f6",
   "fingerprintVersion": 3,
-  "modified": "2026-11-02T09:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/compare": {
-  "hash": "7a5cc23d4b45384b3e82250cd7c99cd3",
+  "hash": "414e5c875a1eeae380bbadfa1e9f6f78",
   "fingerprintVersion": 3,
-  "modified": "2026-11-02T22:20:02.748Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/alternatives": {
-  "hash": "a74222b7f325045968d53855288638c5",
+  "hash": "b0fc062e7554572dadbb62f6a1d05e59",
   "fingerprintVersion": 3,
-  "modified": "2026-11-02T09:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/guides": {
   "hash": "1e50101e9346948c0ab81388b2a651bf",
@@ -30,9 +30,9 @@
   "modified": "2026-10-23T12:00:00.000Z"
  },
  "/everything-ai": {
-  "hash": "bf01542bef5f674bf2b6e1bfddfc5a03",
+  "hash": "3ba49c71b0ff31c2070824c22410037b",
   "fingerprintVersion": 3,
-  "modified": "2026-11-02T09:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/community": {
   "hash": "93cb23c7350ae9af93a08b33a5253fd8",
@@ -690,9 +690,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/runway": {
-  "hash": "75220b393bf49e43dfe304d8e7bf035b",
+  "hash": "81418c04ce619b06aefeea062ec149d4",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/pika": {
   "hash": "e92a32363bcbaa331f5dcd44f70b8b11",
@@ -700,9 +700,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/pika": {
-  "hash": "6f5841575300b372ce39359aed2e57f4",
+  "hash": "19cac0104fd27fa93c4abfeea65daabe",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/luma-ai": {
   "hash": "0606265a13c93c806c863a3f3b77a421",
@@ -710,9 +710,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/luma-ai": {
-  "hash": "dcaa89410823d791c7090fcde72bdac3",
+  "hash": "36f2f2fe12470f648b3acda66d0fa2a3",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/synthesia": {
   "hash": "beb1c2caf4a3f21f311bf071d402fea3",
@@ -720,9 +720,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/synthesia": {
-  "hash": "77cca5079f073fe6650ed94b79c1a72c",
+  "hash": "c4f66a09b64c49869828a1baa9cdd6f4",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/heygen": {
   "hash": "cb60d1ad82f30fea592d70510712603c",
@@ -730,9 +730,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/heygen": {
-  "hash": "38b262c10423c5e8e51bfdcc1374be79",
+  "hash": "c8c5bbe5aa1a86166bc60306115d3421",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/veed": {
   "hash": "1bfe1e4e1af35b8a8c0a833e63d32fef",
@@ -740,9 +740,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/veed": {
-  "hash": "9b5cdf6110a4359390fb3b774871040a",
+  "hash": "0dc1616c6289eda2ef63062abfd537cf",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/invideo": {
   "hash": "f178298a1bb76610055a539435da3cf4",
@@ -750,9 +750,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/invideo": {
-  "hash": "88e8253f07db35315932bf709a2b541b",
+  "hash": "a207b634443276d83e9448a406fe0a01",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/colossyan": {
   "hash": "f22425ee6db1997efd59306353c31311",
@@ -760,9 +760,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/colossyan": {
-  "hash": "6a0557dd7092ae3a862d6db5a05aee5a",
+  "hash": "816dd93efcda5d645de03b888e4659b8",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/d-id": {
   "hash": "c7973d7d0453855723fb2b43d3a5dbd9",
@@ -770,9 +770,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/d-id": {
-  "hash": "c76d9fb6c6aa116a2e2a4f32592c02bd",
+  "hash": "d95cb9164da2ddd27c3ee039e062e5bf",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/kling-ai": {
   "hash": "9510945bdcaefb6ec7b3a0cb019c02c4",
@@ -780,9 +780,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/kling-ai": {
-  "hash": "6fcd24bea49ca51bd7723233b5e497ae",
+  "hash": "2c1aed541a57e253c350d76b7f1f7465",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/hailuo-ai": {
   "hash": "f8df54288b0d3bfb4fb25896b83af2f6",
@@ -790,9 +790,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/hailuo-ai": {
-  "hash": "31a78f8e0826deba4826976b5467fa9e",
+  "hash": "b0d10fe5c29a01d776f1e039036aa408",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/elai": {
   "hash": "d52ceb969c741e40ba63208671297b35",
@@ -800,9 +800,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/elai": {
-  "hash": "2a7b82c3dd2d33c6ab0b275078bd90d8",
+  "hash": "912a70a38f4d5419330a0b85fe717c02",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/elevenlabs": {
   "hash": "90131f88cb6745544b73d95e23990bf1",
@@ -8824,25 +8824,15 @@
   "fingerprintVersion": 3,
   "modified": "2026-11-02T09:00:00.000Z"
  },
- "/tools/hedra": {
-  "hash": "e7dde23ccec97dfa6dc186ba27330ea7",
-  "fingerprintVersion": 3,
-  "modified": "2026-10-23T18:43:34.000Z"
- },
- "/alternatives/hedra": {
-  "hash": "415cf04bef041d4f81590111332de5f7",
-  "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
- },
  "/tools/higgsfield": {
   "hash": "7812ddeecb38b19c56f7d22f7c08ebb7",
   "fingerprintVersion": 3,
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/higgsfield": {
-  "hash": "a0cf6fa5abb4d53079cc33c892b6d608",
+  "hash": "b94e32fdecdeec5bc95292f90b2baf15",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/lightricks-ltx": {
   "hash": "bcc5f9e3a458e433f32292a8c3c9d1d6",
@@ -8850,9 +8840,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/lightricks-ltx": {
-  "hash": "a52c0df3b4c19d803a1547ecb3aa46c0",
+  "hash": "f67176d62c9b8164fba583a23bdf7ad6",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/kaiber": {
   "hash": "cad39c8332c0ed8ec7530190a9881bdc",
@@ -8860,9 +8850,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/kaiber": {
-  "hash": "2a9d9e59d9014a2ed0cde57adeec937c",
+  "hash": "35ee9c6ec8dd357121026590abed0197",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/vidnoz": {
   "hash": "a2778966b081e53dd762eae3f9895d93",
@@ -8870,9 +8860,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/vidnoz": {
-  "hash": "06241ef185b52f9bf3247a6313a4676a",
+  "hash": "f11924f2ec757e6518eae451d83a459e",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/opusclip": {
   "hash": "133f2aaaf32dafc2658b3f031ee1f72b",
@@ -8880,9 +8870,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/opusclip": {
-  "hash": "8ff4c96224a99e6b545f982906d6afd4",
+  "hash": "6f3ae781643f101d321930ab2edb64c0",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/wisecut": {
   "hash": "5e9a86c7961c1430b1ab631cd35cd0e9",
@@ -8890,9 +8880,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/wisecut": {
-  "hash": "e63565e8c9abd29849320ee57b6713c8",
+  "hash": "d2d8472f3fbd9be285729807a33aea5d",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/pictory": {
   "hash": "34ae9722b97b3a517524f74c6f5788d8",
@@ -8900,9 +8890,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/pictory": {
-  "hash": "4149442a115903475e687083b5b01077",
+  "hash": "cc3a0bfe461ab410403a31e62a18f274",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/fliki": {
   "hash": "e9316a1616521cb33b6e3c430c17229f",
@@ -8910,9 +8900,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/fliki": {
-  "hash": "0a787e3c24ff94bae8f5a0a536531541",
+  "hash": "ccf97c2ce439587ccacb34a27c36c221",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/musicfy": {
   "hash": "e01ec47742120bdc4390ff7990dfa9b0",
@@ -10010,9 +10000,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/syllaby": {
-  "hash": "95ddac054b6a4f4bfc8e32ba1d7f0a2a",
+  "hash": "3386d4c7e545e8ec71f52fd1f689261f",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/captions": {
   "hash": "731f6a91054d560705b3fb50295c67d9",
@@ -10020,9 +10010,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/captions": {
-  "hash": "4e5748228396d47aec372c63a2791f1f",
+  "hash": "e50c3e47ea1a9c7e32e6ab240e7a5436",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/submagic": {
   "hash": "0887677032c8e6f1aa36ab461e68dd90",
@@ -10030,9 +10020,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/submagic": {
-  "hash": "bbd6d92fa5260ee678dc8a57b4ddc034",
+  "hash": "e86be611e7fffc14290ff7f80e05f357",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/klap": {
   "hash": "e1f1d28f412455c49affbc9d8b2dfd99",
@@ -10040,9 +10030,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/klap": {
-  "hash": "feafa099185cd8e26fcc100b9fd471bf",
+  "hash": "8d61f32ada8bbf54b139ede633013ea8",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/vizard": {
   "hash": "c567d6035d46d99b6a998e1d0cb43223",
@@ -10050,9 +10040,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/vizard": {
-  "hash": "5f046db64e64f48cc6722206286fd276",
+  "hash": "665003a3c9c840070b31fcd2b56d2bd6",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/flexclip": {
   "hash": "d7f1508710aa66f8c0d28e2269fb0046",
@@ -10060,9 +10050,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/flexclip": {
-  "hash": "dbcaeedad73f8290f58856821915c040",
+  "hash": "6fbc0e33f4e8d7373c2885bbccc66855",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/revid-ai": {
   "hash": "afcb428e2fac1d0d328f19bb2810452c",
@@ -10070,9 +10060,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/revid-ai": {
-  "hash": "1761f4a15ec2552398a890959ebb82a6",
+  "hash": "84f30432754641c671d2cba49b0c22a7",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/typecast": {
   "hash": "860e74804dcded4f632e21fc0f64eb4e",
@@ -10170,9 +10160,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/async": {
-  "hash": "0342c4551a76e7741304a04136c01447",
+  "hash": "89d5581778c6a88036f70cd226965545",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/notta": {
   "hash": "1db704da0c72897b861defdf19b84ec7",
@@ -12260,9 +12250,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ai-tiktok-analyzer-pro": {
-  "hash": "9403dd6a0ae1a8e8c0d11731d8b30a37",
+  "hash": "681c2a56b4ec76725f68657538c1e71d",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/ai-transcription-by-riverside": {
   "hash": "2794018151019eee0a1c8ff69d5ef33d",
@@ -12270,9 +12260,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ai-transcription-by-riverside": {
-  "hash": "188e82432a6b8ab9dceb45a90ec28702",
+  "hash": "de350e4a80bd133a1a60f82976606e33",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/ai-video-enhancer": {
   "hash": "0dd4b57b5825e404c36531facff2bffe",
@@ -12280,9 +12270,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ai-video-enhancer": {
-  "hash": "9bdcb14c503e71c299da5d376dcdbd98",
+  "hash": "227c9e1b2d3311d1b69a6a43e9d6d043",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/ai-virtual-staging": {
   "hash": "5e1cd3be892cb645337adb2670de088e",
@@ -12310,9 +12300,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ai-watermark-remover": {
-  "hash": "106c69e855b9fb9f5b80941b616da7e2",
+  "hash": "9cba2bb348515c49ca6ddc53e6ca2074",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/ai-wedding-toast": {
   "hash": "ac33d94575e3d29cbbf214766a1eed40",
@@ -12430,9 +12420,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/aisaver": {
-  "hash": "b43d3f5ffb46fc2d92c724c71c189374",
+  "hash": "409a2252dcf9156018dab41e6f8b4738",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/aivg": {
   "hash": "db042d515b33baacea59bd2e75d891e9",
@@ -12460,9 +12450,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/alimvo": {
-  "hash": "5b826c74ef456d02efae099e59202836",
+  "hash": "4bf3ae14e18546c4ca0ca259da8401d9",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/almowafir": {
   "hash": "15609c038f697702de78d00b74ee659d",
@@ -12640,9 +12630,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/avatar-ai": {
-  "hash": "fe65c62f7c2bca2ea99538cdc5c28f63",
+  "hash": "3ed8455fea00f47f4c97e09849102767",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/avclabs": {
   "hash": "08a8f20f0d64cb1fe3b2e8a38c890907",
@@ -12650,9 +12640,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/avclabs": {
-  "hash": "f3215be88e690497a766a8b2be3ffb97",
+  "hash": "f1f6f56a2e916e32cf0495fd674b9e3f",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/avvoka": {
   "hash": "3d173704aff6fe0f560aeaac00f451d2",
@@ -12670,9 +12660,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/based-ai": {
-  "hash": "73da3b28dd54a933ea3ef6664bde7113",
+  "hash": "a1a042892519918f8b0393446bb8d776",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/better-synonyms": {
   "hash": "b80d2ec981382c67bd72f5d77fa8f304",
@@ -12860,9 +12850,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/civitai": {
-  "hash": "b47024714dc4cdb4a6a9db964d4a69e4",
+  "hash": "2813e2f94309473e8e95d541327bb6ed",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/clacky-ai": {
   "hash": "7420a870c08266530f1e5573d4614e52",
@@ -12940,9 +12930,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/clipspeedai": {
-  "hash": "6d857f03a7f6f9a3c586b17d268ce869",
+  "hash": "7a5b7cc48ed7b65a15207f4ab07dcd6f",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/clipwing": {
   "hash": "ce2afbf4fe9d70ca3c7961f4249f264b",
@@ -12950,9 +12940,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/clipwing": {
-  "hash": "a87571d8cd949ecc899a302f96ff1a15",
+  "hash": "5ba751e4cf5823240411c2dae5c7f2f6",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/coachify": {
   "hash": "ca08652c00b91d0c7b4bfdfcaa5b5912",
@@ -13110,9 +13100,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/deep-dream-generator": {
-  "hash": "8ff6e9be0bb0504952baca011076588b",
+  "hash": "58732fd0350867111945a2cc37e8aa1f",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/deepl-write": {
   "hash": "48d9db33286990b5ac46e51f393ba853",
@@ -13170,9 +13160,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/domoai": {
-  "hash": "b9003c70a846935813dd1d2b3b1d8349",
+  "hash": "b5b55932df2821cd7f778c4b40786db1",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/dream-interpreter": {
   "hash": "b46b986699e73999a947b89f0ccbc07c",
@@ -13280,9 +13270,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/egirls-ai": {
-  "hash": "9103685bdf039fb5ec27a474331d2d07",
+  "hash": "ac17a2f04acc6ad9f40146fb9b615987",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/ekhos-ai": {
   "hash": "b1825d49c488f8a6adf7003643524470",
@@ -13290,9 +13280,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ekhos-ai": {
-  "hash": "ee808ddaf349fd1b5bb2c14807918870",
+  "hash": "dd66a87d32cd4b4db259e69f7ea948d2",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/elements-of-ai": {
   "hash": "5355729c7e69eeda1135f6ab3dee2ca6",
@@ -13380,9 +13370,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/fabdream-ai": {
-  "hash": "a1bf8dfa8cd88f992de98a4299a971f1",
+  "hash": "b06ced459b94cdf17ed96fe1de84965d",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/faceless-reels": {
   "hash": "cbfe50eb9471b1f5a8d0735ff935fed5",
@@ -13390,9 +13380,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/faceless-reels": {
-  "hash": "d2925d4712639f7ea17ed1f7410dd887",
+  "hash": "8bf8ebf37cf538a15c7e7760dc7cabd9",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/fantasy-ai": {
   "hash": "f9a817f13a09c6cef8f1e6506c0c38f6",
@@ -13410,9 +13400,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/fineshare-finecam": {
-  "hash": "837d096738a00fc2d8bd0c0896479ab9",
+  "hash": "b5c1c8f394464cb5ae78437634049815",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/firmos": {
   "hash": "c22cc570fbeb234cd5abfcc266b6ecb8",
@@ -13430,9 +13420,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/flow-ai-video": {
-  "hash": "9d7220cdf4e0adb8a01cde3c995bc279",
+  "hash": "83f26fadb7c5bcbc3680d0741b97c167",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/fontvibe": {
   "hash": "1010b97c1beb5449d059a2c8bb43eb68",
@@ -13550,9 +13540,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/geniea": {
-  "hash": "b99c23f24ba8b576e87716709adeba82",
+  "hash": "b58a89ae80d432198f55236a8bc6cbfa",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/genve-ai": {
   "hash": "72c0496e2a0467aae3d8fc25ab32e595",
@@ -13560,9 +13550,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/genve-ai": {
-  "hash": "8e92ef36a2f33ebb3606d81915a095e9",
+  "hash": "883ad77beaebf48269c333d6a6ffee90",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/gift-ideas-ai": {
   "hash": "46ba83981e4b0fe47824f8d31f6d859a",
@@ -13640,9 +13630,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/glif": {
-  "hash": "ca505a1f078bcebce23904c6687093c2",
+  "hash": "72cb110d48a95f3ff7f6046c092c4861",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/gocodeo": {
   "hash": "5970c3599d9afe48334b157e549ace43",
@@ -13680,9 +13670,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/google-vids": {
-  "hash": "bcf6ddd9fadd4edbbe833a351c61141a",
+  "hash": "e2ae0fc651b26e9807fdad149c512cae",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/govinfo": {
   "hash": "21bc8efee73c32aa88f3c9953a5c7b7e",
@@ -13760,9 +13750,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/h3-max-studio": {
-  "hash": "216d9dcb777703a575ccdde794cd8f84",
+  "hash": "f5ac6e8ff4f24c847c58f917fa00ea62",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/haiper": {
   "hash": "993b325b6ee0e518445ebbb94de2adf4",
@@ -13770,9 +13760,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/haiper": {
-  "hash": "6bd1f86650a1ba5c742c219a9c6824bf",
+  "hash": "fbbb080029acd4c61eb5ddec2453ff25",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/handyai": {
   "hash": "302a21a3f0861f50363aab65376ba33f",
@@ -13800,9 +13790,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/happysrt": {
-  "hash": "1a4babe775ae447ff8d1621b847e4174",
+  "hash": "0506ac058c2187b5efae32e35ce1e8b3",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/harpa-ai": {
   "hash": "99330103f03ba0a9e9697809f8e23c0b",
@@ -13950,9 +13940,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/highreach": {
-  "hash": "b864a5b4d39aa41b1daf8050b2c9335c",
+  "hash": "cdde0a4b22bf840e6630017a14377543",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/rosie": {
   "hash": "ae7e4a9214c78ed4d48e20221d519b27",
@@ -14110,9 +14100,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/mootion": {
-  "hash": "c583db94b00716ea4dbe46cb74a165e3",
+  "hash": "000af7af66e97a36d584fcb4b036a2ff",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/tiny-llm-benchmark": {
   "hash": "000f5e0bd833f6dee10948dac99b8032",
@@ -14170,9 +14160,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/igly-ai": {
-  "hash": "04f9ee3a66a55e98035d9402d88f88df",
+  "hash": "21bf1a6878c7cf19b9b0a6ab68b2c89e",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/vicuna-13b": {
   "hash": "5988fd5da86ba353edc7d03363f51ec2",
@@ -14360,9 +14350,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/pixverse": {
-  "hash": "75691ed355e541bc5b88b234a5b83b0b",
+  "hash": "958b51d0267e1ebbd91ee162ccdb9387",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/loudly": {
   "hash": "1de15c684df9c6e393d0f652e34162d9",
@@ -14420,9 +14410,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/imagine": {
-  "hash": "ce805a2ee7b99bf67b360350746eea96",
+  "hash": "2ca84561df2f1039e1d58fe4e1f183d1",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/oracle-ai": {
   "hash": "bbc21319a5cd6810994d87028ed9cefb",
@@ -14900,9 +14890,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/livefaceswap-ai": {
-  "hash": "a3d7b5ce988c21cdde36e30bb51d87d1",
+  "hash": "44d510812d7382f767c130d7c083c603",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/domoticz": {
   "hash": "f93612529ace6f09c3730f25cbb14623",
@@ -15080,9 +15070,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/nexus-ai": {
-  "hash": "ef905242fced736db56b723126d10466",
+  "hash": "97464a0d500cff57ba18f7a5f21c0224",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/powerpresent-ai": {
   "hash": "cb4140cedfd6b93f02117eb08cf6140c",
@@ -15150,9 +15140,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/lumen5": {
-  "hash": "d58b49918c3375f36075c300de80d9ae",
+  "hash": "32e3064a74a1a0bec57e84fbb06254c9",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/lumiying": {
   "hash": "422994c0c542e09e313896d3fa3509e0",
@@ -15160,9 +15150,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/lumiying": {
-  "hash": "286252aa17658ba9e5170c64c38a08ca",
+  "hash": "fbdccb36cb2180c3864943118fe86313",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/litlyx": {
   "hash": "fb7efe2ce0a3e45c41a597a3d7a461cf",
@@ -15410,9 +15400,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/magic-hour": {
-  "hash": "d15ae8287ca770ccdecc6965c4265df4",
+  "hash": "505e8fcf27a49aa0f2c7851adfa72c01",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/maxvideoai": {
   "hash": "0825b4755a17f8da02887f4261a86336",
@@ -15420,9 +15410,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/maxvideoai": {
-  "hash": "e8725a1f6da8d9ee2985aa81b623630e",
+  "hash": "8933715b7ac4ba609985662f449fc6e9",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/azimutt": {
   "hash": "4f3e0b24985ca25f0cd986e1e4434724",
@@ -15480,9 +15470,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/krater-ai": {
-  "hash": "4a438de9cb053ce9843ad1e09087ebed",
+  "hash": "6e99ad9cce5d58fb0f9856de0dd44588",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/orb-composer": {
   "hash": "a7f7a35d3d9df97cfba5e0ae59b3b9cf",
@@ -16010,9 +16000,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/neural-love": {
-  "hash": "7885cf174780f2d8309e8ee15bafbe91",
+  "hash": "ed234564ee52d0d0d065fd2cfe4a26e6",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/neos": {
   "hash": "54c4d50ed3c651cd25169ce9f3e8a5df",
@@ -16100,9 +16090,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/openart": {
-  "hash": "776240b1ca9dc72e2647d8961406407a",
+  "hash": "67c7071eeae9c6dcfc1ab5be43c01a6f",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/wizardlm": {
   "hash": "3ab3f56027799cfedf8e04bb93400a74",
@@ -16130,9 +16120,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/nsketch-ai": {
-  "hash": "859a90479642f0c1d3e728957908ac0d",
+  "hash": "5625bbfc06de63aa7bb997a409244268",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/noty-ai": {
   "hash": "48adeb5752514a53ba4309f3a2d3f55f",
@@ -16430,9 +16420,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/pollo-ai": {
-  "hash": "467da4a7c4ec338411aae4063c5058a8",
+  "hash": "bc1198088d52131a7b14a29ce064d4b7",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/shaper": {
   "hash": "a8fc790b2ac6c8ebed8219678678efc9",
@@ -16570,9 +16560,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/promo-com": {
-  "hash": "1e9e32a52c2d3d347339a9e20eab61ed",
+  "hash": "b5d8358d2f3bce3992f49fc87b9c36cb",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/postwise": {
   "hash": "327b112adfa7ea03815fc9cbf249b941",
@@ -17500,9 +17490,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/prisma": {
-  "hash": "e0dd5f5559f3d1806d043362a4af83ea",
+  "hash": "7f957a41b02ace8cb75678da83f58583",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/gpteam": {
   "hash": "4625af0ad6d2e40b3ae3c2003a5c40c9",
@@ -17520,9 +17510,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/shortodella": {
-  "hash": "47847ec708ca067d9a5c6aac53cffb39",
+  "hash": "e9f73097ce6991c37c57f5733970daeb",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/readpo": {
   "hash": "6e6280dfa03c986ee50d2a7e7efddd0a",
@@ -17610,9 +17600,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/shortshort": {
-  "hash": "d19c29e3a698ea011f08f2d4ca0f06d5",
+  "hash": "333e25bd5775f7fa63bfc6f19e0b0b49",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/shortskit-ai": {
   "hash": "cd7ea95f86321dcf68e9089798b90bf5",
@@ -17870,9 +17860,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/shotstack-workflows": {
-  "hash": "659ea2361ddb9cea4f96109f6a303b18",
+  "hash": "f1b6fb8bb63930fabab156f3dc6a51a2",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/singlebasecloud": {
   "hash": "ad61647f86b5c63d90a10c88ec5fff60",
@@ -17910,9 +17900,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/sisif": {
-  "hash": "71af0e7adff66ec3266e6be995dc0752",
+  "hash": "3062c23669f6be4953e9f5d94239b863",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/typo3": {
   "hash": "c707c906a6bec6459b762eb49444dfde",
@@ -17990,9 +17980,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/seaart-ai": {
-  "hash": "74ec71ca9c6dbe595fc4d6f7a87262c1",
+  "hash": "a4614c592ef210d7d1925ee788923283",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/llm-analysis": {
   "hash": "70ca9f3581fb5dcbcbd34a7c5afd6776",
@@ -18090,9 +18080,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/spikes-studio": {
-  "hash": "20fc3ce894e6fbcf75b0943d029bb7c0",
+  "hash": "2e47a26be32c276d324b8a04318546eb",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/datannur": {
   "hash": "084217136c69869b41134d048ff6c2ad",
@@ -18200,9 +18190,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/summarytube": {
-  "hash": "ff1a198bb63cbac18cbe657dc6635c07",
+  "hash": "d8ef47b4ead68f3d968b9ca380892b3d",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/openbudgeteer": {
   "hash": "675e4f097e0f17dcfe87594bf1fc1d62",
@@ -18290,9 +18280,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/tavus": {
-  "hash": "87a6dae3bafb59545b39834cbb671d3c",
+  "hash": "ff0b7e1d3f6976ed532e474e094ba52c",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/thumbnail-ai": {
   "hash": "889377a2071a7c2ef5a171a49ce472d6",
@@ -18300,9 +18290,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/thumbnail-ai": {
-  "hash": "9a9cdecef7c64225956f9c7899ba86f2",
+  "hash": "d9195d27ff23addfbd7f24ed9814516d",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/pictshare": {
   "hash": "807a9572f8a94949862fe485ce86c689",
@@ -18460,9 +18450,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/virbo": {
-  "hash": "aafb5e04d2e08bfa3552114532aa8049",
+  "hash": "0cacf9aa6ce47388eb5f5b1b7f37afcb",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/stackstorm": {
   "hash": "cde525223aba40eb12976d5e3de3d0e5",
@@ -18730,9 +18720,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/video-background-remover": {
-  "hash": "27e44143eefcbfaadbac13dacda88476",
+  "hash": "d5a48de89eb04ec1033cffbaf6e1271f",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/write-homes": {
   "hash": "30ce7eda62ea16cbb928036bb3081622",
@@ -18830,9 +18820,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/vidlux-ai": {
-  "hash": "f84abac5cb4b47ffee448449047a0d06",
+  "hash": "ceabe3a4745e9fa9e30877cc4b23ca6e",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/ai-visibility-monitor": {
   "hash": "0320c5629e4a18fbb006ad4965889a83",
@@ -19090,9 +19080,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/zooop": {
-  "hash": "0e996078caf45aa51427cc445792e618",
+  "hash": "b41312fe718e9d0a08bb06df914a1a8f",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/sync-in": {
   "hash": "95e2c7c0855d4109bbc98b5aa7bd31e3",
@@ -19220,9 +19210,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/deforum-stable-diffusion": {
-  "hash": "8cd9f6ece402c0276a0806a4dba3daba",
+  "hash": "1be9c8ea904ca6cb052f7cb396b88ba1",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/tiny-file-manager": {
   "hash": "5b63620b72565a9ed270f18802845795",
@@ -21400,9 +21390,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/love-story-movie": {
-  "hash": "e65d86d9c9116878de475d8d92caf39a",
+  "hash": "20b4acd4b586c1efc9298d26918d9aa1",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/voravideo": {
   "hash": "ec502834621d5c047f013c680b5976a5",
@@ -21410,9 +21400,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/voravideo": {
-  "hash": "acd7eb58df09652334108734b11d649c",
+  "hash": "7b6c9493f170d4a079ff30ed4f8b9860",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/opa-opa-ai": {
   "hash": "dd97533dce9caa149170db01d4f9cd7b",
@@ -21420,9 +21410,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/opa-opa-ai": {
-  "hash": "ae46f521ec959bcdcf9a7922c2928315",
+  "hash": "c86d459c82781ecdcc282c838319b276",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/ai-bulin-47": {
   "hash": "44ccebe639f802041e73c61d51680d6e",
@@ -21430,9 +21420,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/alternatives/ai-bulin-47": {
-  "hash": "7a82020244cf29c5d844db2caa0b4c19",
+  "hash": "97ea8e96336a1aab66fc73130d9617c1",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/tools/aireiter": {
   "hash": "55bab1e56729d134102632e4e3ed6459",
@@ -22015,9 +22005,9 @@
   "modified": "2026-11-02T09:00:00.000Z"
  },
  "/categories/ai-video": {
-  "hash": "2c95a97b5d9659211169cb99ded1405f",
+  "hash": "0b7629e98616d21d034e6f628ed1a7ac",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T18:43:34.000Z"
+  "modified": "2026-11-03T02:00:00.000Z"
  },
  "/categories/ai-audio": {
   "hash": "31660a4892d2d1d3572aa86dd8ba5986",

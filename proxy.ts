@@ -5,6 +5,19 @@ import { NextRequest, NextResponse } from 'next/server';
 // Never inspect page content or change legitimate guide/tool URLs.
 export function proxy(request: NextRequest) {
   const url = request.nextUrl.clone();
+  // Respect a publisher-requested removal. A 410 removes the old profile and
+  // related pages even if a stale CMS overlay or past social link still exists.
+  // No new brand profile, offsite link, schema, or redirect is served here.
+  const removed = url.pathname.replace(/\/$/,'').toLowerCase();
+  if (
+    ['/tools/hedra','/alternatives/hedra','/tools/hedra.md','/alternatives/hedra.md'].includes(removed)
+    || /^\/compare\/(?:hedra-vs-[a-z0-9-]+|[a-z0-9-]+-vs-hedra)(?:\.md)?$/.test(removed)
+  ) {
+    return new NextResponse(null, {
+      status: 410,
+      headers: { 'Cache-Control': 'public, max-age=0, s-maxage=60', 'X-Robots-Tag': 'noindex, nofollow' },
+    });
+  }
   if (url.pathname === '/compare' || url.pathname === '/compare/') {
     const destination = allowlistedCompareRedirect(url.searchParams.get('tools'));
     if (destination) {
