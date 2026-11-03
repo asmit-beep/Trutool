@@ -19,6 +19,14 @@ try{
   assert.ok(history[page.path],'Untracked page: '+page.path);
  }
  assert.equal(index.getContentPage('/tools/does-not-exist'),undefined);
+ // Legal/editorial takedown: the former AI video product is removed from all
+ // public canonical inventories, sitemap URLs, comparisons and derived listings.
+ const removedCatalog=JSON.parse(fs.readFileSync('lib/ai-catalog.json','utf8'));
+ assert.ok(!removedCatalog.tools.some(t=>t.slug==='hedra'||t.name?.toLowerCase()==='hedra'),'Removed vendor remains in source catalogue');
+ for(const removed of ['/tools/hedra','/alternatives/hedra'])assert.equal(index.getContentPage(removed),undefined,'Removed vendor still generates a canonical page: '+removed);
+ assert.ok(!index.contentPages.some(page=>JSON.stringify(page).toLowerCase().includes('hedra')),'Public inventory still contains removed vendor');
+ assert.ok(!sitemap.sitemapEntries(index.contentPages).some(entry=>new URL(entry.url).pathname.includes('hedra')),'Sitemap must not list removed vendor URLs');
+
  assert.equal(schema.pageStructuredData('/does-not-exist'),undefined);
  assert.ok(schema.pageStructuredData('/compare/claude-vs-chatgpt'));
  assert.equal(index.comparisonCanonicalPath('claude-vs-chatgpt'),'/compare/chatgpt-vs-claude');
@@ -62,6 +70,9 @@ try{
  assert.ok(!alternativesSource.includes("href={'/compare/'+t.slug+'-vs-'+x.slug}"),'Do not generate thousands of uncurated crawlable comparison URLs.');
  const proxySource=fs.readFileSync('proxy.ts','utf8');
  assert.ok(proxySource.includes('allowlistedCompareRedirect'),'Allowlisted query pairs redirect before render.');
+ assert.ok(proxySource.includes("'/tools/hedra'")&&proxySource.includes("'/alternatives/hedra'"),'Removed product and alternatives routes must be covered');
+ assert.match(proxySource,/status: 410/,'Old vendor routes must return HTTP 410 Gone');
+
  assert.match(proxySource,/NextResponse\.redirect\(\s*target,\s*301\s*\)/,'Allowlisted query pairs use HTTP 301.');
  const comparePage=fs.readFileSync('app/compare/page.tsx','utf8');
  assert.ok(comparePage.includes("canonical:SITE+'/compare'"),'Other compare queries stay canonicalized to the hub.');

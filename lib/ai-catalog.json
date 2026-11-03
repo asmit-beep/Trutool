@@ -3476,29 +3476,6 @@
       "ai": true
     },
     {
-      "slug": "hedra",
-      "name": "Hedra",
-      "category": "ai-video",
-      "url": "https://www.hedra.com/",
-      "summary": "AI video creation with characters and expressive audiovisual content.",
-      "fit": "People evaluating Hedra for ai video creation with characters and expressive audiovisual content.",
-      "features": [
-        "AI video creation with characters and expressive audiovisual content"
-      ],
-      "caution": "Test output quality on your own task and check usage limits, commercial terms, privacy, and current vendor pricing.",
-      "color": "#8c70ff",
-      "initial": "H",
-      "format": "AI software",
-      "pricing": "Check current vendor pricing",
-      "keywords": "AI video creation with characters and expressive audiovisual content.",
-      "sourceTitle": "Hedra — Visual Inference Models and Infrastructure",
-      "sourceStatus": "Vendor source consulted",
-      "sourceChecked": "2026-10-06",
-      "updatedAt": "2026-10-06",
-      "addedAt": "2026-10-06",
-      "ai": true
-    },
-    {
       "slug": "higgsfield",
       "name": "Higgsfield",
       "category": "ai-video",

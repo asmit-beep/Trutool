@@ -8824,16 +8824,6 @@
   "fingerprintVersion": 3,
   "modified": "2026-11-02T09:00:00.000Z"
  },
- "/tools/hedra": {
-  "hash": "e7dde23ccec97dfa6dc186ba27330ea7",
-  "fingerprintVersion": 3,
-  "modified": "2026-10-23T18:43:34.000Z"
- },
- "/alternatives/hedra": {
-  "hash": "415cf04bef041d4f81590111332de5f7",
-  "fingerprintVersion": 3,
-  "modified": "2026-10-23T12:00:00.000Z"
- },
  "/tools/higgsfield": {
   "hash": "7812ddeecb38b19c56f7d22f7c08ebb7",
   "fingerprintVersion": 3,
