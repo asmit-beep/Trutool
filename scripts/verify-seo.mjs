@@ -26,6 +26,10 @@ try{
  for(const removed of ['/tools/hedra','/alternatives/hedra'])assert.equal(index.getContentPage(removed),undefined,'Removed vendor still generates a canonical page: '+removed);
  assert.ok(!index.contentPages.some(page=>JSON.stringify(page).toLowerCase().includes('hedra')),'Public inventory still contains removed vendor');
  assert.ok(!sitemap.sitemapEntries(index.contentPages).some(entry=>new URL(entry.url).pathname.includes('hedra')),'Sitemap must not list removed vendor URLs');
+ const cmsSource=fs.readFileSync('lib/cms-public.ts','utf8');
+ assert.ok(cmsSource.includes('isRemovedBrandContent')&&cmsSource.includes('if(isRemovedBrandContent(c))continue'),
+   'Published CMS pages must not reintroduce the withdrawn vendor');
+
 
  assert.equal(schema.pageStructuredData('/does-not-exist'),undefined);
  assert.ok(schema.pageStructuredData('/compare/claude-vs-chatgpt'));
