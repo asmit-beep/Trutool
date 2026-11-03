@@ -5,10 +5,14 @@ import { useEffect, useState } from 'react';
 
 const CONSENT_KEY = 'trutool_analytics_consent';
 const SETTINGS_EVENT = 'trutool:analytics-settings';
+// Public GTM container. Load it only when the user has opted into analytics.
+const GTM_CONTAINER_ID = 'GTM-PCJBB4DG';
 type Consent = 'loading' | 'accepted' | 'declined' | 'unset';
 
 /**
- * A lightweight, consent-gated GA4 tag. No code, cookies or requests to Google
+ * Consent-gated GA4 and GTM. Keep the GA4 property configured in ONE place:
+ * on-site gtag.js (here), not duplicated as a Google tag inside GTM.
+ * No code, cookies or requests to Google
  * are sent until a visitor explicitly accepts optional analytics.
  * Google Analytics Enhanced Measurement should track browser-history page changes.
  */
@@ -50,6 +54,10 @@ gtag('js',new Date());
 gtag('config',${JSON.stringify(measurementId)},{allow_google_signals:false,allow_ad_personalization_signals:false});`}
       </Script>
       <Script src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} strategy="afterInteractive" />
+      {/* Standard GTM initialization; intentionally no no-script tracking that bypasses consent. */}
+      <Script id="trutool-gtm" strategy="afterInteractive">
+        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',${JSON.stringify(GTM_CONTAINER_ID)});`}
+      </Script>
     </>}
     {(consent === 'unset' || editing) && <section role="region" aria-label="Optional analytics preferences"
       style={{position:'fixed',right:16,bottom:16,zIndex:100,width:'min(440px, calc(100vw - 32px))',

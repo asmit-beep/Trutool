@@ -15,4 +15,11 @@ assert.match(tracker,/allow_ad_personalization_signals:false/,'Ad personalizatio
 assert.ok(!tracker.includes('send_page_view:false'),'Let GA4 enhanced measurement handle browser navigation; no manual duplicate events');
 assert.match(cookies,/Optional website analytics/);
 assert.match(privacy,/Google Analytics 4/);
+assert.match(tracker,/GTM-PCJBB4DG/,'Use the approved GTM container ID');
+assert.equal((tracker.match(/id="trutool-gtm"/g)||[]).length,1,'GTM must be installed only once per page');
+assert.match(tracker,/event:'gtm\.js'/,'GTM must use its official init event');
+assert.match(tracker,/gtm\.js\?id=/,'GTM must load the correct container endpoint');
+assert.match(tracker,/consent === 'accepted' &&/,'GTM must be disabled without prior consent');
+assert.ok(!tracker.includes('<noscript'),'Non-consenting browsers must not load GTM via noscript');
+
 console.log('PASS: GA4 is gated behind a measurement ID and explicit visitor consent; privacy controls and notices are present.');
