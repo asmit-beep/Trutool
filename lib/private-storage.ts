@@ -13,6 +13,10 @@ export { BlobNotFoundError, BlobPreconditionFailedError };
 // Select Supabase explicitly only after recovering the existing private Blob data.
 // Until then, every existing deployment continues using the original Blob store.
 export const usingSupabaseStorage = () => process.env.TRUTOOL_STORAGE_BACKEND === 'supabase';
+// Newsletter signup writes are deliberately independent of the original
+// Supabase API. Existing Supabase subscriber rows remain intact and readable
+// through a read-through fallback when that API is available.
+const LEGACY_NEWSLETTER_ETAG = 'legacy-newsletter:';
 
 type StoredRow = {
   path: string;
@@ -79,12 +83,31 @@ export async function head(path: string) {
 export async function get(path: string, options: { access: 'private'; useCache?: boolean }) {
   // New private enquiries live in Blob even during Supabase's temporary 402 restriction.
   // For older enquiries, keep the Supabase read path intact.
-  if (path.startsWith('enquiries/') || path.startsWith('cms/media/')) {
+  if (path.startsWith('enquiries/') || path.startsWith('cms/media/') || path.startsWith('newsletter/')) {
     try {
       const blob = await blobGet(path, options);
       if (blob) return blob;
     } catch (error) {
       if (!(error instanceof BlobNotFoundError)) throw error;
+    }
+    if (path.startsWith('newsletter/')) {
+      // Attempts and new subscribers live only in Blob. For historic subscriber
+      // IDs, read Supabase only if the Blob overlay has no record.
+      if (!path.startsWith('newsletter/subscribers/') || !usingSupabaseStorage()) return null;
+      try {
+        const original = await findRow(path);
+        if (!original) return null;
+        return {
+          statusCode: 200 as const,
+          stream: new Response(JSON.stringify(original.payload.data)).body!,
+          blob: { etag: LEGACY_NEWSLETTER_ETAG + original.etag },
+        };
+      } catch {
+        // Missing legacy API availability must not break new signups.
+        // Do not delete or overwrite the historical row.
+        console.warn('Original newsletter subscriber lookup unavailable; checking independent Blob storage.');
+        return null;
+      }
     }
   }
   if (!usingSupabaseStorage()) return blobGet(path, options);
@@ -115,6 +138,15 @@ export async function put(
   // Never touch historical Supabase enquiries. New submissions and receipt updates
   // are stored in the already-connected private Vercel Blob store.
   if (path.startsWith('enquiries/') || path.startsWith('cms/media/')) return blobPut(path, body, options);
+  if (path.startsWith('newsletter/')) {
+    // A legacy subscriber update creates a private Blob override, retaining
+    // the original Supabase row for audit and recovery. Use create-only on the
+    // first override, to prevent concurrent requests from losing an update.
+    if (options.ifMatch?.startsWith(LEGACY_NEWSLETTER_ETAG)) {
+      return blobPut(path, body, {...options, ifMatch:undefined, allowOverwrite:false});
+    }
+    return blobPut(path, body, options);
+  }
   if (!usingSupabaseStorage()) return blobPut(path, body, options);
   if (!path.startsWith('cms/') && !path.startsWith('newsletter/') && !path.startsWith('enquiries/') && !path.startsWith('community-submissions/')) {
     throw new Error('Unsupported storage path');
@@ -173,8 +205,8 @@ async function listOriginal(options: { prefix?: string; limit?: number; cursor?:
  * partialLegacy marker. Never pretend historical submissions were deleted.
  */
 export async function list(options: { prefix?: string; limit?: number; cursor?: string } = {}) {
-  if (options.prefix?.startsWith('enquiries/') || options.prefix?.startsWith('cms/media/')) {
-    if (options.prefix !== 'enquiries/' && options.prefix !== 'cms/media/') return blobList(options);
+  if (options.prefix?.startsWith('enquiries/') || options.prefix?.startsWith('cms/media/') || options.prefix?.startsWith('newsletter/')) {
+    if (options.prefix !== 'enquiries/' && options.prefix !== 'cms/media/' && options.prefix !== 'newsletter/subscribers/') return blobList(options);
     const files = new Map<string, {pathname:string;url:string;uploadedAt:Date;size:number}>();
     // Enumerate all private Blob submissions; do not silently drop later pages.
     let cursor: string | undefined, scanned = 0;

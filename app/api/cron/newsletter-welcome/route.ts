@@ -27,6 +27,7 @@ export async function GET(request: Request) {
   try {
     do {
       const batch = await list({ prefix: 'newsletter/subscribers/', limit: 100, cursor });
+      if (batch.partialLegacy) newsletterUnavailable = true;
       for (const row of batch.blobs) {
         const status = await deliverPendingWelcome(row.pathname);
         scanned++;
