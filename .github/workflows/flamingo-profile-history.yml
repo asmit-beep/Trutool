@@ -1,0 +1,39 @@
+name: Record 4 November AI video profile SEO history
+on:
+  push:
+    branches:
+      - feature/flamingo-float-ai-20261104
+    paths:
+      - .github/workflows/flamingo-profile-history.yml
+permissions:
+  contents: write
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Generate accurate content history for new profile and affected pages
+        run: node scripts/generate-content-history.mjs --write --date 2026-11-04T09:00:00Z
+      - name: Commit SEO revisions to feature branch only
+        run: |
+          if git diff --quiet -- lib/content-history.json; then
+            echo "No revisions needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lib/content-history.json
+          git commit -m "Record new AI video profile SEO fingerprints"
+          git push origin HEAD:feature/flamingo-float-ai-20261104

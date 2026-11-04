@@ -92,5 +92,99 @@ export const newEditorialTools:Tool[]=[
         {question:'Does the keyboard work inside every app?',answer:'No. Translation keyboard access depends on whether the app or field allows third-party keyboards, and users should review the translated message before sending.'}
       ]
     }
-  }
+  },
+  {
+    "slug": "flamingo-float-ai",
+    "name": "Flamingo Float AI",
+    "category": "ai-video",
+    "ai": true,
+    "summary": "Flamingo Float AI turns one consenting adult's photo into a short, vertical AI video of a pink flamingo float drifting toward a Dubai rooftop infinity-pool edge before a friend pushes it back. A fixed trend template avoids manual prompting.",
+    "fit": "Adult social creators, short-form video makers and friends trying the specific 'Hey Bro, Thank You Bro' flamingo-float trend rather than a general-purpose text-to-video editor.",
+    "features": [
+      "Upload one clear adult portrait to produce a themed AI video",
+      "Pre-designed Dubai rooftop pool and pink flamingo-float scene",
+      "Automatic drift-toward-the-edge and friend-push-back sequence",
+      "Reported 11-second output in vertical 9:16 MP4 format",
+      "No written prompt or manual timeline editing required for the described template",
+      "One-time credit packs rather than a required recurring subscription, according to the submission",
+      "Output intended for short-form social video sharing"
+    ],
+    "caution": "This is a narrowly focused novelty template, not a full AI video editor. The vendor submitted the workflow, runtime and no-subscription claims, but direct verification of the official site was unavailable on 4 November 2026. Independent listings report 480p output; verify resolution, watermark, sound, credits charged per render, photo-retention terms and commercial use before purchasing. Upload only an adult's likeness with their informed permission and label synthetic footage appropriately.",
+    "url": "https://flamingofloatai.com/",
+    "color": "#e481b7",
+    "initial": "F",
+    "format": "Template-based photo-to-video AI",
+    "pricing": "The vendor describes one-time credit packages starting at US$9.90 without a subscription. A third-party listing shows 100 credits for US$9.90, but the exact number of credits consumed by an 11-second render and the current checkout price have not been independently verified. Check total cost before generating.",
+    "keywords": "Flamingo Float AI, flamingo float video, hey bro thank you bro, Dubai rooftop pool AI video, photo to video, AI video trend, 11 second 9:16 MP4, vertical short-form social clips, flamingo float generator, one-time AI video credits",
+    "sourceTitle": "Vendor submission received 4 November 2026; AISO Tools product listing",
+    "sourceStatus": "Vendor-submitted description; official website could not be independently verified",
+    "sourceUrl": "https://aisotools.com/tool/flamingo-float-ai",
+    "addedAt": "2026-11-04",
+    "updatedAt": "2026-11-04",
+    "profile": {
+      "overview": "Flamingo Float AI is a narrowly focused image-to-video website built around the 'Hey Bro, Thank You Bro' flamingo-float trend. According to its team, the user uploads one clear photo of a consenting adult and the service places that person on a pink flamingo pool float in a Dubai-style rooftop infinity pool. In the preset sequence, the float drifts toward the edge and a friend pushes it back. The submitted description calls the result an approximately 11-second vertical MP4. The point is a ready-made social effect: there is no requirement to write a motion prompt, find stock footage, or assemble a timeline. It is not a flexible video-editing suite: buyers are choosing a specific aesthetic and motion sequence. Independent directory listings corroborate the single-photo, fixed-template, vertical-video premise; resolution, generation consistency, checkout economics and how long uploaded images are kept require direct confirmation. This is synthetic footage and should never be recreated as a real rooftop-pool stunt.",
+      "useCases": [
+        "Create a short fictional 'thank you bro' video using your own portrait for a social post or group chat.",
+        "Make an opt-in clip featuring an adult friend as the person on the float, then review it together before sharing.",
+        "Test a one-photo, preconfigured trend workflow without learning video prompts or editing timelines.",
+        "Compare a purpose-built social template with general AI video tools when the desired scene is specifically a rooftop pool and pink flamingo float.",
+        "Produce a vertical clip for short-form social content, subject to the platform's rules and the service's usage rights.",
+        "Use the result as an AI-labelled comedic or novelty visual, not as evidence of an actual near-accident."
+      ],
+      "workflow": [
+        "Visit the product website, review its current privacy, content, age and purchase terms, and confirm the effect available matches the vendor's description.",
+        "Choose a clear photograph of yourself or another adult who has explicitly agreed to the image being processed and used in an AI video. Avoid unclear faces or multiple people in the source photo.",
+        "Upload the photograph to the Flamingo Float effect. The provider describes a predefined rooftop-pool scene, so no custom motion prompt is needed.",
+        "Review the displayed credit cost, resolution, watermark policy and whether unused credits expire before paying or confirming the render.",
+        "Generate the clip. Watch the full output for likeness errors, distorted hands, scene continuity and whether the described rescue moment is actually present.",
+        "Download the resulting vertical MP4, check audio and framing in your target social app, and use an AI/synthetic-content label when posting."
+      ],
+      "checks": [
+        "Scope: the submitted offering is a single trend-specific template, not open-ended image-to-video generation or a timeline editor.",
+        "Input rights: upload only your own portrait or another adult's photo with explicit permission; verify how the service stores and deletes source faces.",
+        "Output: the team describes about 11 seconds, 9:16 orientation and MP4 delivery; independently retrieved directory pages also describe a 480p tier. Check actual file properties before buying.",
+        "Pricing: one-time credits are reported from US$9.90; a third-party directory lists 100 credits at that price. Confirm credits required for this exact template and whether failed runs receive refunds.",
+        "Controls: no prompting is said to be needed, but scene customisation, multiple subjects, aspect ratios, text overlays and soundtrack rights were not confirmed.",
+        "Continuity: look for facial consistency throughout the drift, natural movement and convincing placement on the float; no independent generation benchmark was conducted.",
+        "Safety: footage of a pool-edge rescue is fictional; do not attempt the stunt with a real person or inflatable at an elevated pool.",
+        "Use rights: clarify reuse of music, audio, the template's style, generated likeness and commercial licensing before using it in ads.",
+        "Availability: TruTool could not directly retrieve the official website during its November 4 check; verify the site and current terms independently."
+      ],
+      "notIdeal": "Not a fit for filmmakers who need camera control, multiple scenes, precise storyboards, editable timelines, horizontal 16:9 video, higher resolution or reliable brand-safe production. The service's ability to preserve likeness, remove watermarks, offer commercial-use rights or support custom scenes was not independently established. Avoid using the output to mislead viewers into thinking a real person nearly fell from a rooftop pool.",
+      "faqs": [
+        {
+          "question": "What is Flamingo Float AI?",
+          "answer": "It is a single-effect, photo-to-video tool described by its team as turning a consenting adult's portrait into a short, fictional rooftop-pool clip featuring a pink flamingo float and a friend pulling it back from the edge. The offer targets the 'Hey Bro, Thank You Bro' social trend."
+        },
+        {
+          "question": "Do I need to write prompts or edit a video?",
+          "answer": "The vendor submission says no. The effect is presented as a predefined scene, and users reportedly upload one photo and generate the clip. Full editing controls are not verified."
+        },
+        {
+          "question": "How long is the clip and which format is used?",
+          "answer": "The submitted specifications describe an approximately 11-second vertical 9:16 MP4. A secondary directory also describes 480p output; confirm the current downloadable file quality and audio before purchasing."
+        },
+        {
+          "question": "Is Flamingo Float AI free?",
+          "answer": "The team describes one-time paid credit packs starting at US$9.90 and no subscription. An independent listing gives 100 credits for that amount. TruTool could not independently confirm credits charged per completed video or a free trial."
+        },
+        {
+          "question": "Can I upload a photo of someone else?",
+          "answer": "Only when the person is an adult who has explicitly consented to the upload and to creation of synthetic video using their likeness. Review the site's privacy and deletion policy; do not upload strangers or public figures without authorization."
+        },
+        {
+          "question": "Can I change the Dubai scene, video length or soundtrack?",
+          "answer": "The supplied product description focuses on a fixed Dubai-style rooftop scene. Alternate locations, durations, sound controls, watermark removal and commercial soundtrack rights have not been verified."
+        },
+        {
+          "question": "Is the resulting rooftop stunt real?",
+          "answer": "No. It is presented as AI-generated fiction. Do not attempt to recreate the pool-edge sequence in real life; identify the clip as synthetic when posting it."
+        },
+        {
+          "question": "Is Flamingo Float AI the same as a full video-generation platform?",
+          "answer": "No. It is a purpose-built trend generator for a specific scene. For original scripts, character control, multiple shots, detailed visual prompting or broader editing, compare a general-purpose AI video platform."
+        }
+      ]
+    }
+  },
 ];

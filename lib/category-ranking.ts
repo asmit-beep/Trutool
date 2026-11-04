@@ -24,7 +24,14 @@ export function rankedCategoryTools(category:string,all:Tool[]):Tool[]{
  // any other listings or changing sorting for searches/newest/A-Z views.
  const fifteenth:{[key:string]:string}={'ai-model-platforms':'aireiter','ai-design':'hausdraft','ai-image':'book-cover-generator','audio-production':'ai-music-mastering','ai-translation':'transly'};
  const selected=fifteenth[category],item=selected?result.find(t=>t.slug===selected):undefined;
- if(!item)return result;
- const others=result.filter(t=>t.slug!==selected);
- return [...others.slice(0,14),item,...others.slice(14)];
+ const fifteenthApplied=item
+  ? [...result.filter(t=>t.slug!==selected).slice(0,14),item,...result.filter(t=>t.slug!==selected).slice(14)]
+  : result;
+ // A separately requested non-sponsored editorial inclusion at #20; keep
+ // the established #15 placements untouched and retain normal other sorts.
+ const twentieth:{[key:string]:string}={'ai-video':'flamingo-float-ai'};
+ const selected20=twentieth[category],item20=selected20?fifteenthApplied.find(t=>t.slug===selected20):undefined;
+ if(!item20)return fifteenthApplied;
+ const other20=fifteenthApplied.filter(t=>t.slug!==selected20);
+ return [...other20.slice(0,19),item20,...other20.slice(19)];
 }

@@ -182,7 +182,20 @@ try{
   assert.equal(ranks.items[14]?.slug,entry.slug,entry.slug+' must occupy position 15 in '+entry.category);
   assert.equal(ranks.items[14]?.rank,15,entry.slug+' rank marker must be #15');
  }
- console.log('PASS: five new complete editorial tool pages with exact #15 category positions and no duplicate slugs.');
+ const flamingo=tools.filter(t=>t.slug==='flamingo-float-ai');
+ assert.equal(flamingo.length,1,'Flamingo Float AI must be a single unique published tool profile');
+ assert.equal(flamingo[0].category,'ai-video');
+ assert.equal(flamingo[0].url,'https://flamingofloatai.com/');
+ assert.equal(flamingo[0].sourceStatus.includes('could not be independently verified'),true,'Do not claim inaccessible official site was checked');
+ assert.equal(Boolean(flamingo[0].sourceChecked),false,'Do not mark vendor source as independently reviewed');
+ assert.ok(flamingo[0].profile&&flamingo[0].profile.workflow.length>=5&&flamingo[0].profile.useCases.length>=5&&flamingo[0].profile.checks.length>=7&&flamingo[0].profile.faqs.length>=7,'Tool listing must include thorough workflows, evaluation and FAQ');
+ assert.ok(flamingo[0].addedAt==='2026-11-04','New publication date must be current');
+ const aiVideoFirstPage=toolResults('','ai-video','relevance',1,24);
+ assert.equal(aiVideoFirstPage.items[19]?.slug,'flamingo-float-ai','Flamingo Float AI must be at #20 on default AI video category');
+ assert.equal(aiVideoFirstPage.items[19]?.rank,20,'UI display marker must show #20');
+ assert.ok(!toolResults('','ai-video','relevance',1,24).items.slice(0,19).some(t=>t.slug==='flamingo-float-ai'));
+ assert.ok(tools.some(t=>t.slug==='flamingo-float-ai'),'Source controlled page and sitemap should include this profile');
+  console.log('PASS: five new complete editorial tool pages with exact #15 category positions and no duplicate slugs.');
  const first=toolResults(),second=toolResults('','','relevance',2);
  assert.equal(first.total,tools.length);assert.equal(first.items.length,24);assert.equal(second.page,2);assert.ok(!first.items.some(t=>second.items.some(x=>x.slug===t.slug)));
  assert.ok(first.items.every(t=>t.categoryLabel&&!('fit' in t)&&!('features' in t)),'Compact search responses');
