@@ -26,14 +26,15 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - name: Generate accurate content history for new profile and affected pages
         run: node scripts/generate-content-history.mjs --write --date 2026-11-04T09:00:00Z
-      - name: Commit SEO revisions to feature branch only
+      - name: Emit the computed history differences for authorized release
         run: |
-          if git diff --quiet -- lib/content-history.json; then
-            echo "No revisions needed."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add lib/content-history.json
-          git commit -m "Record new AI video profile SEO fingerprints"
-          git push origin HEAD:feature/flamingo-float-ai-20261104
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import {execFileSync} from 'node:child_process';
+          const before=JSON.parse(execFileSync('git',['show','HEAD:lib/content-history.json'],{encoding:'utf8'}));
+          const after=JSON.parse(fs.readFileSync('lib/content-history.json','utf8'));
+          const updated=Object.fromEntries(Object.entries(after).filter(([key,record])=>JSON.stringify(record)!==JSON.stringify(before[key])));
+          const removed=Object.keys(before).filter(key=>!Object.hasOwn(after,key));
+          console.log('TRUTOOL_HISTORY_PATCH_V1:'+JSON.stringify({updated,removed}));
+          console.log('SEO HISTORY CHANGES:',Object.keys(updated).length,'updated,',removed.length,'removed');
+          NODE
