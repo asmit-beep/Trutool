@@ -18,8 +18,9 @@ export function proxy(request: NextRequest) {
       headers: { 'Cache-Control': 'public, max-age=0, s-maxage=60', 'X-Robots-Tag': 'noindex, nofollow' },
     });
   }
-  if (url.pathname === '/compare' || url.pathname === '/compare/') {
-    const destination = allowlistedCompareRedirect(url.searchParams.get('tools'));
+  const compareTools = (url.pathname === '/compare' || url.pathname === '/compare/') ? url.searchParams.get('tools') : null;
+  if (compareTools !== null) {
+    const destination = allowlistedCompareRedirect(compareTools);
     if (destination) {
       const target = new URL(destination, request.url);
       target.search = '';
@@ -53,7 +54,11 @@ export function proxy(request: NextRequest) {
       if(url.searchParams.get(key)===value){url.searchParams.delete(key);changed=true}
     }
   }
-  return changed ? NextResponse.redirect(url, 308) : NextResponse.next();
+  const response = changed ? NextResponse.redirect(url, 308) : NextResponse.next();
+  // Unlisted /compare?tools= pairs stay usable, but must not be indexed as alternates of /compare.
+  // Allowlisted pairs already returned a 301 above, including reversed slug order.
+  if (compareTools?.trim() && !allowlistedCompareRedirect(compareTools)) response.headers.set('X-Robots-Tag', 'noindex, follow');
+  return response;
 }
 
 export const config = {
