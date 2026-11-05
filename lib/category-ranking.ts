@@ -31,7 +31,30 @@ export function rankedCategoryTools(category:string,all:Tool[]):Tool[]{
  // the established #15 placements untouched and retain normal other sorts.
  const twentieth:{[key:string]:string}={'ai-video':'flamingo-float-ai'};
  const selected20=twentieth[category],item20=selected20?fifteenthApplied.find(t=>t.slug===selected20):undefined;
- if(!item20)return fifteenthApplied;
- const other20=fifteenthApplied.filter(t=>t.slug!==selected20);
- return [...other20.slice(0,19),item20,...other20.slice(19)];
+ const other20=item20?fifteenthApplied.filter(t=>t.slug!==selected20):fifteenthApplied;
+ const previousPlacements=item20
+  ? [...other20.slice(0,19),item20,...other20.slice(19)]
+  : fifteenthApplied;
+ // Explicit editorial positions for independently researched November submissions.
+ // Keep Flamingo Float AI at #20 in AI video; do not change search/newest/A-Z sorting.
+ const newPlacements:Record<string,Record<number,string>>={
+  'ai-video':{16:'outstanding-tiny-desk-ai',17:'genjutsu-lite',18:'bicep-heart-ai',19:'chipmunks-dance-ai',20:'flamingo-float-ai',21:'neon-dance-ai'},
+  'edtech':{18:'edform'}
+ };
+ const desired=newPlacements[category];
+ if(!desired)return previousPlacements;
+ const bySlug=new Map(previousPlacements.map(t=>[t.slug,t]));
+ const pinned=new Map<number,Tool>();
+ for(const [position,slug] of Object.entries(desired)){
+  const tool=bySlug.get(slug);
+  if(tool)pinned.set(Number(position),tool);
+ }
+ const pinnedSlugs=new Set([...pinned.values()].map(t=>t.slug));
+ const rest=previousPlacements.filter(t=>!pinnedSlugs.has(t.slug));
+ const ranked:Tool[]=[];
+ for(let position=1;position<=previousPlacements.length;position++){
+  const fixed=pinned.get(position);
+  ranked.push(fixed||rest.shift()!);
+ }
+ return ranked;
 }
