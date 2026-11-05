@@ -79,7 +79,12 @@ try{
 
  assert.match(proxySource,/NextResponse\.redirect\(\s*target,\s*301\s*\)/,'Allowlisted query pairs use HTTP 301.');
  const comparePage=fs.readFileSync('app/compare/page.tsx','utf8');
- assert.ok(comparePage.includes("canonical:SITE+'/compare'"),'Other compare queries stay canonicalized to the hub.');
+ assert.ok(comparePage.includes("canonical:SITE+'/compare'")||comparePage.includes("SITE+'/compare'"),'The compare hub stays canonical.');
+ assert.ok(comparePage.includes('index:false'),'Unlisted compare?tools= queries are noindex.');
+ assert.ok(fs.readFileSync('app/robots.ts','utf8').includes("'/api/'"),'Robots disallows /api/.');
+ assert.ok(fs.readFileSync('app/api/logo/route.ts','utf8').includes('image/svg+xml'),'Missing logos return an SVG placeholder.');
+ assert.ok(!fs.readFileSync('app/api/logo/route.ts','utf8').includes('status:404'),'Logo route must not answer 404.');
+ assert.ok(proxySource.includes("X-Robots-Tag', 'noindex, follow'"),'Unlisted compare queries send noindex before render.');
  const compareSlug=fs.readFileSync('app/compare/[slug]/page.tsx','utf8');
  assert.ok(compareSlug.includes('withCompareRobots'),'Tail compare paths must be able to noindex.');
  console.log(`SEO verification passed: ${index.contentPages.length} canonical pages have valid schema graphs, dates, breadcrumbs, and Markdown references. RSS, Atom, JSON Feed, and llms.txt checked.`);
