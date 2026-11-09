@@ -1,7 +1,7 @@
 import 'server-only';
 import {SITE} from './catalog';
 import {rfpAlternativePages} from './rfp-alternatives';
-import {readStore} from './cms-store';
+import {readCachedStore} from './cms-store';
 import {contentPath,effectivePublished,safeHref,type CmsStore} from './cms-types';
 export const defaultFeaturedAlternatives=['loopio','responsive'];
 export const maxFeaturedAlternatives=12;
@@ -28,4 +28,4 @@ export function selectedFeaturedAlternatives(store:CmsStore):FeaturedAlternative
  const map=new Map(availableFeaturedAlternatives(store).map(v=>[v.slug,v]));
  return (store.featuredAlternativeSlugs??defaultFeaturedAlternatives).slice(0,maxFeaturedAlternatives).map(slug=>map.get(slug)).filter((x):x is FeaturedAlternative=>Boolean(x));
 }
-export async function featuredAlternatives(){return selectedFeaturedAlternatives((await readStore()).store);}
+export async function featuredAlternatives(){return selectedFeaturedAlternatives((await readCachedStore()).store);}

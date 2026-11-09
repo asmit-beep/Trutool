@@ -138,6 +138,9 @@ export async function writeStore(store:CmsStore,etag?:string){
 // refreshed only by explicit Studio publishing/invalidateDiscovery().
 const persistentStore=unstable_cache(async()=>await readStore(),['trutool-cms-v2-recovered-public-inventory-20261102'],{revalidate:false,tags:['cms']});
 const cachedStore=cache(()=>persistentStore());
+// Static pages must read this snapshot. readStore() uses no-store fetches, which
+// abort ISR revalidation with DYNAMIC_SERVER_USAGE. Studio publishing invalidates `cms`.
+export function readCachedStore(){return cachedStore();}
 /**
  * Restore all original public, already-published CMS content snapshots while
  * legacy Supabase REST is returning HTTP 402. This NEVER changes the original
