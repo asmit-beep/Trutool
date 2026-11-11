@@ -42,5 +42,5 @@ export async function POST(request:Request){
   // The protected daily retry job picks up any unsent welcome records.
   try{await deliverPendingWelcome(path);}catch{console.error('Welcome email queued for retry');}
   return respond({ok:true,manageUrl:'/newsletter?unsubscribe='+token});
- }catch{console.error('Newsletter request could not be saved');return respond({error:'We could not save your request. Your email is still here; please try again.'},503);}
+ }catch(error){console.error('Newsletter request could not be saved',error instanceof Error?error.name+': '+error.message:'unknown');return respond({error:'We could not save your request. Your email is still here; please try again.'},503);}
 }
