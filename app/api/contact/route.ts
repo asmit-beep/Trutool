@@ -26,7 +26,7 @@ export async function POST(request:Request){
   product={name:productName,url:normalizedUrl,category};
  }
  if(!process.env.SUPABASE_SECRET_KEY)throw new Error('Contact inbox is not configured');
- const rateLimitSecret=process.env.ADMIN_SESSION_SECRET||process.env.TRUTOOL_SIGNING_SECRET||process.env.BLOB_READ_WRITE_TOKEN;
+ const rateLimitSecret=process.env.ADMIN_SESSION_SECRET||process.env.TRUTOOL_SIGNING_SECRET;
  if(!rateLimitSecret)throw new Error('Contact security is not configured');
  const hour=new Date().toISOString().slice(0,13);const key=createHash('sha256').update(email+rateLimitSecret).digest('hex');const prefix=`enquiries/${hour}/${key}/`;
  const recent=await list({prefix,limit:5});if(recent.blobs.length>=5)return Response.json({error:'You have sent several messages recently. Please try again later.'},{status:429});
