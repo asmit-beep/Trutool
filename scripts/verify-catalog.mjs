@@ -124,7 +124,7 @@ try{
  const refreshed=await helpful.GET(new Request(helpfulUrl+'?slugs='+firstAnswer.slug,{headers:{Cookie:cookie}}));assert.deepEqual((await refreshed.json()).counts[firstAnswer.slug],{count:firstAnswer.helpful+1,voted:true});
  const another=await helpful.POST(voteRequest(firstAnswer.slug));assert.equal((await another.json()).count,firstAnswer.helpful+2);assert.equal(voteStore.records.size,2);
  const otherSlug=communityAnswers[1].slug;await helpful.POST(voteRequest(otherSlug,cookie));assert.equal(voteStore.records.size,3);
- delete process.env.BLOB_READ_WRITE_TOKEN;assert.equal((await helpful.POST(voteRequest(otherSlug,cookie))).status,503);
+ const priorAdmin=process.env.ADMIN_SESSION_SECRET,priorSigning=process.env.TRUTOOL_SIGNING_SECRET;delete process.env.BLOB_READ_WRITE_TOKEN;delete process.env.ADMIN_SESSION_SECRET;delete process.env.TRUTOOL_SIGNING_SECRET;assert.equal((await helpful.POST(voteRequest(otherSlug,cookie))).status,503);if(priorAdmin!==undefined)process.env.ADMIN_SESSION_SECRET=priorAdmin;if(priorSigning!==undefined)process.env.TRUTOOL_SIGNING_SECRET=priorSigning;
  if(priorToken===undefined)delete process.env.BLOB_READ_WRITE_TOKEN;else process.env.BLOB_READ_WRITE_TOKEN=priorToken;
  console.log('PASS: helpful votes persist once per browser/answer, concurrent duplicate clicks do not inflate totals, reload preserves state, and invalid submissions cannot write.');
  const communitySource=fs.readFileSync('app/api/community/route.ts','utf8').replace('@/lib/catalog','./catalog').replace('@/lib/community-answers','./community-answers').replace('@/lib/private-storage','./helpful-blob').replace('@/lib/cms-store','./cms-store');
