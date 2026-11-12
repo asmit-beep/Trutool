@@ -15,7 +15,7 @@ export type StoredSubscriber = {
 
 export function newsletterSecret() {
   // Prefer the original secret so existing subscriber IDs and signed unsubscribe links never change.
-  return process.env.BLOB_READ_WRITE_TOKEN || process.env.ADMIN_SESSION_SECRET;
+  return process.env.TRUTOOL_SIGNING_SECRET || process.env.BLOB_READ_WRITE_TOKEN || process.env.ADMIN_SESSION_SECRET;
 }
 
 export function subscriberPath(id: string) {
