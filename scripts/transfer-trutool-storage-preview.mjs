@@ -72,7 +72,13 @@ if(blobs.length!==104||new Set(blobs.map(x=>x.pathname)).size!==104)throw Error(
 const legacyFiles=await assertOk(await legacy('list'),'Old media inventory').json();
 if(!Array.isArray(legacyFiles)||legacyFiles.length!==29||new Set(legacyFiles.map(x=>x.name)).size!==29)throw Error('Unexpected old media inventory');
 const summary={apply,blobObjects:blobs.length,oldMedia:legacyFiles.length,sourcePrefixes:{},oldMediaResults:{copied:0,missing:0,identical:0},archive:{copied:0,missing:0,identical:0},media:{copied:0,missing:0,identical:0},db:{copied:0,missing:0,identical:0,conflict:0},conflicts:[]};
-for(const item of legacyFiles){
+async function eachConcurrent(items,limit,work){
+ let next=0;
+ await Promise.all(Array.from({length:Math.min(limit,items.length)},async()=>{
+  while(next<items.length){const i=next++;await work(items[i]);}
+ }));
+}
+await eachConcurrent(legacyFiles,8,async(item)=>{
  const path=item.name;
  if(!/^cms\/media\/[a-f0-9-]{36}\.webp$/i.test(path))throw Error('Unrecognized old image path');
  const file=await assertOk(await legacy('get',path),'Download old image');
@@ -80,8 +86,8 @@ for(const item of legacyFiles){
  if(bytes.length<16||bytes.toString('ascii',0,4)!=='RIFF'||bytes.toString('ascii',8,12)!=='WEBP')throw Error('Old image damaged '+path);
  const r=await storeBytes('trutool-media',path,bytes,'image/webp');
  summary.oldMediaResults[r]++;
-}
-for(const blob of blobs){
+});
+await eachConcurrent(blobs,8,async(blob)=>{
  const path=blob.pathname;
  if(!/^[a-z0-9][a-z0-9/_-]*\.(?:json|webp)$/i.test(path)||path.includes('..')||path.startsWith('/'))throw Error('Unexpected Blob pathname '+path);
  const prefix=path.split('/')[0];summary.sourcePrefixes[prefix]=(summary.sourcePrefixes[prefix]||0)+1;
@@ -94,7 +100,7 @@ for(const blob of blobs){
  summary.archive[await storeBytes('trutool-migration-archive','vercel-blob/'+path,bytes,mime)]++;
  if(media){
   const existing=await getStored('trutool-media',path);
-  if(existing&&sha(existing)!==sha(bytes)){summary.conflicts.push('media differs: '+path);continue;}
+  if(existing&&sha(existing)!==sha(bytes)){summary.conflicts.push('media differs: '+path);return;}
   summary.media[await storeBytes('trutool-media',path,bytes,mime)]++;
   const state=await saveIfMissing(path,{media:true,size:bytes.length,contentType:mime});
   summary.db[state]++;if(state==='conflict')summary.conflicts.push(path);
@@ -103,7 +109,7 @@ for(const blob of blobs){
   const state=await saveIfMissing(path,{data:parsed,contentType:mime});
   summary.db[state]++;if(state==='conflict')summary.conflicts.push(path);
  }
-}
+});
 summary.conflicts=summary.conflicts.map(x=>x.startsWith('enquiries/')?'enquiries/<redacted>':x).slice(0,30);
 console.log('TRUTOOL_STORAGE_MIGRATION_SUMMARY '+JSON.stringify(summary));
 if(apply&&(summary.archive.missing||summary.oldMediaResults.missing||summary.media.missing||summary.db.missing))throw Error('Migration left unresolved missing copies');
