@@ -12,7 +12,7 @@ export async function POST(request:Request){
  const name=typeof x.name==='string'?x.name.trim():'',email=typeof x.email==='string'?x.email.trim().toLowerCase():'',question=typeof x.question==='string'?x.question.trim():'',message=typeof x.message==='string'?x.message.trim():'',category=typeof x.category==='string'?x.category:'';
  const answer=typeof x.answerSlug==='string'?getCommunityAnswer(x.answerSlug)||((await getPublished()).find(c=>c.kind==='answer'&&c.slug===x.answerSlug)?{slug:x.answerSlug}:undefined):undefined;
  if(!['question','perspective'].includes(x.kind)||name.length<2||name.length>80||email.length>254||(email&&!/^\S+@\S+\.\S+$/.test(email))||x.consent!==true||!(category==='other'||categories.some(c=>c.slug===category))||message.length>1800||(x.kind==='question'&&(question.length<12||question.length>180))||(x.kind==='perspective'&&(message.length<20||(x.answerSlug!==undefined&&!answer))))return Response.json({error:'Check your display name, topic, question or experience, and publication consent.'},{status:400});
- const secret=process.env.ADMIN_SESSION_SECRET||process.env.TRUTOOL_SIGNING_SECRET||process.env.BLOB_READ_WRITE_TOKEN;
+ const secret=process.env.ADMIN_SESSION_SECRET||process.env.TRUTOOL_SIGNING_SECRET;
  if(!secret)throw new Error('Community inbox unavailable');
  const hour=new Date().toISOString().slice(0,13),identity=email||request.headers.get('x-forwarded-for')?.split(',')[0].trim()||name,key=createHash('sha256').update(identity+secret).digest('hex'),prefix=`community-submissions/${hour}/${key}/`;
  const recent=await list({prefix,limit:5});if(recent.blobs.length>=5)return Response.json({error:'Please wait before sending another submission.'},{status:429});
