@@ -90,7 +90,7 @@ try{
  assert.ok(!fs.readFileSync('app/page.tsx','utf8').includes('className="hero-stats"'),'Requested hero count strip removed');
  console.log('PASS: 60+ search relevance, typo, synonym, no-match, filter and performance checks; unrelated results excluded.');
  fs.symlinkSync(path.resolve('node_modules'),path.join(tmp,'node_modules'),'dir');
- const reviewSource=fs.readFileSync('app/api/reviews/route.ts','utf8').replace("@/lib/catalog","./catalog");
+ const reviewSource=fs.readFileSync('app/api/reviews/route.ts','utf8').replace("@/lib/catalog","./catalog").replace('@/lib/private-storage','./helpful-blob');
  fs.writeFileSync(path.join(tmp,'review-route.js'),ts.transpileModule(reviewSource,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  const {POST}=require(path.join(tmp,'review-route.js'));
  const {demoReviews,demoGuideReviews}=require(path.join(tmp,'demo-reviews.js'));
@@ -110,7 +110,7 @@ try{
  console.log('PASS: every community question has a complete answer, valid tools, practical steps and bounded helpful counts.');
  const launchAnswers=spawnSync(process.execPath,['-e',`const a=require('node:assert/strict'),r=require(${JSON.stringify(path.join(tmp,'community-answers.js'))});a.ok(r.communityAnswers.every(x=>x.helpful===0));`],{env:{...process.env,NEXT_PUBLIC_DEMO_MODE:'false'},encoding:'utf8'});assert.equal(launchAnswers.status,0,launchAnswers.stderr);
  fs.writeFileSync(path.join(tmp,'helpful-blob.js'),`exports.records=new Map();exports.list=async({prefix,cursor})=>({blobs:[...exports.records.keys()].filter(p=>p.startsWith(prefix)).map(pathname=>({pathname})),hasMore:false});exports.put=async(pathname,body,options)=>{if(options.access!=='private')throw Error('private storage required');exports.records.set(pathname,body);};`);
- const helpfulSource=fs.readFileSync('app/api/helpful/route.ts','utf8').replace('@/lib/community-answers','./community-answers').replace('@vercel/blob','./helpful-blob');
+ const helpfulSource=fs.readFileSync('app/api/helpful/route.ts','utf8').replace('@/lib/community-answers','./community-answers').replace('@/lib/private-storage','./helpful-blob');
  fs.writeFileSync(path.join(tmp,'helpful-route.js'),ts.transpileModule(helpfulSource,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  const helpful=require(path.join(tmp,'helpful-route.js')),voteStore=require(path.join(tmp,'helpful-blob.js')),helpfulUrl='https://trutool-directory.vercel.app/api/helpful',firstAnswer=communityAnswers[0];
  const priorToken=process.env.BLOB_READ_WRITE_TOKEN;process.env.BLOB_READ_WRITE_TOKEN='isolated-validation-key';
