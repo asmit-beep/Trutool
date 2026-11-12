@@ -83,7 +83,7 @@ for(const item of legacyFiles){
 }
 for(const blob of blobs){
  const path=blob.pathname;
- if(!/^(cms|enquiries|newsletter|community-submissions)\//.test(path))throw Error('Unexpected Blob namespace '+path);
+ if(!/^[a-z0-9][a-z0-9/_-]*\.(?:json|webp)$/i.test(path)||path.includes('..')||path.startsWith('/'))throw Error('Unexpected Blob pathname '+path);
  const prefix=path.split('/')[0];summary.sourcePrefixes[prefix]=(summary.sourcePrefixes[prefix]||0)+1;
  const result=await blobGet(path,{access:'private',useCache:false});
  if(!result||result.statusCode!==200)throw Error('Private Blob read failed '+path);
