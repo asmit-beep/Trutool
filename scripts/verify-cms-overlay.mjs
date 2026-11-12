@@ -62,6 +62,7 @@ function transpile(source,dest){
 try{
  process.env.BLOB_READ_WRITE_TOKEN='local-mock-only';
  process.env.TRUTOOL_STORAGE_BACKEND='supabase';
+ process.env.SUPABASE_SECRET_KEY=process.env.SUPABASE_SECRET_KEY||'test-local';
  delete process.env.VERCEL;
  fs.writeFileSync(path.join(temp,'package.json'),JSON.stringify({type:'commonjs'}));
  transpile('lib/cms-types.ts','cms-types.js');
@@ -74,7 +75,7 @@ try{
   if(id==='@vercel/blob')return blob;
   if(id==='next/cache')return {unstable_cache:callback=>callback};
   if(id==='react')return {cache:callback=>callback};
-  if(id==='./private-storage')return storage;
+  if(id==='./private-storage')return parent?.filename===path.join(temp,'cms-overlay.js')?blob:storage;
   if(id==='./authors')return {authors:[{slug:'yash',name:'Yash'}]};
   return originalLoad.call(this,id,parent,isMain);
  };
