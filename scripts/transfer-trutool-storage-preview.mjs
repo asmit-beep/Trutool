@@ -106,6 +106,20 @@ await eachConcurrent(blobs,8,async(blob)=>{
   summary.db[state]++;if(state==='conflict')summary.conflicts.push(path);
  }else{
   let parsed;try{parsed=JSON.parse(bytes.toString('utf8'));}catch{throw Error('Invalid Blob JSON '+path);}
+  if(path==='cms/content-v1.json'){
+   const existing=await getRow(path),source=parsed,dest=existing?.payload?.data;
+   if(Array.isArray(source?.records)&&Array.isArray(dest?.records)){
+    const sourceMap=new Map(source.records.map(r=>[r.id,r]));
+    const destMap=new Map(dest.records.map(r=>[r.id,r]));
+    const onlySource=[...sourceMap.keys()].filter(id=>!destMap.has(id));
+    const onlyDestination=[...destMap.keys()].filter(id=>!sourceMap.has(id));
+    const changed=[...sourceMap.keys()].filter(id=>destMap.has(id)&&!equal(sourceMap.get(id),destMap.get(id)));
+    summary.cmsComparison={sourceRecordCount:source.records.length,destinationRecordCount:dest.records.length,
+      sourceRevision:source.revision,destinationRevision:dest.revision,
+      sourceOnlyRecordIds:onlySource,productionOnlyRecordIds:onlyDestination,
+      changedRecordIds:changed,sourceActivity:source.activity?.length,destinationActivity:dest.activity?.length};
+   }
+  }
   const state=await saveIfMissing(path,{data:parsed,contentType:mime});
   summary.db[state]++;if(state==='conflict')summary.conflicts.push(path);
  }
