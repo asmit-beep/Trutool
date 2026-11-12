@@ -1,5 +1,5 @@
 import 'server-only';
-import {get,put} from '@vercel/blob';
+import {get,put} from './private-storage';
 import {getAIProductLaunches} from './launch-discovery';
 import {getAIPopularitySignals,type AIPopularitySignal} from './ai-signals';
 import type {AIShelfTool} from './ai';
@@ -18,7 +18,7 @@ const isValid=(raw:unknown):raw is AICollectionSnapshot=>{
 };
 
 export async function readAICollectionSnapshot():Promise<AICollectionSnapshot|null>{
- if(!process.env.BLOB_READ_WRITE_TOKEN||process.env.TRUTOOL_BUILD_MODE==='1')return null;
+ if(!process.env.SUPABASE_SECRET_KEY||process.env.TRUTOOL_BUILD_MODE==='1')return null;
  try{
   const result=await get(path,{access:'private',useCache:false});
   if(!result||result.statusCode!==200)return null;
@@ -52,7 +52,7 @@ export async function refreshAICollectionSnapshot(now=Date.now()){
   return {ok:false,updatedAt:previous?.updatedAt||null,launches:0,signals:0,reason:'No verified source data'};
  }
  const updatedAt=new Date(now).toISOString(),snapshot:AICollectionSnapshot={version:1,updatedAt,launches,signals};
- if(!process.env.BLOB_READ_WRITE_TOKEN)throw new Error('Private discovery storage is unavailable');
+ if(!process.env.SUPABASE_SECRET_KEY)throw new Error('Private discovery storage is unavailable');
  await put(path,JSON.stringify(snapshot),{access:'private',contentType:'application/json',
   addRandomSuffix:false,allowOverwrite:true});
  return {ok:true,updatedAt,launches:launches.length,signals:signals.length};

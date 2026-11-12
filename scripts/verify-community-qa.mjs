@@ -76,7 +76,7 @@ try{
   assert.equal(admin.headers.get('cache-control'),'private, no-store');
   assert.ok(fs.readFileSync('app/community/page.tsx','utf8').includes('communityCardsWithPublished(await getPublished())'));
   assert.ok(fs.readFileSync('components/admin-workspace.tsx','utf8').includes('<AdminCommunityQueue onCreateAnswer={draftCommunityAnswer}/>'));
-  assert.ok(fs.readFileSync('lib/private-storage.ts','utf8').includes("path.startsWith('community-submissions/')"));
+  const privateStorageSource=fs.readFileSync('lib/private-storage.ts','utf8');assert.ok(privateStorageSource.includes('trutool_objects')&&!privateStorageSource.includes("from '@vercel/blob'"),'Community submissions must use private Supabase storage');
   const sitemap=fs.readFileSync('app/sitemap.ts','utf8');
   assert.ok(sitemap.includes('publicPages()'), 'Q&A pages must be included in dynamic sitemap');
   console.log('PASS: CMS community Q&A merges into public grid; private question intake, admin auth, draft workflow, and sitemap use live records.');

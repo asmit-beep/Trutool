@@ -1,6 +1,6 @@
 import 'server-only';
 import { revalidatePath,revalidateTag } from 'next/cache';
-import { BlobPreconditionFailedError } from '@vercel/blob';
+import { BlobPreconditionFailedError } from './private-storage';
 import { readStore,writeStore } from './cms-store';
 import { contentPath,effectivePublished } from './cms-types';
 import { absolute } from './content-index';

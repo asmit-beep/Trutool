@@ -26,7 +26,7 @@ export async function readStore():Promise<CmsRead>{
  // Real requests read the complete primary+overlay inventory at runtime.
  if(process.env.TRUTOOL_BUILD_MODE==='1')
   return {store:emptyStore(),legacyUnavailable:true};
- if(!process.env.BLOB_READ_WRITE_TOKEN){
+ if(!process.env.SUPABASE_SECRET_KEY){
   if(process.env.VERCEL)throw new Error('Content storage unavailable');
   return {store:emptyStore()};
  }

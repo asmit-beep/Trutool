@@ -25,8 +25,8 @@ export async function POST(request:Request){
   if(!normalizedUrl)return Response.json({error:'Enter a valid website, such as yourproduct.com or https://yourproduct.com.'},{status:400});
   product={name:productName,url:normalizedUrl,category};
  }
- if(!usingSupabaseStorage()&&!process.env.BLOB_READ_WRITE_TOKEN)throw new Error('Contact inbox is not configured');
- const rateLimitSecret=process.env.ADMIN_SESSION_SECRET||process.env.BLOB_READ_WRITE_TOKEN;
+ if(!process.env.SUPABASE_SECRET_KEY)throw new Error('Contact inbox is not configured');
+ const rateLimitSecret=process.env.ADMIN_SESSION_SECRET||process.env.TRUTOOL_SIGNING_SECRET||process.env.BLOB_READ_WRITE_TOKEN;
  if(!rateLimitSecret)throw new Error('Contact security is not configured');
  const hour=new Date().toISOString().slice(0,13);const key=createHash('sha256').update(email+rateLimitSecret).digest('hex');const prefix=`enquiries/${hour}/${key}/`;
  const recent=await list({prefix,limit:5});if(recent.blobs.length>=5)return Response.json({error:'You have sent several messages recently. Please try again later.'},{status:429});

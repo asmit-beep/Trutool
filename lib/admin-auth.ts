@@ -1,6 +1,6 @@
 // Keep security rate-limit counters in the original independent Blob store.
 // Primary CMS storage can become unavailable without blocking password verification.
-import { BlobNotFoundError,BlobPreconditionFailedError,get,head,put } from '@vercel/blob';
+import { BlobNotFoundError,BlobPreconditionFailedError,get,head,put } from './private-storage';
 import { cookies } from 'next/headers';
 import { createHmac,randomUUID,scryptSync,timingSafeEqual } from 'node:crypto';
 import 'server-only';
@@ -16,7 +16,7 @@ export function sameOrigin(r:Request){try{const origin=new URL(r.headers.get('or
 export const privateResponse=(value:unknown,status=200)=>Response.json(value,{status,headers:{'Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow','X-Content-Type-Options':'nosniff'}});
 export async function loginAttempt(r:Request){
  const key=createHmac('sha256',secret()!).update(r.headers.get('x-vercel-forwarded-for')||r.headers.get('x-forwarded-for')||'unknown').digest('hex'),bucket=Math.floor(Date.now()/900000),path=`cms/security/login-${key}-${bucket}.json`;
- if(!process.env.BLOB_READ_WRITE_TOKEN){if(process.env.VERCEL)throw new Error('Admin unavailable');const key=path,counters=localAttempts;const n=counters.get(key)||0;if(n>=10)return false;counters.set(key,n+1);return true;}
+ if(!process.env.SUPABASE_SECRET_KEY){if(process.env.VERCEL)throw new Error('Admin unavailable');const key=path,counters=localAttempts;const n=counters.get(key)||0;if(n>=10)return false;counters.set(key,n+1);return true;}
  for(let i=0;i<3;i++){let metadata;try{metadata=await head(path);}catch(e){if(!(e instanceof BlobNotFoundError))throw e;}const res=metadata?await get(metadata.url,{access:'private',useCache:false}):null,n=res?.statusCode===200?Number((await new Response(res.stream).json()).count)||0:0;if(n>=10)return false;
  try{await put(path,JSON.stringify({count:n+1}),{access:'private',contentType:'application/json',addRandomSuffix:false,...(res?.statusCode===200?{ifMatch:metadata!.etag,allowOverwrite:true}:{allowOverwrite:false})});return true;}catch(e){if(!(e instanceof BlobPreconditionFailedError))throw e;}}
  return false;

@@ -1,5 +1,5 @@
 import 'server-only';
-import {get,head,put,BlobNotFoundError,BlobPreconditionFailedError} from '@vercel/blob';
+import {get,head,put,BlobNotFoundError,BlobPreconditionFailedError} from './private-storage';
 import type {CmsStore} from './cms-types';
 
 export const cmsOverlayPath='cms/independent-publishing-v1.json';
