@@ -90,7 +90,8 @@ try{
  assert.ok(!fs.readFileSync('app/page.tsx','utf8').includes('className="hero-stats"'),'Requested hero count strip removed');
  console.log('PASS: 60+ search relevance, typo, synonym, no-match, filter and performance checks; unrelated results excluded.');
  fs.symlinkSync(path.resolve('node_modules'),path.join(tmp,'node_modules'),'dir');
- const reviewSource=fs.readFileSync('app/api/reviews/route.ts','utf8').replace("@/lib/catalog","./catalog").replace('@/lib/private-storage','./helpful-blob');
+ fs.writeFileSync(path.join(tmp,'review-storage.js'),"module.exports={put:async()=>{},list:async()=>({blobs:[],hasMore:false})};");
+ const reviewSource=fs.readFileSync('app/api/reviews/route.ts','utf8').replace("@/lib/catalog","./catalog").replace('@/lib/private-storage','./review-storage');
  fs.writeFileSync(path.join(tmp,'review-route.js'),ts.transpileModule(reviewSource,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  const {POST}=require(path.join(tmp,'review-route.js'));
  const {demoReviews,demoGuideReviews}=require(path.join(tmp,'demo-reviews.js'));
