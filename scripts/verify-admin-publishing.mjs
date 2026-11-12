@@ -47,7 +47,7 @@ try{
  Module._load=function(id,parent){
   if(id==='server-only')return {};
   if(id==='next/cache')return {revalidatePath:(...args)=>invalidations.push(args),revalidateTag:(...args)=>invalidations.push(args)};
-  if(id==='@vercel/blob')return {BlobPreconditionFailedError:Conflict};
+  if(id==='@vercel/blob'||id==='./private-storage')return {BlobPreconditionFailedError:Conflict};
   if(id==='./content-index'&&parent?.filename===path.join(tmp,'visibility-refresh.js'))return {absolute:p=>'https://trutool.co'+p};
   if(id==='./cms-store')return {readStore:async()=>({store:structuredClone(store),etag:'revision-'+store.revision}),writeStore:async value=>{if(collision){collision=false;store.revision++;store.records[0].draft.body='concurrent editorial edit';throw new Conflict();}saved=value;store=value;}};
   return originalLoad.apply(this,arguments);
