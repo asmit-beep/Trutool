@@ -68,7 +68,7 @@ do{
  cursor=page.hasMore?page.cursor:undefined;
  if(cursor&&(!page.blobs.length||blobs.length>20000))throw Error('Blob pagination failed');
 }while(cursor);
-if(blobs.length!==104||new Set(blobs.map(x=>x.pathname)).size!==104)throw Error('Unexpected Vercel Blob inventory: '+blobs.length);
+if(blobs.length<104||new Set(blobs.map(x=>x.pathname)).size!==blobs.length)throw Error('Unexpected Vercel Blob inventory: '+blobs.length);
 const legacyFiles=await assertOk(await legacy('list'),'Old media inventory').json();
 if(!Array.isArray(legacyFiles)||legacyFiles.length!==29||new Set(legacyFiles.map(x=>x.name)).size!==29)throw Error('Unexpected old media inventory');
 const summary={apply,blobObjects:blobs.length,oldMedia:legacyFiles.length,sourcePrefixes:{},oldMediaResults:{copied:0,missing:0,identical:0},archive:{copied:0,missing:0,identical:0},media:{copied:0,missing:0,identical:0},db:{copied:0,missing:0,identical:0,conflict:0},conflicts:[]};
@@ -97,7 +97,14 @@ await eachConcurrent(blobs,8,async(blob)=>{
  if(!bytes.length)throw Error('Zero-length Blob '+path);
  const media=path.endsWith('.webp'),mime=media?'image/webp':'application/json';
  // Archive original source bytes under their exact original keys, never overwrite.
- summary.archive[await storeBytes('trutool-migration-archive','vercel-blob/'+path,bytes,mime)]++;
+ try{
+  summary.archive[await storeBytes('trutool-migration-archive','vercel-blob/'+path,bytes,mime)]++;
+ }catch(error){
+  if(!(error instanceof Error)||!error.message.startsWith('Existing file differs'))throw error;
+  // A source object changed during cutover. Preserve both byte-for-byte versions.
+  summary.archive[await storeBytes('trutool-migration-archive','vercel-blob-revisions/'+sha(bytes)+'/'+path,bytes,mime)]++;
+  summary.conflicts.push('source-revised:'+path);
+ }
  if(media){
   const existing=await getStored('trutool-media',path);
   if(existing&&sha(existing)!==sha(bytes)){summary.conflicts.push('media differs: '+path);return;}
