@@ -26,6 +26,7 @@ try {
 class BlobPreconditionFailedError extends Error {}
 const entries=globalThis.testDispatchRecords;
 module.exports={
+trutoolSigningSecret:()=>process.env.ADMIN_SESSION_SECRET,
 async get(path){const row=entries.get(path);return row?{statusCode:200,stream:new Response(row.body).body,blob:{etag:row.etag}}:null;},
 async put(path,body,opt){const row=entries.get(path);if(opt.ifMatch && row?.etag !== opt.ifMatch)throw new BlobPreconditionFailedError();entries.set(path,{body,etag:String(++globalThis.testDispatchVersion)});return {pathname:path};},
 async list({prefix,limit,cursor}){const arr=[...entries.keys()].filter(p=>p.startsWith(prefix)).sort();const offset=Number(cursor||0);return {blobs:arr.slice(offset,offset+limit).map(pathname=>({pathname})),hasMore:arr.length>offset+limit,cursor:arr.length>offset+limit?String(offset+limit):undefined};}

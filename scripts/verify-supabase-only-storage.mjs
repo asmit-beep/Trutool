@@ -34,6 +34,7 @@ try{
   throw Error('Unexpected Supabase request '+method+' '+u.pathname);
  };
  const store=require(path.join(dir,'private-storage.cjs'));assert.equal(store.usingSupabaseStorage(),true);
+ if(process.env.TRUTOOL_SIGNING_SECRET_ENCRYPTED&&process.env.BLOB_READ_WRITE_TOKEN){assert.equal(store.trutoolSigningSecret(),process.env.BLOB_READ_WRITE_TOKEN,'Historical signing seed must match original');console.log('PASS: historical signing seed preserved under AES-GCM wrapping');}
  const key='enquiries/2026-11-12T01/hash/test.json';
  await store.put(key,JSON.stringify({message:'New enquiry',id:'1'}),{access:'private',contentType:'application/json',addRandomSuffix:false});
  assert.equal((await new Response((await store.get(key,{access:'private'})).stream).json()).message,'New enquiry');

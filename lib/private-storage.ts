@@ -1,4 +1,26 @@
 import 'server-only';
+import {createDecipheriv,hkdfSync} from 'node:crypto';
+
+// Keep all previously issued newsletter links and helpful-vote cookies valid
+// after the legacy Blob store and its Vercel-managed token are deleted.
+// The legacy signing seed is AES-256-GCM wrapped under ADMIN_SESSION_SECRET.
+export function trutoolSigningSecret():string|undefined{
+ const wrapped=process.env.TRUTOOL_SIGNING_SECRET_ENCRYPTED;
+ if(wrapped){
+  const master=process.env.ADMIN_SESSION_SECRET;
+  if(!master)throw new Error('TruTool legacy signing master secret is unavailable');
+  const data=Buffer.from(wrapped,'base64url');
+  if(data.length<40)throw new Error('Invalid wrapped TruTool signing secret');
+  const key=Buffer.from(hkdfSync('sha256',Buffer.from(master),Buffer.from('trutool-signing-encryption-2026'),Buffer.from('legacy-blob-signature-seed-v1'),32));
+  const d=createDecipheriv('aes-256-gcm',key,data.subarray(0,12));
+  d.setAAD(Buffer.from('trutool-legacy-sign-v1'));d.setAuthTag(data.subarray(12,28));
+  const secret=Buffer.concat([d.update(data.subarray(28)),d.final()]).toString('utf8');
+  if(!secret)throw new Error('Empty TruTool signing secret');
+  return secret;
+ }
+ return process.env.TRUTOOL_SIGNING_SECRET||process.env.ADMIN_SESSION_SECRET;
+}
+
 
 // Compatibility error types for the site's existing callers; no Vercel Blob SDK is used.
 export class BlobNotFoundError extends Error { constructor(){super('Private object not found');this.name='BlobNotFoundError';} }

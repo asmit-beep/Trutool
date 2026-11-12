@@ -1,5 +1,5 @@
 import {createHmac,randomUUID,timingSafeEqual} from 'node:crypto';
-import {list,put} from '@/lib/private-storage';
+import {list,put,trutoolSigningSecret} from '@/lib/private-storage';
 import {getCommunityAnswer} from '@/lib/community-answers';
 export const runtime='nodejs';
 export const dynamic='force-dynamic';
@@ -7,7 +7,7 @@ const prefix='community-helpful/',cookieName='trutool_helpful';
 type Snapshot={counts:Map<string,number>;voters:Map<string,Set<string>>};
 let snapshot:{expires:number;value:Snapshot}|undefined,pending:Promise<Snapshot>|undefined;
 const attempts=new Map<string,{count:number;expires:number}>();
-const secret=()=>process.env.TRUTOOL_SIGNING_SECRET||process.env.BLOB_READ_WRITE_TOKEN||process.env.ADMIN_SESSION_SECRET;
+const secret=trutoolSigningSecret;
 function sign(id:string){return createHmac('sha256',secret()!).update('trutool-helpful:'+id).digest('hex');}
 function visitor(request:Request){const value=(request.headers.get('cookie')||'').split(';').map(s=>s.trim()).find(s=>s.startsWith(cookieName+'='))?.slice(cookieName.length+1);if(!value||!secret())return null;const [id,sig]=value.split('.');if(!/^[a-f0-9-]{36}$/.test(id||'')||!/^[a-f0-9]{64}$/.test(sig||''))return null;const expected=sign(id);return timingSafeEqual(Buffer.from(sig),Buffer.from(expected))?id:null;}
 const voterKey=(id:string)=>createHmac('sha256',secret()!).update('vote:'+id).digest('hex');
