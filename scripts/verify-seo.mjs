@@ -8,6 +8,12 @@ try{
  // not produce identical search snippets across different product pages.
  const descriptions=index.contentPages.filter(p=>p.kind==='tool').map(p=>p.description.trim().toLowerCase());
  assert.equal(new Set(descriptions).size,descriptions.length,'Repeated canonical tool page descriptions');
+ const altSource=fs.readFileSync('app/alternatives/[slug]/page.tsx','utf8');
+ const toolSource=fs.readFileSync('app/tools/[slug]/page.tsx','utf8');
+ assert.ok(!altSource.includes("'/compare?tools='"),'Alternatives cards must not create thousands of crawlable ad-hoc comparison URLs');
+ assert.ok(!toolSource.includes("href={'/compare?tools='"),'Tool profiles must not emit crawlable parameterized comparison links');
+ assert.ok(altSource.includes('comparePath&&<Link'), 'Only canonical allowlisted comparisons should be linked from alternatives cards');
+ assert.ok(toolSource.includes('CompareStartButton'), 'Keep user-triggered compare functionality');
  assert.ok(!paths.has('/tools/kit-email')&&!paths.has('/alternatives/kit-email'),'Duplicate Kit vendor profiles should redirect instead of appearing as separate canonical pages');
  const nextConfig=fs.readFileSync('next.config.ts','utf8');
  for(const [source,destination] of [['/tools/kit-email','/tools/kit'],['/alternatives/kit-email','/alternatives/kit']])

@@ -63,3 +63,5 @@
 .alternatives-detail .alt-research-table a{text-decoration:underline;text-underline-offset:3px;color:#325e36;font-weight:650}
 .alternatives-detail .alt-research-table tbody tr:last-child th,.alternatives-detail .alt-research-table tbody tr:last-child td{border-bottom:0}
 .alternatives-detail .alt-research-baseline{font-size:12px!important;color:#617073!important;margin:0}
+
+.alternatives-detail .alt-builder-link{margin:-40px 0 52px;line-height:1.65;color:#596e62;font-size:14px}

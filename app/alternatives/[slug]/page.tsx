@@ -98,7 +98,7 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
       </div>
       {shortlist.length>0?
         <ol className="alt-option-grid">{shortlist.map((x,i)=>{
-          const comparePath=allowlistedComparePath(t.slug,x.slug)||'/compare?tools='+encodeURIComponent(t.slug+','+x.slug);
+          const comparePath=allowlistedComparePath(t.slug,x.slug);
           return <li key={x.slug} className="alt-option">
             <div className="alt-option-top"><span>OPTION {String(i+1).padStart(2,'0')}</span><span>{x.format}</span></div>
             <h3>{x.name}</h3>
@@ -113,12 +113,13 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
             </div>
             <div className="alt-option-links">
               <Link href={'/tools/'+x.slug}>Read profile</Link>
-              <Link href={comparePath}>Compare with {t.name}</Link>
+              {comparePath&&<Link href={comparePath}>Compare with {t.name}</Link>}
             </div>
           </li>;
         })}</ol>:
         <div className="alt-empty"><h3>No directly comparable category profiles yet</h3><p>We do not invent alternatives when the directory lacks sufficiently relevant products. Explore the <Link href={'/categories/'+t.category}>{categoryName} category</Link> or review {t.name} against your workflow first.</p></div>}
     </section>
+    <p className="alt-builder-link">Want to compare other candidates? <Link className="text-link" href="/compare">Open the comparison builder</Link> and choose two or three profiles.</p>
 
     {research.length>0&&<section className="alt-research-section" aria-labelledby="alternatives-research">
       <span className="eyebrow">WHAT THE RECORDS ACTUALLY SHOW</span>

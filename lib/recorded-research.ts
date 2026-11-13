@@ -17,7 +17,9 @@ export function vendorSource(tool:Tool):{href:string;label:string}|null {
  try {
   const url=new URL(source);
   if(url.protocol!=='https:'&&url.protocol!=='http:')return null;
-  return {href:url.toString(),label:tool.sourceTitle?.trim()||tool.name+' official website'};
+  const rawLabel=tool.sourceTitle?.replace(/\s+/g,' ').trim()||'';
+  const label=rawLabel.length>=10&&rawLabel.length<=115?rawLabel:tool.name+' official documentation';
+  return {href:url.toString(),label};
  }catch{return null;}
 }
 export function recordedCapabilityComparison(target:Tool,peer:Tool){
