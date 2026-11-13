@@ -43,7 +43,7 @@ export const contentPages:ContentPage[]=[...staticPages,
  ...authors.map(author=>({path:'/authors/'+author.slug,title:author.name+' — TruTool Editorial Team',description:author.bio,kind:'author' as const,author})),
  ...serviceCategories.map(service=>({path:'/services/'+service.slug,title:service.name,description:service.description,kind:'service' as const,service})),
  ...tools.flatMap(tool=>[
-  {path:'/tools/'+tool.slug,title:tool.name+' — Features, Fit, Reviews & Alternatives',description:tool.summary+' '+tool.fit,kind:'tool' as const,tool,updatedAt:tool.updatedAt,publishedAt:tool.addedAt},
+  {path:'/tools/'+tool.slug,title:tool.name+' — Features, Fit, Reviews & Alternatives',description:tool.name+': '+tool.summary+' '+tool.fit,kind:'tool' as const,tool,updatedAt:tool.updatedAt,publishedAt:tool.addedAt},
   {path:'/alternatives/'+tool.slug,title:(tool.slug==='loopio'||tool.slug==='responsive')?rfpAlternativePages[tool.slug].title:tool.name+' Alternatives — Options to Compare',description:(tool.slug==='loopio'||tool.slug==='responsive')?rfpAlternativePages[tool.slug].description:alternativesDescription(tool,categoryOf(tool.category).name),kind:'alternatives' as const,tool,...((tool.slug==='loopio'||tool.slug==='responsive')?{publishedAt:'2026-10-22',updatedAt:'2026-10-22'}:{}),...(alternativesNotes[tool.slug]?{note:alternativesNotes[tool.slug]}:{})},
  ]),
  ...categories.map(category=>({path:'/categories/'+category.slug,title:category.name+' — Tools & Comparisons',description:category.answer,kind:'collection' as const,category})),

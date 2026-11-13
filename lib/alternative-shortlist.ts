@@ -1,5 +1,6 @@
 import type { Tool } from './catalog';
 import { allowlistedComparePartners } from './compare-pairs';
+import {audienceIsGeneric,meaningfulFeatures} from './recorded-research';
 
 /**
  * A bounded, deterministic research shortlist. We compare only products in the
@@ -36,12 +37,16 @@ export function alternativeShortlist(target:Tool, inventory:readonly Tool[], lim
 }
 
 export function alternativesDescription(tool:Tool,categoryName:string):string {
-  const audience=tool.fit?.trim() || tool.summary.trim();
-  return 'Compare '+tool.name+' alternatives in '+categoryName.toLowerCase()+'. Start with '+audience+' Explore documented capabilities, practical trade-offs, and source profiles.';
+  const specific=meaningfulFeatures(tool).slice(0,2).join(' and ');
+  const fit=!audienceIsGeneric(tool)?tool.fit.trim():'';
+  const focus=fit?'Audience context: '+fit:
+    specific?'Recorded research areas: '+specific+'.':
+    'Assess recorded product focus against vendor documentation.';
+  return 'Compare '+tool.name+' alternatives in '+categoryName.toLowerCase()+'. '+focus+' Review available source links, limitations, and use-case fit.';
 }
 
 export function alternativeEvaluationQuestions(tool:Tool):string[] {
-  const questions=tool.features.filter(Boolean).slice(0,3).map(feature=>
+  const questions=tool.features.filter(feature=>Boolean(feature)&&!/^(core product workflow|features|general capabilities)$/i.test(feature.trim())).slice(0,3).map(feature=>
     'Can a candidate demonstrate '+feature.toLowerCase()+' on a task relevant to your team?');
   if(!questions.length)questions.push('Can the replacement complete the core workflow you currently use '+tool.name+' for?');
   return questions;

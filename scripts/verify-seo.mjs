@@ -4,6 +4,17 @@ import {loadContent} from './load-content.mjs';
 const {index,discovery,schema,sitemap,cleanup}=loadContent();
 try{
  const paths=new Set(index.contentPages.map(p=>p.path));assert.equal(paths.size,index.contentPages.length,'Duplicate canonical path');
+ // Metadata must distinguish each vendor. Repeated catalogue summaries should
+ // not produce identical search snippets across different product pages.
+ const descriptions=index.contentPages.filter(p=>p.kind==='tool').map(p=>p.description.trim().toLowerCase());
+ assert.equal(new Set(descriptions).size,descriptions.length,'Repeated canonical tool page descriptions');
+ assert.ok(index.contentPages.filter(p=>p.kind==='alternatives').every(p=>!p.description.toLowerCase().includes('people and teams evaluating')),'Do not use generic buyer-audience boilerplate in alternatives metadata');
+ const altSource=fs.readFileSync('app/alternatives/[slug]/page.tsx','utf8');
+ const toolSource=fs.readFileSync('app/tools/[slug]/page.tsx','utf8');
+ assert.ok(!altSource.includes("'/compare?tools='"),'Alternatives cards must not create thousands of crawlable ad-hoc comparison URLs');
+ assert.ok(!toolSource.includes("href={'/compare?tools='"),'Tool profiles must not emit crawlable parameterized comparison links');
+ assert.ok(altSource.includes('comparePath&&<Link'), 'Only canonical allowlisted comparisons should be linked from alternatives cards');
+ assert.ok(toolSource.includes('CompareStartButton'), 'Keep user-triggered compare functionality');
  assert.ok(!paths.has('/tools/kit-email')&&!paths.has('/alternatives/kit-email'),'Duplicate Kit vendor profiles should redirect instead of appearing as separate canonical pages');
  const nextConfig=fs.readFileSync('next.config.ts','utf8');
  for(const [source,destination] of [['/tools/kit-email','/tools/kit'],['/alternatives/kit-email','/alternatives/kit']])
@@ -73,7 +84,7 @@ try{
  assert.ok(discovery.rss().includes('<rss version="2.0"'));assert.ok(discovery.atom().includes('http://www.w3.org/2005/Atom'));assert.ok(discovery.llmsIndex().startsWith('# TruTool\n'));
  for(const match of discovery.llmsIndex().matchAll(/\]\((https?:\/\/[^)]+)\)/g)){const url=new URL(match[1]);assert.equal(url.origin,new URL(index.absolute('/')).origin);if(url.pathname.endsWith('.md'))assert.ok(index.getContentPage(url.pathname==='/index.md'?'':url.pathname.slice(0,-3)),url.href)}
  const alternativesSource=fs.readFileSync('app/alternatives/[slug]/page.tsx','utf8');
- assert.ok(alternativesSource.includes("'/compare?tools='+encodeURIComponent(t.slug+','+x.slug)"),'Non-allowlist alternatives keep query comparison links.');
+ assert.ok(alternativesSource.includes('const comparePath=allowlistedComparePath(t.slug,x.slug);'),'Only documented canonical comparison pairs should generate links.');
  assert.ok(alternativesSource.includes('allowlistedComparePath(t.slug,x.slug)'),'Allowlisted alternatives use the canonical compare path.');
  assert.ok(alternativesSource.includes('ALTERNATIVES_COMPARE_LINK_LIMIT'),'Alternatives path links are capped.');
  assert.ok(!alternativesSource.includes("href={'/compare/'+t.slug+'-vs-'+x.slug}"),'Do not generate thousands of uncurated crawlable comparison URLs.');

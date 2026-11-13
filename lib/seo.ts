@@ -21,9 +21,14 @@ export function toolMetaDescription(tool:{slug:string;name:string;summary:string
  if(tool.slug==='ai-bulin-47')return 'Create a 15-second vertical AI dance video from one portrait with AI Bulin 47. Explore soundtrack options, MP4 exports, key features and limitations.';
  const summary=tool.summary.trim().replace(/\s+/g,' ');
  const fit=tool.fit.trim().replace(/\s+/g,' ');
- const whole=summary+(fit?' '+fit:'');
- if(whole.length>=105&&whole.length<=158)return whole;
- return conciseMetaDescription(summary+' Compare features, use cases, pricing and alternatives on TruTool.');
+ // Always identify the vendor in the snippet. Several vendor records share
+ // category-level summaries, so a description without a name can be identical.
+ // Do not invent new feature claims or stuff unrelated search keywords.
+ const named=tool.name+': '+summary;
+ const usefulFit=/^(people and teams evaluating|teams evaluating|individuals and teams evaluating)/i.test(fit)?'':fit;
+ const whole=named+(usefulFit?' '+usefulFit:'');
+ if(whole.length>=100&&whole.length<=158)return whole;
+ return conciseMetaDescription(named+' Examine recorded capabilities, sources, limitations and alternatives on TruTool.');
 }
 export function categoryMetaDescription(category:{slug:string;name:string;description:string}):string{
  const special:Record<string,string>={
