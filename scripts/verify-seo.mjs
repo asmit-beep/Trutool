@@ -83,7 +83,7 @@ try{
  assert.ok(discovery.rss().includes('<rss version="2.0"'));assert.ok(discovery.atom().includes('http://www.w3.org/2005/Atom'));assert.ok(discovery.llmsIndex().startsWith('# TruTool\n'));
  for(const match of discovery.llmsIndex().matchAll(/\]\((https?:\/\/[^)]+)\)/g)){const url=new URL(match[1]);assert.equal(url.origin,new URL(index.absolute('/')).origin);if(url.pathname.endsWith('.md'))assert.ok(index.getContentPage(url.pathname==='/index.md'?'':url.pathname.slice(0,-3)),url.href)}
  const alternativesSource=fs.readFileSync('app/alternatives/[slug]/page.tsx','utf8');
- assert.ok(alternativesSource.includes("'/compare?tools='+encodeURIComponent(t.slug+','+x.slug)"),'Non-allowlist alternatives keep query comparison links.');
+ assert.ok(alternativesSource.includes('const comparePath=allowlistedComparePath(t.slug,x.slug);'),'Only documented canonical comparison pairs should generate links.');
  assert.ok(alternativesSource.includes('allowlistedComparePath(t.slug,x.slug)'),'Allowlisted alternatives use the canonical compare path.');
  assert.ok(alternativesSource.includes('ALTERNATIVES_COMPARE_LINK_LIMIT'),'Alternatives path links are capped.');
  assert.ok(!alternativesSource.includes("href={'/compare/'+t.slug+'-vs-'+x.slug}"),'Do not generate thousands of uncurated crawlable comparison URLs.');
