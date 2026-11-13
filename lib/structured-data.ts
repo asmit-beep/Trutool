@@ -3,11 +3,13 @@ import {absolute,getContentPage,contentAuthor,modifiedFor,relatedTools,type Cont
 import {brandAssets} from './brand-assets';
 import {categoryOf} from './catalog';
 import {coverFor} from './covers';
+import {alternativeShortlist} from './alternative-shortlist';
+import type {Tool} from './catalog';
 
 const organization={'@type':'Organization','@id':absolute('/#organization'),name:'TruTool',url:absolute('/'),logo:{'@type':'ImageObject',url:absolute('/identity/trutool-logo-light.svg')}};
 export function siteStructuredData(){return {'@context':'https://schema.org','@graph':[organization,{'@type':'WebSite','@id':absolute('/#website'),name:'TruTool',url:absolute('/'),inLanguage:'en',publisher:{'@id':organization['@id']},description:'Clearer choices. Better tools.'}]}}
 const labels:Record<string,string>={tools:'Tools',alternatives:'Alternatives',compare:'Comparisons',guides:'Buying guides',categories:'Categories',community:'Community',authors:'Editorial team',services:'Services'};
-export function pageStructuredData(path:string,override?:ContentPage){
+export function pageStructuredData(path:string,override?:ContentPage,inventory?:readonly Tool[]){
  const page=override||getContentPage(path);if(!page)return;
  const url=absolute(page.path||'/'),id=url+(page.kind==='guide'||page.kind==='answer'?'#article':'#webpage'),author=contentAuthor(page),modified=modifiedFor(page);
  const type=page.kind==='guide'||page.kind==='answer'?'Article':page.kind==='author'?'ProfilePage':page.path==='/about'?'AboutPage':page.path==='/contact'?'ContactPage':['collection','alternatives','service'].includes(page.kind)?'CollectionPage':'WebPage';
@@ -25,7 +27,7 @@ export function pageStructuredData(path:string,override?:ContentPage){
  // Editorial answers are Articles, not user-generated QAPages. Ratings and unverified prices are never synthesized.
  if(page.kind==='answer')node.about=page.answer?.toolSlugs.map(slug=>({'@id':absolute('/tools/'+slug)+'#tool'}));
  if(page.kind==='alternatives'){
-  const options=relatedTools(page),listId=url+'#alternatives';node.mainEntity={'@id':listId};
+  const options=page.tool?alternativeShortlist(page.tool,inventory||relatedTools(page)):[],listId=url+'#alternatives';node.mainEntity={'@id':listId};
   graph.push({'@type':'ItemList','@id':listId,name:page.title,numberOfItems:options.length,itemListOrder:'https://schema.org/ItemListUnordered',itemListElement:options.map((t,i)=>({'@type':'ListItem',position:i+1,name:t.name,url:absolute('/tools/'+t.slug)}))});
  }
  if(page.category)node.about={'@type':'Thing',name:page.category.name,description:page.category.description};

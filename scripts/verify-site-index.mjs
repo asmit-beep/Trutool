@@ -37,6 +37,8 @@ try {
     assert.equal(listed.length, group.count);
   }
   for (const path of paths) assert.ok(!path.startsWith('/admin') && !path.startsWith('/api/'));
+  const visibilitySource=fs.readFileSync('lib/visibility-refresh.ts','utf8');
+  assert.ok(visibilitySource.includes("revalidatePath('/site-index')") && visibilitySource.includes("revalidatePath('/site-index/[section]/[page]', 'page')"), 'Publishing must refresh the complete HTML site index.');
   const sitemapSource = fs.readFileSync('app/sitemap.ts', 'utf8');
   assert.ok(sitemapSource.includes('sitemapEntries(await publicPages())'), 'XML sitemap must include published CMS pages and public inventory.');
   // The fallback inventory must retain the canonical URL of each previously
