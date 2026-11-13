@@ -4,6 +4,10 @@ import {loadContent} from './load-content.mjs';
 const {index,discovery,schema,sitemap,cleanup}=loadContent();
 try{
  const paths=new Set(index.contentPages.map(p=>p.path));assert.equal(paths.size,index.contentPages.length,'Duplicate canonical path');
+ // Metadata must distinguish each vendor. Repeated catalogue summaries should
+ // not produce identical search snippets across different product pages.
+ const descriptions=index.contentPages.filter(p=>p.kind==='tool').map(p=>p.description.trim().toLowerCase());
+ assert.equal(new Set(descriptions).size,descriptions.length,'Repeated canonical tool page descriptions');
  assert.ok(!paths.has('/tools/kit-email')&&!paths.has('/alternatives/kit-email'),'Duplicate Kit vendor profiles should redirect instead of appearing as separate canonical pages');
  const nextConfig=fs.readFileSync('next.config.ts','utf8');
  for(const [source,destination] of [['/tools/kit-email','/tools/kit'],['/alternatives/kit-email','/alternatives/kit']])

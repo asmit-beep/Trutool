@@ -41,7 +41,7 @@ export function alternativesDescription(tool:Tool,categoryName:string):string {
 }
 
 export function alternativeEvaluationQuestions(tool:Tool):string[] {
-  const questions=tool.features.filter(Boolean).slice(0,3).map(feature=>
+  const questions=tool.features.filter(feature=>Boolean(feature)&&!/^(core product workflow|features|general capabilities)$/i.test(feature.trim())).slice(0,3).map(feature=>
     'Can a candidate demonstrate '+feature.toLowerCase()+' on a task relevant to your team?');
   if(!questions.length)questions.push('Can the replacement complete the core workflow you currently use '+tool.name+' for?');
   return questions;

@@ -7,6 +7,7 @@ import { categoryOf,SITE,tools } from '@/lib/catalog';
 import { ALTERNATIVES_COMPARE_LINK_LIMIT,allowlistedComparePartners,allowlistedComparePath } from '@/lib/compare-pairs';
 import { cmsMetadata,isHidden,publicContent,publicTools } from '@/lib/cms-public';
 import { alternativesDescription, alternativeEvaluationQuestions, alternativeShortlist } from '@/lib/alternative-shortlist';
+import {audienceIsGeneric, meaningfulFeatures, recordedCapabilityComparison, vendorSource} from '@/lib/recorded-research';
 import { pageMetadata } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 import { alternativesNotes } from '@/lib/content-index';
@@ -51,6 +52,8 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
   const categoryName=c?.name||t.category.replace(/-/g,' ');
   const shortlist=alternativeShortlist(t,inventory);
   const questions=alternativeEvaluationQuestions(t);
+  const baseFeatures=meaningfulFeatures(t),targetSource=vendorSource(t);
+  const research=shortlist.map(peer=>({peer,comparison:recordedCapabilityComparison(t,peer),source:vendorSource(peer)}));
   const note=alternativesNotes[t.slug];
   const included=new Set(shortlist.map(item=>item.slug));
   const bySlug=new Map(inventory.map(item=>[item.slug,item]));
@@ -77,8 +80,8 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
         <span className="alt-overline">THE STARTING POINT</span>
         <h2>{t.name}</h2>
         <dl>
-          <div><dt>Described audience</dt><dd>{t.fit||'Confirm the audience and use case with the vendor.'}</dd></div>
-          <div><dt>Listed capabilities</dt><dd>{t.features.length?t.features.slice(0,3).join(' · '):'Review the vendor documentation for current capabilities.'}</dd></div>
+          <div><dt>Described audience</dt><dd>{audienceIsGeneric(t)?'Not verified in the available source record.':t.fit}</dd></div>
+          <div><dt>Listed capabilities</dt><dd>{baseFeatures.length?baseFeatures.slice(0,3).join(' · '):'No verified feature-level list is available in this record.'}</dd></div>
           <div><dt>Check before changing</dt><dd>{t.caution||'Verify price, migration, and cancellation terms.'}</dd></div>
         </dl>
       </aside>
@@ -102,11 +105,11 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
             <p className="alt-option-summary">{x.summary}</p>
             <div className="alt-option-specific">
               <strong>Best suited to explore if</strong>
-              <p>{x.fit||'Its recorded capabilities match the workflow you want to evaluate.'}</p>
+              <p>{audienceIsGeneric(x)?'Vendor audience fit not established in the available catalogue data.':x.fit}</p>
             </div>
             <div className="alt-option-specific">
               <strong>Capabilities to inspect</strong>
-              <p>{x.features.length?x.features.slice(0,3).join(' · '):'Check the current vendor feature documentation.'}</p>
+              <p>{meaningfulFeatures(x).length?meaningfulFeatures(x).slice(0,3).join(' · '):'A product-specific feature list has not been established. Check vendor documentation.'}</p>
             </div>
             <div className="alt-option-links">
               <Link href={'/tools/'+x.slug}>Read profile</Link>
@@ -116,6 +119,24 @@ export default async function Page({params}:{params:Promise<{slug:string}>}){
         })}</ol>:
         <div className="alt-empty"><h3>No directly comparable category profiles yet</h3><p>We do not invent alternatives when the directory lacks sufficiently relevant products. Explore the <Link href={'/categories/'+t.category}>{categoryName} category</Link> or review {t.name} against your workflow first.</p></div>}
     </section>
+
+    {research.length>0&&<section className="alt-research-section" aria-labelledby="alternatives-research">
+      <span className="eyebrow">WHAT THE RECORDS ACTUALLY SHOW</span>
+      <h2 id="alternatives-research">How candidates compare with {t.name}'s recorded capabilities</h2>
+      <p>This table compares the specific capability labels documented in TruTool profiles. An empty overlap is a gap in our recorded evidence, <strong>not proof</strong> that a vendor lacks the capability. Validate every difference with the source.</p>
+      <div className="alt-research-scroll" role="region" aria-label={'Recorded capability comparison for '+t.name} tabIndex={0}>
+       <table className="alt-research-table">
+        <thead><tr><th scope="col">Candidate</th><th scope="col">Similar recorded capabilities</th><th scope="col">Other listed capabilities to test</th><th scope="col">Verification source</th></tr></thead>
+        <tbody>{research.map(({peer,comparison,source})=><tr key={peer.slug}>
+         <th scope="row"><Link href={'/tools/'+peer.slug}>{peer.name}</Link></th>
+         <td>{comparison.overlapping.length?comparison.overlapping.join(' · '):'No direct feature-label match recorded'}</td>
+         <td>{comparison.differentlyListed.length?comparison.differentlyListed.join(' · '):'No additional feature labels recorded'}</td>
+         <td>{source?<a href={source.href} target="_blank" rel="noopener noreferrer">Vendor documentation</a>:'Source not recorded'}</td>
+        </tr>)}</tbody>
+       </table>
+      </div>
+      {targetSource&&<p className="alt-research-baseline">The starting point is the <a href={targetSource.href} target="_blank" rel="noopener noreferrer">{t.name} vendor source</a>. Feature-label overlap is informational only, not an independent performance score.</p>}
+    </section>}
 
     <section className="alt-decision-section" aria-labelledby="alternatives-evaluate">
       <div>
