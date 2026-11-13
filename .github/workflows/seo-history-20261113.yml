@@ -24,7 +24,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - name: Record current rendered content changes without touching unchanged URLs
-        run: node scripts/generate-content-history.mjs --write --date 2026-11-13T10:30:00Z
+        run: node scripts/generate-content-history.mjs --write --date 2026-11-13T10:34:00Z
       - name: Commit content fingerprint history
         run: |
           if git diff --quiet -- lib/content-history.json; then
