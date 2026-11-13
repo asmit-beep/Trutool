@@ -5,6 +5,7 @@ import {inCategory} from './category-crosslist';
 import {authors,authorFor,type Author} from './authors';
 import {communityAnswers,type CommunityAnswer} from './community-answers';
 import {serviceCategories} from './services';
+import {alternativesDescription} from './alternative-shortlist';
 import history from './content-history.json';
 import {rfpAlternativePages} from './rfp-alternatives';
 
@@ -43,7 +44,7 @@ export const contentPages:ContentPage[]=[...staticPages,
  ...serviceCategories.map(service=>({path:'/services/'+service.slug,title:service.name,description:service.description,kind:'service' as const,service})),
  ...tools.flatMap(tool=>[
   {path:'/tools/'+tool.slug,title:tool.name+' — Features, Fit, Reviews & Alternatives',description:tool.summary+' '+tool.fit,kind:'tool' as const,tool,updatedAt:tool.updatedAt,publishedAt:tool.addedAt},
-  {path:'/alternatives/'+tool.slug,title:(tool.slug==='loopio'||tool.slug==='responsive')?rfpAlternativePages[tool.slug].title:tool.name+' Alternatives — Options to Compare',description:(tool.slug==='loopio'||tool.slug==='responsive')?rfpAlternativePages[tool.slug].description:'Explore '+categoryOf(tool.category).name.toLowerCase()+' alternatives to '+tool.name+' by fit, capabilities, and trade-offs.',kind:'alternatives' as const,tool,...((tool.slug==='loopio'||tool.slug==='responsive')?{publishedAt:'2026-10-22',updatedAt:'2026-10-22'}:{}),...(alternativesNotes[tool.slug]?{note:alternativesNotes[tool.slug]}:{})},
+  {path:'/alternatives/'+tool.slug,title:(tool.slug==='loopio'||tool.slug==='responsive')?rfpAlternativePages[tool.slug].title:tool.name+' Alternatives — Options to Compare',description:(tool.slug==='loopio'||tool.slug==='responsive')?rfpAlternativePages[tool.slug].description:alternativesDescription(tool,categoryOf(tool.category).name),kind:'alternatives' as const,tool,...((tool.slug==='loopio'||tool.slug==='responsive')?{publishedAt:'2026-10-22',updatedAt:'2026-10-22'}:{}),...(alternativesNotes[tool.slug]?{note:alternativesNotes[tool.slug]}:{})},
  ]),
  ...categories.map(category=>({path:'/categories/'+category.slug,title:category.name+' — Tools & Comparisons',description:category.answer,kind:'collection' as const,category})),
  ...guides.map(guide=>({path:'/guides/'+guide.slug,title:guide.title,description:guide.intro,kind:'guide' as const,guide,publishedAt:guide.publishedAt||'2026-10-05',updatedAt:guide.updatedAt||guide.publishedAt||'2026-10-05'})),

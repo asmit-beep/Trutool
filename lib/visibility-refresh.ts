@@ -11,6 +11,10 @@ export const visibilityPaths=['/sitemap.xml','/llms.txt','/llms-full.txt','/rss.
 export function invalidateDiscovery(changedPaths:readonly string[]=[]){
  revalidateTag('cms',{expire:0});
  revalidatePath('/');
+ // Both the directory landing page and all section/page URLs must update after publication.
+ // Use the page route pattern, not root layout invalidation, to keep cache work bounded.
+ revalidatePath('/site-index');
+ revalidatePath('/site-index/[section]/[page]', 'page');
  for(const archive of ['/guides','/tools','/compare','/alternatives','/community','/everything-ai','/services','/authors'])revalidatePath(archive);
  for(const path of new Set(changedPaths)){
   if(!path.startsWith('/') || path.includes('[') || /[^a-zA-Z0-9/_-]/.test(path))continue;

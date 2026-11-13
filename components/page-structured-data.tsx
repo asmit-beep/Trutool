@@ -1,9 +1,9 @@
 import { SITE } from '@/lib/catalog';
-import { cmsSchema,publicPages } from '@/lib/cms-public';
+import { cmsSchema,publicPages,publicTools } from '@/lib/cms-public';
 import { pageStructuredData,serializeSchema } from '@/lib/structured-data';
 export async function PageStructuredData({path}:{path:string}){
  const pages=await publicPages(),page=pages.find(p=>p.path===path);
- const data=page?.cms?cmsSchema(page.cms):pageStructuredData(path,page);
+ const data=page?.cms?cmsSchema(page.cms):pageStructuredData(path,page,page?.kind==='alternatives'?await publicTools():undefined);
  if(!data)return null;
  const kind:Record<string,string>={'/guides':'guide','/tools':'tool','/community':'answer','/compare':'comparison','/alternatives':'alternatives','/services':'service','/authors':'author'};
  if(kind[path]){

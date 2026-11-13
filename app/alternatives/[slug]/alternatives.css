@@ -1,0 +1,50 @@
+/* Alternatives detail pages have a distinct, information-first layout.
+   Scoped selectors prevent any changes to existing editorial articles. */
+.alternatives-detail{padding-bottom:70px}
+.alternatives-detail .alt-breadcrumb{margin-top:28px;margin-bottom:22px}
+.alternatives-detail .alt-hero{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,.8fr);gap:26px;align-items:stretch;margin-bottom:64px}
+.alternatives-detail .alt-heading{padding:44px 42px;border:1px solid #dfe6e9;border-radius:15px;background:#f8faf9}
+.alternatives-detail .alt-heading h1{font-size:clamp(34px,4.4vw,55px);line-height:1.12;letter-spacing:-.035em;margin:21px 0 21px;overflow-wrap:anywhere}
+.alternatives-detail .alt-heading>p{font-size:17px;line-height:1.78;max-width:64ch;color:#53616d}
+.alternatives-detail .alt-hero-links{display:flex;flex-wrap:wrap;gap:19px;align-items:center;margin-top:28px}
+.alternatives-detail .alt-reference{padding:34px;background:#142231;color:#f9fcf5;border-radius:15px;min-width:0}
+.alternatives-detail .alt-overline{font-size:11px;font-weight:800;letter-spacing:.12em;color:#d4ed93}
+.alternatives-detail .alt-reference h2{font-size:28px;margin:19px 0 25px;overflow-wrap:anywhere}
+.alternatives-detail .alt-reference dl>div{padding:17px 0;border-top:1px solid #ffffff24}
+.alternatives-detail .alt-reference dt{font-size:12px;color:#cfed94;font-weight:750;margin-bottom:8px}
+.alternatives-detail .alt-reference dd{font-size:14px;line-height:1.67;color:#edf4ef;overflow-wrap:anywhere;margin:0}
+.alternatives-detail .alt-shortlist-section{margin-bottom:64px}
+.alternatives-detail .alt-section-heading{display:flex;justify-content:space-between;gap:20px;align-items:start;margin-bottom:24px}
+.alternatives-detail .alt-section-heading h2,.alternatives-detail .alt-decision-section h2{font-size:clamp(26px,3vw,36px);line-height:1.25;letter-spacing:-.025em;margin:13px 0}
+.alternatives-detail .alt-section-heading p,.alternatives-detail .alt-decision-section>div>p{max-width:720px;color:#67737c;font-size:15px;line-height:1.75}
+.alternatives-detail .alt-count{flex-shrink:0;border-radius:99px;border:1px solid #ced8cb;background:#eef5e3;padding:8px 14px;font-size:12px;font-weight:750;color:#304b2c;margin-top:8px}
+.alternatives-detail .alt-option-grid{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;padding:0;margin:0}
+.alternatives-detail .alt-option{min-width:0;display:flex;flex-direction:column;padding:27px;border:1px solid #dae3e6;border-radius:13px;background:#fff;transition:border-color .16s,box-shadow .16s}
+.alternatives-detail .alt-option:hover{border-color:#a7b98a;box-shadow:0 10px 30px #16231e0b}
+.alternatives-detail .alt-option-top{display:flex;justify-content:space-between;gap:12px;color:#72857b;font:700 11px ui-monospace,monospace;letter-spacing:.03em}
+.alternatives-detail .alt-option h3{font-size:24px;margin:20px 0 12px;overflow-wrap:anywhere}
+.alternatives-detail .alt-option-summary{line-height:1.7;font-size:15px;color:#566671;margin-bottom:20px;min-height:45px}
+.alternatives-detail .alt-option-specific{margin-bottom:17px;border-top:1px solid #e8edee;padding-top:14px}
+.alternatives-detail .alt-option-specific strong{display:block;font-size:12px;color:#334a3e;margin-bottom:7px}
+.alternatives-detail .alt-option-specific p{font-size:14px;color:#64717a;line-height:1.65}
+.alternatives-detail .alt-option-links{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:auto;padding-top:14px}
+.alternatives-detail .alt-option-links a{font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.alternatives-detail .alt-option-links a:first-child{color:#335e33}
+.alternatives-detail .alt-decision-section{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 44px;background:#f4f7f4;border:1px solid #dfe8dd;border-radius:15px;padding:38px;margin:20px 0 35px}
+.alternatives-detail .alt-decision-section ol{list-style:none;margin:0;padding:0}
+.alternatives-detail .alt-decision-section li{display:flex;align-items:start;gap:17px;padding:14px 0;border-bottom:1px solid #dae4d9;font-size:14px;line-height:1.7}
+.alternatives-detail .alt-decision-section li span{flex-shrink:0;color:#466638;font:700 12px ui-monospace,monospace}
+.alternatives-detail .alt-decision-section li p{margin:0}
+.alternatives-detail .alt-decision-caveat{grid-column:1/-1;margin:0;border-top:1px solid #d7e4d5;padding-top:22px;font-size:14px;line-height:1.7;color:#57685a}
+.alternatives-detail .alt-editor-note{font-size:13px!important;color:#607060;margin-top:16px}
+.alternatives-detail .alt-curated-section{margin:40px 0}
+.alternatives-detail .alt-curated-section h2{font-size:24px;margin-bottom:8px}
+.alternatives-detail .alt-curated-section p{color:#64717a;font-size:14px;margin-bottom:17px}
+.alternatives-detail .alt-curated-section>div{display:flex;flex-wrap:wrap;gap:16px}
+.alternatives-detail .alt-empty{padding:28px;background:#f8faf9;border:1px solid #dfe6e7;border-radius:12px}
+.alternatives-detail .alt-empty h3{margin-bottom:10px}
+.alternatives-detail .alt-empty p{font-size:15px;line-height:1.7}
+.alternatives-detail .alt-note{margin-top:25px;line-height:1.8}
+.alternatives-detail .alt-back-link{margin-top:32px}
+@media(max-width:920px){.alternatives-detail .alt-hero,.alternatives-detail .alt-decision-section{grid-template-columns:1fr}}
+@media(max-width:650px){.alternatives-detail .alt-heading{padding:28px 23px}.alternatives-detail .alt-reference{padding:26px 23px}.alternatives-detail .alt-hero{gap:15px;margin-bottom:42px}.alternatives-detail .alt-option-grid{grid-template-columns:1fr}.alternatives-detail .alt-option{padding:23px}.alternatives-detail .alt-section-heading{flex-direction:column;gap:8px}.alternatives-detail .alt-decision-section{padding:25px;gap:17px}.alternatives-detail .alt-heading h1{font-size:36px}}

@@ -1,17 +1,144 @@
 import { CmsArticle } from '@/components/cms-article';
-import {RfpAlternativesArticle} from '@/components/rfp-alternatives-article';
-import {rfpAlternativePages} from '@/lib/rfp-alternatives';
+import { RfpAlternativesArticle } from '@/components/rfp-alternatives-article';
+import { rfpAlternativePages } from '@/lib/rfp-alternatives';
 import { PageStructuredData } from '@/components/page-structured-data';
 import Link from '@/components/site-link';
-import { ToolCard } from '@/components/tool-card';
 import { categoryOf,SITE,tools } from '@/lib/catalog';
 import { ALTERNATIVES_COMPARE_LINK_LIMIT,allowlistedComparePartners,allowlistedComparePath } from '@/lib/compare-pairs';
 import { cmsMetadata,isHidden,publicContent,publicTools } from '@/lib/cms-public';
+import { alternativesDescription, alternativeEvaluationQuestions, alternativeShortlist } from '@/lib/alternative-shortlist';
 import { pageMetadata } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 import { alternativesNotes } from '@/lib/content-index';
+import './alternatives.css';
+
 const isRfpArticle=(slug:string):slug is 'loopio'|'responsive'=>slug==='loopio'||slug==='responsive';
 export const revalidate=false;
 export function generateStaticParams(){return tools.map(t=>({slug:t.slug}))}
-export async function generateMetadata({params}:{params:Promise<{slug:string}>}){const {slug}=await params;const cmsPath='/alternatives/'+slug;if(isRfpArticle(slug)){const article=rfpAlternativePages[slug];return pageMetadata({title:article.title,description:article.description,keywords:article.queryVariants.concat(['RFP software','AI RFP response software','proposal management software','security questionnaire automation']),publisher:'TruTool',robots:{index:true,follow:true,googleBot:{index:true,follow:true,'max-image-preview':'large','max-snippet':-1}},alternates:{canonical:SITE+cmsPath},authors:[{name:'Snehil',url:SITE+'/authors/snehil'}],openGraph:{title:article.title,description:article.description,type:'article',url:SITE+cmsPath,siteName:'TruTool',publishedTime:'2026-10-22T00:00:00Z',modifiedTime:'2026-10-22T00:00:00Z'}})}const cms=await publicContent(cmsPath);if(await isHidden(cmsPath))notFound();if(cms)return cmsMetadata(cms);const t=(await publicTools()).find(t=>t.slug===slug);return t?pageMetadata({title:t.name+' Alternatives — Options to Compare',description:'Explore '+categoryOf(t.category).name.toLowerCase()+' alternatives to '+t.name+' by fit, capabilities, and trade-offs.',alternates:{canonical:SITE+'/alternatives/'+slug}}):{title:'Not found'}}
-export default async function Page({params}:{params:Promise<{slug:string}>}){const {slug}=await params;if(isRfpArticle(slug))return <RfpAlternativesArticle slug={slug}/>;const cmsPath='/alternatives/'+slug,cms=await publicContent(cmsPath);if(await isHidden(cmsPath))notFound();if(cms)return <CmsArticle content={cms}/>;const inventory=await publicTools(),t=inventory.find(t=>t.slug===slug);if(!t)notFound();const note=alternativesNotes[t.slug],c=categoryOf(t.category),others=inventory.filter(x=>x.category===t.category&&x.slug!==t.slug),present=new Set(inventory.map(x=>x.slug)),pathPartners=allowlistedComparePartners(t.slug).filter(s=>present.has(s)).slice(0,ALTERNATIVES_COMPARE_LINK_LIMIT),pathSet=new Set(pathPartners),extras=pathPartners.filter(s=>!others.some(x=>x.slug===s)).flatMap(s=>{const tool=inventory.find(x=>x.slug===s);return tool?[tool]:[]});return <main id="main" className="shell"><PageStructuredData path={'/alternatives/'+slug}/><div className="page-intro"><div className="breadcrumb"><Link href="/alternatives">Alternatives</Link><span>/</span><span>{t.name}</span></div><span className="eyebrow">SAME-CATEGORY OPTIONS</span><h1>{t.name} alternatives</h1><p>Other {c.name.toLowerCase()} platforms include {others.slice(0,6).map(t=>t.name).join(', ')}. They share a category, but their workflows, coverage, and terms can differ. These are options to evaluate, not ranked recommendations.</p>{note&&<p>{note.before}<Link className="text-link" href={note.href}>{note.linkText}</Link>{note.after}</p>}</div><div className="page-body"><div className="tools-grid">{others.map(x=><div key={x.slug}><ToolCard tool={x}/><Link className="text-link" style={{display:'block',margin:'14px 0 20px'}} href={pathSet.has(x.slug)?allowlistedComparePath(t.slug,x.slug)!:'/compare?tools='+encodeURIComponent(t.slug+','+x.slug)}>Compare {t.name} with {x.name}</Link></div>)}</div>{extras.map(x=><Link key={x.slug} className="text-link" style={{display:'block',margin:'14px 0 20px'}} href={allowlistedComparePath(t.slug,x.slug)!}>{`Compare ${t.name} with ${x.name}`}</Link>)}<section className="answer-block"><h2>How should you evaluate a switch?</h2><p>{c.answer} Include migration work, access, and cancellation terms in the evaluation. A shared category does not make two products direct substitutes.</p></section><Link className="text-link" href={'/tools/'+t.slug}>Return to {t.name} profile</Link></div></main>}
+
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}){
+  const {slug}=await params;
+  const cmsPath='/alternatives/'+slug;
+  if(isRfpArticle(slug)){
+    const article=rfpAlternativePages[slug];
+    return pageMetadata({title:article.title,description:article.description,keywords:article.queryVariants.concat(['RFP software','AI RFP response software','proposal management software','security questionnaire automation']),publisher:'TruTool',robots:{index:true,follow:true,googleBot:{index:true,follow:true,'max-image-preview':'large','max-snippet':-1}},alternates:{canonical:SITE+cmsPath},authors:[{name:'Snehil',url:SITE+'/authors/snehil'}],openGraph:{title:article.title,description:article.description,type:'article',url:SITE+cmsPath,siteName:'TruTool',publishedTime:'2026-10-22T00:00:00Z',modifiedTime:'2026-10-22T00:00:00Z'}});
+  }
+  const cms=await publicContent(cmsPath);
+  if(await isHidden(cmsPath))notFound();
+  if(cms)return cmsMetadata(cms);
+  const t=(await publicTools()).find(tool=>tool.slug===slug);
+  if(!t)return {title:'Not found'};
+  const category=categoryOf(t.category);
+  return pageMetadata({
+    title:t.name+' Alternatives — Compare '+(category?.name||'Similar Tools'),
+    description:alternativesDescription(t,category?.name||t.category),
+    alternates:{canonical:SITE+cmsPath},
+  });
+}
+
+export default async function Page({params}:{params:Promise<{slug:string}>}){
+  const {slug}=await params;
+  if(isRfpArticle(slug))return <RfpAlternativesArticle slug={slug}/>;
+  const cmsPath='/alternatives/'+slug;
+  const cms=await publicContent(cmsPath);
+  if(await isHidden(cmsPath))notFound();
+  if(cms)return <CmsArticle content={cms}/>;
+
+  const inventory=await publicTools();
+  const t=inventory.find(tool=>tool.slug===slug);
+  if(!t)notFound();
+  const c=categoryOf(t.category);
+  const categoryName=c?.name||t.category.replace(/-/g,' ');
+  const shortlist=alternativeShortlist(t,inventory);
+  const questions=alternativeEvaluationQuestions(t);
+  const note=alternativesNotes[t.slug];
+  const included=new Set(shortlist.map(item=>item.slug));
+  const bySlug=new Map(inventory.map(item=>[item.slug,item]));
+  const curatedPairs=allowlistedComparePartners(t.slug)
+    .slice(0,ALTERNATIVES_COMPARE_LINK_LIMIT)
+    .filter(candidate=>!included.has(candidate))
+    .flatMap(candidate=>{const match=bySlug.get(candidate);return match?[match]:[]});
+
+  return <main id="main" className="shell alternatives-detail">
+    <PageStructuredData path={cmsPath}/>
+    <div className="breadcrumb alt-breadcrumb"><Link href="/alternatives">Alternatives</Link><span>/</span><Link href={'/categories/'+t.category}>{categoryName}</Link><span>/</span><span>{t.name}</span></div>
+
+    <header className="alt-hero">
+      <div className="alt-heading">
+        <span className="eyebrow">RESEARCH A REPLACEMENT / {categoryName.toUpperCase()}</span>
+        <h1>{t.name} alternatives</h1>
+        <p>Looking beyond {t.name}? Its listed focus is {t.summary} Compare candidates against what your team actually needs, not a generic ranking.</p>
+        <div className="alt-hero-links">
+          <Link className="button lime" href={'/tools/'+t.slug}>Review {t.name} profile</Link>
+          <Link className="text-link" href={'/categories/'+t.category}>Explore {categoryName.toLowerCase()}</Link>
+        </div>
+      </div>
+      <aside className="alt-reference">
+        <span className="alt-overline">THE STARTING POINT</span>
+        <h2>{t.name}</h2>
+        <dl>
+          <div><dt>Described audience</dt><dd>{t.fit||'Confirm the audience and use case with the vendor.'}</dd></div>
+          <div><dt>Listed capabilities</dt><dd>{t.features.length?t.features.slice(0,3).join(' · '):'Review the vendor documentation for current capabilities.'}</dd></div>
+          <div><dt>Check before changing</dt><dd>{t.caution||'Verify price, migration, and cancellation terms.'}</dd></div>
+        </dl>
+      </aside>
+    </header>
+
+    <section className="alt-shortlist-section" aria-labelledby="alternatives-shortlist">
+      <div className="alt-section-heading">
+        <div>
+          <span className="eyebrow">COMPARABLE CATEGORY OPTIONS</span>
+          <h2 id="alternatives-shortlist">A focused shortlist for {t.name}</h2>
+          <p>Selected by category, recorded capabilities, and audience overlap. This is an unranked research list, not a hands-on performance verdict.</p>
+        </div>
+        <span className="alt-count">{shortlist.length} {shortlist.length===1?'option':'options'}</span>
+      </div>
+      {shortlist.length>0?
+        <ol className="alt-option-grid">{shortlist.map((x,i)=>{
+          const comparePath=allowlistedComparePath(t.slug,x.slug)||'/compare?tools='+encodeURIComponent(t.slug+','+x.slug);
+          return <li key={x.slug} className="alt-option">
+            <div className="alt-option-top"><span>OPTION {String(i+1).padStart(2,'0')}</span><span>{x.format}</span></div>
+            <h3>{x.name}</h3>
+            <p className="alt-option-summary">{x.summary}</p>
+            <div className="alt-option-specific">
+              <strong>Best suited to explore if</strong>
+              <p>{x.fit||'Its recorded capabilities match the workflow you want to evaluate.'}</p>
+            </div>
+            <div className="alt-option-specific">
+              <strong>Capabilities to inspect</strong>
+              <p>{x.features.length?x.features.slice(0,3).join(' · '):'Check the current vendor feature documentation.'}</p>
+            </div>
+            <div className="alt-option-links">
+              <Link href={'/tools/'+x.slug}>Read profile</Link>
+              <Link href={comparePath}>Compare with {t.name}</Link>
+            </div>
+          </li>;
+        })}</ol>:
+        <div className="alt-empty"><h3>No directly comparable category profiles yet</h3><p>We do not invent alternatives when the directory lacks sufficiently relevant products. Explore the <Link href={'/categories/'+t.category}>{categoryName} category</Link> or review {t.name} against your workflow first.</p></div>}
+    </section>
+
+    <section className="alt-decision-section" aria-labelledby="alternatives-evaluate">
+      <div>
+        <span className="eyebrow">A BETTER WAY TO SWITCH</span>
+        <h2 id="alternatives-evaluate">Questions to test before replacing {t.name}</h2>
+        <p>Use the actual {t.name} workflow as your test case. Record outputs and trade-offs for each shortlisted product.</p>
+      </div>
+      <ol>{questions.map((question,i)=><li key={question}><span>{String(i+1).padStart(2,'0')}</span><p>{question}</p></li>)}</ol>
+      <p className="alt-decision-caveat"><strong>Additional check:</strong> {t.caution||'Confirm current pricing, onboarding work, permissions and cancellation terms directly with the vendor.'}</p>
+    </section>
+
+    <section className="answer-block">
+      <h2>What matters for {categoryName.toLowerCase()}?</h2>
+      <p>{c?.answer||'Compare the products against a real task, and verify permissions, pricing, migration effort and support directly with each vendor.'}</p>
+      <p className="alt-editor-note">Catalogue descriptions and vendor-linked profiles are research starting points, not independently tested product performance or verified current prices.</p>
+    </section>
+
+    {curatedPairs.length>0&&<section className="alt-curated-section">
+      <h2>More documented comparisons involving {t.name}</h2>
+      <p>These are editorially selected comparisons; the products may address different workflows.</p>
+      <div>{curatedPairs.map(x=><Link key={x.slug} className="text-link" href={allowlistedComparePath(t.slug,x.slug)!}>{t.name} vs {x.name}</Link>)}</div>
+    </section>}
+    {note&&<p className="alt-note">{note.before}<Link className="text-link" href={note.href}>{note.linkText}</Link>{note.after}</p>}
+    <div className="alt-back-link"><Link className="text-link" href={'/tools/'+t.slug}>Return to the {t.name} profile</Link></div>
+  </main>;
+}

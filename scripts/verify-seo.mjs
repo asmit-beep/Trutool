@@ -12,7 +12,7 @@ try{
   const types=graph['@graph'].map(n=>n['@type']);if(page.path){assert.ok(types.includes('BreadcrumbList'));assert.ok(graph['@graph'].find(n=>n['@type']==='BreadcrumbList').itemListElement.length>=2)}
   if(page.kind==='tool')assert.ok(types.some(t=>['SoftwareApplication','Organization'].includes(t)));
   if(page.kind==='guide'||page.kind==='answer')assert.equal(main['@type'],'Article');
-  if(page.kind==='alternatives'){const list=graph['@graph'].find(n=>n['@type']==='ItemList');assert.equal(list.numberOfItems,index.relatedTools(page).length)}
+  if(page.kind==='alternatives'){const list=graph['@graph'].find(n=>n['@type']==='ItemList');assert.ok(list.numberOfItems<=6,'Automated alternatives must have a bounded shortlist');assert.equal(list.numberOfItems,list.itemListElement.length)}
   assert.ok(!serialized.includes('aggregateRating'),'Invented aggregate rating');assert.ok(!serialized.includes('"offers"'),'Unverified offer');
   assert.ok(discovery.pageMarkdown(page).includes('Canonical: '+index.absolute(page.path||'/')));
   const modified=index.modifiedFor(page);assert.ok(modified&&Number.isFinite(Date.parse(modified)));assert.ok(Date.parse(modified)<=Date.now());
