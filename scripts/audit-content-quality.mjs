@@ -8,7 +8,7 @@ const {index,cleanup}=loadContent();
 try {
  const tools=index.contentPages.filter(p=>p.kind==='tool').map(p=>p.tool).filter(Boolean);
  const normalizedUrl=value=>{
-  try {const url=new URL(value);return (url.origin+url.pathname.replace(/\\/$/,'')).toLowerCase();}
+  try {const url=new URL(value);return (url.origin+url.pathname.replace(/\/$/,'')).toLowerCase();}
   catch {return '';}
  };
  const groups=(list,key)=>{
@@ -22,9 +22,9 @@ try {
   }
   return [...map].filter(([,rows])=>rows.length>1).map(([value,slugs])=>({value,slugs})).sort((a,b)=>b.slugs.length-a.slugs.length||a.value.localeCompare(b.value));
  };
- const words=value=>(value||'').trim().split(/\\s+/).filter(Boolean).length;
+ const words=value=>(value||'').trim().split(/\s+/).filter(Boolean).length;
  const detail=tool=>[tool.summary,tool.fit,...(tool.features||[]),tool.caution].filter(Boolean).join(' ');
- const genericFit=tool=>/^(people and teams evaluating|teams evaluating|individuals and teams evaluating)\\b/i.test(tool.fit||'');
+ const genericFit=tool=>/^(people and teams evaluating|teams evaluating|individuals and teams evaluating)\b/i.test(tool.fit||'');
  const titleDuplicates=groups(tools,t=>t.name);
  const vendorDuplicates=groups(tools,t=>normalizedUrl(t.url||''));
  const summaryDuplicates=groups(tools,t=>t.summary||'');
@@ -65,7 +65,7 @@ try {
    editorial_profile:t.profile?'yes':'no',
   }));
   const headings=Object.keys(rows[0]);
-  fs.writeFileSync(out,[headings.map(quote).join(','),...rows.map(row=>headings.map(k=>quote(row[k])).join(','))].join('\\n')+'\\n');
+  fs.writeFileSync(out,[headings.map(quote).join(','),...rows.map(row=>headings.map(k=>quote(row[k])).join(','))].join('\n')+'\n');
   console.log('Wrote quality review CSV: '+out);
  }
 }finally{cleanup();}
