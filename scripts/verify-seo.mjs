@@ -8,6 +8,7 @@ try{
  // not produce identical search snippets across different product pages.
  const descriptions=index.contentPages.filter(p=>p.kind==='tool').map(p=>p.description.trim().toLowerCase());
  assert.equal(new Set(descriptions).size,descriptions.length,'Repeated canonical tool page descriptions');
+ assert.ok(index.contentPages.filter(p=>p.kind==='alternatives').every(p=>!p.description.toLowerCase().includes('people and teams evaluating')),'Do not use generic buyer-audience boilerplate in alternatives metadata');
  const altSource=fs.readFileSync('app/alternatives/[slug]/page.tsx','utf8');
  const toolSource=fs.readFileSync('app/tools/[slug]/page.tsx','utf8');
  assert.ok(!altSource.includes("'/compare?tools='"),'Alternatives cards must not create thousands of crawlable ad-hoc comparison URLs');
