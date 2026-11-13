@@ -1335,29 +1335,6 @@
       "keywords": "drip marketing behavioral automation email workflows customer segmentation"
     },
     {
-      "slug": "kit-email",
-      "name": "Kit",
-      "category": "marketing",
-      "summary": "Email marketing and audience tools for creators.",
-      "fit": "Marketing teams building customer acquisition and engagement workflows who need creator email.",
-      "features": [
-        "Creator email",
-        "Subscriber management",
-        "Automation"
-      ],
-      "caution": "Verify channel integrations, plan limits, deliverability and actual costs before rollout.",
-      "url": "https://kit.com/",
-      "sourceUrl": "https://kit.com/",
-      "sourceStatus": "Official vendor link; current terms require confirmation",
-      "pricing": "Confirm current vendor pricing",
-      "format": "Software",
-      "ai": false,
-      "addedAt": "2026-10-22",
-      "initial": "K",
-      "color": "#9fb4a6",
-      "keywords": "kit marketing creator email subscriber management automation"
-    },
-    {
       "slug": "mailerlite",
       "name": "MailerLite",
       "category": "marketing",

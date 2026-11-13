@@ -1,28 +1,28 @@
 {
  "": {
-  "hash": "f094d1dd1922c63ce3b34b6e045ff744",
+  "hash": "eeea1bb7488a0f0cf24885518d30d0a2",
   "fingerprintVersion": 3,
-  "modified": "2026-11-05T11:30:00.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools": {
-  "hash": "ed430e4718a952f75d642c10ab7d0432",
+  "hash": "b23f08444d99981d3b70d72a550e0fb6",
   "fingerprintVersion": 3,
-  "modified": "2026-11-05T11:30:00.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/categories": {
-  "hash": "1258726d2ca8a4dd98e0bc480da0808c",
+  "hash": "f47c4a582eb1265346e24e0540fe22a5",
   "fingerprintVersion": 3,
-  "modified": "2026-11-05T11:30:00.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/compare": {
-  "hash": "661bd2dec7a785f56dd777ec4294e89e",
+  "hash": "95da5eead09597c943b1fdf2f5667802",
   "fingerprintVersion": 3,
-  "modified": "2026-11-05T11:30:00.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/alternatives": {
-  "hash": "9906873f5cbf6c9e81c3f98678e8ffe3",
+  "hash": "c86b6617fc6f23f98446f38175d99f6a",
   "fingerprintVersion": 3,
-  "modified": "2026-11-05T11:30:00.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/guides": {
   "hash": "1e50101e9346948c0ab81388b2a651bf",
@@ -30,9 +30,9 @@
   "modified": "2026-10-23T12:00:00.000Z"
  },
  "/everything-ai": {
-  "hash": "1524fb3a4d14e3bc8e7c4ff2e9388b02",
+  "hash": "70cc9d8140f1db4997ce24abc14ac0ca",
   "fingerprintVersion": 3,
-  "modified": "2026-11-05T11:30:00.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/community": {
   "hash": "93cb23c7350ae9af93a08b33a5253fd8",
@@ -1780,9 +1780,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/hubspot": {
-  "hash": "6230685c1f6cb1bd30ae377cbd5f4f08",
+  "hash": "09e84db18ac7c721a0eccce71445cc8f",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/adobe-marketo-engage": {
   "hash": "1290ed381fe807d0937c5b6e26cd02b4",
@@ -1790,9 +1790,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/adobe-marketo-engage": {
-  "hash": "d3f8f9125648865acf3a35a1b5511e3d",
+  "hash": "e0d46643c219f63f045d3c09f7dfbe37",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/salesforce-marketing-cloud": {
   "hash": "bdfb9aed2ca52bc2b8be112d29e5e2c5",
@@ -1800,9 +1800,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/salesforce-marketing-cloud": {
-  "hash": "d568943aec689b809e4d1f2880cea2f9",
+  "hash": "7902380897895a47b836da6a4f302faf",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/activecampaign": {
   "hash": "7acb5c77c3ed7b436ab3129500166f7a",
@@ -1810,9 +1810,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/activecampaign": {
-  "hash": "314f4406ae50b3bf56a0f781aa513386",
+  "hash": "0cf637daabe1155fb0abb4ad0f03e397",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/brevo": {
   "hash": "563a298539c0decd9a653f6db66e4a55",
@@ -1820,9 +1820,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/brevo": {
-  "hash": "3e0e8e4951ba450f65769357fbd315fd",
+  "hash": "7e50e79ff6342c025d954a434550c221",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/klaviyo": {
   "hash": "bc4dc825d845ed901489ddc01f053d8f",
@@ -1830,9 +1830,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/klaviyo": {
-  "hash": "e6d762e0bc556915b4db439287e916bb",
+  "hash": "105b1563abf6ed4fc12971be3d2418ad",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/customer-io": {
   "hash": "e346f5722fc816053b9cdcbb5bcffab8",
@@ -1840,9 +1840,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/customer-io": {
-  "hash": "f5b0aab21bf0bb22ffe42f0aac0d2bdd",
+  "hash": "43c4a2055fa07ca14b6e78514603f4d6",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/braze": {
   "hash": "79e5fea83b1b5a27c7d6cf91351fd883",
@@ -1850,9 +1850,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/braze": {
-  "hash": "28cbb06f596fa8e88af7a630ecaf3294",
+  "hash": "5da5f04184d6045bcacd15f86426e21d",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/iterable": {
   "hash": "24917687c7a2f15bb6ddc35f5da10837",
@@ -1860,9 +1860,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/iterable": {
-  "hash": "cd05129b78b2b269c11fc08eeefb939e",
+  "hash": "dfc85ad94ef6d5eb633e2200d2fb2e19",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/moengage": {
   "hash": "f932d698cf9821d742b2b3aeffc9ba35",
@@ -1870,9 +1870,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/moengage": {
-  "hash": "b0496fbb1bc4f1ce6b2b90314e796de6",
+  "hash": "0d091148b1220ff9d1742a76d57affbd",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/clevertap": {
   "hash": "da9b8a480555b3d9c6d754bb2b595ede",
@@ -1880,9 +1880,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/clevertap": {
-  "hash": "6d55e9ce01e5bb7692ea01b408bbd344",
+  "hash": "7ae46c1533623dd9aadef6f466a33407",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/ortto": {
   "hash": "37a7bda7a64d91e53b90db78fe33ee01",
@@ -1890,9 +1890,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/ortto": {
-  "hash": "38973bce1bc868d43e413f5afee73d66",
+  "hash": "5af7051a520d976d19025c75be7585a6",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/ahrefs": {
   "hash": "fc6459140f552ab128ea105c85c7a207",
@@ -14010,9 +14010,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/chhoto-url": {
-  "hash": "c5bb2500da214f69d87e94f46f77549f",
+  "hash": "164424ff4f4b7bf957916799c4ab33d1",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/hocoos": {
   "hash": "913bf0b227db7da68efa31e5534c8da2",
@@ -14760,9 +14760,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/shlink": {
-  "hash": "10d84bc2ea0d786e21f0f06104b08bae",
+  "hash": "a5a4c094e03ab1a7a5993da426f6e420",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/vaultwarden": {
   "hash": "ada9b7bb93f143153048e4230f7d9e24",
@@ -14990,9 +14990,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/bit": {
-  "hash": "fe80aa829955e2edc12b432aa2eaf472",
+  "hash": "89b0b6c0913a46519aa86766b58898a4",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/dashy": {
   "hash": "a1d43ffafaaf2c48f16f3673be9a437d",
@@ -15220,9 +15220,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/simple-url-shortener": {
-  "hash": "9a82d7e1b4811c6f583b5e95b69a1eb3",
+  "hash": "d0048cf96025553f6884044781f33a71",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/digiboard": {
   "hash": "546cf5802f961806730f265f2ec67378",
@@ -21340,9 +21340,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/advelum": {
-  "hash": "a6ace76fa0bb2b430a0ebd69d0e885ba",
+  "hash": "06e67c98dcfe830b73aac18cb7915caa",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/image-2": {
   "hash": "8142910a8f4fabee2df63c14d7b7f8fe",
@@ -21990,19 +21990,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/zoho-marketing-automation": {
-  "hash": "691b8c46da3cf010c539fa3478647990",
+  "hash": "e61aef0667d82ff0a1f3d8229ee589df",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
- },
- "/tools/kit-email": {
-  "hash": "35cd52c9a0104cc9cb6b00891c1338b4",
-  "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
- },
- "/alternatives/kit-email": {
-  "hash": "061c0abe2c4f7e49e0444e84e362d1ab",
-  "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/mautic": {
   "hash": "db71e90f9e2eb209c0fc1453a0b3d35f",
@@ -22010,9 +22000,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/mautic": {
-  "hash": "38768d5c4596330981a0b6b2bddfa394",
+  "hash": "59a21736a3601da90b726feabea8bc62",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/customerly": {
   "hash": "3df8e454d68143af2df9b1c71f1b35f8",
@@ -22020,9 +22010,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/customerly": {
-  "hash": "dcb746597bb552f696cf03fca131bc27",
+  "hash": "5ed40b9ac88940dfdeb19d1c2ab92283",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/sender": {
   "hash": "0da064b201f12ee1c9b17b31ea7d2508",
@@ -22030,9 +22020,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/sender": {
-  "hash": "e6e8b2d707cd2ca443d3036f5a59d1ce",
+  "hash": "11ed2d84a490e85f377c7ba6367ae6a7",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/tools/moosend": {
   "hash": "0c353c091ed19710ee35fb44b794eff7",
@@ -22040,9 +22030,9 @@
   "modified": "2026-11-13T09:42:17.000Z"
  },
  "/alternatives/moosend": {
-  "hash": "c4c4749b57fb731990f85834eb994a8c",
+  "hash": "4781138c783a710d56482f3bfde26d4d",
   "fingerprintVersion": 3,
-  "modified": "2026-11-13T09:42:17.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/categories/local-listings": {
   "hash": "1449c31c64ad368e5241f58d9fc6e64f",
@@ -22120,9 +22110,9 @@
   "modified": "2026-10-23T18:43:34.000Z"
  },
  "/categories/marketing": {
-  "hash": "c9271744d44b166d4fbdf116a1a338bc",
+  "hash": "49343a015deca1df507d5fdfe5e34461",
   "fingerprintVersion": 3,
-  "modified": "2026-10-23T18:43:34.000Z"
+  "modified": "2026-11-13T09:58:00.000Z"
  },
  "/categories/seo": {
   "hash": "e171bbf55481df6ac1b337d2aa05936b",
