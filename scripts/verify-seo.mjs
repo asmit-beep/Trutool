@@ -4,6 +4,11 @@ import {loadContent} from './load-content.mjs';
 const {index,discovery,schema,sitemap,cleanup}=loadContent();
 try{
  const paths=new Set(index.contentPages.map(p=>p.path));assert.equal(paths.size,index.contentPages.length,'Duplicate canonical path');
+ assert.ok(!paths.has('/tools/kit-email')&&!paths.has('/alternatives/kit-email'),'Duplicate Kit vendor profiles should redirect instead of appearing as separate canonical pages');
+ const nextConfig=fs.readFileSync('next.config.ts','utf8');
+ for(const [source,destination] of [['/tools/kit-email','/tools/kit'],['/alternatives/kit-email','/alternatives/kit']])
+  assert.ok(nextConfig.includes(`source:'${source}',destination:'${destination}',permanent:true`),`Missing permanent alias redirect ${source}`);
+
  const history=JSON.parse(fs.readFileSync('lib/content-history.json','utf8'));
  for(const page of index.contentPages){
   const graph=schema.pageStructuredData(page.path);assert.ok(graph,'Missing schema: '+page.path);
