@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { BlobNotFoundError,get,head,put,usingSupabaseStorage } from './private-storage';
 import { readCmsOverlay,writeCmsOverlay } from './cms-overlay';
 import { unstable_cache } from 'next/cache';
@@ -136,8 +137,80 @@ export async function writeStore(store:CmsStore,etag?:string){
 }
 // No timed revalidation or repeated Supabase 402 attempts. Content is
 // refreshed only by explicit Studio publishing/invalidateDiscovery().
-const persistentStore=unstable_cache(async()=>await readStore(),['trutool-cms-v2-recovered-public-inventory-20261102'],{revalidate:false,tags:['cms']});
-const cachedStore=cache(()=>persistentStore());
+// Next.js refuses a data-cache entry over 2MB. The merged CMS store is larger
+// than that, so the previous single unstable_cache value never stored and every
+// request refetched Supabase. Public reads cache slices of a published snapshot.
+const MAX_SLICE_CHARS=500_000;
+type PublicSlice={n:number;h:string;p:string};
+function slimRecord(record:CmsRecord):CmsRecord{
+ // Hidden-path checks need the draft identity. Published bodies render the page.
+ // Drop revision history; it is what pushed the single cache entry past 2MB.
+ const draft=record.published?{...record.draft,body:''}:record.draft;
+ return {...record,history:[],draft};
+}
+function publicSnapshot(read:CmsRead):CmsRead{
+ return {
+  store:{
+   version:1,
+   revision:read.store.revision,
+   records:read.store.records.map(slimRecord),
+   activity:[],
+   ...(read.store.featuredAlternativeSlugs!==undefined?{featuredAlternativeSlugs:read.store.featuredAlternativeSlugs}:{}),
+  },
+  legacyUnavailable:read.legacyUnavailable,
+ };
+}
+function splitText(value:string):string[]{
+ if(!value)return [''];
+ const parts:string[]=[];
+ for(let start=0;start<value.length;){
+  let end=Math.min(value.length,start+MAX_SLICE_CHARS);
+  while(end>start&&Buffer.byteLength(value.slice(start,end))>MAX_SLICE_CHARS)end-=1;
+  if(end===start)end+=1;
+  parts.push(value.slice(start,end));
+  start=end;
+ }
+ return parts;
+}
+let pendingSnapshot:Promise<string>|null=null;
+let coolingDownUntil=0;
+function snapshotJson(){
+ if(Date.now()<coolingDownUntil)return Promise.reject(new Error('CMS storage is cooling down after a failed read'));
+ if(!pendingSnapshot){
+  pendingSnapshot=readStore().then(read=>JSON.stringify(publicSnapshot(read))).catch(error=>{
+   coolingDownUntil=Date.now()+15_000;
+   throw error;
+  }).finally(()=>{pendingSnapshot=null});
+ }
+ return pendingSnapshot;
+}
+const readSlice=unstable_cache(async(index:number):Promise<PublicSlice>=>{
+ const json=await snapshotJson();
+ const parts=splitText(json);
+ for(const part of parts)if(Buffer.byteLength(part)>2*1024*1024)throw new Error('CMS cache slice exceeds the 2MB data-cache limit');
+ return {n:parts.length,h:createHash('sha256').update(json).digest('hex').slice(0,16),p:parts[index]||''};
+},['trutool-cms-public-slices-v1'],{revalidate:false,tags:['cms']});
+async function assembleSnapshot():Promise<CmsRead>{
+ const first=await readSlice(0);
+ const parts=[first.p];
+ for(let index=1;index<first.n;index++){
+  const slice=await readSlice(index);
+  if(slice.h!==first.h||slice.n!==first.n)throw new Error('CMS cache slices are from different snapshots');
+  parts.push(slice.p);
+ }
+ return JSON.parse(parts.join('')) as CmsRead;
+}
+async function readPublicSnapshot():Promise<CmsRead>{
+ // Prerender uses the source-controlled catalogue. Do not write that empty
+ // placeholder into the data cache, or runtime would keep serving it.
+ if(process.env.TRUTOOL_BUILD_MODE==='1')return readStore();
+ try{return await assembleSnapshot();}
+ catch(error){
+  console.error('Public CMS snapshot unavailable; serving the recovered catalogue.',error);
+  return {store:emptyStore(),legacyUnavailable:true};
+ }
+}
+const cachedStore=cache(()=>readPublicSnapshot());
 // Static pages must read this snapshot. readStore() uses no-store fetches, which
 // abort ISR revalidation with DYNAMIC_SERVER_USAGE. Studio publishing invalidates `cms`.
 export function readCachedStore(){return cachedStore();}

@@ -3,6 +3,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import {loadContent} from './load-content.mjs';
 const {index,cleanup}=loadContent();
+const keep=new Set(JSON.parse(fs.readFileSync('lib/index-keep-paths.json','utf8')));
 try{
  let count=0;
  for(const page of index.contentPages){
@@ -13,7 +14,9 @@ try{
   assert.ok(scripts.some(s=>s['@graph']?.some(n=>n['@type']==='WebSite')),'Missing WebSite graph');
   assert.ok(html.includes('<meta name="description" content="'),'Missing description: '+page.path);
   assert.ok(html.includes('rel="canonical"'),'Missing canonical: '+page.path);
-  assert.ok(!/<meta name="robots"[^>]*content="[^"]*noindex/.test(html),'Unexpected noindex: '+page.path);
+  const thinDirectory=(page.kind==='tool'||page.kind==='alternatives')&&!keep.has(page.path);
+  if(thinDirectory)assert.match(html,/<meta name="robots"[^>]*content="[^"]*noindex[^"]*follow/,'Thin directory page must be noindex, follow: '+page.path);
+  else assert.ok(!/<meta name="robots"[^>]*content="[^"]*noindex/.test(html),'Unexpected noindex: '+page.path);
   assert.ok(html.includes('application/rss+xml')&&html.includes('text/markdown'),'Missing discovery links: '+page.path);
   count++;
  }

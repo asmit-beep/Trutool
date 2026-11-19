@@ -53,16 +53,23 @@ try {
   const recoveryXml=new Set(content.sitemap.sitemapEntries([...pages,...recoveredPages]).map(entry=>new URL(entry.url).pathname));
   for(const p of backupPaths)assert.ok(recoveryXml.has(p),'Sitemap excludes recovered published CMS URL: '+p);
   const xmlPaths = content.sitemap.sitemapEntries(pages).map(entry => new URL(entry.url).pathname);
-  const expectedXmlPaths = [...pages.map(page => page.path || '/'), ...paths];
-  assert.equal(xmlPaths.length, expectedXmlPaths.length, 'Every public canonical URL must be included exactly once in the XML sitemap.');
+  const keep = new Set(JSON.parse(fs.readFileSync('lib/index-keep-paths.json', 'utf8')));
   assert.equal(new Set(xmlPaths).size, xmlPaths.length, 'Duplicate canonical URL in XML sitemap.');
-  assert.deepEqual(new Set(xmlPaths), new Set(expectedXmlPaths), 'Sitemap omitted an indexable public URL.');
+  assert.ok(!xmlPaths.some(path => path.startsWith('/site-index')), 'HTML index pagination is not submitted in the XML sitemap.');
+  assert.ok(!xmlPaths.includes('/tools/hedra'), 'Withdrawn vendor stays out of the sitemap.');
+  for (const page of pages) {
+    const path = page.path || '/';
+    const thinDirectory = (page.kind === 'tool' || page.kind === 'alternatives') && !keep.has(path);
+    if (thinDirectory || path === '/tools/hedra') assert.ok(!xmlPaths.includes(path), 'Sitemap submitted a non-indexable URL: ' + path);
+    else if (keep.has(path) || path.startsWith('/guides/') || path.startsWith('/categories/') || path === '/categories' || path.startsWith('/compare/') || path === '/compare')
+      assert.ok(xmlPaths.includes(path), 'Sitemap omitted an indexable public URL: ' + path);
+  }
   assert.ok(xmlPaths.every(path => !path.startsWith('/admin') && !path.startsWith('/api/')), 'Do not submit administrative or API URLs.');
   assert.ok(content.sitemap.sitemapEntries(pages).every(entry => !new URL(entry.url).search), 'Do not submit query or tracking URLs.');
   assert.ok(fs.readFileSync('components/shell.tsx', 'utf8').includes('href="/site-index"'));
   for (const source of ['app/site-index/page.tsx', 'app/site-index/[section]/[page]/page.tsx'])
     assert.ok(fs.readFileSync(source, 'utf8').includes('BreadcrumbList'), 'Missing structured-data breadcrumbs: ' + source);
-  console.log('PASS: ' + pages.length + ' canonical URLs covered exactly once by paginated HTML discovery links; ' + paths.length + ' site index URLs added to the sitemap, each section has breadcrumbs.');
+  console.log('PASS: ' + pages.length + ' canonical URLs covered by the HTML index (' + paths.length + ' index URLs). XML sitemap is the keep-list plus guides, categories, and approved compares.');
 } finally {
   content.cleanup();
   fs.rmSync(tmp, { recursive: true, force: true });

@@ -35,6 +35,8 @@ try{
   assert.ok(history[page.path],'Untracked page: '+page.path);
  }
  assert.equal(index.getContentPage('/tools/does-not-exist'),undefined);
+ assert.equal(index.getContentPage('/compare/chatgpt-vs-gemini'),undefined,'Unlisted compare pairs are not public documents');
+ assert.equal(index.getContentPage('/compare/chatgpt-vs-claude').path,'/compare/chatgpt-vs-claude');
  // Legal/editorial takedown: the former AI video product is removed from all
  // public canonical inventories, sitemap URLs, comparisons and derived listings.
  const removedCatalog=JSON.parse(fs.readFileSync('lib/ai-catalog.json','utf8'));
@@ -97,11 +99,40 @@ try{
  const comparePage=fs.readFileSync('app/compare/page.tsx','utf8');
  assert.ok(comparePage.includes("canonical:SITE+'/compare'")||comparePage.includes("SITE+'/compare'"),'The compare hub stays canonical.');
  assert.ok(comparePage.includes('index:false'),'Unlisted compare?tools= queries are noindex.');
- assert.ok(fs.readFileSync('app/robots.ts','utf8').includes("'/api/'"),'Robots disallows /api/.');
+ const robotsSource=fs.readFileSync('app/robots.ts','utf8');
+ assert.ok(robotsSource.includes("'/api/'"),'Robots disallows /api/.');
+ assert.ok(robotsSource.includes("'/compare?'"),'Robots disallows /compare? query URLs.');
  assert.ok(fs.readFileSync('app/api/logo/route.ts','utf8').includes('image/svg+xml'),'Missing logos return an SVG placeholder.');
  assert.ok(!fs.readFileSync('app/api/logo/route.ts','utf8').includes('status:404'),'Logo route must not answer 404.');
  assert.ok(proxySource.includes("X-Robots-Tag', 'noindex, follow'"),'Unlisted compare queries send noindex before render.');
  const compareSlug=fs.readFileSync('app/compare/[slug]/page.tsx','utf8');
- assert.ok(compareSlug.includes('withCompareRobots'),'Tail compare paths must be able to noindex.');
+ assert.ok(compareSlug.includes('withCompareRobots'),'Allowlisted comparisons keep their robots rules.');
+ assert.ok(compareSlug.includes('isAllowlistedCompareSlug(slug))notFound()'),'Unlisted compare paths return 404.');
+ assert.ok(toolSource.includes('withDirectoryRobots')&&altSource.includes('withDirectoryRobots'),'Thin directory pages must be able to noindex.');
+ const keep=new Set(JSON.parse(fs.readFileSync('lib/index-keep-paths.json','utf8')));
+ const xmlEntries=sitemap.sitemapEntries(index.contentPages);
+ const xmlPaths=xmlEntries.map(entry=>new URL(entry.url).pathname);
+ assert.ok(xmlEntries.every(entry=>new URL(entry.url).origin==='https://trutool.co'),'Sitemap locations must stay on https://trutool.co');
+ assert.ok(xmlPaths.includes('/')&&xmlPaths.includes('/guides')&&xmlPaths.includes('/alternatives')&&xmlPaths.includes('/compare/chatgpt-vs-claude'));
+ assert.ok(!xmlPaths.some(path=>path.startsWith('/site-index')||path==='/tools/hedra'||path.includes('/chatgpt-vs-gemini')));
+ let indexedDirectory=0,omittedDirectory=0;
+ const directoryDays=new Set();
+ for(const page of index.contentPages){
+  if(page.kind!=='tool'&&page.kind!=='alternatives')continue;
+  const listed=xmlPaths.includes(page.path);
+  if(keep.has(page.path)&&page.path!=='/tools/hedra'){assert.equal(listed,true,page.path);indexedDirectory++;}
+  else assert.equal(listed,false,'Thin URL still submitted: '+page.path);
+  if(!listed)omittedDirectory++;
+ }
+ for(const entry of xmlEntries){
+  const path=new URL(entry.url).pathname;
+  if(!path.startsWith('/tools/')&&!path.startsWith('/alternatives/'))continue;
+  if(!entry.lastModified)continue;
+  const day=new Date(entry.lastModified).toISOString().slice(0,10);
+  assert.notEqual(day,'2026-11-13',path+' must not inherit the template-wide lastmod');
+  directoryDays.add(day);
+ }
+ assert.ok(indexedDirectory>100&&omittedDirectory>1000,'Keep-list did not split directory pages');
+ assert.ok(directoryDays.size>=3,'Directory lastmod values must vary: '+[...directoryDays].join(','));
  console.log(`SEO verification passed: ${index.contentPages.length} canonical pages have valid schema graphs, dates, breadcrumbs, and Markdown references. RSS, Atom, JSON Feed, and llms.txt checked.`);
 }finally{cleanup()}
