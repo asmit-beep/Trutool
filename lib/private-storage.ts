@@ -36,9 +36,42 @@ function configuration(){
  if(!url||!/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(url)||!secret)throw Error('TruTool Supabase storage is not configured');
  return {url,secret};
 }
+function transientFailure(error:unknown):boolean{
+ const codes=new Set(['ECONNRESET','ECONNREFUSED','ETIMEDOUT','EAI_AGAIN','ENETUNREACH','EPIPE','UND_ERR_SOCKET','UND_ERR_CONNECT_TIMEOUT']);
+ const seen=new Set<unknown>();
+ let current:unknown=error;
+ while(current&&typeof current==='object'&&!seen.has(current)){
+  seen.add(current);
+  const candidate=current as {code?:string;message?:string;cause?:unknown;name?:string};
+  if(candidate.code&&codes.has(candidate.code))return true;
+  if(candidate.name==='TimeoutError')return true;
+  if(typeof candidate.message==='string'&&/ECONNRESET|socket hang up|fetch failed|network|timed out/i.test(candidate.message))return true;
+  current=candidate.cause;
+ }
+ return false;
+}
+const retryableStatus=(status:number)=>status===408||status===429||status>=500;
+function delay(ms:number){return new Promise(resolve=>setTimeout(resolve,ms));}
 async function request(path:string,init:RequestInit={}){
  const {url,secret}=configuration();
- return fetch(url+path,{...init,cache:'no-store',headers:{apikey:secret,Authorization:'Bearer '+secret,...init.headers}});
+ const attempts=3;
+ let last:unknown;
+ for(let attempt=0;attempt<attempts;attempt++){
+  try{
+   const response=await fetch(url+path,{...init,cache:'no-store',signal:AbortSignal.timeout(8000),headers:{apikey:secret,Authorization:'Bearer '+secret,...init.headers}});
+   if(attempt<attempts-1&&retryableStatus(response.status)){
+    last=new Error('TruTool storage HTTP '+response.status);
+    await delay(200*2**attempt);
+    continue;
+   }
+   return response;
+  }catch(error){
+   last=error;
+   if(attempt===attempts-1||!transientFailure(error))throw error;
+   await delay(200*2**attempt);
+  }
+ }
+ throw last instanceof Error?last:new Error('TruTool storage request failed');
 }
 async function findRow(path:string):Promise<StoredRow|null>{
  const query=new URLSearchParams({select:'path,payload,etag,created_at,updated_at',path:'eq.'+path,limit:'1'});

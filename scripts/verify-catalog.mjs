@@ -8,9 +8,10 @@ import {createRequire} from 'node:module';
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'trutool-catalog-'));
 try{
  fs.writeFileSync(path.join(tmp,'package.json'),'{"type":"commonjs"}');
- for(const file of ['compare-pairs','manually-published-tools','new-editorial-tools','catalog','category-ranking','category-crosslist','launch-discovery','ai-signals','guides','search','diagnostic','catalog-results','tool-discovery','discovery-options','authors','ai','ai-news','cms-types','demo','demo-reviews','reviews','pricing','community-answers','rfp-alternatives','content-index','alternative-shortlist','recorded-research','covers','sitemap-inventory'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
+ for(const file of ['compare-pairs','manually-published-tools','new-editorial-tools','catalog','category-ranking','category-crosslist','launch-discovery','ai-signals','guides','search','diagnostic','catalog-results','tool-discovery','discovery-options','authors','ai','ai-news','cms-types','demo','demo-reviews','reviews','pricing','community-answers','rfp-alternatives','content-index','alternative-shortlist','recorded-research','covers','index-policy','sitemap-inventory'])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(fs.readFileSync('lib/'+file+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  fs.writeFileSync(path.join(tmp,'cms-store.js'),'exports.getPublished=async()=>[];');
  fs.copyFileSync('lib/content-history.json',path.join(tmp,'content-history.json'));
+ fs.copyFileSync('lib/index-keep-paths.json',path.join(tmp,'index-keep-paths.json'));
  fs.copyFileSync('lib/expanded-catalog.json',path.join(tmp,'expanded-catalog.json'));
  for(const name of ['ai-catalog.json','catalog-additions.json','catalog-expansion.json','category-growth.json','submitted-tools.json','ai-news.json','ai-discussions.json'])fs.copyFileSync('lib/'+name,path.join(tmp,name));
  fs.copyFileSync('lib/core-source-dates.json',path.join(tmp,'core-source-dates.json'));
@@ -298,11 +299,15 @@ try{
  const fresh=require(path.join(tmp,'catalog.js')),results=require(path.join(tmp,'catalog-results.js'));
  assert.equal(fresh.catalogueTotals.tools,tools.length+1);assert.equal(fresh.catalogueTotals.categories,categories.length+1);assert.equal(fresh.catalogueTotals.guides,guides.length+1);assert.equal(fresh.categoryCounts['qa-fixture-category'],1);
  assert.equal(fresh.latestGuides[0].slug,'qa-guide-fixture');assert.equal(results.toolResults('QA Catalogue Fixture').items[0].slug,'qa-catalogue-fixture');assert.ok(results.categoryOptions.some(c=>c.slug==='qa-fixture-category'));
- // The exact sitemap generator must include every newly published entity.
+ // New guides and categories join the sitemap. New template profiles do not.
  const sitemapSource=fs.readFileSync('app/sitemap.ts','utf8').replaceAll('@/lib/','./');
  for(const [file,source] of [['services',fs.readFileSync('lib/services.ts','utf8')],['site-index',fs.readFileSync('lib/site-index.ts','utf8')],['sitemap',sitemapSource]])fs.writeFileSync(path.join(tmp,file+'.js'),ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,esModuleInterop:true}}).outputText);
  fs.writeFileSync(path.join(tmp,'cms-public.js'),"exports.publicPages=async()=>require('./content-index').contentPages;");
- const entries=await require(path.join(tmp,'sitemap.js')).default();for(const a of communityAnswers)assert.ok(entries.some(e=>e.url.endsWith('/community/'+a.slug))); for(const suffix of ['/everything-ai','/tools/qa-catalogue-fixture','/alternatives/qa-catalogue-fixture','/categories/qa-fixture-category','/guides/qa-guide-fixture'])assert.ok(entries.some(e=>e.url.endsWith(suffix)),suffix);
+ for(const file of ['content-index.js','sitemap-inventory.js','sitemap.js'])delete require.cache[path.join(tmp,file)];
+ const entries=await require(path.join(tmp,'sitemap.js')).default();
+ for(const a of communityAnswers)assert.ok(!entries.some(e=>e.url.endsWith('/community/'+a.slug)),'Individual community answers are outside the sitemap keep-list');
+ for(const suffix of ['/tools/qa-catalogue-fixture','/alternatives/qa-catalogue-fixture'])assert.ok(!entries.some(e=>e.url.endsWith(suffix)),'New template profiles stay out of the sitemap: '+suffix);
+ for(const suffix of ['/everything-ai','/categories/qa-fixture-category','/guides/qa-guide-fixture'])assert.ok(entries.some(e=>e.url.endsWith(suffix)),suffix);
  assert.equal(new Set(entries.map(e=>e.url)).size,entries.length);
  const {authors,authorFor,getAuthor}=require(path.join(tmp,'authors.js'));
  assert.deepEqual(authors.map(a=>a.slug),['yash','snehil','sandeep','asmit']);

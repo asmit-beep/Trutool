@@ -8,6 +8,7 @@ import { ALTERNATIVES_COMPARE_LINK_LIMIT,allowlistedComparePartners,allowlistedC
 import { cmsMetadata,isHidden,publicContent,publicTools } from '@/lib/cms-public';
 import { alternativesDescription, alternativeEvaluationQuestions, alternativeShortlist } from '@/lib/alternative-shortlist';
 import {audienceIsGeneric, meaningfulFeatures, recordedCapabilityComparison, vendorSource} from '@/lib/recorded-research';
+import { withDirectoryRobots } from '@/lib/index-policy';
 import { pageMetadata } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 import { alternativesNotes } from '@/lib/content-index';
@@ -22,19 +23,19 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
   const cmsPath='/alternatives/'+slug;
   if(isRfpArticle(slug)){
     const article=rfpAlternativePages[slug];
-    return pageMetadata({title:article.title,description:article.description,keywords:article.queryVariants.concat(['RFP software','AI RFP response software','proposal management software','security questionnaire automation']),publisher:'TruTool',robots:{index:true,follow:true,googleBot:{index:true,follow:true,'max-image-preview':'large','max-snippet':-1}},alternates:{canonical:SITE+cmsPath},authors:[{name:'Snehil',url:SITE+'/authors/snehil'}],openGraph:{title:article.title,description:article.description,type:'article',url:SITE+cmsPath,siteName:'TruTool',publishedTime:'2026-10-22T00:00:00Z',modifiedTime:'2026-10-22T00:00:00Z'}});
+    return withDirectoryRobots(pageMetadata({title:article.title,description:article.description,keywords:article.queryVariants.concat(['RFP software','AI RFP response software','proposal management software','security questionnaire automation']),publisher:'TruTool',robots:{index:true,follow:true,googleBot:{index:true,follow:true,'max-image-preview':'large','max-snippet':-1}},alternates:{canonical:SITE+cmsPath},authors:[{name:'Snehil',url:SITE+'/authors/snehil'}],openGraph:{title:article.title,description:article.description,type:'article',url:SITE+cmsPath,siteName:'TruTool',publishedTime:'2026-10-22T00:00:00Z',modifiedTime:'2026-10-22T00:00:00Z'}}),cmsPath);
   }
   const cms=await publicContent(cmsPath);
   if(await isHidden(cmsPath))notFound();
-  if(cms)return cmsMetadata(cms);
+  if(cms)return withDirectoryRobots(cmsMetadata(cms),cmsPath);
   const t=(await publicTools()).find(tool=>tool.slug===slug);
   if(!t)return {title:'Not found'};
   const category=categoryOf(t.category);
-  return pageMetadata({
+  return withDirectoryRobots(pageMetadata({
     title:t.name+' Alternatives — Compare '+(category?.name||'Similar Tools'),
     description:alternativesDescription(t,category?.name||t.category),
     alternates:{canonical:SITE+cmsPath},
-  });
+  }),cmsPath);
 }
 
 export default async function Page({params}:{params:Promise<{slug:string}>}){
