@@ -52,6 +52,31 @@ try {
   const recoveredPages=recoveredOnly.map(p=>({path:p,title:p,description:'Recovered published editorial content',kind:'guide'}));
   const recoveryXml=new Set(content.sitemap.sitemapEntries([...pages,...recoveredPages]).map(entry=>new URL(entry.url).pathname));
   for(const p of backupPaths)assert.ok(recoveryXml.has(p),'Sitemap excludes recovered published CMS URL: '+p);
+
+  // Regression: new eligible editorial content is listed automatically without
+  // a source-control keep-list update, while thin directory pages remain out.
+  const cmsFixture = kind => ({
+    path: '/' + ({ guide: 'guides', news: 'news', answer: 'community', service: 'services', author: 'authors', tool: 'tools', alternatives: 'alternatives' }[kind]) + '/published-fixture',
+    title: 'Editorial fixture', description: 'Independent original page for testing.',
+    kind: kind === 'news' ? 'guide' : kind, cms: {
+      kind, slug: 'published-fixture', image: '',
+      publishedAt: '2026-11-19T12:00:00.000Z', updatedAt: '2026-11-19T14:00:00.000Z',
+    },
+  });
+  const editorialCms=['guide','news','answer','service','author'].map(cmsFixture);
+  const cmsXml=content.sitemap.sitemapEntries([...pages,...editorialCms,cmsFixture('tool'),cmsFixture('alternatives')]);
+  for (const fixture of editorialCms) assert.ok(cmsXml.some(entry=>new URL(entry.url).pathname===fixture.path),
+    'New published CMS page omitted: '+fixture.path);
+  for(const kind of ['tool','alternatives']) assert.ok(!cmsXml.some(entry=>new URL(entry.url).pathname===cmsFixture(kind).path),
+    'Non-allowlisted thin directory page must remain out: '+kind);
+  for(const entry of cmsXml) assert.equal(entry.priority,undefined, 'Sitemap priorities should be omitted.');
+  const sortable=entry=>entry.lastModified?Date.parse(entry.lastModified):-1;
+  assert.ok(cmsXml.every((entry,i)=>i===0||sortable(cmsXml[i-1])>=sortable(entry)),
+    'Sitemap must be globally sorted by actual modification date descending.');
+  assert.ok(new Set(cmsXml.map(e=>e.url)).size===cmsXml.length, 'Sitemap must deduplicate canonical URLs.');
+  assert.ok(!cmsXml.some(entry=>entry.url.endsWith('/tools/hedra')||entry.url.includes('/site-index/')),
+    'Withdrawn or HTML-index pages cannot enter the XML sitemap.');
+
   const xmlPaths = content.sitemap.sitemapEntries(pages).map(entry => new URL(entry.url).pathname);
   const keep = new Set(JSON.parse(fs.readFileSync('lib/index-keep-paths.json', 'utf8')));
   assert.equal(new Set(xmlPaths).size, xmlPaths.length, 'Duplicate canonical URL in XML sitemap.');
